@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Models by reasoning effort</title>
+<title>AI scores</title>
 <style>
 :root { color-scheme: light; --surface: #fcfcfb; --page: #f9f9f7; --ink-1: #0b0b0b; --ink-2: #52514e; --ink-3: #898781; --grid: #e1e0d9; --baseline: #c3c2b7; --border: rgba(11,11,11,0.10); --series-2: #eb6834; --series-6: #008300; --series-4: #eda100; --series-5: #e87ba4; --series-7: #4a3aa7; }
 @media (prefers-color-scheme: dark) { :root { color-scheme: dark; --surface: #1a1a19; --page: #0d0d0d; --ink-1: #ffffff; --ink-2: #c3c2b7; --ink-3: #898781; --grid: #2c2c2a; --baseline: #383835; --border: rgba(255,255,255,0.10); --series-2: #d95926; --series-6: #008300; --series-4: #c98500; --series-5: #d55181; --series-7: #9085e9; } }
@@ -133,7 +133,7 @@ body:has(#show-gpt-6-astra:not(:checked)):has(#show-gpt-6-1-sol:not(:checked)):h
 </head>
 <body>
 <input type="checkbox" class="toggle" id="show-gpt-6-astra" checked><input type="checkbox" class="toggle" id="show-gpt-6-1-sol" checked><input type="checkbox" class="toggle" id="show-fable-5-1" checked><input type="checkbox" class="toggle" id="show-opus-5-5" checked><input type="checkbox" class="toggle" id="show-sonnet-5-5" checked><input type="radio" class="toggle" name="x-axis" id="x-effort" checked><input type="radio" class="toggle" name="x-axis" id="x-cost">
-<header class="shell"><h1>Models by reasoning effort</h1><p class="subtitle">Tap a model to hide or show it. Show exactly two models to see where they come closest: a dashed line joins their nearest scores at different effort levels. Hover a level to read every score. To zoom in on some points, drag across them with a mouse, or press and hold a finger for a second, then drag. Switch the x axis to cost to see what each effort level costs: the best models sit top left.</p></header>
+<header class="shell"><h1>AI scores</h1><p class="subtitle">Tap a model to hide or show it. Show exactly two models to see where they come closest: a dashed line joins their nearest scores at different effort levels. Hover a level to read every score. To zoom in on some points, drag across them with a mouse, or press and hold a finger for a second, then drag. Switch the x axis to cost to see what each effort level costs: the best models sit top left.</p></header>
 <nav class="legend" aria-label="Models"><div class="shell"><label class="model" for="show-gpt-6-astra" style="--series: var(--series-2)">GPT-6 Astra</label><label class="model" for="show-gpt-6-1-sol" style="--series: var(--series-6)">GPT-6.1 Sol</label><label class="model" for="show-fable-5-1" style="--series: var(--series-4)">Fable 5.1</label><label class="model" for="show-opus-5-5" style="--series: var(--series-5)">Opus 5.5</label><label class="model" for="show-sonnet-5-5" style="--series: var(--series-7)">Sonnet 5.5</label><span class="axis-switch" role="group" aria-label="X axis"><span>X axis</span><label for="x-effort">Effort level</label><label for="x-cost">Cost</label></span></div></nav>
 <main class="shell">
 <section><h2>Intelligence</h2><div class="grid"><figure class="panel"><figcaption><h3>AA Intelligence Index</h3><p>v4.3.2 · Artificial Analysis</p></figcaption><div class="plot phone effort" data-metric="aa-intelligence-index" data-axes="9.231,5.641,74.286,86.154"><svg xmlns:xlink="http://www.w3.org/1999/xlink" class="chart" viewBox="0 0 327.6 280.8" xmlns="http://www.w3.org/2000/svg" version="1.1">

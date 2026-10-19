@@ -350,7 +350,7 @@ COSTS: dict[str, dict[Model, Scores]] = {
 COST_UNITS = {"AA Intelligence Index": "US$ to run the whole index, log scale"}
 DEFAULT_COST_UNIT = "US$ per task, log scale"
 
-TITLE = "Models by reasoning effort"
+TITLE = "AI scores"
 SUBTITLE = ("Tap a model to hide or show it. Show exactly two models to see where they come closest: "
             "a dashed line joins their nearest scores at different effort levels. Hover a level to read every score. "
             "To zoom in on some points, drag across them with a mouse, or press and hold a finger for a second, then drag. "
