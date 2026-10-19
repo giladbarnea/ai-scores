@@ -271,6 +271,28 @@ REPORTED = {"Intelligence": [
         CLAUDE_SONNET_5_5: (67.04, "max"),
         GEMINI_4_ARGON: (68.90, "high"),
     }),
+    ReportedMetric("AA-AnalystAgent", "% · AA’s own run for all models", {
+        GPT_6_ASTRA: (51.3, "max"),
+        GPT_6_1_SOL: (50.0, "max"),
+        CLAUDE_FABLE_5_1: (57.5, "max"),
+        CLAUDE_OPUS_5_5: (56.3, "max"),
+        CLAUDE_SONNET_5_5: (57.5, "max"),
+        GEMINI_4_ARGON: (48.8, "high"),
+    }),
+    ReportedMetric("Harvey LAB-AA v1.1", "% all-pass · AA’s own run for all models", {
+        GPT_6_ASTRA: (8.6, "max"),
+        GPT_6_1_SOL: (6.9, "max"),
+        CLAUDE_FABLE_5_1: (6.4, "max"),
+        CLAUDE_OPUS_5_5: (4.2, "max"),
+        CLAUDE_SONNET_5_5: (2.8, "max"),
+    }),
+    ReportedMetric("MLCR-AA", "% · AA’s own run for all models", {
+        GPT_6_ASTRA: (35.0, "max"),
+        GPT_6_1_SOL: (33.9, "max"),
+        CLAUDE_FABLE_5_1: (71.1, "max"),
+        CLAUDE_OPUS_5_5: (66.7, "max"),
+        CLAUDE_SONNET_5_5: (75.0, "max"),
+    }),
 ], "Coding": [
     ReportedMetric("Vibe Code Bench v1.1", "% · Vals AI, OpenHands harness for all models", {
         GPT_6_ASTRA: (89.59, "max"),
@@ -279,6 +301,14 @@ REPORTED = {"Intelligence": [
         CLAUDE_OPUS_5_5: (90.29, "max"),
         CLAUDE_SONNET_5_5: (92.39, "max"),
         GEMINI_4_ARGON: (91.91, "high"),
+    }),
+    ReportedMetric("Terminal-Bench Science 0.1", "% · AA’s own run for all models", {
+        GPT_6_ASTRA: (63.3, "max"),
+        GPT_6_1_SOL: (58.1, "max"),
+        CLAUDE_FABLE_5_1: (43.3, "max"),
+        CLAUDE_OPUS_5_5: (59.0, "max"),
+        CLAUDE_SONNET_5_5: (53.3, "max"),
+        GEMINI_4_ARGON: (52.9, "high"),
     }),
     ReportedMetric("SWE-Bench Pro", "% resolved · each lab’s own run on its own agent harness", {
         CLAUDE_FABLE_5_1: (81.2, "max"),
@@ -412,7 +442,9 @@ FOOTNOTES = {
                     "per task of each benchmark at each effort level, ARC Prize’s for ARC-AGI-2, and AA’s total cost "
                     "to run the whole AA Intelligence Index. Gemini 4 Argon’s highest level is high, and AA rates "
                     "it only at high. AA prices Argon at Google’s 50% launch discount; at standard prices its costs "
-                    "double. The Vals Index has one score per model, so it shows as bars.",
+                    "double. The Vals Index has one score per model, so it shows as bars. AA-AnalystAgent, Harvey LAB-AA and "
+                    "MLCR-AA show as bars because AA ran them only at each model’s top level. AA has not run Gemini 4 "
+                    "Argon on Harvey LAB-AA or MLCR-AA.",
     "Coding": "DeepSWE has no per-level scores for the Claude models; Sonnet 5.5’s system card "
               "reports 71.0 at max. AA ran Terminal-Bench 2.1 only on GPT-6 Astra and Fable 5.1. "
               "CursorBench lists no GPT-6 model. Terminal-Bench scores are AA’s own runs; "
@@ -421,7 +453,9 @@ FOOTNOTES = {
               "SWE-Bench Pro has one reported score per model, so it shows as bars. Each lab ran "
               "SWE-Bench Pro itself on its own agent harness, which can move scores a lot, so compare its bars with care. "
               "Gemini 4 Argon’s DeepSWE score is Google’s own run at high, on a mini-swe-agent harness. "
-              "Vibe Code Bench has one score per model, all on the same harness, so it shows as bars.",
+              "Vibe Code Bench has one score per model, all on the same harness, so it shows as bars. "
+              "Terminal-Bench Science shows as bars because AA ran it only at each model’s top level. The labs’ own "
+              "Terminal-Bench Science scores disagree with each other, so the chart uses only AA’s runs.",
 }
 
 LINE_WIDTH = 1.8
