@@ -1,0 +1,59 @@
+{
+ "notes": {
+  "fetched": "2026-10-19",
+  "sources": {
+   "Artificial Analysis model page (record field names in parentheses)": "https://artificialanalysis.ai/models/gemini-4-argon",
+   "Artificial Analysis launch article": "https://artificialanalysis.ai/articles/gemini-4-argon-google-top-three-labs",
+   "ARC Prize v2 leaderboard (generatedAt 2026-10-15)": "https://arcprize.org/media/data/leaderboard/v2.json",
+   "Cognition FrontierCode data (v1_1, main.new_score)": "https://cognition.com/data/frontiercode-leaderboard/data.json",
+   "Cursor CursorBench 4.0 leaderboard": "https://cursor.com/en/cursorbench",
+   "Google model card": "https://deepmind.google/models/model-cards/gemini-4-argon/",
+   "Google evals methodology (PDF)": "https://deepmind.google/models/evals-methodology/gemini-4-argon",
+   "Vals Index": "https://www.vals.ai/benchmarks/vals_index",
+   "Vibe Code Bench v1.1": "https://www.vals.ai/benchmarks/vibe-code"
+  },
+  "levels": "Gemini 4 Argon runs at low, medium and high; high is its highest level (AA, ARC Prize). AA rates only the high variant (slug gemini-4-argon, intelligenceIndexIsEstimated false).",
+  "AA costs": "costPerTask from intelligenceIndexEvaluations; AA Intelligence Index cost is intelligenceIndexCost.total. AA prices Argon at Google's 50% launch discount ($2/$10 per 1M tokens); at standard pricing the costs double.",
+  "AA Index coding category": "Mean of terminalBench40 and scicode, as for the other models.",
+  "DeepSWE v1.1": "77.9% at high from Google's model card: Google's own run on a mini-swe-agent harness. The DeepSWE live leaderboard (last generated 2026-06-20) has no Argon.",
+  "Terminal-Bench 2.1": "AA has not run Argon (terminalBench21 null).",
+  "Vals Index": "Vals AI, updated 2026-10-18. All six models; Argon at high, every other model at max (Vals model pages).",
+  "Vibe Code Bench v1.1": "Vals AI, OpenHands harness, updated 2026-10-18. All six models; Argon at high, every other model at max.",
+  "skipped": "Model-card-only benchmarks (FrontierSWE v2, PostTrainBench, GraphWalks, LABBench 2, RiemannBench, Agent's Last Exam, Chartography, LVBench, CWE-bench, Vals Finance Agent v2, Harvey Legal Agent): no per-model effort level stated, or only Google's own runs on four models. SWE-Bench Pro: not reported by Google."
+ },
+ "scores": {
+  "AA Intelligence Index": {"low": null, "medium": null, "high": 52.5605655745982},
+  "Humanity's Last Exam": {"high": 0.570898980537535},
+  "CritPt": {"high": 0.271428571428571},
+  "ARC-AGI-2": {"low": 0.4208, "medium": 0.8708, "high": 0.9125},
+  "AA-Omniscience Index": {"high": 42.35},
+  "GDPval-AA": {"high": 1623.99},
+  "AA-Briefcase": {"high": 1486.44},
+  "AutomationBench-AA": {"high": 0.7751346945899195},
+  "AA-LCR": {"high": 0.796666666666667},
+  "GDP.pdf": {"high": 0.218},
+  "Terminal-Bench 4.0": {"high": 0.570707070707071},
+  "SciCode": {"high": 0.618055555555556},
+  "DeepSWE v1.1": {"high": 77.9},
+  "FrontierCode 1.1 Main": {"low": 47.2, "medium": 47.6, "high": 45.9},
+  "CursorBench 4.0": {"low": 50.6, "medium": 52.8, "high": 52.9}
+ },
+ "costs": {
+  "AA Intelligence Index": {"high": 2407.239010161643},
+  "Humanity's Last Exam": {"high": 0.17642913623725673},
+  "CritPt": {"high": 1.5838644857142856},
+  "ARC-AGI-2": {"low": 0.0738, "medium": 0.1373, "high": 0.3249},
+  "AA-Omniscience Index": {"high": 0.009616510333333333},
+  "GDPval-AA": {"high": 1.8192251097173668},
+  "AA-Briefcase": {"high": 5.8277493804482905},
+  "AutomationBench-AA": {"high": 0.6086564390329249},
+  "AA-LCR": {"high": 0.23635650000000002},
+  "GDP.pdf": {"high": 0.25933138},
+  "Terminal-Bench 4.0": {"high": 6.780140181187823},
+  "SciCode": {"high": 0.10567819444444444}
+ },
+ "reported": {
+  "Vals Index": {"Gemini 4 Argon": [68.90, "high"], "Sonnet 5.5": [67.04, "max"], "Opus 5.5": [66.97, "max"], "Fable 5.1": [65.83, "max"], "GPT-6 Astra": [63.13, "max"], "GPT-6.1 Sol": [61.15, "max"]},
+  "Vibe Code Bench v1.1": {"Sonnet 5.5": [92.39, "max"], "Gemini 4 Argon": [91.91, "high"], "Opus 5.5": [90.29, "max"], "Fable 5.1": [90.26, "max"], "GPT-6 Astra": [89.59, "max"], "GPT-6.1 Sol": [88.93, "max"]}
+ }
+}

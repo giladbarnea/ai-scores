@@ -1,0 +1,85 @@
+{
+ "notes": {
+  "all": "Fetched 2026-10-19 from artificialanalysis.ai/models/<slug>[-low|-medium|-high|-xhigh] page payloads (max = bare slug), arcprize.org/media/data/leaderboard/v2.json (generatedAt 2026-10-15), cognition.com/data/frontiercode-leaderboard/data.json, cursor.com/en/cursorbench, deepswe.datacurve.ai/artifacts/v1/leaderboard-live.json. AA Intelligence Index still v4.3.2.",
+  "changed": "Only GDPval-AA and AA-Briefcase moved: both are relative Elo and AA re-rated every model after new models joined (e.g. Gemini 4 Argon). Every other AA score and every AA cost in charts.py matches today's AA values exactly. AA Index coding category differs by at most 0.1 only from rounding order (mean of raw vs. rounded values), so it is left unchanged.",
+  "unchanged": "ARC-AGI-2, FrontierCode 1.1 Main, CursorBench 4.0: identical for all 5 models. Sonnet 5.5 still absent from ARC Prize v2. CursorBench still lists no GPT-6 model. DeepSWE live leaderboard last generated 2026-06-20: none of the 5 models.",
+  "vals_ai": "Vals Index and Vibe Code Bench (OpenHands), vals.ai, 'as of October 18, 2026'. GPT-6.1 Sol: Reasoning Effort max, Vals Index 61.15, Vibe Code 88.93. Sonnet 5.5: Compute Effort max, Vals Index 67.04, Vibe Code 92.39. Passed to the Argon pass, which owns those two new bar charts.",
+  "not_added": "AA max-only evaluations that now cover all 5 models: AA-AnalystAgent (Astra 51.3, Sol 50.0, Fable 57.5, Opus 56.3, Sonnet 57.5 %), Terminal-Bench Science 0.1 (63.3, 58.1, 43.3, 59.0, 53.3; skipped earlier because lab pages disagree), Harvey LAB-AA v1.1 (8.6, 6.9, 6.4, 4.2, 2.8 %), MLCR-AA (35.0, 33.9, 71.1, 66.7, 75.0 %). Partial per-level coverage only: tau3-Banking (Astra, Fable), MMMU-Pro (Astra, Sol, Opus), GPQA Diamond (Astra, Fable), Terminal-Bench 2.1 (still Astra, Fable only), ITBench-AA max (Astra, Fable, Opus)."
+ },
+ "scores": {
+  "GDPval-AA": {
+   "GPT-6 Astra": [
+    1389,
+    1486,
+    1523,
+    1556,
+    1573
+   ],
+   "GPT-6.1 Sol": [
+    1315,
+    1450,
+    1511,
+    1538,
+    1594
+   ],
+   "Fable 5.1": [
+    1469,
+    1545,
+    1635,
+    1732,
+    1754
+   ],
+   "Opus 5.5": [
+    1235,
+    1584,
+    1704,
+    1831,
+    1866
+   ],
+   "Sonnet 5.5": [
+    1175,
+    1323,
+    1549,
+    1728,
+    1838
+   ]
+  },
+  "AA-Briefcase": {
+   "GPT-6 Astra": [
+    1257,
+    1461,
+    1506,
+    1547,
+    1569
+   ],
+   "GPT-6.1 Sol": [
+    1117,
+    1361,
+    1465,
+    1504,
+    1557
+   ],
+   "Fable 5.1": [
+    1482,
+    1528,
+    1580,
+    1655,
+    1672
+   ],
+   "Opus 5.5": [
+    1280,
+    1625,
+    1686,
+    1764,
+    1803
+   ],
+   "Sonnet 5.5": [
+    1272,
+    1441,
+    1636,
+    1751,
+    1817
+   ]
+  }
+ }
+}
