@@ -12,7 +12,7 @@ import itertools
 import json
 import math
 import re
-from collections.abc import Iterator
+from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
 from pathlib import Path
 from string import Template
@@ -489,7 +489,9 @@ TITLE = "AI scores"
 SUBTITLE = ("Tap a model to hide or show it. Show exactly two models to see where they come closest: "
             "a dashed line joins their nearest scores at different effort levels. Hover a level to read every score. "
             "To zoom in on some points, drag across them with a mouse, or press and hold a finger for a second, then drag. "
-            "Switch the x axis to cost to see what each effort level costs: the best models sit top left.")
+            "Switch the x axis to cost to see what each effort level costs: the best models sit top left. "
+            "There, a faded point is beaten outright: a shown model scores at least as high for no more money. "
+            "The grey line joins the points nothing shown beats.")
 
 FOOTNOTES = {
     "Intelligence": "No model here has an “off” level, so the charts start at low. The one exception is ARC "
@@ -673,12 +675,25 @@ def element_id(role: str, *models: Model) -> str:
     return "__".join([role, *(model.slug for model in models)])
 
 
+GATE_PREFIX = "by-"
+
+
+def gated_id(role: str, models: list[Model], gates: Iterable[Model]) -> str:
+    """Like element_id, plus the models whose showing changes the artist: it fades (marker) or hides (frontier) then.
+
+    >>> gated_id("marker", [GPT_6_ASTRA], [GPT_6_1_SOL])
+    'marker__gpt-6-astra__by-gpt-6-1-sol'
+    """
+    return "__".join([element_id(role, *models), *(GATE_PREFIX + model.slug for model in gates)])
+
+
 def element_models(artist: Artist) -> set[str]:
-    return set(artist.get_gid().split("__")[1:])
+    return {part for part in artist.get_gid().split("__")[1:] if not part.startswith(GATE_PREFIX)}
 
 
-# Meeting lines are faint references, like gridlines: labels may sit over them.
+# Meeting and frontier lines are faint references, like gridlines: labels may sit over them.
 MEETING_LINE = "meeting-line"
+FRONTIER = "frontier"
 
 Placement = tuple[float, float, str, str]
 
@@ -745,7 +760,7 @@ def label_is_clear(axes: Axes, label: Annotation, renderer: RendererBase, scene:
     """
     def blocks(artist: Artist) -> bool:
         gid = artist.get_gid()
-        return artist not in own_parts and gid not in ignored_ids and not gid.startswith(MEETING_LINE) \
+        return artist not in own_parts and gid not in ignored_ids and not gid.startswith((MEETING_LINE, FRONTIER)) \
             and element_models(artist) <= scene
 
     box = text_box(label, renderer).padded(2)
@@ -873,8 +888,12 @@ def draw_end_labels(axes: Axes, metric: Metric) -> None:
                   va="center", ha="left", gid=element_id("name", model))
 
 
-def draw_series(axes: Axes, metric: Metric, model: Model, points: list[tuple[int, float, float]]) -> None:
-    """Draw one model's line and markers through (level, x, score) points, hollow where AA estimated the score."""
+def draw_series(axes: Axes, metric: Metric, model: Model, points: list[tuple[int, float, float]],
+                gates: dict[int, Iterable[Model]] | None = None) -> None:
+    """Draw one model's line and markers through (level, x, score) points, hollow where AA estimated the score.
+
+    A marker fades while any of its level's gate models is shown.
+    """
     axes.plot([x for _, x, _ in points], [score for _, _, score in points], color=model.color.light,
               linewidth=LINE_WIDTH, solid_joinstyle="round", solid_capstyle="round", zorder=3,
               gid=element_id("series", model))
@@ -883,7 +902,7 @@ def draw_series(axes: Axes, metric: Metric, model: Model, points: list[tuple[int
         axes.plot(x, score, marker="o", markersize=MARKER_SIZE,
                   markerfacecolor=SURFACE.light if is_estimated else model.color.light,
                   markeredgecolor=model.color.light if is_estimated else SURFACE.light,
-                  markeredgewidth=MARKER_RING, zorder=4, gid=element_id("marker", model))
+                  markeredgewidth=MARKER_RING, zorder=4, gid=gated_id("marker", [model], (gates or {}).get(index, ())))
 
 
 def style_axes(axes: Axes, metric: Metric) -> None:
@@ -922,6 +941,56 @@ def cost_points(metric: Metric, model: Model) -> list[tuple[int, float, float]]:
             if score is not None and cost is not None]
 
 
+CostPoint = tuple[Model, int, float, float]  # model, level index, cost, score
+
+
+def all_cost_points(metric: Metric) -> list[CostPoint]:
+    return [(model, index, cost, score) for model in metric.models for index, cost, score in cost_points(metric, model)]
+
+
+def beats(winner: CostPoint, loser: CostPoint) -> bool:
+    """Whether winner scores at least as high for no more money, and is not the same deal.
+
+    >>> beats((GPT_6_ASTRA, 0, 1.0, 50.0), (GPT_6_1_SOL, 1, 2.0, 50.0))
+    True
+    >>> beats((GPT_6_ASTRA, 0, 1.0, 50.0), (GPT_6_1_SOL, 1, 1.0, 50.0))
+    False
+    """
+    _, _, winner_cost, winner_score = winner
+    _, _, loser_cost, loser_score = loser
+    return winner_cost <= loser_cost and winner_score >= loser_score \
+        and (winner_cost, winner_score) != (loser_cost, loser_score)
+
+
+def beaters(metric: Metric) -> dict[CostPoint, dict[Model, CostPoint]]:
+    """For each point, each model's cheapest point that beats it, the point's own model included.
+
+    A point is beaten outright while any of these models is shown.
+    """
+    points = all_cost_points(metric)
+    by_cost_descending = sorted(points, key=lambda point: -point[2])
+    return {point: {winner[0]: winner for winner in by_cost_descending if beats(winner, point)} for point in points}
+
+
+def frontier_segments(metric: Metric) -> list[tuple[CostPoint, CostPoint, set[Model]]]:
+    """Every segment that joins two unbeaten points for some set of shown models, with the models whose showing hides it.
+
+    A segment from a cheaper, lower point to a dearer, higher one lies on the frontier while both its models are shown
+    and none of its blockers is: the models that beat either end, and those with a point priced between the ends
+    that scores above the cheaper end.
+    """
+    points = all_cost_points(metric)
+    beaten_by = beaters(metric)
+    rising = [(cheap, dear) for cheap, dear in itertools.permutations(points, 2) if cheap[2] < dear[2] and cheap[3] < dear[3]]
+    segments = []
+    for cheap, dear in rising:
+        between = {model for model, _, cost, score in points if cheap[2] < cost < dear[2] and score > cheap[3]}
+        blockers = set(beaten_by[cheap]) | set(beaten_by[dear]) | between
+        segments.append((cheap, dear, blockers))
+    return [(cheap, dear, blockers) for cheap, dear, blockers in segments
+            if cheap[0] not in blockers and dear[0] not in blockers]
+
+
 def cost_label(value: float) -> str:
     """
     >>> [cost_label(value) for value in (0.002, 0.05, 1.5, 20, 1000, 12500)]
@@ -936,10 +1005,16 @@ def draw_cost_panel(axes: Axes, metric: Metric) -> None:
     Only each line's last point carries a label: its value and dim model name, plus its level if not max. Points
     crowd here, and the x axis is not effort levels, so a first-point label would anchor nothing; hover shows every point.
     Where points pile up (on narrow layouts), a label with no clear spot is left out; hover still shows its point.
+    A point that a shown model beats outright fades, and a grey line joins the points no shown model beats.
     """
     models = [model for model in metric.models if cost_points(metric, model)]
+    beaten_by = beaters(metric)
     for model in models:
-        draw_series(axes, metric, model, cost_points(metric, model))
+        gates = {index: beaten_by[(model, index, cost, score)] for index, cost, score in cost_points(metric, model)}
+        draw_series(axes, metric, model, cost_points(metric, model), gates)
+    for cheap, dear, blockers in frontier_segments(metric):
+        axes.plot([cheap[2], dear[2]], [cheap[3], dear[3]], color=TEXT_SECONDARY.light, linewidth=1.5, alpha=0.6,
+                  solid_capstyle="round", zorder=2.5, gid=gated_id(FRONTIER, [cheap[0], dear[0]], blockers))
     style_axes(axes, metric)
     costs = [cost for model in models for _, cost, _ in cost_points(metric, model)]
     decades = math.log10(max(costs) / min(costs))
@@ -1002,11 +1077,15 @@ def cost_point_html(axes: Axes, metric: Metric, model: Model, index: int, cost: 
     x, y = axes.transData.transform((cost, score))
     estimated = " <i>est.</i>" if (model, EFFORT_LEVELS[index]) in metric.estimated else ""
     side = "tip-left" if x / width > 0.6 else "tip-right"
+    beaten = "".join(f'<span class="beaten m-{winner.slug}">beaten by {html.escape(winner.name)} '
+                     f'{EFFORT_LEVELS[winner_index]}: {metric.label(winner_score)} at {cost_label(winner_cost)}</span>'
+                     for winner, (_, winner_index, winner_cost, winner_score)
+                     in beaters(metric)[(model, index, cost, score)].items())
     return (f'<span class="cost-point m-{model.slug}" style="left:{100 * x / width:.2f}%;top:{100 * (1 - y / height):.2f}%">'
             f'<span class="tip {side}"><span class="level">{EFFORT_LEVELS[index]}</span>'
             f'<span class="row" style="--series: var(--{model.color.variable})"><b>{metric.label(score)}</b>'
             f'{html.escape(model.name)}{estimated}</span><span class="cost">{cost_label(cost)} · {metric.cost_unit.split(",")[0]}</span>'
-            f'</span></span>')
+            f'{beaten}</span></span>')
 
 
 # A chart without cost data shows its effort chart in both modes.
@@ -1139,12 +1218,15 @@ def layout_css() -> str:
 
 
 def toggle_css() -> str:
-    """Rules that hide a model everywhere when its checkbox is off, and show a meeting only when its two models alone are on."""
+    """Rules that hide a model everywhere when its checkbox is off, show a meeting only when its two models alone are on,
+    and, while a model is on, fade the cost points it beats and hide the frontier segments it blocks."""
     rules = []
     for model in MODELS:
         off = f"body:has(#show-{model.slug}:not(:checked))"
         rules.append(f"{off} .m-{model.slug} {{ display: none; }}")
         rules.append(f"{off} label[for=show-{model.slug}] {{ opacity: .45; text-decoration: line-through; }}")
+        rules.append(f"body:has(#show-{model.slug}:checked) .marker.m-by-{model.slug} {{ opacity: .22; }}")
+        rules.append(f"body:has(#show-{model.slug}:checked) .frontier.m-by-{model.slug} {{ display: none; }}")
         rules.append(f"body:has(#show-{model.slug}:focus-visible) label[for=show-{model.slug}] "
                      f"{{ outline: 2px solid var(--ink-2); outline-offset: 2px; }}")
     for pair in itertools.combinations(MODELS, 2):
@@ -1223,7 +1305,7 @@ $layouts
 .cost-point .tip { top: -8px; }
 .cost-point .tip-right { left: calc(100% + 4px); }
 .cost-point .tip-left { right: calc(100% + 4px); }
-.tip .cost { color: var(--ink-3); }
+.tip .cost, .tip .beaten { color: var(--ink-3); }
 .cost-point:hover { z-index: 4; }
 .cost-point:hover::after { opacity: 1; }
 .column:hover { z-index: 4; }
