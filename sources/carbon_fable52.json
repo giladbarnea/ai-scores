@@ -1,0 +1,1892 @@
+{
+ "notes": {
+  "fetched": "2026-11-13",
+  "sources": {
+   "Artificial Analysis model pages (one page payload carries every model's record)": "https://artificialanalysis.ai/models/<slug>[-low|-medium|-high|-xhigh] (bare slug = top level: max, or high for Gemini 4)",
+   "AA methodology (Intelligence Index v5.0.1)": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+   "ARC Prize v2 leaderboard (generatedAt 2026-11-10)": "https://arcprize.org/media/data/leaderboard/v2.json",
+   "Cursor CursorBench 4.0": "https://cursor.com/en/cursorbench",
+   "Vals Index v2.2 (updated 2026-11-11)": "https://www.vals.ai/benchmarks/vals_index",
+   "Vibe Code Bench v1.1 (updated 2026-11-11)": "https://www.vals.ai/benchmarks/vibe-code",
+   "Vals model pages (effort used)": "https://www.vals.ai/models/anthropic_claude-fable-5-2, https://www.vals.ai/models/google_gemini-4-carbon",
+   "Anthropic Fable 5.2 launch": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+   "Google Gemini 4 Carbon model card": "https://deepmind.google/models/model-cards/gemini-4-carbon/",
+   "Google Carbon launch post (pricing)": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+  },
+  "AA Intelligence Index v5.0.1": "Replaced v4.3.2 around 2026-11-10. 9 evals, 4 categories at 25% each: Knowledge Work (AA-Briefcase 15, AutomationBench-AA 5, GDP.pdf 5), Coding (FrontierCode-AA 2.0 15, Terminal-Bench 4.0 10), Science (Terminal-Bench-Science 15, CritPt v2 Hard 10), General (AA-Omniscience v1.1 15, HLE-Diamond 10). Dropped: HLE, CritPt v1, SciCode, AA-LCR, GDPval-AA (still run standalone; no per-task cost any more). All models' index scores and costs re-backfilled.",
+  "levels": "Gemini 4 Carbon: low, medium, high (bare slug = high). Fable 5.2: low..max. Neither AA index flagged estimated.",
+  "re-backfilled for all models": "AA Intelligence Index, AA-Omniscience (v1.1 moved values), GDPval-AA and AA-Briefcase (Elo re-rated), MLCR-AA (regraded with a 3-judge panel; all values moved), Harvey LAB-AA (Argon now has a score), Vals Index (v2.2 released 2026-10-19 after the last fetch).",
+  "new charts": "HLE-Diamond and CritPt v2 replace HLE and CritPt (Carbon has neither old score). FrontierCode-AA 2.0 added. Terminal-Bench Science now per level for all models: line chart instead of bars. MKA (AA's run of Google DeepMind's Multimodal Knowledge Agent benchmark) added as bars: top level only.",
+  "coding category": "Redefined as AA v5's coding category: (15*FrontierCode-AA 2.0 + 10*Terminal-Bench 4.0)/25, costs weighted the same.",
+  "ARC-AGI-2": "Sonnet 5.5 now listed (low..xhigh, no max). Fable 5.2 and Carbon added.",
+  "CursorBench 4.0": "Fable 5.2 low..max 53.2, 54.8, 56.9, 56.3, 60.0; Carbon low..high 58.6, 60.1, 60.4. Existing models unchanged.",
+  "Vals": "Vals Index v2.2: Fable 5.2 71.31 (high), Sonnet 70.85 (max), Carbon 70.45 (high), Opus 70.14 (max), Argon 69.39 (high), Astra 65.02 (max), GPT-6.1 Sol 63.94 (max). Vibe Code: Fable 5.2 93.77 (high), Carbon 89.06 (high); others unchanged.",
+  "Carbon pricing": "Introductory $2/$10 per 1M tokens (AA uses it); standard $4/$20 after the introductory period.",
+  "not available": "FrontierCode 1.1 (Cognition) and DeepSWE leaderboard (last generated 2026-06-20): neither new model. SWE-Bench Pro: not reported by Anthropic or Google. AA-AnalystAgent: no Fable 5.2 or Carbon. Harvey LAB-AA: no Carbon. Terminal-Bench 2.1: only GPT-6 Astra once Fable 5.1 left, chart dropped. SciCode: AA did not run Carbon.",
+  "lab-reported, not charted": "Anthropic: FrontierCode 2.0 49.1% Fable 5.2 xhigh (own harness), FrontierSWE v2 69.9%, TB-Science 74.6%, HLE with tools 74.2%. Google card: FrontierSWE 2 61.2%, Zapier AutomationBench 53.9%, GraphWalks 96.2%. AA VIALS-AA (top level): Fable 5.2 67.1, Carbon 64.0, Astra 62.7, Opus 61.5, Sonnet 59.6, Argon 59.6, Sol 59.0."
+ },
+ "aa_and_arc_raw": {
+  "scores": {
+   "AA Intelligence Index": {
+    "gpt-6-astra": {
+     "low": {
+      "score": 43.3349823228524,
+      "cost": 1650.7484149542447
+     },
+     "medium": {
+      "score": 51.5548393864113,
+      "cost": 2638.289263719404
+     },
+     "high": {
+      "score": 54.849838322506,
+      "cost": 3203.9990980989687
+     },
+     "xhigh": {
+      "score": 55.3057468569681,
+      "cost": 3746.2153585654264
+     },
+     "max": {
+      "score": 56.8538559596797,
+      "cost": 5661.179482563332
+     }
+    },
+    "gpt-6-1-sol": {
+     "low": {
+      "score": 34.8029244314559,
+      "cost": 237.90799854181154
+     },
+     "medium": {
+      "score": 46.3468797067114,
+      "cost": 388.5687768506756
+     },
+     "high": {
+      "score": 50.3291231936536,
+      "cost": 573.1677910130082
+     },
+     "xhigh": {
+      "score": 52.458219253291,
+      "cost": 717.7081569486036
+     },
+     "max": {
+      "score": 54.6087338138148,
+      "cost": 1123.9739209537065
+     }
+    },
+    "claude-fable-5-2": {
+     "low": {
+      "score": 53.9249388799182,
+      "cost": 2861.7798750438624
+     },
+     "medium": {
+      "score": 56.4083157101519,
+      "cost": 3359.6564849683755
+     },
+     "high": {
+      "score": 61.8218785440284,
+      "cost": 7105.770618708859
+     },
+     "xhigh": {
+      "score": 62.2167392403357,
+      "cost": 11741.62301405553
+     },
+     "max": {
+      "score": 64.563595756626,
+      "cost": 22191.421519777276
+     }
+    },
+    "claude-opus-5-5": {
+     "low": {
+      "score": 34.752785007759,
+      "cost": 979.6564838036733
+     },
+     "medium": {
+      "score": 48.2081024960691,
+      "cost": 2031.2696072896504
+     },
+     "high": {
+      "score": 51.8359958227294,
+      "cost": 2715.9800012757146
+     },
+     "xhigh": {
+      "score": 57.4447060170507,
+      "cost": 4765.908765973122
+     },
+     "max": {
+      "score": 59.1060336078904,
+      "cost": 8909.667015653067
+     }
+    },
+    "claude-sonnet-5-5": {
+     "low": {
+      "score": 25.649704549789,
+      "cost": 499.2013947177689
+     },
+     "medium": {
+      "score": 30.8195522148431,
+      "cost": 679.1556751397377
+     },
+     "high": {
+      "score": 41.515109087048,
+      "cost": 1268.3005112765024
+     },
+     "xhigh": {
+      "score": 49.9240327787242,
+      "cost": 2902.498414646481
+     },
+     "max": {
+      "score": 54.54133407109,
+      "cost": 7980.631329822837
+     }
+    },
+    "gemini-4-argon": {
+     "high": {
+      "score": 50.4121935905389,
+      "cost": 3810.1105189457085
+     }
+    },
+    "gemini-4-carbon": {
+     "low": {
+      "score": 54.2206114502924,
+      "cost": 4053.0790071891215
+     },
+     "medium": {
+      "score": 58.2587824022788,
+      "cost": 4000.928358202838
+     },
+     "high": {
+      "score": 60.025738829526,
+      "cost": 5333.26684317719
+     }
+    }
+   },
+   "HLE-Diamond": {
+    "gpt-6-astra": {
+     "low": {
+      "score": 0.451,
+      "cost": 0.04999888
+     },
+     "medium": {
+      "score": 0.527,
+      "cost": 0.12000678
+     },
+     "high": {
+      "score": 0.593,
+      "cost": 0.25744073000000006
+     },
+     "xhigh": {
+      "score": 0.615,
+      "cost": 0.37042833
+     },
+     "max": {
+      "score": 0.638,
+      "cost": 0.5512169800000001
+     }
+    },
+    "gpt-6-1-sol": {
+     "low": {
+      "score": 0.382,
+      "cost": 0.008631056000000002
+     },
+     "medium": {
+      "score": 0.46,
+      "cost": 0.018542786
+     },
+     "high": {
+      "score": 0.519,
+      "cost": 0.04334013600000001
+     },
+     "xhigh": {
+      "score": 0.558,
+      "cost": 0.066290526
+     },
+     "max": {
+      "score": 0.588,
+      "cost": 0.10916368200000001
+     }
+    },
+    "claude-fable-5-2": {
+     "low": {
+      "score": 0.608,
+      "cost": 0.128247592
+     },
+     "medium": {
+      "score": 0.663,
+      "cost": 0.183118464
+     },
+     "high": {
+      "score": 0.738,
+      "cost": 0.464489248
+     },
+     "xhigh": {
+      "score": 0.758,
+      "cost": 0.8755616879999999
+     },
+     "max": {
+      "score": 0.802,
+      "cost": 1.733883952
+     }
+    },
+    "claude-opus-5-5": {
+     "low": {
+      "score": 0.417,
+      "cost": 0.035132100023551
+     },
+     "medium": {
+      "score": 0.514,
+      "cost": 0.129907251779206
+     },
+     "high": {
+      "score": 0.556,
+      "cost": 0.193545257321965
+     },
+     "xhigh": {
+      "score": 0.64,
+      "cost": 0.46999654414529607
+     },
+     "max": {
+      "score": 0.679,
+      "cost": 1.1983133578968388
+     }
+    },
+    "claude-sonnet-5-5": {
+     "low": {
+      "score": 0.206,
+      "cost": 0.014970598000000002
+     },
+     "medium": {
+      "score": 0.238,
+      "cost": 0.032728586000000004
+     },
+     "high": {
+      "score": 0.338,
+      "cost": 0.106834654
+     },
+     "xhigh": {
+      "score": 0.441,
+      "cost": 0.246289016
+     },
+     "max": {
+      "score": 0.533,
+      "cost": 0.803716788
+     }
+    },
+    "gemini-4-argon": {
+     "high": {
+      "score": 0.567,
+      "cost": 0.241777746
+     }
+    },
+    "gemini-4-carbon": {
+     "low": {
+      "score": 0.619,
+      "cost": 0.343339322
+     },
+     "medium": {
+      "score": 0.674,
+      "cost": 0.393047286
+     },
+     "high": {
+      "score": 0.691,
+      "cost": 0.8138023900000001
+     }
+    }
+   },
+   "CritPt v2": {
+    "gpt-6-astra": {
+     "low": {
+      "score": 0.63,
+      "cost": 0.2367044943812013
+     },
+     "medium": {
+      "score": 0.72,
+      "cost": 0.4067073275078687
+     },
+     "high": {
+      "score": 0.715,
+      "cost": 0.7141818093543039
+     },
+     "xhigh": {
+      "score": 0.71,
+      "cost": 0.8492838930716662
+     },
+     "max": {
+      "score": 0.705,
+      "cost": 1.1377333332804074
+     }
+    },
+    "gpt-6-1-sol": {
+     "low": {
+      "score": 0.625,
+      "cost": 0.04329038302754411
+     },
+     "medium": {
+      "score": 0.67,
+      "cost": 0.0714112866083763
+     },
+     "high": {
+      "score": 0.685,
+      "cost": 0.13448107715632837
+     },
+     "xhigh": {
+      "score": 0.695,
+      "cost": 0.16709518854234837
+     },
+     "max": {
+      "score": 0.695,
+      "cost": 0.23002416704541756
+     }
+    },
+    "claude-fable-5-2": {
+     "low": {
+      "score": 0.6,
+      "cost": 0.3129632866319219
+     },
+     "medium": {
+      "score": 0.615,
+      "cost": 0.3669312848560007
+     },
+     "high": {
+      "score": 0.73,
+      "cost": 1.049383457348336
+     },
+     "xhigh": {
+      "score": 0.735,
+      "cost": 2.4721107765679204
+     },
+     "max": {
+      "score": 0.765,
+      "cost": 6.353041121460681
+     }
+    },
+    "claude-opus-5-5": {
+     "low": {
+      "score": 0.36,
+      "cost": 0.11905416429929112
+     },
+     "medium": {
+      "score": 0.54,
+      "cost": 0.2511515150440299
+     },
+     "high": {
+      "score": 0.595,
+      "cost": 0.38439720364982655
+     },
+     "xhigh": {
+      "score": 0.675,
+      "cost": 0.9657351298194344
+     },
+     "max": {
+      "score": 0.68,
+      "cost": 2.5767134025722402
+     }
+    },
+    "claude-sonnet-5-5": {
+     "low": {
+      "score": 0.26,
+      "cost": 0.07313244490247214
+     },
+     "medium": {
+      "score": 0.335,
+      "cost": 0.09262695901858506
+     },
+     "high": {
+      "score": 0.515,
+      "cost": 0.18050436842355566
+     },
+     "xhigh": {
+      "score": 0.575,
+      "cost": 0.4478161035636011
+     },
+     "max": {
+      "score": 0.59,
+      "cost": 1.926741603570175
+     }
+    },
+    "gemini-4-argon": {
+     "high": {
+      "score": 0.525,
+      "cost": 1.1743799090095037
+     }
+    },
+    "gemini-4-carbon": {
+     "low": {
+      "score": 0.65,
+      "cost": 1.9122912935535972
+     },
+     "medium": {
+      "score": 0.69,
+      "cost": 1.9299452155403358
+     },
+     "high": {
+      "score": 0.69,
+      "cost": 2.437959347276477
+     }
+    }
+   },
+   "AA-Omniscience Index": {
+    "gpt-6-astra": {
+     "low": {
+      "score": 40.3,
+      "cost": 0.006974149999999999
+     },
+     "medium": {
+      "score": 41.4,
+      "cost": 0.010943366666666668
+     },
+     "high": {
+      "score": 44.56666666666667,
+      "cost": 0.027963416666666668
+     },
+     "xhigh": {
+      "score": 43.666666666666664,
+      "cost": 0.05177704999999999
+     },
+     "max": {
+      "score": 42.43333333333333,
+      "cost": 0.09884949999999999
+     }
+    },
+    "gpt-6-1-sol": {
+     "low": {
+      "score": 38,
+      "cost": 0.0014936833333333331
+     },
+     "medium": {
+      "score": 40.166666666666664,
+      "cost": 0.0021529633333333335
+     },
+     "high": {
+      "score": 41,
+      "cost": 0.004933313333333333
+     },
+     "xhigh": {
+      "score": 42.36666666666667,
+      "cost": 0.009176496666666666
+     },
+     "max": {
+      "score": 42.03333333333333,
+      "cost": 0.018309156666666663
+     }
+    },
+    "claude-fable-5-2": {
+     "low": {
+      "score": 62.93333333333333,
+      "cost": 0.013750208863165666
+     },
+     "medium": {
+      "score": 63.5,
+      "cost": 0.015341321777060666
+     },
+     "high": {
+      "score": 64.03333333333333,
+      "cost": 0.019553882127697
+     },
+     "xhigh": {
+      "score": 64.76666666666667,
+      "cost": 0.032593153410362334
+     },
+     "max": {
+      "score": 66.76666666666667,
+      "cost": 0.21898487481174234
+     }
+    },
+    "claude-opus-5-5": {
+     "low": {
+      "score": 39.03333333333333,
+      "cost": 0.006269088214624999
+     },
+     "medium": {
+      "score": 39.766666666666666,
+      "cost": 0.008242081679676333
+     },
+     "high": {
+      "score": 42.36666666666667,
+      "cost": 0.009314007444816667
+     },
+     "xhigh": {
+      "score": 43.13333333333333,
+      "cost": 0.014776290570538668
+     },
+     "max": {
+      "score": 48.13333333333333,
+      "cost": 0.187384838684978
+     }
+    },
+    "claude-sonnet-5-5": {
+     "low": {
+      "score": 20.266666666666666,
+      "cost": 0.0029058313333333334
+     },
+     "medium": {
+      "score": 18.633333333333333,
+      "cost": 0.003117971333333333
+     },
+     "high": {
+      "score": 18.733333333333334,
+      "cost": 0.005669974666666666
+     },
+     "xhigh": {
+      "score": 20.6,
+      "cost": 0.008826601333333333
+     },
+     "max": {
+      "score": 30.466666666666665,
+      "cost": 0.15182133866666667
+     }
+    },
+    "gemini-4-argon": {
+     "high": {
+      "score": 46.1,
+      "cost": 0.009109436
+     }
+    },
+    "gemini-4-carbon": {
+     "low": {
+      "score": 39.2,
+      "cost": 0.0007595846666666667
+     },
+     "medium": {
+      "score": 46.766666666666666,
+      "cost": 0.012644218666666667
+     },
+     "high": {
+      "score": 53.5,
+      "cost": 0.12315599266666667
+     }
+    }
+   },
+   "GDPval-AA": {
+    "gpt-6-astra": {
+     "low": {
+      "score": 1403.26,
+      "cost": null
+     },
+     "medium": {
+      "score": 1498.47,
+      "cost": null
+     },
+     "high": {
+      "score": 1536.04,
+      "cost": null
+     },
+     "xhigh": {
+      "score": 1569.36,
+      "cost": null
+     },
+     "max": {
+      "score": 1586.3,
+      "cost": null
+     }
+    },
+    "gpt-6-1-sol": {
+     "low": {
+      "score": 1321.98,
+      "cost": null
+     },
+     "medium": {
+      "score": 1459.05,
+      "cost": null
+     },
+     "high": {
+      "score": 1520.45,
+      "cost": null
+     },
+     "xhigh": {
+      "score": 1554.8,
+      "cost": null
+     },
+     "max": {
+      "score": 1607.68,
+      "cost": null
+     }
+    },
+    "claude-fable-5-2": {
+     "low": {
+      "score": 1545.68,
+      "cost": null
+     },
+     "medium": {
+      "score": 1591.16,
+      "cost": null
+     },
+     "high": {
+      "score": 1718.13,
+      "cost": null
+     },
+     "xhigh": {
+      "score": 1750.65,
+      "cost": null
+     },
+     "max": {
+      "score": 1831.33,
+      "cost": null
+     }
+    },
+    "claude-opus-5-5": {
+     "low": {
+      "score": 1240.15,
+      "cost": null
+     },
+     "medium": {
+      "score": 1592.56,
+      "cost": null
+     },
+     "high": {
+      "score": 1713.6,
+      "cost": null
+     },
+     "xhigh": {
+      "score": 1835.03,
+      "cost": null
+     },
+     "max": {
+      "score": 1866.27,
+      "cost": null
+     }
+    },
+    "claude-sonnet-5-5": {
+     "low": {
+      "score": 1181.72,
+      "cost": null
+     },
+     "medium": {
+      "score": 1328.63,
+      "cost": null
+     },
+     "high": {
+      "score": 1556.89,
+      "cost": null
+     },
+     "xhigh": {
+      "score": 1735.08,
+      "cost": null
+     },
+     "max": {
+      "score": 1837.82,
+      "cost": null
+     }
+    },
+    "gemini-4-argon": {
+     "high": {
+      "score": 1633.21,
+      "cost": null
+     }
+    },
+    "gemini-4-carbon": {
+     "high": {
+      "score": 1732.68,
+      "cost": null
+     }
+    }
+   },
+   "AA-Briefcase": {
+    "gpt-6-astra": {
+     "low": {
+      "score": 1256.49,
+      "cost": 1.442990915952804
+     },
+     "medium": {
+      "score": 1460.93,
+      "cost": 3.9399856621415905
+     },
+     "high": {
+      "score": 1504.54,
+      "cost": 4.763525793864493
+     },
+     "xhigh": {
+      "score": 1543.53,
+      "cost": 6.563521325092937
+     },
+     "max": {
+      "score": 1568.92,
+      "cost": 9.50208391505787
+     }
+    },
+    "gpt-6-1-sol": {
+     "low": {
+      "score": 1114.11,
+      "cost": 0.17709095010309106
+     },
+     "medium": {
+      "score": 1360.05,
+      "cost": 0.4643700654607732
+     },
+     "high": {
+      "score": 1468.52,
+      "cost": 0.8369288919931835
+     },
+     "xhigh": {
+      "score": 1503.18,
+      "cost": 1.0385626211756458
+     },
+     "max": {
+      "score": 1554.66,
+      "cost": 2.3126027773097606
+     }
+    },
+    "claude-fable-5-2": {
+     "low": {
+      "score": 1562.73,
+      "cost": 5.617327431446156
+     },
+     "medium": {
+      "score": 1622.24,
+      "cost": 6.835245733157161
+     },
+     "high": {
+      "score": 1677.44,
+      "cost": 15.486568536849699
+     },
+     "xhigh": {
+      "score": 1737.78,
+      "cost": 28.563319210307895
+     },
+     "max": {
+      "score": 1784.66,
+      "cost": 59.35153486471977
+     }
+    },
+    "claude-opus-5-5": {
+     "low": {
+      "score": 1278.95,
+      "cost": 1.1528222834592368
+     },
+     "medium": {
+      "score": 1620.14,
+      "cost": 4.398209833004038
+     },
+     "high": {
+      "score": 1682.43,
+      "cost": 6.270821902675123
+     },
+     "xhigh": {
+      "score": 1759.61,
+      "cost": 12.266185533590876
+     },
+     "max": {
+      "score": 1800.58,
+      "cost": 21.045972715658657
+     }
+    },
+    "claude-sonnet-5-5": {
+     "low": {
+      "score": 1267.6,
+      "cost": 0.8024816507958764
+     },
+     "medium": {
+      "score": 1439.22,
+      "cost": 1.3920735497567018
+     },
+     "high": {
+      "score": 1634.38,
+      "cost": 3.270737112601085
+     },
+     "xhigh": {
+      "score": 1741.64,
+      "cost": 6.975794181478667
+     },
+     "max": {
+      "score": 1816.46,
+      "cost": 20.47390908599261
+     }
+    },
+    "gemini-4-argon": {
+     "high": {
+      "score": 1484.37,
+      "cost": 5.8277493804482905
+     }
+    },
+    "gemini-4-carbon": {
+     "low": {
+      "score": 1567.14,
+      "cost": 5.33173592567459
+     },
+     "medium": {
+      "score": 1601.74,
+      "cost": 5.056149040218439
+     },
+     "high": {
+      "score": 1610.63,
+      "cost": 5.847359444598764
+     }
+    }
+   },
+   "AutomationBench-AA": {
+    "gpt-6-astra": {
+     "low": {
+      "score": 0.5909672610445402,
+      "cost": 0.9990851589068359
+     },
+     "medium": {
+      "score": 0.6459498850561176,
+      "cost": 1.1770207482301795
+     },
+     "high": {
+      "score": 0.666122174975011,
+      "cost": 1.2951847697570744
+     },
+     "xhigh": {
+      "score": 0.6717778020215392,
+      "cost": 1.406388714811355
+     },
+     "max": {
+      "score": 0.6849174806688876,
+      "cost": 1.5955923111377626
+     }
+    },
+    "gpt-6-1-sol": {
+     "low": {
+      "score": 0.5257088964747538,
+      "cost": 0.15943911386155785
+     },
+     "medium": {
+      "score": 0.6257350970435687,
+      "cost": 0.19630359332471714
+     },
+     "high": {
+      "score": 0.6449523732184466,
+      "cost": 0.22578054709230252
+     },
+     "xhigh": {
+      "score": 0.6657372141364344,
+      "cost": 0.2505578926118788
+     },
+     "max": {
+      "score": 0.6486844882398171,
+      "cost": 0.2968194851747073
+     }
+    },
+    "claude-fable-5-2": {
+     "low": {
+      "score": 0.6799749206673704,
+      "cost": 1.2783863461849208
+     },
+     "medium": {
+      "score": 0.6882266338432704,
+      "cost": 1.3316637351754355
+     },
+     "high": {
+      "score": 0.7135975994544773,
+      "cost": 1.6912020876465343
+     },
+     "xhigh": {
+      "score": 0.7416293165236524,
+      "cost": 2.2740566984684927
+     },
+     "max": {
+      "score": 0.7642233832611831,
+      "cost": 4.4483182548807925
+     }
+    },
+    "claude-opus-5-5": {
+     "low": {
+      "score": 0.5292537042934996,
+      "cost": 0.49261272846377885
+     },
+     "medium": {
+      "score": 0.6121742919892179,
+      "cost": 0.6384449284910688
+     },
+     "high": {
+      "score": 0.6320677483186213,
+      "cost": 0.6986116140385024
+     },
+     "xhigh": {
+      "score": 0.6495283516401527,
+      "cost": 0.8780356310854309
+     },
+     "max": {
+      "score": 0.6953868128636069,
+      "cost": 1.428755110542112
+     }
+    },
+    "claude-sonnet-5-5": {
+     "low": {
+      "score": 0.4942092641344955,
+      "cost": 0.24077614362956895
+     },
+     "medium": {
+      "score": 0.5490962996121462,
+      "cost": 0.26209815374334866
+     },
+     "high": {
+      "score": 0.5942923026067375,
+      "cost": 0.3126108042587534
+     },
+     "xhigh": {
+      "score": 0.6552026949665557,
+      "cost": 0.42238802114334933
+     },
+     "max": {
+      "score": 0.7176882128193995,
+      "cost": 1.0324439998102977
+     }
+    },
+    "gemini-4-argon": {
+     "high": {
+      "score": 0.7751346945899195,
+      "cost": 0.6086564390329249
+     }
+    },
+    "gemini-4-carbon": {
+     "low": {
+      "score": 0.6345940610087639,
+      "cost": 0.6760481889956717
+     },
+     "medium": {
+      "score": 0.7759585317030244,
+      "cost": 1.1248079772757154
+     },
+     "high": {
+      "score": 0.7781660572624064,
+      "cost": 1.2781872131747056
+     }
+    }
+   },
+   "AA-LCR": {
+    "gpt-6-astra": {
+     "low": {
+      "score": 0.8,
+      "cost": null
+     },
+     "medium": {
+      "score": 0.796666666666667,
+      "cost": null
+     },
+     "high": {
+      "score": 0.8,
+      "cost": null
+     },
+     "xhigh": {
+      "score": 0.8,
+      "cost": null
+     },
+     "max": {
+      "score": 0.806666666666667,
+      "cost": null
+     }
+    },
+    "gpt-6-1-sol": {
+     "low": {
+      "score": 0.84,
+      "cost": null
+     },
+     "medium": {
+      "score": 0.833333333333333,
+      "cost": null
+     },
+     "high": {
+      "score": 0.823333333333333,
+      "cost": null
+     },
+     "xhigh": {
+      "score": 0.796666666666667,
+      "cost": null
+     },
+     "max": {
+      "score": 0.83,
+      "cost": null
+     }
+    },
+    "claude-fable-5-2": {
+     "low": {
+      "score": 0.8,
+      "cost": null
+     },
+     "medium": {
+      "score": 0.8,
+      "cost": null
+     },
+     "high": {
+      "score": 0.833333333333333,
+      "cost": null
+     },
+     "xhigh": {
+      "score": 0.826666666666667,
+      "cost": null
+     },
+     "max": {
+      "score": 0.833333333333333,
+      "cost": null
+     }
+    },
+    "claude-opus-5-5": {
+     "low": {
+      "score": 0.806666666666667,
+      "cost": null
+     },
+     "medium": {
+      "score": 0.843333333333333,
+      "cost": null
+     },
+     "high": {
+      "score": 0.826666666666667,
+      "cost": null
+     },
+     "xhigh": {
+      "score": 0.846666666666667,
+      "cost": null
+     },
+     "max": {
+      "score": 0.846666666666667,
+      "cost": null
+     }
+    },
+    "claude-sonnet-5-5": {
+     "low": {
+      "score": 0.76,
+      "cost": null
+     },
+     "medium": {
+      "score": 0.763333333333333,
+      "cost": null
+     },
+     "high": {
+      "score": 0.78,
+      "cost": null
+     },
+     "xhigh": {
+      "score": 0.796666666666667,
+      "cost": null
+     },
+     "max": {
+      "score": 0.826666666666667,
+      "cost": null
+     }
+    },
+    "gemini-4-argon": {
+     "high": {
+      "score": 0.796666666666667,
+      "cost": null
+     }
+    },
+    "gemini-4-carbon": {
+     "high": {
+      "score": 0.793333333333333,
+      "cost": null
+     }
+    }
+   },
+   "GDP.pdf": {
+    "gpt-6-astra": {
+     "low": {
+      "score": 0.304,
+      "cost": 1.6963186
+     },
+     "medium": {
+      "score": 0.304,
+      "cost": 1.7198086
+     },
+     "high": {
+      "score": 0.31,
+      "cost": 1.7948240999999998
+     },
+     "xhigh": {
+      "score": 0.322,
+      "cost": 1.9127230999999998
+     },
+     "max": {
+      "score": 0.31,
+      "cost": 2.0758207
+     }
+    },
+    "gpt-6-1-sol": {
+     "low": {
+      "score": 0.27,
+      "cost": 0.33414024
+     },
+     "medium": {
+      "score": 0.3,
+      "cost": 0.33747823999999993
+     },
+     "high": {
+      "score": 0.32,
+      "cost": 0.34940143999999995
+     },
+     "xhigh": {
+      "score": 0.318,
+      "cost": 0.36805063999999993
+     },
+     "max": {
+      "score": 0.31,
+      "cost": 0.41986644
+     }
+    },
+    "claude-fable-5-2": {
+     "low": {
+      "score": 0.268,
+      "cost": 1.53269266200902
+     },
+     "medium": {
+      "score": 0.238,
+      "cost": 1.55747228463872
+     },
+     "high": {
+      "score": 0.218,
+      "cost": 1.6442819737348697
+     },
+     "xhigh": {
+      "score": 0.214,
+      "cost": 1.8491524518542
+     },
+     "max": {
+      "score": 0.242,
+      "cost": 2.51789698324489
+     }
+    },
+    "claude-opus-5-5": {
+     "low": {
+      "score": 0.256,
+      "cost": 0.76411812
+     },
+     "medium": {
+      "score": 0.256,
+      "cost": 0.7953176399999999
+     },
+     "high": {
+      "score": 0.288,
+      "cost": 0.82542564
+     },
+     "xhigh": {
+      "score": 0.266,
+      "cost": 0.9642728800000001
+     },
+     "max": {
+      "score": 0.262,
+      "cost": 1.55233548
+     }
+    },
+    "claude-sonnet-5-5": {
+     "low": {
+      "score": 0.16,
+      "cost": 0.37231423999999996
+     },
+     "medium": {
+      "score": 0.202,
+      "cost": 0.38142373999999996
+     },
+     "high": {
+      "score": 0.252,
+      "cost": 0.40860073999999996
+     },
+     "xhigh": {
+      "score": 0.246,
+      "cost": 0.46012694
+     },
+     "max": {
+      "score": 0.258,
+      "cost": 0.7943279200000001
+     }
+    },
+    "gemini-4-argon": {
+     "high": {
+      "score": 0.218,
+      "cost": 0.25933138
+     }
+    },
+    "gemini-4-carbon": {
+     "low": {
+      "score": 0.286,
+      "cost": 0.19060948
+     },
+     "medium": {
+      "score": 0.296,
+      "cost": 0.23986394
+     },
+     "high": {
+      "score": 0.284,
+      "cost": 0.42352306
+     }
+    }
+   },
+   "Terminal-Bench 4.0": {
+    "gpt-6-astra": {
+     "low": {
+      "score": 0.419191919191919,
+      "cost": 2.2485580260976215
+     },
+     "medium": {
+      "score": 0.494949494949495,
+      "cost": 4.430107637760555
+     },
+     "high": {
+      "score": 0.54040404040404,
+      "cost": 4.0469926217499435
+     },
+     "xhigh": {
+      "score": 0.595959595959596,
+      "cost": 5.855482520522051
+     },
+     "max": {
+      "score": 0.590909090909091,
+      "cost": 8.498119471851334
+     }
+    },
+    "gpt-6-1-sol": {
+     "low": {
+      "score": 0.308080808080808,
+      "cost": 0.3829418451399688
+     },
+     "medium": {
+      "score": 0.47979797979798,
+      "cost": 0.6137554705459501
+     },
+     "high": {
+      "score": 0.515151515151515,
+      "cost": 0.8281767981765117
+     },
+     "xhigh": {
+      "score": 0.54040404040404,
+      "cost": 1.0259491542428139
+     },
+     "max": {
+      "score": 0.560606060606061,
+      "cost": 1.8227634618325743
+     }
+    },
+    "claude-fable-5-2": {
+     "low": {
+      "score": 0.545454545454545,
+      "cost": 4.339918517524423
+     },
+     "medium": {
+      "score": 0.55050505050505,
+      "cost": 5.251012275091596
+     },
+     "high": {
+      "score": 0.595959595959596,
+      "cost": 13.468788577499403
+     },
+     "xhigh": {
+      "score": 0.616161616161616,
+      "cost": 20.8121385936618
+     },
+     "max": {
+      "score": 0.595959595959596,
+      "cost": 31.589769302212897
+     }
+    },
+    "claude-opus-5-5": {
+     "low": {
+      "score": 0.313131313131313,
+      "cost": 2.077650464264361
+     },
+     "medium": {
+      "score": 0.525252525252525,
+      "cost": 4.042978672513101
+     },
+     "high": {
+      "score": 0.565656565656566,
+      "cost": 5.118905183990514
+     },
+     "xhigh": {
+      "score": 0.595959595959596,
+      "cost": 8.77835633170967
+     },
+     "max": {
+      "score": 0.595959595959596,
+      "cost": 13.109276120148786
+     }
+    },
+    "claude-sonnet-5-5": {
+     "low": {
+      "score": 0.207070707070707,
+      "cost": 1.284788105923259
+     },
+     "medium": {
+      "score": 0.297979797979798,
+      "cost": 1.5781629739286835
+     },
+     "high": {
+      "score": 0.439393939393939,
+      "cost": 2.1862227174909825
+     },
+     "xhigh": {
+      "score": 0.570707070707071,
+      "cost": 6.078427561993545
+     },
+     "max": {
+      "score": 0.636363636363636,
+      "cost": 12.64644160831714
+     }
+    },
+    "gemini-4-argon": {
+     "high": {
+      "score": 0.570707070707071,
+      "cost": 6.780140181187823
+     }
+    },
+    "gemini-4-carbon": {
+     "low": {
+      "score": 0.626262626262626,
+      "cost": 6.054520229204889
+     },
+     "medium": {
+      "score": 0.606060606060606,
+      "cost": 6.235858764113193
+     },
+     "high": {
+      "score": 0.651515151515151,
+      "cost": 7.113908956231779
+     }
+    }
+   },
+   "FrontierCode-AA 2.0": {
+    "gpt-6-astra": {
+     "low": {
+      "score": 0.262162878787879,
+      "cost": 1.337250818047692
+     },
+     "medium": {
+      "score": 0.365771717171717,
+      "cost": 2.795366062360042
+     },
+     "high": {
+      "score": 0.401351515151515,
+      "cost": 3.765686918431571
+     },
+     "xhigh": {
+      "score": 0.414029545454545,
+      "cost": 4.043001526196351
+     },
+     "max": {
+      "score": 0.42374797979798,
+      "cost": 6.538762177543924
+     }
+    },
+    "gpt-6-1-sol": {
+     "low": {
+      "score": 0.201560858585859,
+      "cost": 0.20107058846793002
+     },
+     "medium": {
+      "score": 0.333875757575758,
+      "cost": 0.4106751202936059
+     },
+     "high": {
+      "score": 0.36737297979798,
+      "cost": 0.6299191586051633
+     },
+     "xhigh": {
+      "score": 0.385190909090909,
+      "cost": 0.7028196642979474
+     },
+     "max": {
+      "score": 0.406262878787879,
+      "cost": 1.130379974115731
+     }
+    },
+    "claude-fable-5-2": {
+     "low": {
+      "score": 0.384397474747475,
+      "cost": 2.1165804247563167
+     },
+     "medium": {
+      "score": 0.412984090909091,
+      "cost": 2.6864489410815566
+     },
+     "high": {
+      "score": 0.491275757575758,
+      "cost": 9.635322308119388
+     },
+     "xhigh": {
+      "score": 0.475810858585859,
+      "cost": 21.41390231508486
+     },
+     "max": {
+      "score": 0.487597222222222,
+      "cost": 43.3740716159139
+     }
+    },
+    "claude-opus-5-5": {
+     "low": {
+      "score": 0.158378282828283,
+      "cost": 0.6271238634743371
+     },
+     "medium": {
+      "score": 0.330793181818182,
+      "cost": 1.7093889413950298
+     },
+     "high": {
+      "score": 0.359278535353535,
+      "cost": 2.4884757770172325
+     },
+     "xhigh": {
+      "score": 0.437547474747475,
+      "cost": 6.493906460101273
+     },
+     "max": {
+      "score": 0.464359595959596,
+      "cost": 13.455157765196367
+     }
+    },
+    "claude-sonnet-5-5": {
+     "low": {
+      "score": 0.0712575757575758,
+      "cost": 0.24950248399035896
+     },
+     "medium": {
+      "score": 0.109708080808081,
+      "cost": 0.3235497567070719
+     },
+     "high": {
+      "score": 0.257380050505051,
+      "cost": 0.7604061971175975
+     },
+     "xhigh": {
+      "score": 0.356494696969697,
+      "cost": 2.7144495443964427
+     },
+     "max": {
+      "score": 0.416993434343434,
+      "cost": 11.557516178959974
+     }
+    },
+    "gemini-4-argon": {
+     "high": {
+      "score": 0.257076262626263,
+      "cost": 9.368485545447395
+     }
+    },
+    "gemini-4-carbon": {
+     "low": {
+      "score": 0.296189898989899,
+      "cost": 10.122686558446507
+     },
+     "medium": {
+      "score": 0.394523232323232,
+      "cost": 7.4395969980485654
+     },
+     "high": {
+      "score": 0.405606060606061,
+      "cost": 8.879654932788009
+     }
+    }
+   },
+   "Terminal-Bench Science 0.1": {
+    "gpt-6-astra": {
+     "low": {
+      "score": 0.371428571428571,
+      "cost": 4.11562835315374
+     },
+     "medium": {
+      "score": 0.533333333333333,
+      "cost": 7.199806849332204
+     },
+     "high": {
+      "score": 0.595238095238095,
+      "cost": 8.657557264060951
+     },
+     "xhigh": {
+      "score": 0.547619047619048,
+      "cost": 7.9113762687952685
+     },
+     "max": {
+      "score": 0.633333333333333,
+      "cost": 17.47623317094791
+     }
+    },
+    "gpt-6-1-sol": {
+     "low": {
+      "score": 0.10952380952381,
+      "cost": 0.2423999928182891
+     },
+     "medium": {
+      "score": 0.371428571428571,
+      "cost": 0.871667309718319
+     },
+     "high": {
+      "score": 0.461904761904762,
+      "cost": 1.605728310002876
+     },
+     "xhigh": {
+      "score": 0.504761904761905,
+      "cost": 2.2969813652366677
+     },
+     "max": {
+      "score": 0.580952380952381,
+      "cost": 3.338933695895609
+     }
+    },
+    "claude-fable-5-2": {
+     "low": {
+      "score": 0.538095238095238,
+      "cost": 8.776175363262457
+     },
+     "medium": {
+      "score": 0.604761904761905,
+      "cost": 10.98324440927286
+     },
+     "high": {
+      "score": 0.7,
+      "cost": 24.2810515829468
+     },
+     "xhigh": {
+      "score": 0.676190476190476,
+      "cost": 31.366492449010273
+     },
+     "max": {
+      "score": 0.733333333333333,
+      "cost": 45.205926007936405
+     }
+    },
+    "claude-opus-5-5": {
+     "low": {
+      "score": 0.242857142857143,
+      "cost": 2.8105121459449705
+     },
+     "medium": {
+      "score": 0.433333333333333,
+      "cost": 6.797476245941156
+     },
+     "high": {
+      "score": 0.49047619047619,
+      "cost": 10.023226012190579
+     },
+     "xhigh": {
+      "score": 0.619047619047619,
+      "cost": 14.116266813917726
+     },
+     "max": {
+      "score": 0.59047619047619,
+      "cost": 19.970984026619043
+     }
+    },
+    "claude-sonnet-5-5": {
+     "low": {
+      "score": 0.104761904761905,
+      "cost": 1.2344354493850858
+     },
+     "medium": {
+      "score": 0.161904761904762,
+      "cost": 2.135445979673252
+     },
+     "high": {
+      "score": 0.342857142857143,
+      "cost": 4.981271307441899
+     },
+     "xhigh": {
+      "score": 0.523809523809524,
+      "cost": 12.771635673518468
+     },
+     "max": {
+      "score": 0.533333333333333,
+      "cost": 23.76070504582413
+     }
+    },
+    "gemini-4-argon": {
+     "high": {
+      "score": 0.528571428571429,
+      "cost": 12.196490179463565
+     }
+    },
+    "gemini-4-carbon": {
+     "low": {
+      "score": 0.619047619047619,
+      "cost": 13.525196302828167
+     },
+     "medium": {
+      "score": 0.623809523809524,
+      "cost": 12.515176109676002
+     },
+     "high": {
+      "score": 0.647619047619048,
+      "cost": 14.237352064750672
+     }
+    }
+   },
+   "SciCode": {
+    "gpt-6-astra": {
+     "low": {
+      "score": 0.540509259259259,
+      "cost": null
+     },
+     "medium": {
+      "score": 0.541666666666667,
+      "cost": null
+     },
+     "high": {
+      "score": 0.554398148148148,
+      "cost": null
+     },
+     "xhigh": {
+      "score": 0.556712962962963,
+      "cost": null
+     },
+     "max": {
+      "score": 0.564814814814815,
+      "cost": null
+     }
+    },
+    "gpt-6-1-sol": {
+     "low": {
+      "score": 0.532407407407407,
+      "cost": null
+     },
+     "medium": {
+      "score": 0.532407407407407,
+      "cost": null
+     },
+     "high": {
+      "score": 0.55787037037037,
+      "cost": null
+     },
+     "xhigh": {
+      "score": 0.556712962962963,
+      "cost": null
+     },
+     "max": {
+      "score": 0.541666666666667,
+      "cost": null
+     }
+    },
+    "claude-fable-5-2": {
+     "low": {
+      "score": 0.577546296296296,
+      "cost": null
+     },
+     "medium": {
+      "score": 0.597222222222222,
+      "cost": null
+     },
+     "high": {
+      "score": 0.594907407407407,
+      "cost": null
+     },
+     "xhigh": {
+      "score": 0.65625,
+      "cost": null
+     },
+     "max": {
+      "score": 0.677083333333333,
+      "cost": null
+     }
+    },
+    "claude-opus-5-5": {
+     "low": {
+      "score": 0.585648148148148,
+      "cost": null
+     },
+     "medium": {
+      "score": 0.592592592592593,
+      "cost": null
+     },
+     "high": {
+      "score": 0.604166666666667,
+      "cost": null
+     },
+     "xhigh": {
+      "score": 0.650462962962963,
+      "cost": null
+     },
+     "max": {
+      "score": 0.668981481481482,
+      "cost": null
+     }
+    },
+    "claude-sonnet-5-5": {
+     "low": {
+      "score": 0.490740740740741,
+      "cost": null
+     },
+     "medium": {
+      "score": 0.528935185185185,
+      "cost": null
+     },
+     "high": {
+      "score": 0.537037037037037,
+      "cost": null
+     },
+     "xhigh": {
+      "score": 0.572916666666667,
+      "cost": null
+     },
+     "max": {
+      "score": 0.609953703703704,
+      "cost": null
+     }
+    },
+    "gemini-4-argon": {
+     "high": {
+      "score": 0.618055555555556,
+      "cost": null
+     }
+    }
+   },
+   "ARC-AGI-2": {
+    "openai-gpt-6-astra": {
+     "low": {
+      "score": 0.8541666666666666,
+      "cost": 0.4162418333333334
+     },
+     "medium": {
+      "score": 0.9208333333333333,
+      "cost": 0.4800926666666667
+     },
+     "high": {
+      "score": 0.9208333333333333,
+      "cost": 0.6680793333333332
+     },
+     "xhigh": {
+      "score": 0.9333333333333333,
+      "cost": 0.8286855833333331
+     },
+     "max": {
+      "score": 0.95,
+      "cost": 1.1194680833333335
+     }
+    },
+    "openai-gpt-6-1-sol": {
+     "low": {
+      "score": 0.7666666666666667,
+      "cost": 0.08553803333333333
+     },
+     "medium": {
+      "score": 0.8666666666666667,
+      "cost": 0.10037736666666668
+     },
+     "high": {
+      "score": 0.9166666666666666,
+      "cost": 0.13468670000000002
+     },
+     "xhigh": {
+      "score": 0.9166666666666666,
+      "cost": 0.17808970000000007
+     },
+     "max": {
+      "score": 0.9416666666666667,
+      "cost": 0.25374978333333337
+     }
+    },
+    "anthropic-claude-fable-5-2": {
+     "low": {
+      "score": 0.8666666666666667,
+      "cost": 0.5158499333333332
+     },
+     "medium": {
+      "score": 0.8958333333333334,
+      "cost": 0.6268079333333333
+     },
+     "high": {
+      "score": 0.9041666666666667,
+      "cost": 0.9076362666666669
+     },
+     "xhigh": {
+      "score": 0.9375,
+      "cost": 0.9832189333333337
+     },
+     "max": {
+      "score": 0.925,
+      "cost": 2.8135210000000006
+     }
+    },
+    "anthropic-claude-opus-5-5": {
+     "low": {
+      "score": 0.701388888888889,
+      "cost": 0.24127179999999998
+     },
+     "medium": {
+      "score": 0.875,
+      "cost": 0.3369188
+     },
+     "high": {
+      "score": 0.9333333333333333,
+      "cost": 0.4078964666666666
+     },
+     "xhigh": {
+      "score": 0.925,
+      "cost": 0.6709066333333333
+     },
+     "max": {
+      "score": 0.9166666666666666,
+      "cost": 1.8517409666666667
+     }
+    },
+    "anthropic-claude-sonnet-5-5": {
+     "low": {
+      "score": 0.24027777777777776,
+      "cost": 0.10923548333333331
+     },
+     "medium": {
+      "score": 0.3277777777777777,
+      "cost": 0.15537473333333335
+     },
+     "high": {
+      "score": 0.6736111111111112,
+      "cost": 0.2767547333333332
+     },
+     "xhigh": {
+      "score": 0.8388888888888889,
+      "cost": 0.5461994833333332
+     }
+    },
+    "google-gemini-4-argon": {
+     "low": {
+      "score": 0.42083333333333334,
+      "cost": 0.07381080000000001
+     },
+     "medium": {
+      "score": 0.8708333333333333,
+      "cost": 0.13732313333333326
+     },
+     "high": {
+      "score": 0.9125,
+      "cost": 0.3248761333333333
+     }
+    },
+    "google-gemini-4-carbon": {
+     "low": {
+      "score": 0.49583333333333335,
+      "cost": 0.09848504999999998
+     },
+     "medium": {
+      "score": 0.9416666666666667,
+      "cost": 0.37522218333333357
+     },
+     "high": {
+      "score": 0.9208333333333333,
+      "cost": 0.6838793166666667
+     }
+    }
+   }
+  },
+  "reported_raw": {
+   "AA-AnalystAgent": {
+    "gpt-6-astra": 0.5125,
+    "gpt-6-1-sol": 0.5,
+    "claude-fable-5-2": null,
+    "claude-opus-5-5": 0.5625,
+    "claude-sonnet-5-5": 0.575,
+    "gemini-4-argon": 0.4875,
+    "gemini-4-carbon": null
+   },
+   "Harvey LAB-AA v1.1": {
+    "gpt-6-astra": 0.0861111111111111,
+    "gpt-6-1-sol": 0.06944444444444443,
+    "claude-fable-5-2": 0.07222222222222222,
+    "claude-opus-5-5": 0.041666666666666664,
+    "claude-sonnet-5-5": 0.027777777777777776,
+    "gemini-4-argon": 0.03888888888888888,
+    "gemini-4-carbon": null
+   },
+   "MLCR-AA": {
+    "gpt-6-astra": 0.416666666666667,
+    "gpt-6-1-sol": 0.383333333333333,
+    "claude-fable-5-2": 0.438888888888889,
+    "claude-opus-5-5": 0.277777777777778,
+    "claude-sonnet-5-5": 0.416666666666667,
+    "gemini-4-argon": 0.138888888888889,
+    "gemini-4-carbon": 0.194444444444444
+   },
+   "MKA": {
+    "gpt-6-astra": 0.5024483143341066,
+    "gpt-6-1-sol": 0.47715669949990014,
+    "claude-fable-5-2": 0.565604258363361,
+    "claude-opus-5-5": 0.5301120328350177,
+    "claude-sonnet-5-5": 0.5199259979111622,
+    "gemini-4-argon": 0.5125916894412726,
+    "gemini-4-carbon": 0.5434311169966699
+   }
+  }
+ }
+}
