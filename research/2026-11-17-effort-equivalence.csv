@@ -1,0 +1,53 @@
+metric,weight,model,low,medium,high,xhigh,max
+HLE-Diamond,1,GPT-6.1 Sol,38.2,46.0,51.9,55.8,58.8
+HLE-Diamond,1,GPT-6 Astra,45.1,52.7,59.3,61.5,63.8
+HLE-Diamond,1,Opus 5.5,41.7,51.4,55.6,64.0,67.9
+HLE-Diamond,1,Fable 5.2,60.8,66.3,73.8,75.8,80.2
+ARC-AGI-2,1,GPT-6.1 Sol,76.7,86.7,91.7,91.7,94.2
+ARC-AGI-2,1,GPT-6 Astra,85.4,92.1,92.1,93.3,95.0
+ARC-AGI-2,1,Opus 5.5,70.1,87.5,93.3,92.5,91.7
+ARC-AGI-2,1,Fable 5.2,86.7,89.6,90.4,93.8,92.5
+AA-Omniscience Index,1,GPT-6.1 Sol,38.0,40.2,41.0,42.4,42.0
+AA-Omniscience Index,1,GPT-6 Astra,40.3,41.4,44.6,43.7,42.4
+AA-Omniscience Index,1,Opus 5.5,39.0,39.8,42.4,43.1,48.1
+AA-Omniscience Index,1,Fable 5.2,62.9,63.5,64.0,64.8,66.8
+Terminal-Bench 4.0,1,GPT-6.1 Sol,30.8,48.0,51.5,54.0,56.1
+Terminal-Bench 4.0,1,GPT-6 Astra,41.9,49.5,54.0,59.6,59.1
+Terminal-Bench 4.0,1,Opus 5.5,31.3,52.5,56.6,59.6,59.6
+Terminal-Bench 4.0,1,Fable 5.2,54.5,55.1,59.6,61.6,59.6
+FrontierCode-AA 2.0,1,GPT-6.1 Sol,20.2,33.4,36.7,38.5,40.6
+FrontierCode-AA 2.0,1,GPT-6 Astra,26.2,36.6,40.1,41.4,42.4
+FrontierCode-AA 2.0,1,Opus 5.5,15.8,33.1,35.9,43.8,46.4
+FrontierCode-AA 2.0,1,Fable 5.2,38.4,41.3,49.1,47.6,48.8
+CritPt v2,0.75,GPT-6.1 Sol,62.5,67.0,68.5,69.5,69.5
+CritPt v2,0.75,GPT-6 Astra,63.0,72.0,71.5,71.0,70.5
+CritPt v2,0.75,Opus 5.5,36.0,54.0,59.5,67.5,68.0
+CritPt v2,0.75,Fable 5.2,60.0,61.5,73.0,73.5,76.5
+GDPval-AA,0.75,GPT-6.1 Sol,1322.0,1459.0,1520.0,1555.0,1608.0
+GDPval-AA,0.75,GPT-6 Astra,1403.0,1498.0,1536.0,1569.0,1586.0
+GDPval-AA,0.75,Opus 5.5,1240.0,1593.0,1714.0,1835.0,1866.0
+GDPval-AA,0.75,Fable 5.2,1546.0,1591.0,1718.0,1751.0,1831.0
+AA-Briefcase,0.75,GPT-6.1 Sol,1114.0,1360.0,1469.0,1503.0,1555.0
+AA-Briefcase,0.75,GPT-6 Astra,1256.0,1461.0,1505.0,1544.0,1569.0
+AA-Briefcase,0.75,Opus 5.5,1279.0,1620.0,1682.0,1760.0,1801.0
+AA-Briefcase,0.75,Fable 5.2,1563.0,1622.0,1677.0,1738.0,1785.0
+AutomationBench-AA,0.75,GPT-6.1 Sol,52.6,62.6,64.5,66.6,64.9
+AutomationBench-AA,0.75,GPT-6 Astra,59.1,64.6,66.6,67.2,68.5
+AutomationBench-AA,0.75,Opus 5.5,52.9,61.2,63.2,65.0,69.5
+AutomationBench-AA,0.75,Fable 5.2,68.0,68.8,71.4,74.2,76.4
+AA-LCR,0.75,GPT-6.1 Sol,84.0,83.3,82.3,79.7,83.0
+AA-LCR,0.75,GPT-6 Astra,80.0,79.7,80.0,80.0,80.7
+AA-LCR,0.75,Opus 5.5,80.7,84.3,82.7,84.7,84.7
+AA-LCR,0.75,Fable 5.2,80.0,80.0,83.3,82.7,83.3
+GDP.pdf,0.75,GPT-6.1 Sol,27.0,30.0,32.0,31.8,31.0
+GDP.pdf,0.75,GPT-6 Astra,30.4,30.4,31.0,32.2,31.0
+GDP.pdf,0.75,Opus 5.5,25.6,25.6,28.8,26.6,26.2
+GDP.pdf,0.75,Fable 5.2,26.8,23.8,21.8,21.4,24.2
+Terminal-Bench Science 0.1,0.75,GPT-6.1 Sol,11.0,37.1,46.2,50.5,58.1
+Terminal-Bench Science 0.1,0.75,GPT-6 Astra,37.1,53.3,59.5,54.8,63.3
+Terminal-Bench Science 0.1,0.75,Opus 5.5,24.3,43.3,49.0,61.9,59.0
+Terminal-Bench Science 0.1,0.75,Fable 5.2,53.8,60.5,70.0,67.6,73.3
+SciCode,0.75,GPT-6.1 Sol,53.2,53.2,55.8,55.7,54.2
+SciCode,0.75,GPT-6 Astra,54.1,54.2,55.4,55.7,56.5
+SciCode,0.75,Opus 5.5,58.6,59.3,60.4,65.0,66.9
+SciCode,0.75,Fable 5.2,57.8,59.7,59.5,65.6,67.7
