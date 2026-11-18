@@ -1191,7 +1191,7 @@ def draw_series(axes: Axes, metric: Metric, model: Model, points: list[tuple[int
               gid=element_id("series", model))
     for index, x, score in points:
         is_estimated = (model, EFFORT_LEVELS[index]) in metric.estimated
-        axes.plot(x, score, marker="o", markersize=MARKER_SIZE,
+        axes.plot(x, score, marker="o", markersize=MARKER_SIZE, linestyle="none",
                   markerfacecolor=SURFACE.light if is_estimated else model.color.light,
                   markeredgecolor=model.color.light if is_estimated else SURFACE.light,
                   markeredgewidth=MARKER_RING, zorder=4,
@@ -1200,6 +1200,7 @@ def draw_series(axes: Axes, metric: Metric, model: Model, points: list[tuple[int
 
 def style_axes(axes: Axes, metric: Metric) -> None:
     axes.set_ylim(*metric.y_range)
+    axes.yaxis.set_gid("score-axis__ticks")
     axes.yaxis.set_major_locator(matplotlib.ticker.MultipleLocator(metric.tick_step))
     axes.grid(axis="y", color=GRIDLINE.light, linewidth=0.7)
     axes.set_axisbelow(True)
@@ -1779,6 +1780,7 @@ def chart_data() -> dict[str, object]:
             "name": metric.name,
             "unit": metric.unit_and_source,
             "yRange": metric.y_range,
+            "tickStep": metric.tick_step,
             "decimals": metric.decimals,
             "scores": {model.slug: metric.scores[model] for model in metric.models},
             "estimated": [[model.slug, EFFORT_LEVELS.index(level)] for model, level in metric.estimated],

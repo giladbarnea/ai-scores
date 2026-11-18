@@ -55,7 +55,7 @@
 
   function toData(metric, plot, axes, clientX, clientY) {
     const [xLow, xHigh] = plot.dataset.xLimits.split(",").map(Number);
-    const [yLow, yHigh] = metric.yRange;
+    const [yLow, yHigh] = plot.dataset.yLimits?.split(",").map(Number) ?? metric.yRange;
     const fraction = clamp((clientX - axes.x) / axes.width, 0, 1);
     return {
       x: plot.dataset.mode === "cost" ? xLow * (xHigh / xLow) ** fraction : xLow + fraction * (xHigh - xLow),
@@ -161,17 +161,30 @@
   // Round tick values that cover the scores with a little headroom, about five steps.
   function niceTicks(low, high, minimumPadding = 0.5) {
     const padding = Math.max((high - low) * 0.12, Math.abs(high) * 0.01, minimumPadding);
-    const paddedLow = low - padding;
-    const paddedHigh = high + padding;
-    const rawStep = (paddedHigh - paddedLow) / 5;
+    return scaleTicks(low - padding, high + padding);
+  }
+
+  function scaleTicks(low, high, minimumStep = 0, maximumStep = Infinity, bounds = [-Infinity, Infinity]) {
+    const rawStep = (high - low) / 5;
     const magnitude = 10 ** Math.floor(Math.log10(rawStep));
-    const step = [1, 2, 2.5, 5, 10].map(factor => factor * magnitude).find(candidate => candidate >= rawStep);
-    const first = Math.floor(paddedLow / step) * step;
-    const last = Math.ceil(paddedHigh / step) * step;
+    const roundedStep = [1, 2, 2.5, 5, 10].map(factor => factor * magnitude).find(candidate => candidate >= rawStep);
+    const step = clamp(roundedStep, minimumStep, maximumStep);
+    const first = Math.max(bounds[0], Math.floor(low / step) * step);
+    const last = Math.min(bounds[1], Math.ceil(high / step) * step);
     const decimals = (String(Number(step.toFixed(10))).split(".")[1] || "").length;
     const values = [];
-    for (let value = first; value <= last + step / 2; value += step) values.push(value);
+    for (let index = Math.ceil(first / step - 1e-9); index <= last / step + 1e-9; index += 1) values.push(index * step);
     return { low: first, high: last, values, decimals };
+  }
+
+  function fittedScoreTicks(metric, points) {
+    const scores = points.map(point => point.score);
+    const low = Math.min(...scores);
+    const high = Math.max(...scores);
+    const padding = Math.max((high - low) * 0.04, metric.tickStep * 0.15);
+    const ticks = scaleTicks(low - padding, high + padding, 10 ** -metric.decimals, metric.tickStep, metric.yRange);
+    if (ticks.low === metric.yRange[0] && ticks.high === metric.yRange[1]) return null;
+    return ticks;
   }
 
   // Spread sorted positions so neighbors sit at least minimumGap apart, each crowded group centered on its mean.
@@ -319,13 +332,63 @@
     const points = data.models.flatMap(model => [...plot.querySelectorAll(`.marker.m-${model.slug}`)].map(marker => {
       const level = data.levels.indexOf(marker.dataset.level);
       const symbol = marker.querySelector("use");
+      const originalY = Number(symbol.getAttribute("y"));
       return { model, level, score: metric.scores[model.slug][level], cost: metric.costs[model.slug]?.[level], marker, symbol,
-        x: Number(symbol.getAttribute("x")), y: Number(symbol.getAttribute("y")), radius: data.markerRadius,
+        x: Number(symbol.getAttribute("x")), y: originalY, originalY, radius: data.markerRadius,
         estimated: metric.estimated.some(([slug, index]) => slug === model.slug && index === level),
-        target: plot.querySelector(`.cost-point.m-${model.slug}[data-level="${data.levels[level]}"]`) };
+        target: plot.querySelector(`.cost-point.m-${model.slug}[data-level="${data.levels[level]}"]`),
+        ring: plot.querySelector(`.column[data-level="${data.levels[level]}"] .ring.m-${model.slug}`) };
     }));
     pointCache.set(plot, points);
     return points;
+  }
+
+  function renderScoreTicks(plot, svg, ticks, position, left, right) {
+    const originalAxis = svg.querySelector(".score-axis");
+    const existing = svg.querySelector(".fitted-score-axis");
+    if (!ticks) {
+      if (!existing) return;
+      existing.remove();
+      originalAxis.style.display = "";
+      delete plot.dataset.yLimits;
+      return;
+    }
+    const limits = `${ticks.low},${ticks.high}`;
+    const values = ticks.values.join(",");
+    if (plot.dataset.yLimits === limits && existing?.dataset.values === values) return;
+    existing?.remove();
+    plot.dataset.yLimits = limits;
+    originalAxis.style.display = "none";
+    const fittedAxis = element(svg, "g", { class: "fitted-score-axis", "data-values": values });
+    originalAxis.after(fittedAxis);
+    const textStyle = originalAxis.querySelector("text").getAttribute("style");
+    for (const value of ticks.values) {
+      const tickY = position(value);
+      element(fittedAxis, "line", { x1: left, x2: right, y1: tickY, y2: tickY },
+        { stroke: "var(--grid)", strokeWidth: ".7", strokeLinecap: "square" });
+      element(fittedAxis, "text", { x: left - 5, y: tickY, "dominant-baseline": "central", style: textStyle })
+        .textContent = value.toFixed(ticks.decimals).replace("-", "−");
+    }
+  }
+
+  function fitScoreAxis(plot, metric, allPoints, points) {
+    const svg = plot.querySelector("svg.chart");
+    const { x, y, width, height } = svg.querySelector("clipPath rect");
+    const left = x.baseVal.value;
+    const top = y.baseVal.value;
+    const axesHeight = height.baseVal.value;
+    const ticks = points.length && points.length < allPoints.length ? fittedScoreTicks(metric, points) : null;
+    const position = score => top + (ticks.high - score) / (ticks.high - ticks.low) * axesHeight;
+    renderScoreTicks(plot, svg, ticks, position, left, left + width.baseVal.value);
+    for (const point of points) {
+      const pointY = ticks ? position(point.score) : point.originalY;
+      if (pointY === point.y) continue;
+      point.y = pointY;
+      point.symbol.setAttribute("y", pointY);
+      if (point.target) point.target.style.top = `${100 * pointY / svg.viewBox.baseVal.height}%`;
+      if (point.ring) point.ring.style.top = `${100 * (pointY - top) / axesHeight}%`;
+    }
+    return Boolean(ticks);
   }
 
   function filteredLabels(plot, metric, points) {
@@ -508,16 +571,24 @@
       const allPoints = plotPoints(plot, metric);
       const points = allPoints.filter(point => models.includes(point.model) && levelIsShown(data.levels[point.level]));
       plot.classList.toggle("empty", !points.length);
+      const fitted = fitScoreAxis(plot, metric, allPoints, points);
+      const redrawLabels = partial || fitted;
       for (const series of plot.querySelectorAll(".series")) {
         const own = points.filter(point => series.classList.contains(`m-${point.model.slug}`));
         series.querySelector("path").setAttribute("d", own.map((point, index) => `${index ? "L" : "M"}${point.x},${point.y}`).join(" "));
       }
       plot.querySelector(".filtered-labels")?.remove();
-      plot.querySelectorAll(".start, .end, .name, .leader, .meeting, .meeting-line").forEach(node => {
-        node.style.display = partial ? "none" : "";
+      plot.querySelectorAll(".end, .name, .leader, .meeting, .meeting-line").forEach(node => {
+        node.style.display = redrawLabels ? "none" : "";
       });
+      for (const start of plot.querySelectorAll(".start")) {
+        const point = points.find(point => start.classList.contains(`m-${point.model.slug}`));
+        start.style.display = partial ? "none" : "";
+        if (fitted && point) start.setAttribute("transform", `translate(0 ${point.y - point.originalY})`);
+        else start.removeAttribute("transform");
+      }
       if (plot.dataset.mode === "cost") updateCostDominance(plot, metric, allPoints, points);
-      if (partial && points.length) filteredLabels(plot, metric, points);
+      if (redrawLabels && points.length) filteredLabels(plot, metric, points);
     }
   }
 
