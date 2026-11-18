@@ -1,6 +1,10 @@
 ---
-last_updated: 2026-11-18T10-54
+last_updated: 2026-11-18T23-30
 ---
+
+# Publishing
+
+Currently Gilad is the only user, so just publish when work is done.
 
 # Benchmark updates
 
