@@ -1,5 +1,6 @@
 // Run in the generated page: agent-browser --session ai-scores-test eval --stdin < test_filters.js
-(() => {
+(async () => {
+  if (document.readyState !== "complete") await new Promise(resolve => window.addEventListener("load", resolve, { once: true }));
   const assert = (condition, message) => { if (!condition) throw new Error(message); };
   const visible = node => {
     for (let parent = node; parent; parent = parent.parentElement) {
@@ -91,5 +92,7 @@
   document.querySelector("#levels-all").click();
   const reset = document.querySelector('.plot[data-metric="aa-intelligence-index"]');
   assert([...reset.querySelectorAll(".marker")].filter(visible).length === 42, "All must restore every published AA Index point");
+  const defaults = new URL(location.href).searchParams;
+  assert(!defaults.has("models") && !defaults.has("levels") && !defaults.has("axis"), "The all-model, all-level effort view must keep a clean URL");
   return "Thinking-level filter checks passed: effort, cost frontier, model combinations, sparse/unknown results, empty state, reset and zoom";
 })();

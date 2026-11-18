@@ -2,6 +2,7 @@
 (() => {
   const data = JSON.parse(document.getElementById("chart-data").textContent);
   const { layouts } = data;
+  const modelInputs = data.models.map(model => document.getElementById(`show-${model.slug}`));
   const levelInputs = [...document.querySelectorAll('input[name="thinking-level"]')];
   const pointCache = new WeakMap();
   const entries = [...document.querySelectorAll("template[data-layout]")].map(template => ({
@@ -424,16 +425,53 @@
     }
   }
 
+  function readViewFromUrl() {
+    const params = new URL(location.href).searchParams;
+    for (const [name, inputs] of [["models", modelInputs], ["levels", levelInputs]]) {
+      const selection = params.get(name);
+      const values = new Set(selection?.split(","));
+      inputs.forEach(input => { input.checked = selection === null || values.has(input.value); });
+    }
+    document.getElementById("x-cost").checked = params.get("axis") === "cost";
+    document.getElementById("x-effort").checked = params.get("axis") !== "cost";
+  }
+
+  function writeViewToUrl() {
+    const url = new URL(location.href);
+    for (const [name, inputs] of [["models", modelInputs], ["levels", levelInputs]]) {
+      const selected = inputs.filter(input => input.checked).map(input => input.value);
+      if (selected.length === inputs.length) url.searchParams.delete(name);
+      else url.searchParams.set(name, selected.join(","));
+    }
+    if (document.getElementById("x-cost").checked) url.searchParams.set("axis", "cost");
+    else url.searchParams.delete("axis");
+    history.replaceState(history.state, "", url);
+  }
+
+  function filtersChanged() {
+    applyFilters();
+    writeViewToUrl();
+  }
+
   for (const [id, checked] of [["levels-all", true], ["levels-none", false]]) {
     document.getElementById(id).addEventListener("click", () => {
       levelInputs.forEach(input => { input.checked = checked; });
-      applyFilters();
+      filtersChanged();
     });
   }
-  document.querySelectorAll('input[type="checkbox"]').forEach(input => input.addEventListener("change", applyFilters));
+  document.querySelectorAll('input[type="checkbox"]').forEach(input => input.addEventListener("change", filtersChanged));
+  readViewFromUrl();
   mountLayout();
   window.addEventListener("resize", mountLayout);
-  document.querySelectorAll('input[name="x-axis"]').forEach(input => input.addEventListener("change", mountLayout));
+  document.querySelectorAll('input[name="x-axis"]').forEach(input => input.addEventListener("change", () => {
+    mountLayout();
+    writeViewToUrl();
+  }));
+  window.addEventListener("popstate", () => {
+    readViewFromUrl();
+    active = undefined;
+    mountLayout();
+  });
   dialog.addEventListener("close", () => { shown = null; });
   window.addEventListener("resize", () => { if (shown) render(); });
 })();

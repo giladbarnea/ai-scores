@@ -801,7 +801,7 @@ DEFAULT_COST_UNIT = "US$ per task, log scale"
 
 TITLE = "AI scores"
 SUBTITLE = ("Tap a model to hide or show it. Select thinking levels to compare only those settings. "
-            "Show exactly two models to see where they come closest: "
+            "Share the URL to share your filters. Show exactly two models to see where they come closest: "
             "a dashed line joins their nearest scores at different effort levels. Hover a level to read every score. "
             "To zoom in on some points, drag across them with a mouse, or press and hold a finger for a second, then drag. "
             "Switch the x axis to cost to see what each effort level costs: the best models sit top left. "
@@ -1754,7 +1754,7 @@ def page_html() -> str:
         dark=" ".join(f"--{color.variable}: {color.dark};" for color in COLORS),
         toggles=toggle_css(),
         layouts=layout_css(),
-        inputs="".join(f'<input type="checkbox" class="toggle" id="show-{model.slug}" checked>' for model in MODELS)
+        inputs="".join(f'<input type="checkbox" class="toggle" id="show-{model.slug}" value="{model.slug}" checked>' for model in MODELS)
                + '<input type="radio" class="toggle" name="x-axis" id="x-effort" checked>'
                + '<input type="radio" class="toggle" name="x-axis" id="x-cost">'
                + "".join(f'<input type="checkbox" class="toggle" name="thinking-level" id="level-{level}" '
