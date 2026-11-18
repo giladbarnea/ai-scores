@@ -56,7 +56,7 @@ class ChartCoverageTests(unittest.TestCase):
         self.assertEqual(float(matches[0]["max"]), 65.02)
         self.assertTrue(all(matches[0][level] == "" for level in ["low", "medium", "high", "xhigh"]))
 
-    def test_every_published_snapshot_point_is_available_to_the_page(self) -> None:
+    def test_every_supported_snapshot_point_is_available_to_the_page(self) -> None:
         snapshot = json.loads((Path(__file__).parent / "sources/gpt62.json").read_text())
         data = charts.chart_data()
         model_names = {model["slug"]: model["name"] for model in data["models"]}
@@ -64,6 +64,8 @@ class ChartCoverageTests(unittest.TestCase):
         for name, scores in snapshot["scores"].items():
             actual = {model_names[slug]: values for slug, values in metrics[name]["scores"].items()}
             for model, values in scores.items():
+                if model not in model_names.values():
+                    continue
                 with self.subTest(metric=name, model=model):
                     self.assertEqual(actual.get(model), values, "Published sparse points must not be dropped")
 
@@ -79,6 +81,14 @@ class ChartCoverageTests(unittest.TestCase):
         row = next(row for row in rows if row["metric"] == "Vals Index" and row["model"] == "GPT-6.2 Sol" and row["measure"] == "cost_usd")
         self.assertEqual(float(row["max"]), 3.18)
         self.assertIn("per test", row["unit_and_source"])
+
+    def test_argon_is_absent_from_the_live_dataset_and_exports(self) -> None:
+        self.assertNotIn("Gemini 4 Argon", [model["name"] for model in charts.chart_data()["models"]],
+                         "Retired Argon must not remain selectable or plotted")
+        with tempfile.TemporaryDirectory() as directory:
+            destination = Path(directory) / "data.csv"
+            charts.write_table(destination)
+            self.assertNotIn("Gemini 4 Argon", destination.read_text(), "The export must retire Argon too")
 
     def test_csv_preserves_scores_with_an_unspecified_effort(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
