@@ -1,6 +1,9 @@
 // Keep inactive SVG layouts out of the live document; large benchmark collections otherwise stall on resize.
 (() => {
-  const { layouts } = JSON.parse(document.getElementById("chart-data").textContent);
+  const data = JSON.parse(document.getElementById("chart-data").textContent);
+  const { layouts } = data;
+  const levelInputs = [...document.querySelectorAll('input[name="thinking-level"]')];
+  const pointCache = new WeakMap();
   const entries = [...document.querySelectorAll("template[data-layout]")].map(template => ({
     template, plot: template.content.firstElementChild, layout: template.dataset.layout,
   }));
@@ -19,18 +22,10 @@
       entry.template.content.append(entry.plot);
     }
     active = selection;
+    applyFilters();
   }
 
-  mountLayout();
-  window.addEventListener("resize", mountLayout);
-  document.querySelectorAll('input[name="x-axis"]').forEach(input => input.addEventListener("change", mountLayout));
-})();
-
-// Drag across a chart to open a full-screen chart of only the points inside the rectangle. With a mouse the drag starts
-// at once; on a touch screen it starts after the finger presses still for a second, so a quick swipe still scrolls.
-// The page works without this script; it only adds the zoom where JavaScript runs.
-(() => {
-  const data = JSON.parse(document.getElementById("chart-data").textContent);
+  // With a mouse, drag to zoom. On touch screens, hold still first so a quick swipe can still scroll.
   const dialog = document.getElementById("zoom");
   const plotHost = dialog.querySelector(".zoom-plot");
   const SVG = "http://www.w3.org/2000/svg";
@@ -97,7 +92,7 @@
   }
 
   document.addEventListener("pointerdown", event => {
-    const plot = event.target.closest(".plot[data-metric]");  // effort charts only
+    const plot = event.target.closest(".plot.effort[data-metric]");
     if (!plot || !event.isPrimary) return;
     if (event.pointerType !== "mouse") return pressAndHold(plot, event);
     if (event.button !== 0) return;
@@ -153,7 +148,7 @@
       model.slug in metric.scores && document.getElementById(`show-${model.slug}`).checked);
     return visible.flatMap(model => metric.scores[model.slug]
       .map((score, level) => ({ model, level, score }))
-      .filter(point => point.score !== null
+      .filter(point => point.score !== null && levelIsShown(data.levels[point.level])
         && point.level >= topLeft.level && point.level <= bottomRight.level
         && point.score <= topLeft.score && point.score >= bottomRight.score));
   }
@@ -288,6 +283,157 @@
     }
   }
 
+  function levelIsShown(level) {
+    return document.getElementById(`level-${level}`).checked;
+  }
+
+  function plotPoints(plot, metric) {
+    if (pointCache.has(plot)) return pointCache.get(plot);
+    const points = data.models.flatMap(model => [...plot.querySelectorAll(`.marker.m-${model.slug}`)].map(marker => {
+      const level = data.levels.indexOf(marker.dataset.level);
+      const position = marker.querySelector("use");
+      return { model, level, score: metric.scores[model.slug][level], cost: metric.costs[model.slug]?.[level], marker,
+        x: Number(position.getAttribute("x")), y: Number(position.getAttribute("y")),
+        target: plot.querySelector(`.cost-point.m-${model.slug}[data-level="${data.levels[level]}"]`) };
+    }));
+    pointCache.set(plot, points);
+    return points;
+  }
+
+  function filteredLabels(plot, metric, points) {
+    const svg = plot.querySelector("svg");
+    const group = element(svg, "g", { class: "filtered-labels" });
+    const ends = data.models.map(model => points.filter(point => point.model === model).at(-1)).filter(Boolean);
+    if (!plot.dataset.axes) return filteredCostLabels(svg, group, metric, ends);
+    const scoreTemplate = svg.querySelector(".end text");
+    const nameTemplate = svg.querySelector(".name text");
+    const labelX = Number(scoreTemplate.getAttribute("x"));
+    ends.sort((first, second) => first.y - second.y);
+    const heights = spread(ends.map(point => point.y), data.endLabelGap);
+    ends.forEach((point, index) => {
+      element(group, "path", { d: `M${point.x + 5},${point.y} L${labelX - 4},${heights[index]}` },
+        { stroke: "var(--baseline)", strokeWidth: "0.6", fill: "none" });
+      for (const [role, template, value] of [["end", scoreTemplate, point.score.toFixed(metric.decimals)],
+                                           ["name", nameTemplate, point.model.name]]) {
+        const parent = element(group, "g", { class: `${role} m-${point.model.slug}`, "data-level": data.levels[point.level] });
+        const label = template.cloneNode(true);
+        label.setAttribute("y", heights[index]);
+        label.setAttribute("dominant-baseline", "middle");
+        label.textContent = value;
+        parent.append(label);
+      }
+    });
+    filteredMeeting(group, metric, points);
+  }
+
+  function filteredCostLabels(svg, group, metric, ends) {
+    const bounds = svg.querySelector("clipPath rect");
+    const left = Number(bounds.getAttribute("x")) + 4;
+    const right = left + Number(bounds.getAttribute("width")) - 8;
+    ends.sort((first, second) => first.y - second.y);
+    const heights = spread(ends.map(point => point.y - 8), data.endLabelGap);
+    ends.forEach((point, index) => {
+      const label = element(group, "text", { x: point.x + 7, y: heights[index], "dominant-baseline": "middle",
+        "data-level": data.levels[point.level] },
+        { fontSize: "9.5px", fontWeight: "500", fill: "var(--ink-1)", stroke: "var(--surface)",
+          strokeWidth: "3px", paintOrder: "stroke", strokeLinejoin: "round" });
+      label.textContent = point.score.toFixed(metric.decimals);
+      element(label, "tspan", { dx: "5" }, { fontFamily: "Menlo, monospace", fontSize: "7.5px", fontWeight: "400",
+        fill: "var(--ink-3)" }).textContent = `${point.model.name} · ${data.levels[point.level]}`;
+      const box = label.getBBox();
+      const x = clamp(point.x + 7, left, right - box.width);
+      label.setAttribute("x", x);
+      const nearX = clamp(point.x, x, x + box.width);
+      const nearY = clamp(point.y, box.y, box.y + box.height);
+      if (Math.hypot(nearX - point.x, nearY - point.y) <= 12) return;
+      const leader = element(group, "path", { d: `M${point.x},${point.y} L${nearX},${nearY}` },
+        { stroke: "var(--baseline)", strokeWidth: ".6", fill: "none" });
+      label.before(leader);
+    });
+  }
+
+  function filteredMeeting(group, metric, points) {
+    const models = data.models.filter(model => document.getElementById(`show-${model.slug}`).checked);
+    if (models.length !== 2) return;
+    const first = points.filter(point => point.model === models[0]);
+    const second = points.filter(point => point.model === models[1]);
+    const pairs = first.flatMap(from => second.map(to => [from, to]));
+    pairs.sort(([firstFrom, firstTo], [secondFrom, secondTo]) =>
+      Math.abs(firstFrom.score - firstTo.score) - Math.abs(secondFrom.score - secondTo.score));
+    if (!pairs.length || pairs[0][0].level === pairs[0][1].level) return;
+    const [from, to] = pairs[0];
+    element(group, "line", { x1: from.x, x2: to.x, y1: Math.max(from.y, to.y), y2: Math.max(from.y, to.y) },
+      { stroke: "var(--ink-3)", strokeWidth: "0.9", strokeDasharray: "2.5 2.5", opacity: "0.8" });
+    for (const point of [from, to]) {
+      element(group, "text", { x: point.x, y: point.y - 9, "text-anchor": "middle" },
+        { fontSize: "9.5px", fontWeight: "500", fill: "var(--ink-1)", stroke: "var(--surface)",
+          strokeWidth: "3px", paintOrder: "stroke" }).textContent = point.score.toFixed(metric.decimals);
+    }
+  }
+
+  function costFrontier(plot, metric, allPoints, points) {
+    plot.querySelectorAll(".frontier").forEach(node => { node.style.display = "none"; });
+    plot.querySelector(".filtered-frontier")?.remove();
+    const winners = new Map(points.map(point => [point, points.filter(other =>
+      other.cost <= point.cost && other.score >= point.score && (other.cost < point.cost || other.score > point.score))]));
+    for (const point of allPoints) {
+      const beaten = winners.get(point) || [];
+      point.marker.style.opacity = beaten.length ? ".22" : "1";
+      point.target.querySelectorAll(".beaten").forEach(node => node.remove());
+      const cheapest = new Map([...beaten].sort((first, second) => second.cost - first.cost).map(winner => [winner.model, winner]));
+      for (const winner of cheapest.values()) {
+        const note = document.createElement("span");
+        note.className = "beaten";
+        const price = winner.target.querySelector(".cost").textContent.split(" · ")[0];
+        note.textContent = `beaten by ${winner.model.name} ${data.levels[winner.level]}: ${winner.score.toFixed(metric.decimals)} at ${price}`;
+        point.target.querySelector(".tip").append(note);
+      }
+    }
+    const frontier = [...new Map(points.filter(point => !winners.get(point).length)
+      .sort((first, second) => first.cost - second.cost).map(point => [`${point.cost}:${point.score}`, point])).values()];
+    const svg = plot.querySelector("svg");
+    const line = element(svg, "polyline", { class: "filtered-frontier", points: frontier.map(point => `${point.x},${point.y}`).join(" ") },
+      { stroke: "var(--ink-2)", strokeWidth: "1.5", opacity: ".6", fill: "none", pointerEvents: "none" });
+    svg.querySelector(".series").before(line);
+  }
+
+  function applyFilters() {
+    const models = data.models.filter(model => document.getElementById(`show-${model.slug}`).checked);
+    const partial = data.levels.some(level => !levelIsShown(level));
+    for (const { plot } of entries.filter(entry => entry.plot.isConnected)) {
+      const metric = data.metrics[plot.dataset.metric];
+      if (!metric) {
+        const bars = [...plot.querySelectorAll(".bar")].filter(bar => levelIsShown(bar.dataset.level)
+          && models.some(model => bar.classList.contains(`m-${model.slug}`)));
+        plot.classList.toggle("empty", !bars.length);
+        continue;
+      }
+      const allPoints = plotPoints(plot, metric);
+      const points = allPoints.filter(point => models.includes(point.model) && levelIsShown(data.levels[point.level]));
+      plot.classList.toggle("empty", !points.length);
+      for (const series of plot.querySelectorAll(".series")) {
+        const own = points.filter(point => series.classList.contains(`m-${point.model.slug}`));
+        series.querySelector("path").setAttribute("d", own.map((point, index) => `${index ? "L" : "M"}${point.x},${point.y}`).join(" "));
+      }
+      plot.querySelector(".filtered-labels")?.remove();
+      plot.querySelectorAll(".start, .end, .name, .leader, .meeting, .meeting-line").forEach(node => {
+        node.style.display = partial ? "none" : "";
+      });
+      if (!plot.dataset.axes) costFrontier(plot, metric, allPoints, points);
+      if (partial && points.length) filteredLabels(plot, metric, points);
+    }
+  }
+
+  for (const [id, checked] of [["levels-all", true], ["levels-none", false]]) {
+    document.getElementById(id).addEventListener("click", () => {
+      levelInputs.forEach(input => { input.checked = checked; });
+      applyFilters();
+    });
+  }
+  document.querySelectorAll('input[type="checkbox"]').forEach(input => input.addEventListener("change", applyFilters));
+  mountLayout();
+  window.addEventListener("resize", mountLayout);
+  document.querySelectorAll('input[name="x-axis"]').forEach(input => input.addEventListener("change", mountLayout));
   dialog.addEventListener("close", () => { shown = null; });
   window.addEventListener("resize", () => { if (shown) render(); });
 })();

@@ -1,6 +1,7 @@
 """Regression checks for sparse benchmarks, rankings and complete score exports."""
 import csv
 import json
+import re
 import tempfile
 import unittest
 from pathlib import Path
@@ -20,6 +21,20 @@ class ChartCoverageTests(unittest.TestCase):
         rendered = charts.plot_html(metric, charts.LAYOUTS[0], "effort")
         self.assertIn("GPT-6 Astra", rendered)
         self.assertIn("94.0", rendered)
+
+    def test_sparse_chart_points_expose_their_actual_thinking_levels(self) -> None:
+        metric = charts.Metric("Sparse benchmark", "% · example", {
+            charts.GPT_6_ASTRA: [91.0, None, 93.0, None, 94.0],
+        }, (80, 100), 5)
+        rendered = charts.plot_html(metric, charts.LAYOUTS[1], "effort")
+        levels = re.findall(r'<g class="marker[^\"]*" data-level="([^\"]+)"', rendered)
+        self.assertEqual(set(levels), {"low", "high", "max"},
+                         "A level filter must distinguish the three actual points without inventing missing efforts")
+
+    def test_dense_elo_chart_renders_with_the_full_model_name_column(self) -> None:
+        metric = next(metric for metric in charts.INTELLIGENCE if metric.name == "AA-Briefcase")
+        rendered = charts.plot_html(metric, charts.LAYOUTS[0], "effort")
+        self.assertIn("1469", rendered, "A crowded nearest-score label must find a farther placement, not abort the build")
 
     def test_reported_ranking_can_use_an_elo_scale(self) -> None:
         metric = charts.ReportedMetric("Example ranking", "Elo", {

@@ -846,7 +846,8 @@ COST_UNITS = {"AA Intelligence Index": "US$ to run the whole index, log scale",
 DEFAULT_COST_UNIT = "US$ per task, log scale"
 
 TITLE = "AI scores"
-SUBTITLE = ("Tap a model to hide or show it. Show exactly two models to see where they come closest: "
+SUBTITLE = ("Tap a model to hide or show it. Select thinking levels to compare only those settings. "
+            "Show exactly two models to see where they come closest: "
             "a dashed line joins their nearest scores at different effort levels. Hover a level to read every score. "
             "To zoom in on some points, drag across them with a mouse, or press and hold a finger for a second, then drag. "
             "Switch the x axis to cost to see what each effort level costs: the best models sit top left. "
@@ -907,7 +908,7 @@ LAYOUTS = [
 ]
 AXES_LEFT = 0.42
 # The right margin holds the model-name column beside the end labels, outside the plot, so names never meet plot labels.
-AXES_RIGHT = 0.75
+AXES_RIGHT = 1.15
 AXES_TOP = 0.22
 AXES_BOTTOM = 0.32
 COST_AXIS_LABEL_HEIGHT = 0.2  # the cost charts name their x-axis unit
@@ -1038,8 +1039,17 @@ def gated_id(role: str, models: list[Model], gates: Iterable[Model]) -> str:
     return "__".join([element_id(role, *models), *(GATE_PREFIX + model.slug for model in gates)])
 
 
+def at_level(gid: str, level: str) -> str:
+    """Tag a rendered point or bar with its reported thinking level.
+
+    >>> at_level("marker__gpt-6-astra", "high")
+    'marker__gpt-6-astra__level-high'
+    """
+    return f"{gid}__level-{slugify(level)}"
+
+
 def element_models(artist: Artist) -> set[str]:
-    return {part for part in artist.get_gid().split("__")[1:] if not part.startswith(GATE_PREFIX)}
+    return {part for part in artist.get_gid().split("__")[1:] if not part.startswith((GATE_PREFIX, "level-"))}
 
 
 # Meeting and frontier lines are faint references, like gridlines: labels may sit over them.
@@ -1208,7 +1218,7 @@ def draw_meetings(axes: Axes, metric: Metric) -> None:
             if index in labeled_levels(metric.scores[model]):
                 continue
             score = metric.scores[model][index]
-            placements = PLACEMENT_ORDERS[("meeting", away_is_above(metric, model, index, [first, second]))]
+            placements = PLACEMENT_ORDERS[("meeting", away_is_above(metric, model, index, [first, second]))] + COST_END_PLACEMENTS
             place_label(axes, metric, (index, score), [value_part(metric, score)], placements,
                         element_id("meeting", first, second), model, [first, second])
 
@@ -1253,7 +1263,8 @@ def draw_series(axes: Axes, metric: Metric, model: Model, points: list[tuple[int
         axes.plot(x, score, marker="o", markersize=MARKER_SIZE,
                   markerfacecolor=SURFACE.light if is_estimated else model.color.light,
                   markeredgecolor=model.color.light if is_estimated else SURFACE.light,
-                  markeredgewidth=MARKER_RING, zorder=4, gid=gated_id("marker", [model], (gates or {}).get(index, ())))
+                  markeredgewidth=MARKER_RING, zorder=4,
+                  gid=at_level(gated_id("marker", [model], (gates or {}).get(index, ())), EFFORT_LEVELS[index]))
 
 
 def style_axes(axes: Axes, metric: Metric) -> None:
@@ -1398,6 +1409,7 @@ def inline_svg(svg: str) -> str:
     svg = re.sub(r' width="[\d.]+pt" height="[\d.]+pt"', ' class="chart"', svg, count=1)
     for color in COLORS:
         svg = svg.replace(color.light, f"var(--{color.variable})")
+    svg = re.sub(r'__level-([a-z-]+)"', r'" data-level="\1"', svg)
     return re.sub(r'id="([a-z-]+)((?:__[a-z0-9-]+)+)"',
                   lambda match: 'class="' + " ".join([match[1], *(f"m-{slug}" for slug in match[2].split("__")[1:])]) + '"',
                   svg)
@@ -1417,7 +1429,7 @@ def level_column_html(axes: Axes, metric: Metric, index: int) -> str:
         ring_top = 100 * (top - axes.transData.transform((index, score))[1]) / (top - bottom)
         rings.append(f'<span class="ring m-{model.slug}" style="top:{ring_top:.2f}%"></span>')
     side = "tip-left" if index >= len(EFFORT_LEVELS) - 2 else "tip-right"
-    return (f'<span class="column" style="left:{100 * left / width:.2f}%;width:{100 * (right - left) / width:.2f}%;'
+    return (f'<span class="column" data-level="{EFFORT_LEVELS[index]}" style="left:{100 * left / width:.2f}%;width:{100 * (right - left) / width:.2f}%;'
             f'top:{100 * (1 - top / height):.2f}%;height:{100 * (top - bottom) / height:.2f}%">'
             f'{"".join(rings)}<span class="tip {side}"><span class="level">{EFFORT_LEVELS[index]}</span>{"".join(rows)}</span></span>')
 
@@ -1432,7 +1444,8 @@ def cost_point_html(axes: Axes, metric: Metric, model: Model, index: int, cost: 
                      f'{EFFORT_LEVELS[winner_index]}: {metric.label(winner_score)} at {cost_label(winner_cost)}</span>'
                      for winner, (_, winner_index, winner_cost, winner_score)
                      in beaters(metric)[(model, index, cost, score)].items())
-    return (f'<span class="cost-point m-{model.slug}" style="left:{100 * x / width:.2f}%;top:{100 * (1 - y / height):.2f}%">'
+    return (f'<span class="cost-point m-{model.slug}" data-level="{EFFORT_LEVELS[index]}" '
+            f'style="left:{100 * x / width:.2f}%;top:{100 * (1 - y / height):.2f}%">'
             f'<span class="tip {side}"><span class="level">{EFFORT_LEVELS[index]}</span>'
             f'<span class="row" style="--series: var(--{model.color.variable})"><b>{metric.label(score)}</b>'
             f'{html.escape(model.name)}{estimated}</span><span class="cost">{cost_label(cost)} · {metric.cost_unit.split(",")[0]}</span>'
@@ -1456,7 +1469,7 @@ def plot_html(metric: Metric, layout: Layout, mode: Mode) -> str:
         draw_cost_panel(axes, metric)
         hover = "".join(cost_point_html(axes, metric, model, index, cost, score) for model in metric.models
                         for index, cost, score in cost_points(metric, model))
-        attributes = ""
+        attributes = f' data-metric="{slugify(metric.name)}"'
     else:
         draw_panel(axes, metric)
         hover = "".join(level_column_html(axes, metric, index) for index in range(len(EFFORT_LEVELS))
@@ -1486,7 +1499,8 @@ def panel_html(metric: Metric) -> str:
     modes = ["effort", "cost"] if metric.costs else ["effort"]
     note = "" if metric.costs else '<p class="no-cost">No cost data for this benchmark. Showing scores by effort level.</p>'
     return (f'<figure class="panel"><figcaption><h3>{html.escape(metric.name)}</h3>'
-            f'<p>{html.escape(metric.unit_and_source)}</p>{note}</figcaption>'
+            f'<p>{html.escape(metric.unit_and_source)}</p>{note}'
+            f'<p class="no-points">No scores for this selection.</p></figcaption>'
             f'{"".join(plot_html(metric, layout, mode) for layout in LAYOUTS for mode in modes)}</figure>')
 
 
@@ -1501,9 +1515,11 @@ def draw_bars(axes: Axes, metric: ReportedMetric) -> None:
     rows = list(reversed(metric.models))
     for row, model in enumerate(rows):
         score, effort = metric.scores[model]
-        axes.barh(row, score, height=BAR_THICKNESS, color=model.color.light, zorder=3, gid=element_id("bar", model))
+        axes.barh(row, score, height=BAR_THICKNESS, color=model.color.light, zorder=3,
+                  gid=at_level(element_id("bar", model), effort))
         axes.annotate(model.name, (0, row), xytext=(-8, 0), textcoords="offset points", ha="right", va="center",
-                      fontsize=LABEL_FONT_SIZE, color=TEXT_PRIMARY.light, annotation_clip=False, gid=element_id("name", model))
+                      fontsize=LABEL_FONT_SIZE, color=TEXT_PRIMARY.light, annotation_clip=False,
+                      gid=at_level(element_id("name", model), effort))
     axes.set_xlim(0, metric.x_max)
     axes.set_ylim(-0.6, len(rows) - 0.4)
     axes.set_yticks([])
@@ -1518,7 +1534,7 @@ def draw_bars(axes: Axes, metric: ReportedMetric) -> None:
     for row, model in enumerate(rows):
         score, effort = metric.scores[model]
         for part in annotate_parts(axes, (score, row), [(f"{score:.{metric.decimals}f}", POINT_LABEL_STYLE), (effort, DIM_LABEL_STYLE)],
-                                   RIGHT, element_id("end", model)):
+                                   RIGHT, at_level(element_id("end", model), effort)):
             part.set_annotation_clip(False)
 
 
@@ -1556,7 +1572,8 @@ def bar_panel_html(metric: ReportedMetric) -> str:
     if metric.costs:
         plots += "".join(plot_html(reported_cost_metric(metric), layout, "cost") for layout in LAYOUTS)
     return (f'<figure class="panel"><figcaption><h3>{html.escape(metric.name)}</h3>'
-            f'<p>{html.escape(metric.unit_and_source)}</p>{missing_note}</figcaption>'
+            f'<p>{html.escape(metric.unit_and_source)}</p>{missing_note}'
+            f'<p class="no-points">No scores for this selection.</p></figcaption>'
             f'{plots}</figure>')
 
 
@@ -1568,18 +1585,20 @@ def table_rows() -> Iterator[tuple[str, Metric, Model]]:
 
 
 def table_html() -> str:
-    head = "".join(f"<th>{level}</th>" for level in EFFORT_LEVELS)
+    head = "".join(f'<th data-level="{level}">{level}</th>' for level in EFFORT_LEVELS)
     rows = []
     for category, metric, model in table_rows():
         is_first = model is metric.models[0]
-        cells = "".join(f"<td>{'' if score is None else metric.label(score)}</td>" for score in metric.scores[model])
+        cells = "".join(f'<td data-level="{level}">{"" if score is None else metric.label(score)}</td>'
+                        for level, score in zip(EFFORT_LEVELS, metric.scores[model]))
         rows.append(f'<tr class="m-{model.slug}{" first" if is_first else ""}">'
                     f'<th scope="row">{html.escape(metric.name) if is_first else ""}</th>'
                     f'<td class="model">{html.escape(model.name)}</td>{cells}</tr>')
         if metric.costs and model in metric.costs:
-            costs = "".join(f"<td>{'' if cost is None else cost_label(cost)}</td>" for cost in metric.costs[model])
+            costs = "".join(f'<td data-level="{level}">{"" if cost is None else cost_label(cost)}</td>'
+                            for level, cost in zip(EFFORT_LEVELS, metric.costs[model]))
             rows.append(f'<tr class="cost-row m-{model.slug}"><th scope="row"></th><td class="model">cost</td>{costs}</tr>')
-    reported_rows = [f'<tr class="m-{model.slug}"><th scope="row">{html.escape(metric.name)}</th>'
+    reported_rows = [f'<tr class="m-{model.slug}" data-level="{slugify(effort)}"><th scope="row">{html.escape(metric.name)}</th>'
                      f'<td class="model">{html.escape(model.name)}</td><td>{score:.{metric.decimals}f}</td>'
                      f'<td>{html.escape(effort)}</td><td>{html.escape(metric.unit_and_source)}</td>'
                      f'<td>{cost_label(next(cost for cost in metric.costs[model] if cost is not None)) if metric.costs and model in metric.costs else ""}</td></tr>'
@@ -1619,6 +1638,12 @@ def toggle_css() -> str:
         states = "".join(f":has(#show-{model.slug}:{'checked' if model in pair else 'not(:checked)'})" for model in MODELS)
         rules.append(f"body{states} :is(.meeting, .meeting-line)"
                      f"{''.join(f'.m-{model.slug}' for model in pair)} {{ display: inline; }}")
+    for level in [*EFFORT_LEVELS, "not-stated"]:
+        rules.append(f'body:has(#level-{level}:not(:checked)) [data-level="{level}"] {{ display: none; }}')
+        rules.append(f"body:has(#level-{level}:checked) label[for=level-{level}] "
+                     "{ background: var(--ink-1); border-color: var(--ink-1); color: var(--surface); }")
+        rules.append(f"body:has(#level-{level}:focus-visible) label[for=level-{level}] "
+                     "{ outline: 2px solid var(--ink-2); outline-offset: 2px; }")
     return "\n".join(rules)
 
 
@@ -1655,6 +1680,14 @@ body:has(#x-effort:checked) label[for=x-effort], body:has(#x-cost:checked) label
   background: var(--ink-1); border-color: var(--ink-1); color: var(--surface); }
 body:has(#x-effort:focus-visible) label[for=x-effort], body:has(#x-cost:focus-visible) label[for=x-cost] {
   outline: 2px solid var(--ink-2); outline-offset: 2px; }
+.level-filter { display: none; flex-basis: 100%; align-items: center; flex-wrap: wrap; gap: 6px; font-size: 13px; }
+.zoomable .level-filter { display: flex; }
+.level-filter > span { margin-right: 4px; color: var(--ink-3); }
+.legend .level-filter label { padding: 3px 9px; border: 1px solid var(--baseline); border-radius: 6px; font-size: 13px; }
+.level-filter button { font: inherit; color: var(--ink-2); background: none; border: 0; cursor: pointer; padding: 4px 6px; }
+.level-filter button:hover { text-decoration: underline; }
+.no-points { display: none; }
+.panel:has(.plot.empty) .no-points { display: block; }
 .missing { color: var(--ink-3); }
 .no-cost { display: none; }
 body:has(#x-cost:checked) .no-cost { display: block; }
@@ -1733,7 +1766,7 @@ $toggles
 <body>
 $inputs
 <header class="shell"><h1>$title</h1><p class="subtitle">$subtitle</p></header>
-<nav class="legend" aria-label="Models"><div class="shell">$legend</div></nav>
+<nav class="legend" aria-label="Chart filters"><div class="shell">$legend</div></nav>
 <main class="shell">
 $sections
 <details><summary>Data table</summary><div class="table-wrap">$table</div></details>
@@ -1769,11 +1802,18 @@ def page_html() -> str:
         layouts=layout_css(),
         inputs="".join(f'<input type="checkbox" class="toggle" id="show-{model.slug}" checked>' for model in MODELS)
                + '<input type="radio" class="toggle" name="x-axis" id="x-effort" checked>'
-               + '<input type="radio" class="toggle" name="x-axis" id="x-cost">',
+               + '<input type="radio" class="toggle" name="x-axis" id="x-cost">'
+               + "".join(f'<input type="checkbox" class="toggle" name="thinking-level" id="level-{level}" '
+                         f'value="{level}" checked>' for level in [*EFFORT_LEVELS, "not-stated"]),
         legend="".join(f'<label class="model" for="show-{model.slug}" style="--series: var(--{model.color.variable})">'
                        f'{html.escape(model.name)}</label>' for model in MODELS)
                + '<span class="axis-switch" role="group" aria-label="X axis"><span>X axis</span>'
-                 '<label for="x-effort">Effort level</label><label for="x-cost">Cost</label></span>',
+                 '<label for="x-effort">Effort level</label><label for="x-cost">Cost</label></span>'
+               + '<div class="level-filter" role="group" aria-label="Thinking levels"><span>Thinking level</span>'
+               + "".join(f'<label for="level-{level}">{level.replace("-", " ")}</label>'
+                         for level in [*EFFORT_LEVELS, "not-stated"])
+               + '<button type="button" id="levels-all">All</button>'
+                 '<button type="button" id="levels-none">None</button></div>',
         sections="\n".join(sections),
         table=table_html(),
         data=json.dumps(chart_data(), ensure_ascii=False).replace("</", "<\\/"),
@@ -1787,6 +1827,7 @@ def chart_data() -> dict[str, object]:
         "levels": EFFORT_LEVELS,
         "layouts": [{"name": layout.name, "minViewport": layout.min_viewport} for layout in LAYOUTS],
         "xLimits": X_LIMITS,
+        "endLabelGap": END_LABEL_MIN_GAP_POINTS,
         "models": [{"slug": model.slug, "name": model.name, "color": model.color.variable} for model in MODELS],
         "metrics": {slugify(metric.name): {
             "name": metric.name,
@@ -1795,7 +1836,10 @@ def chart_data() -> dict[str, object]:
             "decimals": metric.decimals,
             "scores": {model.slug: metric.scores[model] for model in metric.models},
             "estimated": [[model.slug, EFFORT_LEVELS.index(level)] for model, level in metric.estimated],
-        } for _, metrics in SECTIONS for metric in metrics},
+            "costs": {model.slug: costs for model, costs in (metric.costs or {}).items()},
+        } for category, metrics in SECTIONS
+          for metric in [*metrics, *(reported_cost_metric(reported) for reported in REPORTED.get(category, [])
+                                      if reported.costs)]},
     }
 
 
