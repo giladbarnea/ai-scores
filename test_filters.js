@@ -37,23 +37,20 @@
   document.querySelector('label[for="x-cost"]').click();
   const costPlot = document.querySelector('.plot[data-metric="aa-intelligence-index"]');
   const costMarkers = [...costPlot.querySelectorAll(".marker")].filter(visible);
-  const faded = costMarkers.filter(node => Number(getComputedStyle(node).opacity) < .5);
-  assert(costMarkers.length === 9 && faded.length === 6,
-    `High-only cost view must show nine points, six dominated, got ${costMarkers.length} / ${faded.length}`);
-  const frontier = costPlot.querySelector(".filtered-frontier").getAttribute("points").trim().split(/\s+/);
-  assert(frontier.length === 3, `Only Sol 6.2, Astra 6.2 and Fable high belong on this frontier, got ${frontier.length} points`);
-  const position = slug => {
-    const marker = costPlot.querySelector(`.marker.m-${slug}[data-level="high"] use`);
-    return `${Number(marker.getAttribute("x"))},${Number(marker.getAttribute("y"))}`;
-  };
-  assert(JSON.stringify(frontier) === JSON.stringify(["gpt-6-2-sol", "gpt-6-2-astra", "fable-5-2"].map(position)),
-    "The cost frontier must join the three independently checked high-effort deals");
+  const links = () => [...costPlot.querySelectorAll(".dominance-link")];
+  assert(costMarkers.length === 9 && links().length === 6,
+    `High-only cost view must show nine points and one link for each of six beaten points, got ${costMarkers.length} / ${links().length}`);
+  const unbeaten = new Set(["gpt-6-2-sol", "gpt-6-2-astra", "fable-5-2"]);
+  assert(new Set(links().map(link => link.dataset.loserModel)).size === 6 && links().every(link =>
+    unbeaten.has(link.dataset.winnerModel) && !unbeaten.has(link.dataset.loserModel)
+    && link.dataset.winnerLevel === "high" && link.dataset.loserLevel === "high"),
+    "Only Sol 6.2, Astra 6.2 and Fable high are unbeaten. Each arrow must end at one of them");
   document.querySelector('label[for="show-gpt-6-2-sol"]').click();
   const remaining = [...costPlot.querySelectorAll(".marker")].filter(visible);
-  assert(remaining.length === 8 && remaining.filter(node => Number(getComputedStyle(node).opacity) < .5).length === 4,
-    "Hiding Sol 6.2 must restore Hydrogen high to the frontier and leave four dominated points");
-  const hydrogen = costPlot.querySelector('.marker.m-gemini-4-hydrogen[data-level="high"]');
-  assert(Number(getComputedStyle(hydrogen).opacity) === 1, "A hidden model must not still dominate Hydrogen high");
+  assert(remaining.length === 8 && links().length === 4,
+    "Hiding Sol 6.2 must leave only four beaten points");
+  assert(links().every(link => link.dataset.winnerModel !== "gpt-6-2-sol" && link.dataset.loserModel !== "gemini-4-hydrogen"),
+    "A hidden model must not beat Hydrogen high");
   document.querySelector('label[for="show-gpt-6-2-sol"]').click();
   const bounds = costPlot.getBoundingClientRect();
   const clipped = [...costPlot.querySelectorAll(".filtered-labels text")].filter(visible)
@@ -94,5 +91,5 @@
   assert([...reset.querySelectorAll(".marker")].filter(visible).length === 42, "All must restore every published AA Index point");
   const defaults = new URL(location.href).searchParams;
   assert(!defaults.has("models") && !defaults.has("levels") && !defaults.has("axis"), "The all-model, all-level effort view must keep a clean URL");
-  return "Thinking-level filter checks passed: effort, cost frontier, model combinations, sparse/unknown results, empty state, reset and zoom";
+  return "Thinking-level filter checks passed: effort, Cost dominance, model combinations, sparse/unknown results, empty state, reset and zoom";
 })();

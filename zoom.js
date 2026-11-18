@@ -259,20 +259,25 @@
       for (const [from, to] of own.slice(0, -1).map((point, index) => [point, own[index + 1]])) {
         if (to.level !== from.level + 1) continue;
         element(svg, "line", { x1: pointX(from), y1: y(from.score), x2: pointX(to), y2: y(to.score) },
-          { stroke: `var(--${model.color})`, strokeWidth: "3", strokeLinecap: "round" });
+          { stroke: `var(--${model.color})`, strokeWidth: "3", strokeLinecap: "round", opacity: costMode ? ".35" : "1" });
       }
     }
+    const costMarkers = [];
     for (const point of points) {
       const estimated = metric.estimated.some(([slug, level]) => slug === point.model.slug && level === point.level);
-      const marker = element(svg, "circle", { cx: pointX(point), cy: y(point.score), r: 6.5,
+      const position = { x: pointX(point), y: y(point.score) };
+      const radius = 6.5;
+      const marker = element(svg, "circle", { cx: position.x, cy: position.y, r: radius,
         "data-model": point.model.slug, "data-level": data.levels[point.level] }, {
         fill: estimated ? "var(--surface)" : `var(--${point.model.color})`,
         stroke: estimated ? `var(--${point.model.color})` : "var(--surface)",
         strokeWidth: "2",
       });
-      if (costMode) element(marker, "title", {}).textContent =
-        `${point.model.name} ${data.levels[point.level]}: ${format(point.score)} at ${formatCost(point.cost)} · ${metric.costUnit}`;
+      if (!costMode) continue;
+      element(marker, "title", {}).textContent = `${describeCostPoint(point, metric)} · ${metric.costUnit}`;
+      costMarkers.push({ ...point, ...position, estimated, marker, symbol: marker, radius });
     }
+    if (costMode) drawDominance(svg, metric, costMarkers, "dominance-zoom");
 
     // Each level's labels sit right of their points, spread apart vertically; outside compact mode each model's last
     // point also names it.
@@ -313,9 +318,10 @@
     if (pointCache.has(plot)) return pointCache.get(plot);
     const points = data.models.flatMap(model => [...plot.querySelectorAll(`.marker.m-${model.slug}`)].map(marker => {
       const level = data.levels.indexOf(marker.dataset.level);
-      const position = marker.querySelector("use");
-      return { model, level, score: metric.scores[model.slug][level], cost: metric.costs[model.slug]?.[level], marker,
-        x: Number(position.getAttribute("x")), y: Number(position.getAttribute("y")),
+      const symbol = marker.querySelector("use");
+      return { model, level, score: metric.scores[model.slug][level], cost: metric.costs[model.slug]?.[level], marker, symbol,
+        x: Number(symbol.getAttribute("x")), y: Number(symbol.getAttribute("y")), radius: data.markerRadius,
+        estimated: metric.estimated.some(([slug, index]) => slug === model.slug && index === level),
         target: plot.querySelector(`.cost-point.m-${model.slug}[data-level="${data.levels[level]}"]`) };
     }));
     pointCache.set(plot, points);
@@ -393,30 +399,99 @@
     }
   }
 
-  function costFrontier(plot, metric, allPoints, points) {
-    plot.querySelectorAll(".frontier").forEach(node => { node.style.display = "none"; });
-    plot.querySelector(".filtered-frontier")?.remove();
-    const winners = new Map(points.map(point => [point, points.filter(other =>
-      other.cost <= point.cost && other.score >= point.score && (other.cost < point.cost || other.score > point.score))]));
-    for (const point of allPoints) {
-      const beaten = winners.get(point) || [];
-      point.marker.style.opacity = beaten.length ? ".22" : "1";
-      point.target.querySelectorAll(".beaten").forEach(node => node.remove());
-      const cheapest = new Map([...beaten].sort((first, second) => second.cost - first.cost).map(winner => [winner.model, winner]));
-      for (const winner of cheapest.values()) {
+  function beats(winner, loser) {
+    return winner.cost <= loser.cost && winner.score >= loser.score
+      && (winner.cost < loser.cost || winner.score > loser.score);
+  }
+
+  function describeCostPoint(point, metric) {
+    return `${point.model.name} ${data.levels[point.level]}: ${point.score.toFixed(metric.decimals)} at ${formatCost(point.cost)}`;
+  }
+
+  function positionCostTip(target, event, anchors = [target]) {
+    const tip = target.querySelector(".tip");
+    const { width, height } = tip.getBoundingClientRect();
+    const bounds = anchors.map(anchor => anchor.getBoundingClientRect());
+    const below = Math.max(...bounds.map(box => box.bottom)) + 8;
+    const above = Math.min(...bounds.map(box => box.top)) - height - 8;
+    const top = below + height + 12 <= innerHeight ? below : above;
+    tip.style.left = `${clamp(event.clientX + 12, 12, document.documentElement.clientWidth - width - 12)}px`;
+    tip.style.top = `${clamp(top, 12, innerHeight - height - 12)}px`;
+  }
+
+  document.addEventListener("pointerover", event => {
+    const target = event.target.closest(".cost-point");
+    if (target) positionCostTip(target, event);
+  });
+
+  function drawDominance(svg, metric, points, arrowId) {
+    svg.querySelector(".dominance-links")?.remove();
+    svg.parentElement.querySelector(":scope > .dominance-hit-layer")?.remove();
+    const unbeaten = points.filter(point => !points.some(other => beats(other, point)));
+    const beaten = points.filter(point => !unbeaten.includes(point));
+    for (const point of points) {
+      const dominated = beaten.includes(point);
+      const color = dominated ? "var(--ink-3)" : `var(--${point.model.color})`;
+      point.marker.classList.add("cost-marker");
+      point.marker.classList.remove("highlighted");
+      point.marker.classList.toggle("dominated", dominated);
+      point.marker.style.transformOrigin = `${point.x}px ${point.y}px`;
+      point.symbol.style.fill = point.estimated ? "var(--surface)" : color;
+      point.symbol.style.stroke = point.estimated ? color : "none";
+    }
+    if (!beaten.length) return;
+    const links = element(svg, "g", { class: "dominance-links" });
+    points[0].marker.before(links);
+    const hits = element(svg.parentElement, "svg", { class: "dominance-hit-layer", viewBox: svg.getAttribute("viewBox"),
+      "aria-hidden": "true" });
+    const arrow = element(element(links, "defs", {}), "marker", { id: arrowId, viewBox: "0 0 10 10", refX: "9", refY: "5",
+      markerWidth: "5", markerHeight: "5", orient: "auto", markerUnits: "userSpaceOnUse" });
+    element(arrow, "path", { d: "M0,0 L10,5 L0,10 Z", fill: "var(--ink-3)" });
+
+    for (const loser of beaten) {
+      // These SVG coordinates already include the logarithmic cost scale and the layout's aspect ratio.
+      const distance = point => (point.x - loser.x) ** 2 + (point.y - loser.y) ** 2;
+      const winner = unbeaten.filter(point => beats(point, loser))
+        .reduce((nearest, point) => distance(point) < distance(nearest) ? point : nearest);
+      const angle = Math.atan2(winner.y - loser.y, winner.x - loser.x);
+      const limit = Math.sqrt(distance(winner)) / 3;
+      const inset = (point, direction) => {
+        const offset = direction * Math.min(point.radius + 2, limit);
+        return `${point.x + Math.cos(angle) * offset},${point.y + Math.sin(angle) * offset}`;
+      };
+      const path = `M${inset(loser, 1)} L${inset(winner, -1)}`;
+      const winnerDescription = describeCostPoint(winner, metric);
+      const description = `${winnerDescription} beats ${describeCostPoint(loser, metric)}`;
+      const relation = { "data-loser-model": loser.model.slug, "data-loser-level": data.levels[loser.level],
+        "data-winner-model": winner.model.slug, "data-winner-level": data.levels[winner.level] };
+      const line = element(links, "path", { class: "dominance-link", d: path, "marker-end": `url(#${arrowId})`,
+        ...relation, role: "img", "aria-label": description });
+      const hit = element(hits, "path", { class: "dominance-hit", d: path, ...relation });
+      if (loser.target) {
         const note = document.createElement("span");
         note.className = "beaten";
-        const price = winner.target.querySelector(".cost").textContent.split(" · ")[0];
-        note.textContent = `beaten by ${winner.model.name} ${data.levels[winner.level]}: ${winner.score.toFixed(metric.decimals)} at ${price}`;
-        point.target.querySelector(".tip").append(note);
+        note.textContent = `Beaten by ${winnerDescription}`;
+        loser.target.querySelector(".tip").append(note);
+      } else {
+        element(hit, "title", {}).textContent = description;
       }
+      const highlight = (active, event) => {
+        for (const node of [line, loser.marker, winner.marker]) node.classList.toggle("highlighted", active);
+        if (!loser.target) return;
+        loser.target.classList.toggle("dominance-hover", active);
+        if (active) positionCostTip(loser.target, event, [loser.marker, winner.marker]);
+      };
+      hit.addEventListener("pointerenter", event => highlight(true, event));
+      hit.addEventListener("pointerleave", event => highlight(false, event));
     }
-    const frontier = [...new Map(points.filter(point => !winners.get(point).length)
-      .sort((first, second) => first.cost - second.cost).map(point => [`${point.cost}:${point.score}`, point])).values()];
-    const svg = plot.querySelector("svg");
-    const line = element(svg, "polyline", { class: "filtered-frontier", points: frontier.map(point => `${point.x},${point.y}`).join(" ") },
-      { stroke: "var(--ink-2)", strokeWidth: "1.5", opacity: ".6", fill: "none", pointerEvents: "none" });
-    svg.querySelector(".series").before(line);
+  }
+
+  function updateCostDominance(plot, metric, allPoints, points) {
+    for (const point of allPoints) {
+      point.target.classList.remove("dominance-hover");
+      point.target.querySelector(".beaten")?.remove();
+    }
+    drawDominance(plot.querySelector("svg.chart"), metric, points, `dominance-chart-${plot.dataset.metric}`);
   }
 
   function applyFilters() {
@@ -441,7 +516,7 @@
       plot.querySelectorAll(".start, .end, .name, .leader, .meeting, .meeting-line").forEach(node => {
         node.style.display = partial ? "none" : "";
       });
-      if (plot.dataset.mode === "cost") costFrontier(plot, metric, allPoints, points);
+      if (plot.dataset.mode === "cost") updateCostDominance(plot, metric, allPoints, points);
       if (partial && points.length) filteredLabels(plot, metric, points);
     }
   }
