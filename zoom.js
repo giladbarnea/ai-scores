@@ -53,11 +53,12 @@
              width: box.width * width / 100, height: box.height * height / 100 };
   }
 
-  function toData(metric, axes, clientX, clientY) {
-    const [xLow, xHigh] = data.xLimits;
+  function toData(metric, plot, axes, clientX, clientY) {
+    const [xLow, xHigh] = plot.dataset.xLimits.split(",").map(Number);
     const [yLow, yHigh] = metric.yRange;
+    const fraction = clamp((clientX - axes.x) / axes.width, 0, 1);
     return {
-      level: xLow + clamp((clientX - axes.x) / axes.width, 0, 1) * (xHigh - xLow),
+      x: plot.dataset.mode === "cost" ? xLow * (xHigh / xLow) ** fraction : xLow + fraction * (xHigh - xLow),
       score: yHigh - clamp((clientY - axes.y) / axes.height, 0, 1) * (yHigh - yLow),
     };
   }
@@ -93,7 +94,7 @@
   }
 
   document.addEventListener("pointerdown", event => {
-    const plot = event.target.closest(".plot.effort[data-metric]");
+    const plot = event.target.closest(".plot[data-metric]");
     if (!plot || !event.isPrimary) return;
     if (event.pointerType !== "mouse") return pressAndHold(plot, event);
     if (event.button !== 0) return;
@@ -134,29 +135,32 @@
     if (tooSmall) return;
     const metric = data.metrics[finished.plot.dataset.metric];
     const axes = axesBox(finished.plot);
-    const topLeft = toData(metric, axes, Math.min(finished.startX, finished.endX), Math.min(finished.startY, finished.endY));
-    const bottomRight = toData(metric, axes, Math.max(finished.startX, finished.endX), Math.max(finished.startY, finished.endY));
-    const points = selectedPoints(metric, topLeft, bottomRight);
+    const topLeft = toData(metric, finished.plot, axes, Math.min(finished.startX, finished.endX), Math.min(finished.startY, finished.endY));
+    const bottomRight = toData(metric, finished.plot, axes, Math.max(finished.startX, finished.endX), Math.max(finished.startY, finished.endY));
+    const mode = finished.plot.dataset.mode;
+    const points = selectedPoints(metric, mode, topLeft, bottomRight);
     if (!points.length) return;
-    shown = { metric, points };
+    shown = { metric, points, mode };
     dialog.showModal();
     dialog.focus();  // the close button would otherwise take focus and show its ring
     render();
   });
 
-  function selectedPoints(metric, topLeft, bottomRight) {
+  function selectedPoints(metric, mode, topLeft, bottomRight) {
     const visible = data.models.filter(model =>
       model.slug in metric.scores && document.getElementById(`show-${model.slug}`).checked);
     return visible.flatMap(model => metric.scores[model.slug]
-      .map((score, level) => ({ model, level, score }))
+      .map((score, level) => ({ model, level, score, cost: metric.costs[model.slug]?.[level] }))
       .filter(point => point.score !== null && levelIsShown(data.levels[point.level])
-        && point.level >= topLeft.level && point.level <= bottomRight.level
+        && (mode !== "cost" || Number.isFinite(point.cost))
+        && (mode === "cost" ? point.cost : point.level) >= topLeft.x
+        && (mode === "cost" ? point.cost : point.level) <= bottomRight.x
         && point.score <= topLeft.score && point.score >= bottomRight.score));
   }
 
   // Round tick values that cover the scores with a little headroom, about five steps.
-  function niceTicks(low, high) {
-    const padding = Math.max((high - low) * 0.12, Math.abs(high) * 0.01, 0.5);
+  function niceTicks(low, high, minimumPadding = 0.5) {
+    const padding = Math.max((high - low) * 0.12, Math.abs(high) * 0.01, minimumPadding);
     const paddedLow = low - padding;
     const paddedHigh = high + padding;
     const rawStep = (paddedHigh - paddedLow) / 5;
@@ -194,8 +198,13 @@
     return node;
   }
 
+  function formatCost(value) {
+    return value >= 1000 ? `$${Number((value / 1000).toPrecision(3))}k` : `$${Number(value.toPrecision(3))}`;
+  }
+
   function render() {
-    const { metric, points } = shown;
+    const { metric, points, mode } = shown;
+    const costMode = mode === "cost";
     const levels = points.map(point => point.level);
     const firstLevel = Math.min(...levels);
     const lastLevel = Math.max(...levels);
@@ -203,11 +212,14 @@
     const ticks = niceTicks(Math.min(...scores), Math.max(...scores));
     const models = data.models.filter(model => points.some(point => point.model === model));
     const format = score => score.toFixed(metric.decimals);
+    const costs = points.map(point => point.cost);
+    const costTicks = costMode ? niceTicks(Math.log10(Math.min(...costs)), Math.log10(Math.max(...costs)), 0.02) : null;
 
     dialog.querySelector("h3").textContent = metric.name;
     dialog.querySelector(".zoom-unit").textContent = metric.unit;
-    dialog.querySelector(".zoom-range").textContent =
-      `${data.levels[firstLevel]} to ${data.levels[lastLevel]} · scores ${format(Math.min(...scores))} to ${format(Math.max(...scores))}`;
+    const range = costMode ? `${formatCost(Math.min(...costs))} to ${formatCost(Math.max(...costs))} · ${metric.costUnit}`
+      : `${data.levels[firstLevel]} to ${data.levels[lastLevel]}`;
+    dialog.querySelector(".zoom-range").textContent = `${range} · scores ${format(Math.min(...scores))} to ${format(Math.max(...scores))}`;
     dialog.querySelector(".zoom-legend").replaceChildren(...models.map(model => {
       const key = document.createElement("span");
       key.style.setProperty("--series", `var(--${model.color})`);
@@ -221,7 +233,9 @@
     const svg = element(plotHost, "svg", { viewBox: `0 0 ${width} ${height}` });
     const compact = width < COMPACT_WIDTH;
     const margin = compact ? COMPACT_MARGIN : MARGIN;
-    const x = level => margin.left + (level - firstLevel + 0.5) / (lastLevel - firstLevel + 1) * (width - margin.left - margin.right);
+    const x = value => margin.left + (costMode ? (Math.log10(value) - costTicks.low) / (costTicks.high - costTicks.low)
+      : (value - firstLevel + 0.5) / (lastLevel - firstLevel + 1)) * (width - margin.left - margin.right);
+    const pointX = point => x(costMode ? point.cost : point.level);
     const y = score => margin.top + (ticks.high - score) / (ticks.high - ticks.low) * (height - margin.top - margin.bottom);
     const text = { fontFamily: "inherit", fontSize: compact ? "13px" : "15px" };
 
@@ -231,28 +245,33 @@
       element(svg, "text", { x: margin.left - 12, y: y(value), "text-anchor": "end", "dominant-baseline": "middle" },
         { ...text, fill: "var(--ink-3)" }).textContent = value.toFixed(ticks.decimals);
     }
-    element(svg, "line", { x1: x(firstLevel - 0.35), x2: x(lastLevel + 0.35), y1: y(ticks.low), y2: y(ticks.low) },
+    element(svg, "line", { x1: costMode ? margin.left : x(firstLevel - 0.35),
+      x2: costMode ? width - margin.right : x(lastLevel + 0.35), y1: y(ticks.low), y2: y(ticks.low) },
       { stroke: "var(--baseline)", strokeWidth: "1" });
-    for (let level = firstLevel; level <= lastLevel; level += 1) {
-      element(svg, "text", { x: x(level), y: height - margin.bottom + (compact ? 22 : 28), "text-anchor": "middle" },
-        { ...text, fill: "var(--ink-3)" }).textContent = data.levels[level];
+    const horizontalTicks = costMode ? costTicks.values : Array.from({ length: lastLevel - firstLevel + 1 }, (_, index) => firstLevel + index);
+    for (const value of horizontalTicks) {
+      element(svg, "text", { x: x(costMode ? 10 ** value : value), y: height - margin.bottom + (compact ? 22 : 28), "text-anchor": "middle" },
+        { ...text, fill: "var(--ink-3)" }).textContent = costMode ? formatCost(10 ** value) : data.levels[value];
     }
 
     for (const model of models) {
       const own = points.filter(point => point.model === model);
       for (const [from, to] of own.slice(0, -1).map((point, index) => [point, own[index + 1]])) {
         if (to.level !== from.level + 1) continue;
-        element(svg, "line", { x1: x(from.level), y1: y(from.score), x2: x(to.level), y2: y(to.score) },
+        element(svg, "line", { x1: pointX(from), y1: y(from.score), x2: pointX(to), y2: y(to.score) },
           { stroke: `var(--${model.color})`, strokeWidth: "3", strokeLinecap: "round" });
       }
     }
     for (const point of points) {
       const estimated = metric.estimated.some(([slug, level]) => slug === point.model.slug && level === point.level);
-      element(svg, "circle", { cx: x(point.level), cy: y(point.score), r: 6.5 }, {
+      const marker = element(svg, "circle", { cx: pointX(point), cy: y(point.score), r: 6.5,
+        "data-model": point.model.slug, "data-level": data.levels[point.level] }, {
         fill: estimated ? "var(--surface)" : `var(--${point.model.color})`,
         stroke: estimated ? `var(--${point.model.color})` : "var(--surface)",
         strokeWidth: "2",
       });
+      if (costMode) element(marker, "title", {}).textContent =
+        `${point.model.name} ${data.levels[point.level]}: ${format(point.score)} at ${formatCost(point.cost)} · ${metric.costUnit}`;
     }
 
     // Each level's labels sit right of their points, spread apart vertically; outside compact mode each model's last
@@ -261,18 +280,20 @@
       const column = points.filter(point => point.level === level).sort((a, b) => y(a.score) - y(b.score));
       const labelYs = spread(column.map(point => y(point.score)), LABEL_GAP_PIXELS);
       column.forEach((point, index) => {
-        const pointX = x(point.level);
+        const labelX = pointX(point);
         const pointY = y(point.score);
         const labelY = labelYs[index];
         if (Math.abs(labelY - pointY) > 0.5) {
-          element(svg, "line", { x1: pointX + 6, y1: pointY, x2: pointX + 14, y2: labelY },
+          element(svg, "line", { x1: labelX + 6, y1: pointY, x2: labelX + 14, y2: labelY },
             { stroke: "var(--baseline)", strokeWidth: "1" });
         }
-        const label = element(svg, "text", { x: pointX + 16, y: labelY, "dominant-baseline": "middle" }, {
+        const label = element(svg, "text", { x: labelX + 16, y: labelY, "dominant-baseline": "middle" }, {
           ...text, fontWeight: "600", fill: "var(--ink-1)",
           stroke: "var(--surface)", strokeWidth: "4px", paintOrder: "stroke", strokeLinejoin: "round",
         });
         label.textContent = format(point.score);
+        if (costMode) element(label, "tspan", { dx: "4" }, { ...text, fontSize: "12px", fontWeight: "400", fill: "var(--ink-3)" })
+          .textContent = data.levels[point.level];
         const isLast = !points.some(other => other.model === point.model && other.level > point.level);
         if (isLast && !compact) {
           const name = element(label, "tspan", { dx: "8" }, {
@@ -305,7 +326,7 @@
     const svg = plot.querySelector("svg");
     const group = element(svg, "g", { class: "filtered-labels" });
     const ends = data.models.map(model => points.filter(point => point.model === model).at(-1)).filter(Boolean);
-    if (!plot.dataset.axes) return filteredCostLabels(svg, group, metric, ends);
+    if (plot.dataset.mode === "cost") return filteredCostLabels(svg, group, metric, ends);
     const scoreTemplate = svg.querySelector(".end text");
     const nameTemplate = svg.querySelector(".name text");
     const labelX = Number(scoreTemplate.getAttribute("x"));
@@ -420,7 +441,7 @@
       plot.querySelectorAll(".start, .end, .name, .leader, .meeting, .meeting-line").forEach(node => {
         node.style.display = partial ? "none" : "";
       });
-      if (!plot.dataset.axes) costFrontier(plot, metric, allPoints, points);
+      if (plot.dataset.mode === "cost") costFrontier(plot, metric, allPoints, points);
       if (partial && points.length) filteredLabels(plot, metric, points);
     }
   }

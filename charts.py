@@ -1423,14 +1423,15 @@ def plot_html(metric: Metric, layout: Layout, mode: Mode) -> str:
         draw_cost_panel(axes, metric)
         hover = "".join(cost_point_html(axes, metric, model, index, cost, score) for model in metric.models
                         for index, cost, score in cost_points(metric, model))
-        attributes = f' data-metric="{slugify(metric.name)}"'
     else:
         draw_panel(axes, metric)
         hover = "".join(level_column_html(axes, metric, index) for index in range(len(EFFORT_LEVELS))
                         if any(metric.scores[model][index] is not None for model in metric.models))
-        box = axes.get_position()
-        axes_percent = ",".join(f"{100 * value:.3f}" for value in (box.x0, 1 - box.y1, box.width, box.height))
-        attributes = f' data-metric="{slugify(metric.name)}" data-axes="{axes_percent}"'
+    box = axes.get_position()
+    axes_percent = ",".join(f"{100 * value:.3f}" for value in (box.x0, 1 - box.y1, box.width, box.height))
+    x_limits = ",".join(f"{value:.12g}" for value in axes.get_xlim())
+    attributes = (f' data-metric="{slugify(metric.name)}" data-mode="{mode}" '
+                  f'data-axes="{axes_percent}" data-x-limits="{x_limits}"')
     svg = io.StringIO()
     figure.savefig(svg, format="svg", metadata={"Date": None})
     plt.close(figure)
@@ -1791,6 +1792,7 @@ def chart_data() -> dict[str, object]:
             "scores": {model.slug: metric.scores[model] for model in metric.models},
             "estimated": [[model.slug, EFFORT_LEVELS.index(level)] for model, level in metric.estimated],
             "costs": {model.slug: costs for model, costs in (metric.costs or {}).items()},
+            "costUnit": metric.cost_unit,
         } for category, metrics in SECTIONS
           for metric in [*metrics, *(reported_cost_metric(reported) for reported in REPORTED.get(category, [])
                                       if reported.costs)]},
