@@ -113,7 +113,7 @@ class Metric:
         return COST_UNITS.get(self.name, DEFAULT_COST_UNIT)
 
 
-INTELLIGENCE = [
+CURVES = [
     Metric("AA Intelligence Index", "v5.0.1 · Artificial Analysis", {
         GPT_6_ASTRA: [43.3, 51.6, 54.8, 55.3, 56.9],
         GPT_6_1_SOL: [34.8, 46.3, 50.3, 52.5, 54.6],
@@ -318,9 +318,6 @@ INTELLIGENCE = [
         CLAUDE_OPUS_5_5: [24.2, 29.5, 33.0, 35.8, 42.5],
         GEMINI_4_CARBON: [31.5, 53.0, 53.9, None, None],
     }, (20, 60), 10),
-]
-
-CODING = [
     Metric("AA Index coding category", "FrontierCode-AA 2.0 at 15%, Terminal-Bench 4.0 at 10% · derived from AA", {
         GPT_6_ASTRA: [32.5, 41.7, 45.7, 48.7, 49.1],
         GPT_6_1_SOL: [24.4, 39.2, 42.6, 44.7, 46.8],
@@ -413,8 +410,6 @@ CODING = [
     }, (0, 60), 10),
 ]
 
-SECTIONS = [("Intelligence", INTELLIGENCE), ("Coding", CODING)]
-
 
 @dataclass(frozen=True)
 class ReportedMetric:
@@ -444,7 +439,7 @@ class ReportedMetric:
 
 
 # One score per model, at the effort level its reporter ran; sources in sources/*.json.
-REPORTED = {"Intelligence": [
+REPORTED = [
     ReportedMetric("Vals Index", "% · v2.2 · Vals AI, one harness for all models", {
         GPT_6_ASTRA: (65.02, "max"),
         GPT_6_1_SOL: (63.94, "max"),
@@ -489,7 +484,6 @@ REPORTED = {"Intelligence": [
         CLAUDE_SONNET_5_5: (59.6, 'max'),
         GEMINI_4_CARBON: (64.0, 'high'),
     }),
-], "Coding": [
     ReportedMetric("Vibe Code Bench v1.1", "% · Vals AI, OpenHands harness for all models", {
         GPT_6_ASTRA: (89.59, "max"),
         GPT_6_1_SOL: (88.93, "max"),
@@ -542,7 +536,40 @@ REPORTED = {"Intelligence": [
         CLAUDE_OPUS_5_5: (1202.4312, 'not stated'),
         CLAUDE_SONNET_5_5: (1203.6913, 'not stated'),
     }, x_max=1500, tick_step=250, decimals=0),
-]}
+]
+
+# Each chart appears once, under the kind of task it asks the model to do.
+SECTION_CHARTS: dict[str, list[str]] = {
+    "Aggregates": ["AA Intelligence Index", "Vals Index"],
+    "Intelligence & knowledge": ["HLE-Diamond", "ARC-AGI-2", "AA-Omniscience Index", "AA-LCR", "Agents' Last Exam v1.1",
+                                 "LifeVal"],
+    "Professional work": ["GDPval-AA", "GDPval v2 (Internal)", "AA-Briefcase", "MKA", "GDP.pdf", "AA-AnalystAgent",
+                          "Harvey LAB-AA v1.1", "tau3-Banking", "EnterpriseOps-Gym-AA", "AutomationBench-AA",
+                          "AutomationBench 1.0.6"],
+    "Science & engineering": ["CritPt v2", "GPQA Diamond (AA)", "GPQA Diamond (OpenAI)", "Terminal-Bench Science 0.1",
+                              "SciCode", "Vals Science Index v1", "BenchCAD 2.1 Core"],
+    "Health": ["MLCR-AA", "HealthBench Professional (AA)", "HealthBench Professional (OpenAI)", "MentalHealthBench"],
+    "Coding & security": ["AA Index coding category", "Terminal-Bench 4.0", "FrontierCode-AA 2.0", "FrontierCode 2.0",
+                          "DeepSWE v1.1", "CursorBench 4.0", "Vibe Code Bench v1.1", "SWE-Bench Pro", "ITBench-AA",
+                          "SecureSWE", "PatchBench", "ExploitBench – Internal Port (June–August 2026)"],
+    "Machine-learning research": ["Internal Research Debugging", "KernelGen 1P", "NanoGPT v5", "PostTrainBench Lite",
+                                  "MLE-Bench Revised"],
+    "Multimodal tasks": ["MMMU-Pro", "VIALS-AA", "AA-3D"],
+}
+
+
+def sections_from(chart_names: dict[str, list[str]]) -> list[tuple[str, list[Metric | ReportedMetric]]]:
+    """Resolve section chart names to charts, raising ValueError unless every chart is placed exactly once."""
+    by_name = {chart.name: chart for chart in [*CURVES, *REPORTED]}
+    placed = sorted(name for names in chart_names.values() for name in names)
+    if placed != sorted(by_name) or len(by_name) != len(CURVES) + len(REPORTED):
+        raise ValueError(f"SECTION_CHARTS must place every chart exactly once. "
+                         f"Missing: {sorted(set(by_name) - set(placed))}. Extra or repeated: "
+                         f"{sorted(name for name in placed if name not in by_name or placed.count(name) > 1)}")
+    return [(section, [by_name[name] for name in names]) for section, names in chart_names.items()]
+
+
+SECTIONS = sections_from(SECTION_CHARTS)
 
 # US dollars per task of each benchmark at each effort level, from the same AA records (ARC Prize for ARC-AGI-2).
 # AA weightedCostPerTask divided by its index weight; the coding category uses the same 15:10 weights as its score.
@@ -804,25 +831,36 @@ TAGLINE = "Every published score, by thinking level and price."
 FILTER_LEVELS = [*EFFORT_LEVELS, "not-stated"]
 
 FOOTNOTES = {
-    "Intelligence": "Scores checked on 18 November 2026. Every published effort level is shown; gaps mean no score, not zero. "
-                    "The Claude models use adaptive reasoning; Carbon stops at high, Hydrogen at xhigh. "
-                    "ARC Prize has no Sonnet max run. GDPval-AA and AA-Briefcase are relative Elo ratings, refreshed together. "
-                    "AA Intelligence Index is v5.0.1; its costs are for the whole index, while other cost axes are US dollars per task. "
-                    "AA publishes weighted task costs: we divide by its benchmark weights to recover per-task costs. "
-                    "Carbon's AA prices use Google's introductory US$2/US$10 per million tokens; Hydrogen is US$1.50/US$7.50. "
-                    "Missing costs do not remove scores: the effort chart remains available. OpenAI launch comparisons are labeled "
-                    "separately from AA runs. On Agents' Last Exam, Fable excludes nine fallback tasks, so it is not a perfectly "
-                    "matched-task comparison. HealthBench Professional replaces the older HealthBench; AA and OpenAI runs stay separate. "
-                    "System-card results without a stated effort are bars marked “not stated”, never assigned to max.",
-    "Coding": "FrontierCode 2.0 replaces the 1.1 Main chart. FrontierCode-AA 2.0 uses AA's harness; the other 2.0 chart "
-              "is OpenAI's published comparison and must not be treated as the same run. Neither GPT-6.2 model has a published "
-              "DeepSWE, SciCode or SWE-Bench Pro score in the checked sources. DeepSWE's GPT points are OpenAI's. "
-              "SWE-Bench Pro bars are each lab's own harness, so compare cautiously. "
-              "The coding category uses FrontierCode-AA and Terminal-Bench 4.0 with 15:10 weights, including their costs. "
-              "SecureSWE, PatchBench and ExploitBench are internal cyber evaluations with safeguards disabled, not ordinary "
-              "deployment results. NanoGPT v5 omits older Astra's v4 score rather than mixing versions. AA-3D is human-preference "
-              "Elo, not percent accuracy; its reported effort is not specified. No benchmark is omitted just for sparse coverage. "
-              "Cost comparisons use the visible point estimates. They do not account for statistical uncertainty or differences in harnesses.",
+    "Aggregates": "Scores checked on 18 November 2026. Every published effort level is shown; gaps mean no score, not zero. "
+                  "The Claude models use adaptive reasoning; Carbon stops at high, Hydrogen at xhigh. "
+                  "AA Intelligence Index is v5.0.1; its costs are for the whole index, while other cost axes are US dollars per task. "
+                  "AA publishes weighted task costs: we divide by its benchmark weights to recover per-task costs. "
+                  "Carbon's AA prices use Google's introductory US$2/US$10 per million tokens; Hydrogen is US$1.50/US$7.50. "
+                  "Missing costs do not remove scores: the effort chart remains available. "
+                  "System-card results without a stated effort are bars marked \u201cnot stated\u201d, never assigned to max. "
+                  "No benchmark is omitted just for sparse coverage. Cost comparisons use the visible point estimates. "
+                  "They do not account for statistical uncertainty or differences in harnesses.",
+    "Intelligence & knowledge": "ARC Prize has no Sonnet max run. Agents' Last Exam and LifeVal are OpenAI launch comparisons, "
+                                "labeled separately from AA runs. On Agents' Last Exam, Fable excludes nine fallback tasks, "
+                                "so it is not a perfectly matched-task comparison.",
+    "Professional work": "GDPval-AA and AA-Briefcase are relative Elo ratings, refreshed together. "
+                         "AutomationBench-AA and MKA are AA's runs. AutomationBench 1.0.6 and GDPval v2 are OpenAI launch "
+                         "comparisons, so they are not the same runs as AA's.",
+    "Science & engineering": "GPQA Diamond from AA and from OpenAI's system card stay separate charts. "
+                             "Vals Science Index and BenchCAD are OpenAI launch comparisons. "
+                             "Neither GPT-6.2 model has a published SciCode score in the checked sources.",
+    "Health": "HealthBench Professional replaces the older HealthBench; AA and OpenAI runs stay separate. "
+              "OpenAI's health results state no effort, except MentalHealthBench, which says max.",
+    "Coding & security": "FrontierCode 2.0 replaces the 1.1 Main chart. FrontierCode-AA 2.0 uses AA's harness; the other 2.0 chart "
+                         "is OpenAI's published comparison and must not be treated as the same run. Neither GPT-6.2 model has a "
+                         "published DeepSWE or SWE-Bench Pro score in the checked sources. DeepSWE's GPT points are OpenAI's. "
+                         "SWE-Bench Pro bars are each lab's own harness, so compare cautiously. "
+                         "The coding category uses FrontierCode-AA and Terminal-Bench 4.0 with 15:10 weights, including their costs. "
+                         "SecureSWE, PatchBench and ExploitBench are internal cyber evaluations with safeguards disabled, not "
+                         "ordinary deployment results.",
+    "Machine-learning research": "These are OpenAI system-card results with no stated effort. "
+                                 "NanoGPT v5 omits older Astra's v4 score rather than mixing versions.",
+    "Multimodal tasks": "AA-3D is human-preference Elo, not percent accuracy; its reported effort is not specified.",
 }
 
 LINE_WIDTH = 1.8
@@ -1227,7 +1265,7 @@ def draw_panel(axes: Axes, metric: Metric) -> None:
 def cost_points(metric: Metric, model: Model) -> list[tuple[int, float, float]]:
     """The (level, cost, score) points where the model has both a score and a cost.
 
-    >>> cost_points(INTELLIGENCE[0], GPT_6_1_SOL)[0]
+    >>> cost_points(CURVES[0], GPT_6_1_SOL)[0]
     (0, 238.0, 34.8)
     """
     costs = metric.costs.get(model, [None] * len(EFFORT_LEVELS))
@@ -1448,11 +1486,18 @@ def bar_panel_html(metric: ReportedMetric) -> str:
             f'{plots}</figure>')
 
 
+def sectioned[Chart: (Metric, ReportedMetric)](kind: type[Chart]) -> Iterator[tuple[str, Chart]]:
+    """Each chart of one kind with its section name, in page order."""
+    for category, charts in SECTIONS:
+        for chart in charts:
+            if isinstance(chart, kind):
+                yield category, chart
+
+
 def table_rows() -> Iterator[tuple[str, Metric, Model]]:
-    for category, metrics in SECTIONS:
-        for metric in metrics:
-            for model in metric.models:
-                yield category, metric, model
+    for category, metric in sectioned(Metric):
+        for model in metric.models:
+            yield category, metric, model
 
 
 def table_html() -> str:
@@ -1473,7 +1518,7 @@ def table_html() -> str:
                      f'<td class="model">{html.escape(model.name)}</td><td>{score:.{metric.decimals}f}</td>'
                      f'<td>{html.escape(effort)}</td><td>{html.escape(metric.unit_and_source)}</td>'
                      f'<td>{cost_label(next(cost for cost in metric.costs[model] if cost is not None)) if metric.costs and model in metric.costs else ""}</td></tr>'
-                     for metrics in REPORTED.values() for metric in metrics
+                     for metric in REPORTED
                      for model, (score, effort) in metric.scores.items()]
     return (f'<table><thead><tr><th>Metric</th><th>Model</th>{head}</tr></thead><tbody>{"".join(rows)}</tbody></table>'
             f'<h3>Reported benchmarks and rankings</h3><table><thead><tr><th>Metric</th><th>Model</th>'
@@ -1748,10 +1793,9 @@ def controls_html() -> str:
 
 def page_html() -> str:
     sections = []
-    for name, metrics in SECTIONS:
-        panels = "".join(panel_html(metric) for metric in metrics) \
-            + "".join(bar_panel_html(metric) for metric in REPORTED.get(name, []))
-        sections.append(f'<section><h2>{name}</h2><div class="grid">{panels}</div>'
+    for name, section_charts in SECTIONS:
+        panels = "".join(panel_html(chart) if isinstance(chart, Metric) else bar_panel_html(chart) for chart in section_charts)
+        sections.append(f'<section><h2>{html.escape(name)}</h2><div class="grid">{panels}</div>'
                         f'<p class="footnote">{html.escape(FOOTNOTES[name])}</p></section>')
     return PAGE_TEMPLATE.substitute(
         title=TITLE,
@@ -1786,9 +1830,7 @@ def chart_data() -> dict[str, object]:
             "estimated": [[model.slug, EFFORT_LEVELS.index(level)] for model, level in metric.estimated],
             "costs": {model.slug: costs for model, costs in (metric.costs or {}).items()},
             "costUnit": metric.cost_unit,
-        } for category, metrics in SECTIONS
-          for metric in [*metrics, *(reported_cost_metric(reported) for reported in REPORTED.get(category, [])
-                                      if reported.costs)]},
+        } for metric in [*CURVES, *(reported_cost_metric(reported) for reported in REPORTED if reported.costs)]},
     }
 
 
@@ -1803,14 +1845,13 @@ def write_table(path: Path) -> None:
             if metric.costs and model in metric.costs:
                 writer.writerow([category.lower(), metric.name, metric.cost_unit, model.name, "cost_usd",
                                  *("" if cost is None else cost for cost in metric.costs[model]), "", ""])
-        for category, metrics in REPORTED.items():
-            for metric in metrics:
-                for model, (score, effort) in metric.scores.items():
-                    writer.writerow([category.lower(), metric.name, metric.unit_and_source, model.name, "score",
-                                     *(score if effort == level else "" for level in EFFORT_LEVELS), score, effort])
-                    if metric.costs and model in metric.costs:
-                        writer.writerow([category.lower(), metric.name, metric.cost_unit, model.name, "cost_usd",
-                                         *("" if cost is None else cost for cost in metric.costs[model]), "", effort])
+        for category, metric in sectioned(ReportedMetric):
+            for model, (score, effort) in metric.scores.items():
+                writer.writerow([category.lower(), metric.name, metric.unit_and_source, model.name, "score",
+                                 *(score if effort == level else "" for level in EFFORT_LEVELS), score, effort])
+                if metric.costs and model in metric.costs:
+                    writer.writerow([category.lower(), metric.name, metric.cost_unit, model.name, "cost_usd",
+                                     *("" if cost is None else cost for cost in metric.costs[model]), "", effort])
 
 
 def main() -> None:

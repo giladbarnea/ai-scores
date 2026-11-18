@@ -1,5 +1,6 @@
 """Regression checks for sparse benchmarks, rankings and complete score exports."""
 import csv
+import html
 import json
 import re
 import tempfile
@@ -32,7 +33,7 @@ class ChartCoverageTests(unittest.TestCase):
                          "A level filter must distinguish the three actual points without inventing missing efforts")
 
     def test_dense_elo_chart_renders_with_the_full_model_name_column(self) -> None:
-        metric = next(metric for metric in charts.INTELLIGENCE if metric.name == "AA-Briefcase")
+        metric = next(metric for metric in charts.CURVES if metric.name == "AA-Briefcase")
         rendered = charts.plot_html(metric, charts.LAYOUTS[0], "effort")
         self.assertIn("1469", rendered, "A crowded nearest-score label must find a farther placement, not abort the build")
 
@@ -70,7 +71,7 @@ class ChartCoverageTests(unittest.TestCase):
                     self.assertEqual(actual.get(model), values, "Published sparse points must not be dropped")
 
     def test_reported_benchmark_prices_are_available_in_cost_view_and_csv(self) -> None:
-        metric = next(metric for metric in charts.REPORTED["Intelligence"] if metric.name == "Vals Index")
+        metric = next(metric for metric in charts.REPORTED if metric.name == "Vals Index")
         rendered = charts.bar_panel_html(metric)
         self.assertIn("cost-point", rendered, "Published Vals prices must be usable in cost view")
         with tempfile.TemporaryDirectory() as directory:
@@ -89,6 +90,39 @@ class ChartCoverageTests(unittest.TestCase):
             destination = Path(directory) / "data.csv"
             charts.write_table(destination)
             self.assertNotIn("Gemini 4 Argon", destination.read_text(), "The export must retire Argon too")
+
+    def test_page_groups_every_chart_once_by_what_its_task_asks(self) -> None:
+        page = charts.page_html()
+        sections = re.findall(r"<section><h2>(.*?)</h2>(.*?)</section>", page, flags=re.DOTALL)
+        charts_by_section = {html.unescape(heading): [html.unescape(name) for name in re.findall(r"<h3>(.*?)</h3>", body)]
+                             for heading, body in sections}
+        self.assertEqual(list(charts_by_section), ["Aggregates", "Intelligence & knowledge", "Professional work",
+                                                   "Science & engineering", "Health", "Coding & security",
+                                                   "Machine-learning research", "Multimodal tasks"])
+        placed = [name for names in charts_by_section.values() for name in names]
+        self.assertEqual(len(placed), 50, "Every chart must appear")
+        self.assertEqual(len(set(placed)), 50, "No chart may appear twice")
+        for heading, name in [("Aggregates", "Vals Index"), ("Intelligence & knowledge", "ARC-AGI-2"),
+                              ("Professional work", "AutomationBench 1.0.6"), ("Professional work", "MKA"),
+                              ("Science & engineering", "SciCode"), ("Health", "MentalHealthBench"),
+                              ("Coding & security", "ExploitBench \u2013 Internal Port (June\u2013August 2026)"),
+                              ("Machine-learning research", "MLE-Bench Revised"), ("Multimodal tasks", "AA-3D")]:
+            self.assertIn(name, charts_by_section[heading], f"{name} belongs under {heading}")
+
+    def test_a_chart_left_out_of_every_section_fails_the_build(self) -> None:
+        with self.assertRaisesRegex(ValueError, "Missing: .*AA Intelligence Index"):
+            charts.sections_from({"Only": [metric.name for metric in charts.CURVES[1:]]})
+
+    def test_csv_names_each_metric_section(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            destination = Path(directory) / "data.csv"
+            charts.write_table(destination)
+            with destination.open() as file:
+                rows = list(csv.DictReader(file))
+        categories = {row["metric"]: row["category"] for row in rows}
+        self.assertEqual(categories["SciCode"], "science & engineering")
+        self.assertEqual(categories["NanoGPT v5"], "machine-learning research")
+        self.assertEqual(len(set(categories.values())), 8)
 
     def test_csv_preserves_scores_with_an_unspecified_effort(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
