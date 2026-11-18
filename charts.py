@@ -72,13 +72,16 @@ class Model:
 
 
 GPT_6_ASTRA = Model("GPT-6 Astra", Color("series-2", "#eb6834", "#d95926"))
+GPT_6_2_ASTRA = Model("GPT-6.2 Astra", Color("series-8", "#bd3535", "#f07770"))
 CLAUDE_FABLE_5_2 = Model("Fable 5.2", Color("series-4", "#eda100", "#c98500"))
 CLAUDE_OPUS_5_5 = Model("Opus 5.5", Color("series-5", "#e87ba4", "#d55181"))
 GPT_6_1_SOL = Model("GPT-6.1 Sol", Color("series-6", "#008300", "#008300"))
+GPT_6_2_SOL = Model("GPT-6.2 Sol", Color("series-9", "#75940c", "#a5c93d"))
 CLAUDE_SONNET_5_5 = Model("Sonnet 5.5", Color("series-7", "#4a3aa7", "#9085e9"))
 GEMINI_4_ARGON = Model("Gemini 4 Argon", Color("series-3", "#1a73e8", "#5b9cf0"))
 GEMINI_4_CARBON = Model("Gemini 4 Carbon", Color("series-1", "#0e9384", "#2bb5a4"))
-MODELS = [GPT_6_ASTRA, GPT_6_1_SOL, CLAUDE_FABLE_5_2, CLAUDE_OPUS_5_5, CLAUDE_SONNET_5_5, GEMINI_4_ARGON, GEMINI_4_CARBON]
+GEMINI_4_HYDROGEN = Model("Gemini 4 Hydrogen", Color("series-10", "#725c41", "#ba9d79"))
+MODELS = [GPT_6_ASTRA, GPT_6_2_ASTRA, GPT_6_1_SOL, GPT_6_2_SOL, CLAUDE_FABLE_5_2, CLAUDE_OPUS_5_5, CLAUDE_SONNET_5_5, GEMINI_4_ARGON, GEMINI_4_CARBON, GEMINI_4_HYDROGEN]
 COLORS = [SURFACE, PAGE, TEXT_PRIMARY, TEXT_SECONDARY, TEXT_MUTED, GRIDLINE, BASELINE, BORDER,
           *(model.color for model in MODELS)]
 
@@ -118,8 +121,11 @@ INTELLIGENCE = [
         CLAUDE_FABLE_5_2: [53.9, 56.4, 61.8, 62.2, 64.6],
         CLAUDE_OPUS_5_5: [34.8, 48.2, 51.8, 57.4, 59.1],
         CLAUDE_SONNET_5_5: [25.6, 30.8, 41.5, 49.9, 54.5],
-        GEMINI_4_ARGON: [None, None, 50.4, None, None],
+        GEMINI_4_ARGON: [None, 47.6, 50.4, None, None],
         GEMINI_4_CARBON: [54.2, 58.3, 60.0, None, None],
+        GPT_6_2_ASTRA: [45.7, 57.0, 60.1, 61.6, 62.1],
+        GPT_6_2_SOL: [40.6, 52.7, 54.9, 55.7, 57.3],
+        GEMINI_4_HYDROGEN: [26.9, 41.2, 50.8, 53.9, None],
     }, (20, 70), 10),
     Metric("HLE-Diamond", "% · Humanity's Last Exam, AA's 1,000-question set · Artificial Analysis", {
         GPT_6_ASTRA: [45.1, 52.7, 59.3, 61.5, 63.8],
@@ -127,8 +133,11 @@ INTELLIGENCE = [
         CLAUDE_FABLE_5_2: [60.8, 66.3, 73.8, 75.8, 80.2],
         CLAUDE_OPUS_5_5: [41.7, 51.4, 55.6, 64.0, 67.9],
         CLAUDE_SONNET_5_5: [20.6, 23.8, 33.8, 44.1, 53.3],
-        GEMINI_4_ARGON: [None, None, 56.7, None, None],
+        GEMINI_4_ARGON: [None, 42.5, 56.7, None, None],
         GEMINI_4_CARBON: [61.9, 67.4, 69.1, None, None],
+        GPT_6_2_ASTRA: [47.7, 56.0, 65.9, 67.3, 72.2],
+        GPT_6_2_SOL: [34.5, 50.7, 58.3, 61.8, 64.0],
+        GEMINI_4_HYDROGEN: [32.2, 47.7, 54.9, 58.8, None],
     }, (10, 90), 10),
     Metric("CritPt v2", "% · hard subset · Artificial Analysis", {
         GPT_6_ASTRA: [63.0, 72.0, 71.5, 71.0, 70.5],
@@ -136,8 +145,11 @@ INTELLIGENCE = [
         CLAUDE_FABLE_5_2: [60.0, 61.5, 73.0, 73.5, 76.5],
         CLAUDE_OPUS_5_5: [36.0, 54.0, 59.5, 67.5, 68.0],
         CLAUDE_SONNET_5_5: [26.0, 33.5, 51.5, 57.5, 59.0],
-        GEMINI_4_ARGON: [None, None, 52.5, None, None],
+        GEMINI_4_ARGON: [None, 53.5, 52.5, None, None],
         GEMINI_4_CARBON: [65.0, 69.0, 69.0, None, None],
+        GPT_6_2_ASTRA: [61.0, 67.5, 71.5, 70.5, 71.5],
+        GPT_6_2_SOL: [58.0, 64.0, 61.5, 62.5, 62.5],
+        GEMINI_4_HYDROGEN: [48.0, 61.0, 61.5, 66.0, None],
     }, (20, 90), 10),
     Metric("ARC-AGI-2", "% semi-private · ARC Prize", {
         GPT_6_ASTRA: [85.4, 92.1, 92.1, 93.3, 95.0],
@@ -147,6 +159,8 @@ INTELLIGENCE = [
         CLAUDE_SONNET_5_5: [24.0, 32.8, 67.4, 83.9, None],
         GEMINI_4_ARGON: [42.1, 87.1, 91.3, None, None],
         GEMINI_4_CARBON: [49.6, 94.2, 92.1, None, None],
+        GPT_6_2_ASTRA: [91.7, 93.3, 94.6, 95.8, 95.8],
+        GPT_6_2_SOL: [57.9, 82.9, 85.8, 85.8, 85.8],
     }, (20, 100), 20),
     Metric("AA-Omniscience Index", "v1.1 · −100 to 100 · Artificial Analysis", {
         GPT_6_ASTRA: [40.3, 41.4, 44.6, 43.7, 42.4],
@@ -154,43 +168,52 @@ INTELLIGENCE = [
         CLAUDE_FABLE_5_2: [62.9, 63.5, 64.0, 64.8, 66.8],
         CLAUDE_OPUS_5_5: [39.0, 39.8, 42.4, 43.1, 48.1],
         CLAUDE_SONNET_5_5: [20.3, 18.6, 18.7, 20.6, 30.5],
-        GEMINI_4_ARGON: [None, None, 46.1, None, None],
+        GEMINI_4_ARGON: [None, 41.1, 46.1, None, None],
         GEMINI_4_CARBON: [39.2, 46.8, 53.5, None, None],
+        GPT_6_2_ASTRA: [38.7, 44.8, 46.8, 48.3, 50.0],
+        GPT_6_2_SOL: [24.8, 34.2, 38.3, 38.6, 40.4],
+        GEMINI_4_HYDROGEN: [36.1, 41.9, 43.7, 46.3, None],
     }, (10, 70), 10),
     Metric("GDPval-AA", "Elo · Artificial Analysis", {
-        GPT_6_ASTRA: [1403, 1498, 1536, 1569, 1586],
-        GPT_6_1_SOL: [1322, 1459, 1520, 1555, 1608],
+        GPT_6_ASTRA: [1404, 1501, 1538, 1572, 1587],
+        GPT_6_1_SOL: [1322, 1463, 1521, 1563, 1607],
         CLAUDE_FABLE_5_2: [1546, 1591, 1718, 1751, 1831],
-        CLAUDE_OPUS_5_5: [1240, 1593, 1714, 1835, 1866],
-        CLAUDE_SONNET_5_5: [1182, 1329, 1557, 1735, 1838],
-        GEMINI_4_ARGON: [None, None, 1633, None, None],
+        CLAUDE_OPUS_5_5: [1239, 1590, 1709, 1836, 1866],
+        CLAUDE_SONNET_5_5: [1182, 1326, 1551, 1743, 1838],
+        GEMINI_4_ARGON: [None, 1578, 1634, None, None],
         GEMINI_4_CARBON: [None, None, 1733, None, None],
     }, (1100, 1900), 200, decimals=0),
     Metric("AA-Briefcase", "Elo · long-horizon knowledge work · Artificial Analysis", {
-        GPT_6_ASTRA: [1256, 1461, 1505, 1544, 1569],
-        GPT_6_1_SOL: [1114, 1360, 1469, 1503, 1555],
-        CLAUDE_FABLE_5_2: [1563, 1622, 1677, 1738, 1785],
-        CLAUDE_OPUS_5_5: [1279, 1620, 1682, 1760, 1801],
-        CLAUDE_SONNET_5_5: [1268, 1439, 1634, 1742, 1816],
-        GEMINI_4_ARGON: [None, None, 1484, None, None],
+        GPT_6_ASTRA: [1256, 1462, 1503, 1544, 1569],
+        GPT_6_2_ASTRA: [1039, 1408, 1570, 1594, 1644],
+        GPT_6_1_SOL: [1115, 1361, 1469, 1504, 1557],
+        GPT_6_2_SOL: [1230, 1495, 1541, 1580, 1612],
+        CLAUDE_FABLE_5_2: [1563, 1622, 1677, 1737, 1785],
+        CLAUDE_OPUS_5_5: [1278, 1617, 1682, 1760, 1800],
+        CLAUDE_SONNET_5_5: [1268, 1438, 1634, 1739, 1815],
+        GEMINI_4_ARGON: [None, 1467, 1485, None, None],
         GEMINI_4_CARBON: [1567, 1602, 1611, None, None],
-    }, (1000, 1900), 200, decimals=0),
+        GEMINI_4_HYDROGEN: [947, 1296, 1497, 1568, None],
+    }, (800, 2000), 200, decimals=0),
     Metric("AutomationBench-AA", "% · Artificial Analysis", {
         GPT_6_ASTRA: [59.1, 64.6, 66.6, 67.2, 68.5],
         GPT_6_1_SOL: [52.6, 62.6, 64.5, 66.6, 64.9],
         CLAUDE_FABLE_5_2: [68.0, 68.8, 71.4, 74.2, 76.4],
         CLAUDE_OPUS_5_5: [52.9, 61.2, 63.2, 65.0, 69.5],
         CLAUDE_SONNET_5_5: [49.4, 54.9, 59.4, 65.5, 71.8],
-        GEMINI_4_ARGON: [None, None, 77.5, None, None],
+        GEMINI_4_ARGON: [None, 75.8, 77.5, None, None],
         GEMINI_4_CARBON: [63.5, 77.6, 77.8, None, None],
+        GPT_6_2_ASTRA: [68.6, 72.8, 76.0, 76.1, 77.2],
+        GPT_6_2_SOL: [63.2, 70.3, 69.9, 70.6, 71.3],
+        GEMINI_4_HYDROGEN: [60.5, 72.0, 74.4, 76.1, None],
     }, (40, 80), 10),
-    Metric("AA-LCR", "% long-context reasoning · Artificial Analysis", {
+    Metric("AA-LCR", "% · v1.1 long-context reasoning · Artificial Analysis", {
         GPT_6_ASTRA: [80.0, 79.7, 80.0, 80.0, 80.7],
         GPT_6_1_SOL: [84.0, 83.3, 82.3, 79.7, 83.0],
         CLAUDE_FABLE_5_2: [80.0, 80.0, 83.3, 82.7, 83.3],
         CLAUDE_OPUS_5_5: [80.7, 84.3, 82.7, 84.7, 84.7],
         CLAUDE_SONNET_5_5: [76.0, 76.3, 78.0, 79.7, 82.7],
-        GEMINI_4_ARGON: [None, None, 79.7, None, None],
+        GEMINI_4_ARGON: [None, 78.3, 79.7, None, None],
         GEMINI_4_CARBON: [None, None, 79.3, None, None],
     }, (70, 90), 5),
     Metric("GDP.pdf", "% all-pass · Q&A over complex PDFs · Artificial Analysis", {
@@ -199,9 +222,118 @@ INTELLIGENCE = [
         CLAUDE_FABLE_5_2: [26.8, 23.8, 21.8, 21.4, 24.2],
         CLAUDE_OPUS_5_5: [25.6, 25.6, 28.8, 26.6, 26.2],
         CLAUDE_SONNET_5_5: [16.0, 20.2, 25.2, 24.6, 25.8],
-        GEMINI_4_ARGON: [None, None, 21.8, None, None],
+        GEMINI_4_ARGON: [None, 25.6, 21.8, None, None],
         GEMINI_4_CARBON: [28.6, 29.6, 28.4, None, None],
+        GPT_6_2_ASTRA: [28.0, 28.4, 28.6, 28.0, 29.8],
+        GPT_6_2_SOL: [28.6, 29.2, 28.8, 28.4, 30.0],
+        GEMINI_4_HYDROGEN: [28.2, 32.8, 30.0, 27.6, None],
     }, (10, 35), 5),
+    Metric("AA-AnalystAgent", "% correct in all five runs · Artificial Analysis", {
+        GPT_6_ASTRA: [None, None, None, None, 51.3],
+        GPT_6_2_ASTRA: [56.3, 52.5, 61.3, 62.5, 62.5],
+        GPT_6_1_SOL: [None, None, None, None, 50.0],
+        GPT_6_2_SOL: [38.8, 50.0, 52.5, 53.8, 53.8],
+        CLAUDE_OPUS_5_5: [None, None, None, None, 56.3],
+        CLAUDE_SONNET_5_5: [None, None, None, None, 57.5],
+        GEMINI_4_ARGON: [None, None, 48.8, None, None],
+    }, (30, 70), 10),
+    Metric("Harvey LAB-AA v1.1", "% all-pass · Artificial Analysis; costs reported by OpenAI", {
+        GPT_6_ASTRA: [None, None, None, None, 8.6],
+        GPT_6_2_ASTRA: [2.2, 8.1, 13.3, 12.8, 15.0],
+        GPT_6_1_SOL: [None, None, None, None, 6.9],
+        GPT_6_2_SOL: [3.1, 5.0, 5.8, 6.1, 11.1],
+        CLAUDE_FABLE_5_2: [4.2, 6.4, 4.7, 3.9, 7.2],
+        CLAUDE_OPUS_5_5: [None, None, None, None, 4.2],
+        CLAUDE_SONNET_5_5: [None, None, None, None, 2.8],
+        GEMINI_4_ARGON: [None, None, 3.9, None, None],
+    }, (0, 20), 5),
+    Metric("MLCR-AA", "% medical long-context reasoning · Artificial Analysis", {
+        GPT_6_ASTRA: [33.9, 38.3, 32.8, 36.1, 41.7],
+        GPT_6_2_ASTRA: [30.6, 32.8, 35.6, 37.8, 39.4],
+        GPT_6_1_SOL: [26.7, 32.2, 31.7, 35.6, 38.3],
+        GPT_6_2_SOL: [32.2, 31.7, 33.9, 35.0, 37.2],
+        CLAUDE_FABLE_5_2: [None, None, None, None, 43.9],
+        CLAUDE_OPUS_5_5: [19.4, 22.2, 15.0, 25.0, 27.8],
+        CLAUDE_SONNET_5_5: [19.4, 17.8, 18.9, 20.6, 41.7],
+        GEMINI_4_ARGON: [None, None, 13.9, None, None],
+        GEMINI_4_CARBON: [None, None, 19.4, None, None],
+        GEMINI_4_HYDROGEN: [None, None, None, 21.1, None],
+    }, (0, 50), 10),
+    Metric("GPQA Diamond (AA)", "% · no tools · Artificial Analysis", {
+        GPT_6_ASTRA: [93.1, 93.9, 94.9, 96.3, 96.1],
+    }, (90, 100), 2),
+    Metric("tau3-Banking", "% · Sierra banking workflow, AA's implementation", {
+        GPT_6_ASTRA: [32.0, 35.5, 40.0, 43.1, 41.4],
+    }, (20, 50), 10),
+    Metric("MMMU-Pro", "% · visual reasoning · Artificial Analysis", {
+        GPT_6_ASTRA: [84.6, 85.1, 86.4, 86.2, 86.9],
+        GPT_6_2_ASTRA: [85.1, 86.1, 87.7, 87.9, 89.5],
+        GPT_6_1_SOL: [83.1, 83.9, 84.9, 85.1, 86.0],
+        CLAUDE_OPUS_5_5: [84.7, 85.7, 85.8, 86.6, 87.7],
+        GEMINI_4_ARGON: [None, 88.3, None, None, None],
+        GEMINI_4_CARBON: [None, 89.2, None, None, None],
+    }, (80, 95), 5),
+    Metric("HealthBench Professional (AA)", "% length-adjusted score · Artificial Analysis", {
+        GPT_6_ASTRA: [None, None, None, None, 66.0],
+        GPT_6_1_SOL: [None, None, None, None, 65.1],
+        CLAUDE_FABLE_5_2: [66.9, 67.0, 67.6, 68.1, 67.7],
+        CLAUDE_OPUS_5_5: [None, None, None, None, 59.9],
+        CLAUDE_SONNET_5_5: [None, None, None, None, 63.0],
+        GEMINI_4_ARGON: [None, None, 55.1, None, None],
+    }, (50, 75), 5),
+    Metric("EnterpriseOps-Gym-AA", "% strict task success · ServiceNow workflows, AA's implementation", {
+        GPT_6_2_ASTRA: [21.8, 22.6, 25.2, 25.3, 29.9],
+        GPT_6_2_SOL: [19.9, 21.4, 23.4, 26.3, 28.9],
+    }, (10, 40), 10),
+    Metric("Agents' Last Exam v1.1", "% · OpenAI launch comparison; Fable omits nine fallback tasks", {
+        GPT_6_ASTRA: [67.9, 71.2, 71.0, 71.7, 73.1],
+        GPT_6_2_ASTRA: [65.8, 72.1, 76.0, 78.3, 77.6],
+        GPT_6_1_SOL: [61.0, 68.8, 72.3, 71.9, 72.5],
+        GPT_6_2_SOL: [66.7, 70.3, 72.0, 72.5, 73.0],
+        CLAUDE_FABLE_5_2: [None, None, None, None, 72.8],
+        CLAUDE_OPUS_5_5: [None, None, None, None, 71.6],
+        GEMINI_4_CARBON: [None, None, 77.4, None, None],
+    }, (50, 85), 10),
+    Metric("LifeVal", "% · everyday agentic tasks · OpenAI's own evaluation", {
+        GPT_6_ASTRA: [67.5, 74.3, 76.0, 77.5, 79.8],
+        GPT_6_2_ASTRA: [46.3, 78.9, 83.1, 83.7, 86.1],
+        GPT_6_1_SOL: [66.8, 75.5, 77.1, 77.8, 79.5],
+        GPT_6_2_SOL: [25.3, 70.3, 80.8, 82.6, 83.8],
+    }, (20, 90), 10),
+    Metric("GDPval v2 (Internal)", "% · professional workflows · OpenAI's internal evaluation", {
+        GPT_6_ASTRA: [30.8, 37.5, 42.0, 42.0, 44.2],
+        GPT_6_2_ASTRA: [28.9, 39.3, 45.0, 47.8, 50.4],
+        GPT_6_1_SOL: [28.8, 35.1, 40.2, 40.0, 41.5],
+        GPT_6_2_SOL: [23.1, 34.8, 42.7, 45.0, 46.9],
+        CLAUDE_FABLE_5_2: [39.5, 40.3, 41.5, 44.1, 44.8],
+        CLAUDE_OPUS_5_5: [26.6, 35.2, 37.0, 41.6, 43.5],
+        GEMINI_4_CARBON: [45.1, 48.0, 48.8, None, None],
+    }, (20, 55), 10),
+    Metric("Vals Science Index v1", "% · Vals Science, as reported by OpenAI", {
+        GPT_6_ASTRA: [None, None, None, None, 65.1],
+        GPT_6_2_ASTRA: [59.5, 67.6, 68.1, 64.8, 68.4],
+        GPT_6_1_SOL: [None, None, None, None, 59.6],
+        GPT_6_2_SOL: [46.3, 56.5, 57.6, 58.5, 57.8],
+        CLAUDE_FABLE_5_2: [None, None, 63.7, None, None],
+        CLAUDE_OPUS_5_5: [None, None, None, None, 58.7],
+    }, (40, 75), 10),
+    Metric("BenchCAD 2.1 Core", "% · hardware engineering · OpenAI launch comparison", {
+        GPT_6_ASTRA: [20.3, 38.7, 51.1, 53.9, 62.6],
+        GPT_6_2_ASTRA: [42.6, 68.5, 74.6, 77.6, 82.5],
+        GPT_6_1_SOL: [13.5, 31.2, 42.1, 45.6, 52.6],
+        GPT_6_2_SOL: [23.9, 41.2, 64.0, 70.4, 73.1],
+        CLAUDE_FABLE_5_2: [26.9, 32.4, 61.0, 74.1, 83.5],
+        CLAUDE_OPUS_5_5: [6.3, 19.1, 29.7, 54.5, 65.3],
+    }, (0, 90), 10),
+    Metric("AutomationBench 1.0.6", "% · Zapier · OpenAI launch comparison, not AutomationBench-AA", {
+        GPT_6_ASTRA: [30.3, 34.1, 37.1, 39.0, 41.4],
+        GPT_6_2_ASTRA: [37.1, 43.8, 47.9, 47.2, 52.4],
+        GPT_6_1_SOL: [24.7, 31.7, 33.2, 35.5, 36.1],
+        GPT_6_2_SOL: [31.2, 40.2, 41.2, 40.6, 41.1],
+        CLAUDE_FABLE_5_2: [39.7, 40.2, 44.3, 47.9, 51.4],
+        CLAUDE_OPUS_5_5: [24.2, 29.5, 33.0, 35.8, 42.5],
+        GEMINI_4_CARBON: [31.5, 53.0, 53.9, None, None],
+    }, (20, 60), 10),
 ]
 
 CODING = [
@@ -211,26 +343,35 @@ CODING = [
         CLAUDE_FABLE_5_2: [44.9, 46.8, 53.3, 53.2, 53.1],
         CLAUDE_OPUS_5_5: [22.0, 40.9, 44.2, 50.1, 51.7],
         CLAUDE_SONNET_5_5: [12.6, 18.5, 33.0, 44.2, 50.5],
-        GEMINI_4_ARGON: [None, None, 38.3, None, None],
+        GEMINI_4_ARGON: [None, 37, 38.3, None, None],
         GEMINI_4_CARBON: [42.8, 47.9, 50.4, None, None],
-    }, (10, 60), 10),
+        GPT_6_2_ASTRA: [40.0, 51.4, 52.3, 55.0, 52.9],
+        GPT_6_2_SOL: [34.0, 47.3, 47.6, 48.1, 50.7],
+        GEMINI_4_HYDROGEN: [8.2, 30.6, 43.4, 44.8, None],
+    }, (0, 60), 10),
     Metric("Terminal-Bench 4.0", "% · Artificial Analysis", {
         GPT_6_ASTRA: [41.9, 49.5, 54.0, 59.6, 59.1],
         GPT_6_1_SOL: [30.8, 48.0, 51.5, 54.0, 56.1],
         CLAUDE_FABLE_5_2: [54.5, 55.1, 59.6, 61.6, 59.6],
         CLAUDE_OPUS_5_5: [31.3, 52.5, 56.6, 59.6, 59.6],
         CLAUDE_SONNET_5_5: [20.7, 29.8, 43.9, 57.1, 63.6],
-        GEMINI_4_ARGON: [None, None, 57.1, None, None],
+        GEMINI_4_ARGON: [None, 55.1, 57.1, None, None],
         GEMINI_4_CARBON: [62.6, 60.6, 65.2, None, None],
-    }, (10, 70), 10),
+        GPT_6_2_ASTRA: [51.0, 58.6, 60.1, 64.1, 64.1],
+        GPT_6_2_SOL: [37.9, 56.1, 58.6, 56.1, 60.1],
+        GEMINI_4_HYDROGEN: [6.6, 29.3, 54.0, 53.5, None],
+    }, (0, 70), 10),
     Metric("FrontierCode-AA 2.0", "score · Cognition's tasks, AA's harness · Artificial Analysis", {
         GPT_6_ASTRA: [26.2, 36.6, 40.1, 41.4, 42.4],
         GPT_6_1_SOL: [20.2, 33.4, 36.7, 38.5, 40.6],
         CLAUDE_FABLE_5_2: [38.4, 41.3, 49.1, 47.6, 48.8],
         CLAUDE_OPUS_5_5: [15.8, 33.1, 35.9, 43.8, 46.4],
         CLAUDE_SONNET_5_5: [7.1, 11.0, 25.7, 35.6, 41.7],
-        GEMINI_4_ARGON: [None, None, 25.7, None, None],
+        GEMINI_4_ARGON: [None, 25, 25.7, None, None],
         GEMINI_4_CARBON: [29.6, 39.5, 40.6, None, None],
+        GPT_6_2_ASTRA: [32.7, 46.6, 47.1, 49.0, 45.4],
+        GPT_6_2_SOL: [31.4, 41.4, 40.2, 42.8, 44.4],
+        GEMINI_4_HYDROGEN: [9.3, 31.5, 36.3, 39.0, None],
     }, (0, 60), 10),
     Metric("Terminal-Bench Science 0.1", "% · Artificial Analysis", {
         GPT_6_ASTRA: [37.1, 53.3, 59.5, 54.8, 63.3],
@@ -238,36 +379,61 @@ CODING = [
         CLAUDE_FABLE_5_2: [53.8, 60.5, 70.0, 67.6, 73.3],
         CLAUDE_OPUS_5_5: [24.3, 43.3, 49.0, 61.9, 59.0],
         CLAUDE_SONNET_5_5: [10.5, 16.2, 34.3, 52.4, 53.3],
-        GEMINI_4_ARGON: [None, None, 52.9, None, None],
+        GEMINI_4_ARGON: [None, 48.6, 52.9, None, None],
         GEMINI_4_CARBON: [61.9, 62.4, 64.8, None, None],
+        GPT_6_2_ASTRA: [51.0, 74.8, 75.2, 78.6, 78.1],
+        GPT_6_2_SOL: [37.1, 60.5, 67.6, 66.7, 67.6],
+        GEMINI_4_HYDROGEN: [2.4, 15.2, 41.4, 49.5, None],
     }, (0, 80), 10),
     Metric("DeepSWE v1.1", "% · reported by each lab", {
         GPT_6_ASTRA: [67.0, 72.8, 73.2, 74.1, 73.2],
         GPT_6_1_SOL: [64.4, 73.0, 75.2, 71.9, 71.9],
+        CLAUDE_SONNET_5_5: [None, None, None, None, 71.0],
         GEMINI_4_ARGON: [None, None, 77.9, None, None],
     }, (60, 80), 5),
-    Metric("FrontierCode 1.1 Main", "score · Cognition leaderboard", {
-        GPT_6_ASTRA: [45.3, 48.8, 50.9, 50.6, 53.3],
-        GPT_6_1_SOL: [45.5, 50.2, 48.0, 49.3, 47.6],
-        CLAUDE_OPUS_5_5: [47.3, 54.6, 54.0, 51.4, 54.4],
-        CLAUDE_SONNET_5_5: [29.3, 36.5, 49.4, 52.1, 46.2],
-        GEMINI_4_ARGON: [47.2, 47.6, 45.9, None, None],
-    }, (20, 60), 10),
     Metric("CursorBench 4.0", "% · Cursor leaderboard", {
+        GEMINI_4_CARBON: [58.6, 60.1, 60.4, None, None],
         CLAUDE_FABLE_5_2: [53.2, 54.8, 56.9, 56.3, 60.0],
         CLAUDE_OPUS_5_5: [43.7, 52.5, 56.0, 56.0, 57.8],
+        GEMINI_4_HYDROGEN: [27.9, 46.7, 54.3, 57.8, None],
         CLAUDE_SONNET_5_5: [35.8, 39.2, 47.8, 53.1, 55.5],
         GEMINI_4_ARGON: [50.6, 52.8, 52.9, None, None],
-        GEMINI_4_CARBON: [58.6, 60.1, 60.4, None, None],
-    }, (30, 65), 10),
+    }, (20, 70), 10),
     Metric("SciCode", "% · Artificial Analysis", {
         GPT_6_ASTRA: [54.1, 54.2, 55.4, 55.7, 56.5],
         GPT_6_1_SOL: [53.2, 53.2, 55.8, 55.7, 54.2],
         CLAUDE_FABLE_5_2: [57.8, 59.7, 59.5, 65.6, 67.7],
         CLAUDE_OPUS_5_5: [58.6, 59.3, 60.4, 65.0, 66.9],
         CLAUDE_SONNET_5_5: [49.1, 52.9, 53.7, 57.3, 61.0],
-        GEMINI_4_ARGON: [None, None, 61.8, None, None],
+        GEMINI_4_ARGON: [None, 58.9, 61.8, None, None],
     }, (45, 70), 5),
+    Metric("FrontierCode 2.0", "% · OpenAI launch comparison, not AA's harness", {
+        GPT_6_ASTRA: [31.1, 36.8, 38.3, 41.4, 42.8],
+        GPT_6_2_ASTRA: [38.1, 42.2, 43.6, 44.1, 44.2],
+        GPT_6_1_SOL: [25.6, 29.6, 34.8, 32.3, 39.0],
+        GPT_6_2_SOL: [33.1, 38.3, 39.7, 39.8, 43.8],
+        CLAUDE_FABLE_5_2: [34.2, 37.6, 45.3, 49.1, 45.7],
+        CLAUDE_OPUS_5_5: [14.7, 30.1, 34.5, 43.4, 45.5],
+        GEMINI_4_CARBON: [32.4, 41.1, 38.4, None, None],
+    }, (10, 55), 10),
+    Metric("SecureSWE", "% · secure implementation · OpenAI's internal evaluation, cyber safeguards off", {
+        GPT_6_ASTRA: [41.3, 45.7, 47.9, 48.7, 46.5],
+        GPT_6_2_ASTRA: [54.5, 57.7, 61.7, 63.8, 65.7],
+        GPT_6_1_SOL: [36.2, 46.5, 44.4, 46.0, 49.7],
+        GPT_6_2_SOL: [43.1, 47.1, 51.9, 54.0, 55.6],
+    }, (30, 70), 10),
+    Metric("PatchBench", "% · security patches · OpenAI's evaluation, cyber safeguards off", {
+        GPT_6_ASTRA: [63.0, 67.5, 68.8, 70.5, 70.9],
+        GPT_6_2_ASTRA: [71.1, 75.6, 78.8, 79.7, 79.7],
+        GPT_6_1_SOL: [62.0, 64.5, 67.8, 69.4, 71.0],
+        GPT_6_2_SOL: [65.6, 70.5, 74.1, 74.2, 75.6],
+    }, (60, 85), 5),
+    Metric("ExploitBench – Internal Port (June–August 2026)", "% · OpenAI's internal cyber evaluation, safeguards off", {
+        GPT_6_ASTRA: [0.0, 19.5, 24.5, 29.0, 31.5],
+        GPT_6_2_ASTRA: [19.5, 46.5, 48.0, 53.0, 53.5],
+        GPT_6_1_SOL: [2.0, 8.5, 14.5, 18.0, 21.5],
+        GPT_6_2_SOL: [0.0, 24.5, 47.0, 45.5, 50.5],
+    }, (0, 60), 10),
 ]
 
 SECTIONS = [("Intelligence", INTELLIGENCE), ("Coding", CODING)]
@@ -279,6 +445,9 @@ class ReportedMetric:
     name: str
     unit_and_source: str
     scores: dict[Model, tuple[float, str]]  # score, and the effort level the reporter ran it at
+    x_max: float = 100
+    tick_step: float = 25
+    decimals: int = 1
 
     @property
     def models(self) -> list[Model]:
@@ -287,6 +456,14 @@ class ReportedMetric:
     @property
     def missing(self) -> list[Model]:
         return [model for model in MODELS if model not in self.scores]
+
+    @property
+    def costs(self) -> dict[Model, Scores] | None:
+        return COSTS.get(self.name)
+
+    @property
+    def cost_unit(self) -> str:
+        return COST_UNITS.get(self.name, DEFAULT_COST_UNIT)
 
 
 # One score per model, at the effort level its reporter ran; sources in sources/*.json.
@@ -299,6 +476,9 @@ REPORTED = {"Intelligence": [
         CLAUDE_SONNET_5_5: (70.85, "max"),
         GEMINI_4_ARGON: (69.39, "high"),
         GEMINI_4_CARBON: (70.45, "high"),
+        GPT_6_2_ASTRA: (67.66, 'max'),
+        GPT_6_2_SOL: (66.06, 'max'),
+        GEMINI_4_HYDROGEN: (68.49, 'xhigh'),
     }),
     ReportedMetric("MKA", "% weighted rubric score · multimodal knowledge-work agent · AA’s own run for all models", {
         GPT_6_ASTRA: (50.2, "max"),
@@ -309,29 +489,31 @@ REPORTED = {"Intelligence": [
         GEMINI_4_ARGON: (51.3, "high"),
         GEMINI_4_CARBON: (54.3, "high"),
     }),
-    ReportedMetric("AA-AnalystAgent", "% · AA’s own run for all models", {
-        GPT_6_ASTRA: (51.3, "max"),
-        GPT_6_1_SOL: (50.0, "max"),
-        CLAUDE_OPUS_5_5: (56.3, "max"),
-        CLAUDE_SONNET_5_5: (57.5, "max"),
-        GEMINI_4_ARGON: (48.8, "high"),
+    ReportedMetric("GPQA Diamond (OpenAI)", "% · no tools · OpenAI system card, effort not stated", {
+        GPT_6_ASTRA: (96.0, 'not stated'),
+        GPT_6_2_ASTRA: (97.0, 'not stated'),
+        GPT_6_2_SOL: (96.0, 'not stated'),
     }),
-    ReportedMetric("Harvey LAB-AA v1.1", "% all-pass · AA’s own run for all models", {
-        GPT_6_ASTRA: (8.6, "max"),
-        GPT_6_1_SOL: (6.9, "max"),
-        CLAUDE_FABLE_5_2: (7.2, "max"),
-        CLAUDE_OPUS_5_5: (4.2, "max"),
-        CLAUDE_SONNET_5_5: (2.8, "max"),
-        GEMINI_4_ARGON: (3.9, "high"),
+    ReportedMetric("HealthBench Professional (OpenAI)", "length-adjusted score · OpenAI system card, effort not stated", {
+        GPT_6_ASTRA: (64.7, 'not stated'),
+        GPT_6_2_ASTRA: (66.3, 'not stated'),
+        GPT_6_1_SOL: (64.2, 'not stated'),
+        GPT_6_2_SOL: (65.9, 'not stated'),
     }),
-    ReportedMetric("MLCR-AA", "% · AA’s own run for all models", {
-        GPT_6_ASTRA: (41.7, "max"),
-        GPT_6_1_SOL: (38.3, "max"),
-        CLAUDE_FABLE_5_2: (43.9, "max"),
-        CLAUDE_OPUS_5_5: (27.8, "max"),
-        CLAUDE_SONNET_5_5: (41.7, "max"),
-        GEMINI_4_ARGON: (13.9, "high"),
-        GEMINI_4_CARBON: (19.4, "high"),
+    ReportedMetric("MentalHealthBench", "% overall rubric score · OpenAI system card, max effort", {
+        GPT_6_ASTRA: (58.7, 'max'),
+        GPT_6_2_ASTRA: (53.3, 'max'),
+        GPT_6_1_SOL: (57.9, 'max'),
+        GPT_6_2_SOL: (50.9, 'max'),
+    }),
+    ReportedMetric("VIALS-AA", "% correct in all three runs · scientific images · Artificial Analysis", {
+        GPT_6_ASTRA: (62.7, 'max'),
+        GPT_6_1_SOL: (59.0, 'max'),
+        CLAUDE_FABLE_5_2: (67.1, 'max'),
+        CLAUDE_OPUS_5_5: (61.5, 'max'),
+        CLAUDE_SONNET_5_5: (59.6, 'max'),
+        GEMINI_4_ARGON: (59.6, 'high'),
+        GEMINI_4_CARBON: (64.0, 'high'),
     }),
 ], "Coding": [
     ReportedMetric("Vibe Code Bench v1.1", "% · Vals AI, OpenHands harness for all models", {
@@ -342,24 +524,108 @@ REPORTED = {"Intelligence": [
         CLAUDE_SONNET_5_5: (92.39, "max"),
         GEMINI_4_ARGON: (91.91, "high"),
         GEMINI_4_CARBON: (89.06, "high"),
+        GPT_6_2_ASTRA: (89.9, 'max'),
+        GPT_6_2_SOL: (87.62, 'max'),
+        GEMINI_4_HYDROGEN: (87.78, 'xhigh'),
     }),
     ReportedMetric("SWE-Bench Pro", "% resolved · each lab’s own run on its own agent harness", {
         CLAUDE_OPUS_5_5: (89.9, "max"),
         CLAUDE_SONNET_5_5: (81.3, "max"),
     }),
+    ReportedMetric("Internal Research Debugging", "% mean rubric credit · OpenAI system card, effort not stated", {
+        GPT_6_ASTRA: (78.05, 'not stated'),
+        GPT_6_2_ASTRA: (81.85, 'not stated'),
+        GPT_6_2_SOL: (74.66, 'not stated'),
+    }),
+    ReportedMetric("KernelGen 1P", "% mean rubric credit · OpenAI system card, effort not stated", {
+        GPT_6_ASTRA: (66.72, 'not stated'),
+        GPT_6_2_ASTRA: (76.92, 'not stated'),
+        GPT_6_2_SOL: (74.71, 'not stated'),
+    }),
+    ReportedMetric("NanoGPT v5", "% baseline training time saved · OpenAI system card, effort not stated", {
+        GPT_6_2_ASTRA: (42.87, 'not stated'),
+        GPT_6_2_SOL: (14.59, 'not stated'),
+    }),
+    ReportedMetric("PostTrainBench Lite", "% performance gap closed · OpenAI system card, effort not stated", {
+        GPT_6_ASTRA: (76.97, 'not stated'),
+        GPT_6_2_ASTRA: (74.79, 'not stated'),
+        GPT_6_2_SOL: (44.89, 'not stated'),
+    }),
+    ReportedMetric("MLE-Bench Revised", "mean reference percentile · OpenAI system card, effort not stated", {
+        GPT_6_ASTRA: (93.8, 'not stated'),
+        GPT_6_2_ASTRA: (96.06, 'not stated'),
+        GPT_6_2_SOL: (91.38, 'not stated'),
+    }),
+    ReportedMetric("ITBench-AA", "% precision at full recall · Kubernetes root-cause analysis · Artificial Analysis", {
+        GPT_6_ASTRA: (48.6, 'max'),
+        CLAUDE_OPUS_5_5: (38.2, 'max'),
+    }),
+    ReportedMetric("AA-3D", "Elo · human preference for generated 3D experiences · Artificial Analysis", {
+        GPT_6_ASTRA: (1168.398, 'not stated'),
+        GPT_6_2_ASTRA: (1317.6168, 'not stated'),
+        GPT_6_1_SOL: (1121.0821, 'not stated'),
+        GPT_6_2_SOL: (1259.2763, 'not stated'),
+        CLAUDE_FABLE_5_2: (1271.4151, 'not stated'),
+        CLAUDE_OPUS_5_5: (1202.4312, 'not stated'),
+        CLAUDE_SONNET_5_5: (1203.6913, 'not stated'),
+        GEMINI_4_ARGON: (1146.6893, 'not stated'),
+    }, x_max=1500, tick_step=250, decimals=0),
 ]}
 
 # US dollars per task of each benchmark at each effort level, from the same AA records (ARC Prize for ARC-AGI-2).
-# Generated by build_costs.py. The coding category averages its two benchmarks' costs.
+# AA weightedCostPerTask divided by its index weight; the coding category uses the same 15:10 weights as its score.
 COSTS: dict[str, dict[Model, Scores]] = {
+    "Vibe Code Bench v1.1": {
+        CLAUDE_FABLE_5_2: [None, None, 22.13, None, None],
+        CLAUDE_SONNET_5_5: [None, None, None, None, 19.73],
+        GEMINI_4_ARGON: [None, None, 8.11, None, None],
+        CLAUDE_OPUS_5_5: [None, None, None, None, 35.77],
+        GPT_6_2_ASTRA: [None, None, None, None, 7.92],
+        GPT_6_ASTRA: [None, None, None, None, 38.51],
+        GEMINI_4_CARBON: [None, None, 8.25, None, None],
+        GPT_6_1_SOL: [None, None, None, None, 6.23],
+        GEMINI_4_HYDROGEN: [None, None, None, 4.55, None],
+        GPT_6_2_SOL: [None, None, None, None, 3.23],
+    },
+    "Vals Index": {
+        CLAUDE_FABLE_5_2: [None, None, 17.94, None, None],
+        CLAUDE_SONNET_5_5: [None, None, None, None, 16.18],
+        GEMINI_4_CARBON: [None, None, 10.51, None, None],
+        CLAUDE_OPUS_5_5: [None, None, None, None, 24.77],
+        GEMINI_4_ARGON: [None, None, 13.37, None, None],
+        GEMINI_4_HYDROGEN: [None, None, None, 9.84, None],
+        GPT_6_2_ASTRA: [None, None, None, None, 10.68],
+        GPT_6_2_SOL: [None, None, None, None, 3.18],
+        GPT_6_ASTRA: [None, None, None, None, 21.28],
+        GPT_6_1_SOL: [None, None, None, None, 3.61],
+    },
+    "CursorBench 4.0": {
+        GEMINI_4_CARBON: [11.89, 8.49, 9.22, None, None],
+        CLAUDE_FABLE_5_2: [3.94, 4.66, 9.7, 15.48, 32.79],
+        CLAUDE_OPUS_5_5: [1.17, 2.91, 3.97, 6.98, 13.43],
+        GEMINI_4_HYDROGEN: [0.28, 1.76, 5.59, 5.86, None],
+        CLAUDE_SONNET_5_5: [0.37, 0.52, 1.2, 2.81, 7.05],
+        GEMINI_4_ARGON: [4.09, 4.39, 4.57, None, None],
+    },
+    "Harvey LAB-AA v1.1": {
+        GPT_6_ASTRA: [None, None, None, None, 13.7],
+        GPT_6_2_ASTRA: [0.86, 2.49, 3.86, 4.31, 6.35],
+        GPT_6_1_SOL: [None, None, None, None, 2.48],
+        GPT_6_2_SOL: [0.25, 0.71, 1.03, 1.23, 1.92],
+        CLAUDE_FABLE_5_2: [9.16, 9.67, 15.9, 24.3, 39.8],
+        CLAUDE_OPUS_5_5: [None, None, None, None, 17.9],
+    },
     "AA Intelligence Index": {
         GPT_6_ASTRA: [1650.0, 2640.0, 3200.0, 3750.0, 5660.0],
         GPT_6_1_SOL: [238.0, 389.0, 573.0, 718.0, 1120.0],
         CLAUDE_FABLE_5_2: [2860.0, 3360.0, 7110.0, 11700.0, 22200.0],
         CLAUDE_OPUS_5_5: [980.0, 2030.0, 2720.0, 4770.0, 8910.0],
         CLAUDE_SONNET_5_5: [499.0, 679.0, 1270.0, 2900.0, 7980.0],
-        GEMINI_4_ARGON: [None, None, 3810.0, None, None],
+        GEMINI_4_ARGON: [None, 3110, 3810, None, None],
         GEMINI_4_CARBON: [4050.0, 4000.0, 5330.0, None, None],
+        GPT_6_2_ASTRA: [794.0, 1460.0, 2010.0, 2480.0, 4530.0],
+        GPT_6_2_SOL: [224.0, 405.0, 553.0, 698.0, 1110.0],
+        GEMINI_4_HYDROGEN: [332.0, 804.0, 1770.0, 4090.0, None],
     },
     "HLE-Diamond": {
         GPT_6_ASTRA: [0.05, 0.12, 0.257, 0.37, 0.551],
@@ -367,8 +633,11 @@ COSTS: dict[str, dict[Model, Scores]] = {
         CLAUDE_FABLE_5_2: [0.128, 0.183, 0.464, 0.876, 1.73],
         CLAUDE_OPUS_5_5: [0.0351, 0.13, 0.194, 0.47, 1.2],
         CLAUDE_SONNET_5_5: [0.015, 0.0327, 0.107, 0.246, 0.804],
-        GEMINI_4_ARGON: [None, None, 0.242, None, None],
+        GEMINI_4_ARGON: [None, 0.0223, 0.242, None, None],
         GEMINI_4_CARBON: [0.343, 0.393, 0.814, None, None],
+        GPT_6_2_ASTRA: [0.0178, 0.0433, 0.147, 0.234, 0.657],
+        GPT_6_2_SOL: [0.00451, 0.0187, 0.0422, 0.076, 0.149],
+        GEMINI_4_HYDROGEN: [0.026, 0.144, 0.373, 1.29, None],
     },
     "CritPt v2": {
         GPT_6_ASTRA: [0.237, 0.407, 0.714, 0.849, 1.14],
@@ -376,8 +645,11 @@ COSTS: dict[str, dict[Model, Scores]] = {
         CLAUDE_FABLE_5_2: [0.313, 0.367, 1.05, 2.47, 6.35],
         CLAUDE_OPUS_5_5: [0.119, 0.251, 0.384, 0.966, 2.58],
         CLAUDE_SONNET_5_5: [0.0731, 0.0926, 0.181, 0.448, 1.93],
-        GEMINI_4_ARGON: [None, None, 1.17, None, None],
+        GEMINI_4_ARGON: [None, 0.782, 1.17, None, None],
         GEMINI_4_CARBON: [1.91, 1.93, 2.44, None, None],
+        GPT_6_2_ASTRA: [0.0937, 0.193, 0.447, 0.607, 1.28],
+        GPT_6_2_SOL: [0.0306, 0.0852, 0.145, 0.196, 0.314],
+        GEMINI_4_HYDROGEN: [0.122, 0.374, 0.878, 1.9, None],
     },
     "ARC-AGI-2": {
         GPT_6_ASTRA: [0.416, 0.48, 0.668, 0.829, 1.12],
@@ -387,6 +659,8 @@ COSTS: dict[str, dict[Model, Scores]] = {
         CLAUDE_SONNET_5_5: [0.109, 0.155, 0.277, 0.546, None],
         GEMINI_4_ARGON: [0.0738, 0.137, 0.325, None, None],
         GEMINI_4_CARBON: [0.0985, 0.375, 0.684, None, None],
+        GPT_6_2_ASTRA: [0.275, 0.309, 0.408, 0.5, 0.97],
+        GPT_6_2_SOL: [0.0758, 0.103, 0.133, 0.174, 0.261],
     },
     "AA-Omniscience Index": {
         GPT_6_ASTRA: [0.00697, 0.0109, 0.028, 0.0518, 0.0988],
@@ -394,8 +668,11 @@ COSTS: dict[str, dict[Model, Scores]] = {
         CLAUDE_FABLE_5_2: [0.0138, 0.0153, 0.0196, 0.0326, 0.219],
         CLAUDE_OPUS_5_5: [0.00627, 0.00824, 0.00931, 0.0148, 0.187],
         CLAUDE_SONNET_5_5: [0.00291, 0.00312, 0.00567, 0.00883, 0.152],
-        GEMINI_4_ARGON: [None, None, 0.00911, None, None],
+        GEMINI_4_ARGON: [None, 0.00108, 0.00911, None, None],
         GEMINI_4_CARBON: [0.00076, 0.0126, 0.123, None, None],
+        GPT_6_2_ASTRA: [0.00285, 0.00673, 0.0245, 0.0467, 0.256],
+        GPT_6_2_SOL: [0.000538, 0.00212, 0.00662, 0.0197, 0.0528],
+        GEMINI_4_HYDROGEN: [0.00331, 0.0087, 0.0141, 0.168, None],
     },
     "GDPval-AA": {
         GPT_6_ASTRA: [0.855, 1.82, 2.43, 3.04, 4.53],
@@ -410,8 +687,11 @@ COSTS: dict[str, dict[Model, Scores]] = {
         CLAUDE_FABLE_5_2: [5.62, 6.84, 15.5, 28.6, 59.4],
         CLAUDE_OPUS_5_5: [1.15, 4.4, 6.27, 12.3, 21.0],
         CLAUDE_SONNET_5_5: [0.802, 1.39, 3.27, 6.98, 20.5],
-        GEMINI_4_ARGON: [None, None, 5.83, None, None],
+        GEMINI_4_ARGON: [None, 4.75, 5.83, None, None],
         GEMINI_4_CARBON: [5.33, 5.06, 5.85, None, None],
+        GPT_6_2_ASTRA: [0.42, 1.26, 2.79, 3.54, 5.49],
+        GPT_6_2_SOL: [0.181, 0.525, 0.793, 1.01, 1.57],
+        GEMINI_4_HYDROGEN: [0.21, 0.651, 1.73, 3.19, None],
     },
     "AutomationBench-AA": {
         GPT_6_ASTRA: [0.999, 1.18, 1.3, 1.41, 1.6],
@@ -419,8 +699,11 @@ COSTS: dict[str, dict[Model, Scores]] = {
         CLAUDE_FABLE_5_2: [1.28, 1.33, 1.69, 2.27, 4.45],
         CLAUDE_OPUS_5_5: [0.493, 0.638, 0.699, 0.878, 1.43],
         CLAUDE_SONNET_5_5: [0.241, 0.262, 0.313, 0.422, 1.03],
-        GEMINI_4_ARGON: [None, None, 0.609, None, None],
+        GEMINI_4_ARGON: [None, 0.566, 0.609, None, None],
         GEMINI_4_CARBON: [0.676, 1.12, 1.28, None, None],
+        GPT_6_2_ASTRA: [0.449, 0.57, 0.676, 0.759, 0.948],
+        GPT_6_2_SOL: [0.131, 0.18, 0.209, 0.237, 0.271],
+        GEMINI_4_HYDROGEN: [0.168, 0.243, 0.375, 0.716, None],
     },
     "AA-LCR": {
         GPT_6_ASTRA: [0.95, 0.953, 0.96, 0.97, 0.997],
@@ -435,8 +718,11 @@ COSTS: dict[str, dict[Model, Scores]] = {
         CLAUDE_FABLE_5_2: [1.53, 1.56, 1.64, 1.85, 2.52],
         CLAUDE_OPUS_5_5: [0.764, 0.795, 0.825, 0.964, 1.55],
         CLAUDE_SONNET_5_5: [0.372, 0.381, 0.409, 0.46, 0.794],
-        GEMINI_4_ARGON: [None, None, 0.259, None, None],
+        GEMINI_4_ARGON: [None, 0.19, 0.259, None, None],
         GEMINI_4_CARBON: [0.191, 0.24, 0.424, None, None],
+        GPT_6_2_ASTRA: [1.32, 1.33, 1.36, 1.4, 1.67],
+        GPT_6_2_SOL: [0.331, 0.334, 0.341, 0.359, 0.396],
+        GEMINI_4_HYDROGEN: [0.153, 0.174, 0.201, 0.437, None],
     },
     "AA Index coding category": {
         GPT_6_ASTRA: [1.7, 3.45, 3.88, 4.77, 7.32],
@@ -444,8 +730,11 @@ COSTS: dict[str, dict[Model, Scores]] = {
         CLAUDE_FABLE_5_2: [3.01, 3.71, 11.2, 21.2, 38.7],
         CLAUDE_OPUS_5_5: [1.21, 2.64, 3.54, 7.41, 13.3],
         CLAUDE_SONNET_5_5: [0.664, 0.825, 1.33, 4.06, 12.0],
-        GEMINI_4_ARGON: [None, None, 8.33, None, None],
+        GEMINI_4_ARGON: [None, 7.19, 8.33, None, None],
         GEMINI_4_CARBON: [8.5, 6.96, 8.17, None, None],
+        GPT_6_2_ASTRA: [0.803, 1.85, 2.85, 3.4, 5.38],
+        GPT_6_2_SOL: [0.274, 0.546, 0.703, 0.854, 1.3],
+        GEMINI_4_HYDROGEN: [0.49, 1.21, 2.67, 4.14, None],
     },
     "Terminal-Bench 4.0": {
         GPT_6_ASTRA: [2.25, 4.43, 4.05, 5.86, 8.5],
@@ -453,8 +742,11 @@ COSTS: dict[str, dict[Model, Scores]] = {
         CLAUDE_FABLE_5_2: [4.34, 5.25, 13.5, 20.8, 31.6],
         CLAUDE_OPUS_5_5: [2.08, 4.04, 5.12, 8.78, 13.1],
         CLAUDE_SONNET_5_5: [1.28, 1.58, 2.19, 6.08, 12.6],
-        GEMINI_4_ARGON: [None, None, 6.78, None, None],
+        GEMINI_4_ARGON: [None, 6.42, 6.78, None, None],
         GEMINI_4_CARBON: [6.05, 6.24, 7.11, None, None],
+        GPT_6_2_ASTRA: [0.795, 1.75, 2.5, 2.88, 4.66],
+        GPT_6_2_SOL: [0.35, 0.677, 0.771, 0.934, 1.29],
+        GEMINI_4_HYDROGEN: [0.526, 1.58, 2.8, 3.66, None],
     },
     "FrontierCode-AA 2.0": {
         GPT_6_ASTRA: [1.34, 2.8, 3.77, 4.04, 6.54],
@@ -462,8 +754,11 @@ COSTS: dict[str, dict[Model, Scores]] = {
         CLAUDE_FABLE_5_2: [2.12, 2.69, 9.64, 21.4, 43.4],
         CLAUDE_OPUS_5_5: [0.627, 1.71, 2.49, 6.49, 13.5],
         CLAUDE_SONNET_5_5: [0.25, 0.324, 0.76, 2.71, 11.6],
-        GEMINI_4_ARGON: [None, None, 9.37, None, None],
+        GEMINI_4_ARGON: [None, 7.7, 9.37, None, None],
         GEMINI_4_CARBON: [10.1, 7.44, 8.88, None, None],
+        GPT_6_2_ASTRA: [0.808, 1.91, 3.08, 3.75, 5.87],
+        GPT_6_2_SOL: [0.224, 0.458, 0.658, 0.801, 1.3],
+        GEMINI_4_HYDROGEN: [0.467, 0.962, 2.58, 4.47, None],
     },
     "Terminal-Bench Science 0.1": {
         GPT_6_ASTRA: [4.12, 7.2, 8.66, 7.91, 17.5],
@@ -471,8 +766,11 @@ COSTS: dict[str, dict[Model, Scores]] = {
         CLAUDE_FABLE_5_2: [8.78, 11.0, 24.3, 31.4, 45.2],
         CLAUDE_OPUS_5_5: [2.81, 6.8, 10.0, 14.1, 20.0],
         CLAUDE_SONNET_5_5: [1.23, 2.14, 4.98, 12.8, 23.8],
-        GEMINI_4_ARGON: [None, None, 12.2, None, None],
+        GEMINI_4_ARGON: [None, 11.2, 12.2, None, None],
         GEMINI_4_CARBON: [13.5, 12.5, 14.2, None, None],
+        GPT_6_2_ASTRA: [1.99, 5.64, 5.19, 6.27, 9.78],
+        GPT_6_2_SOL: [0.408, 1.03, 1.48, 1.49, 2.45],
+        GEMINI_4_HYDROGEN: [0.712, 2.16, 5.27, 8.3, None],
     },
     "SciCode": {
         GPT_6_ASTRA: [0.0425, 0.0509, 0.0696, 0.122, 0.232],
@@ -481,8 +779,70 @@ COSTS: dict[str, dict[Model, Scores]] = {
         CLAUDE_SONNET_5_5: [0.0129, 0.0135, 0.016, 0.0237, 0.278],
         GEMINI_4_ARGON: [None, None, 0.106, None, None],
     },
+    "Agents' Last Exam v1.1": {
+        GPT_6_ASTRA: [5.4, 6.21, 6.87, 7.56, 8.99],
+        GPT_6_2_ASTRA: [0.469, 1.06, 2.05, 2.89, 4.47],
+        GPT_6_1_SOL: [0.206, 0.456, 0.976, 0.98, 2.02],
+        GPT_6_2_SOL: [0.265, 0.57, 0.69, 0.863, 1.32],
+        CLAUDE_FABLE_5_2: [None, None, None, None, 60.1],
+        CLAUDE_OPUS_5_5: [None, None, None, None, 17.6],
+        GEMINI_4_CARBON: [None, None, 4.6, None, None],
+    },
+    "FrontierCode 2.0": {
+        GPT_6_ASTRA: [2.44, 3.49, 4.28, 4.54, 6.68],
+        GPT_6_2_ASTRA: [1.41, 2.47, 3.95, 4.29, 5.97],
+        GPT_6_1_SOL: [0.34, 0.49, 0.65, 0.7, 1.03],
+        GPT_6_2_SOL: [0.4, 0.68, 0.88, 0.98, 1.29],
+        CLAUDE_FABLE_5_2: [2.1, 2.48, 6.72, 14.2, 44.7],
+        CLAUDE_OPUS_5_5: [0.75, 1.7, 2.42, 5.18, 12.8],
+        GEMINI_4_CARBON: [5.49, 5.16, 5.83, None, None],
+    },
+    "LifeVal": {
+        GPT_6_ASTRA: [3.51, 5.3, 6.52, 6.94, 9.04],
+        GPT_6_2_ASTRA: [0.59, 1.56, 2.41, 2.94, 4.23],
+        GPT_6_1_SOL: [0.52, 0.73, 0.88, 0.96, 1.27],
+        GPT_6_2_SOL: [0.089, 0.38, 0.65, 0.88, 1.27],
+    },
+    "SecureSWE": {
+        GPT_6_ASTRA: [1.1, 1.91, 2.88, 3.21, 4.91],
+        GPT_6_2_ASTRA: [0.78, 1.4, 2.5, 3.12, 5.26],
+        GPT_6_1_SOL: [0.13, 0.3, 0.47, 0.58, 0.87],
+        GPT_6_2_SOL: [0.16, 0.25, 0.45, 0.62, 0.99],
+    },
+    "Vals Science Index v1": {
+        GPT_6_ASTRA: [None, None, None, None, 8.03],
+        GPT_6_2_ASTRA: [1.05, 1.88, 2.25, 2.47, 4.17],
+        GPT_6_1_SOL: [None, None, None, None, 1.36],
+        GPT_6_2_SOL: [0.19, 0.44, 0.63, 0.71, 1.03],
+        CLAUDE_FABLE_5_2: [None, None, 8.79, None, None],
+        CLAUDE_OPUS_5_5: [None, None, None, None, 8.71],
+    },
+    "BenchCAD 2.1 Core": {
+        GPT_6_ASTRA: [1.14, 3.73, 5.38, 6.32, 9.71],
+        GPT_6_2_ASTRA: [0.98, 1.94, 2.89, 3.36, 5.43],
+        GPT_6_1_SOL: [0.19, 0.55, 0.87, 1.05, 1.61],
+        GPT_6_2_SOL: [0.15, 0.29, 0.75, 1.0, 1.6],
+        CLAUDE_FABLE_5_2: [1.89, 2.66, 9.99, 23.2, 50.8],
+        CLAUDE_OPUS_5_5: [0.17, 1.2, 2.7, 9.0, 20.0],
+    },
+    "AutomationBench 1.0.6": {
+        GPT_6_ASTRA: [1.08, 1.27, 1.44, 1.5, 1.73],
+        GPT_6_2_ASTRA: [0.44, 0.55, 0.67, 0.7, 0.83],
+        GPT_6_1_SOL: [0.16, 0.19, 0.23, 0.25, 0.3],
+        GPT_6_2_SOL: [0.13, 0.18, 0.21, 0.23, 0.27],
+        CLAUDE_FABLE_5_2: [1.3, 1.35, 1.69, 2.29, 4.64],
+        CLAUDE_OPUS_5_5: [0.51, 0.65, 0.71, 0.89, 1.44],
+        GEMINI_4_CARBON: [1.02, 1.65, 2.12, None, None],
+    },
+    "PatchBench": {
+        GPT_6_ASTRA: [0.79, 1.35, 2.15, 2.45, 4.18],
+        GPT_6_2_ASTRA: [0.38, 0.85, 1.79, 2.45, 4.18],
+        GPT_6_1_SOL: [0.12, 0.22, 0.37, 0.45, 0.74],
+        GPT_6_2_SOL: [0.085, 0.17, 0.36, 0.51, 0.85],
+    },
 }
-COST_UNITS = {"AA Intelligence Index": "US$ to run the whole index, log scale"}
+COST_UNITS = {"AA Intelligence Index": "US$ to run the whole index, log scale",
+              "Vals Index": "US$ per test, log scale", "Vibe Code Bench v1.1": "US$ per test, log scale"}
 DEFAULT_COST_UNIT = "US$ per task, log scale"
 
 TITLE = "AI scores"
@@ -494,34 +854,25 @@ SUBTITLE = ("Tap a model to hide or show it. Show exactly two models to see wher
             "The grey line joins the points nothing shown beats.")
 
 FOOTNOTES = {
-    "Intelligence": "No model here has an “off” level, so the charts start at low. The one exception is ARC "
-                    "Prize’s “none” run of GPT-6 Astra: 59.6% at US$0.37 per task. The Claude models run only with "
-                    "adaptive reasoning. The Gemini 4 models’ highest level is high; AA rates Argon only at high. "
-                    "ARC Prize ran Sonnet 5.5 up to xhigh only. AA Intelligence Index v5 (November 2026) replaced v4.3.2: "
-                    "it dropped HLE, CritPt, SciCode, AA-LCR and GDPval-AA and added HLE-Diamond, CritPt v2, "
-                    "FrontierCode-AA 2.0 and Terminal-Bench Science, so its scores are not comparable with v4. "
-                    "AA re-rates its Elo benchmarks (GDPval-AA, AA-Briefcase) whenever a model joins; "
-                    "these are the ratings of 13 November 2026. Cost: AA’s measured US-dollar cost "
-                    "per task of each benchmark at each effort level, ARC Prize’s for ARC-AGI-2, and AA’s total cost "
-                    "to run the whole AA Intelligence Index. AA no longer prices GDPval-AA or AA-LCR, so Fable 5.2 and "
-                    "Gemini 4 Carbon have no cost there. AA prices both Gemini 4 models at Google’s introductory "
-                    "price (US$2/US$10 per million tokens); at the standard price their costs double. "
-                    "The Vals Index has one score per model, so it shows as bars. MKA, AA-AnalystAgent, Harvey LAB-AA and "
-                    "MLCR-AA show as bars because AA ran them only at each model’s top level. AA regraded MLCR-AA with "
-                    "a three-judge panel in November, which moved every score.",
-    "Coding": "DeepSWE has no per-level scores for the Claude models; Sonnet 5.5’s system card "
-              "reports 71.0 at max. Cognition’s FrontierCode 1.1 leaderboard and DeepSWE list neither Fable 5.2 nor "
-              "Gemini 4 Carbon; FrontierCode-AA 2.0 is AA’s run of Cognition’s newer task set (Anthropic reports "
-              "49.1 for Fable 5.2 at xhigh on its own harness). AA no longer runs SciCode on new models, so Carbon has "
-              "no SciCode score. CursorBench lists no GPT-6 model. Terminal-Bench scores are AA’s own runs; "
-              "Anthropic reports higher scores for its models. Cost: AA’s US-dollar cost per task; the coding "
-              "category weights the costs of its two benchmarks like their scores. The other coding charts have no cost data. "
-              "SWE-Bench Pro has one reported score per model, so it shows as bars. Each lab ran "
-              "SWE-Bench Pro itself on its own agent harness, which can move scores a lot, so compare its bars with care. "
-              "Gemini 4 Argon’s DeepSWE score is Google’s own run at high, on a mini-swe-agent harness. "
-              "Neither Anthropic nor Google reported SWE-Bench Pro for their new models. "
-              "Vibe Code Bench has one score per model, all on the same harness, so it shows as bars. "
-              "The labs’ own Terminal-Bench Science scores disagree with each other, so the chart uses only AA’s runs.",
+    "Intelligence": "Scores checked on 18 November 2026. Every published effort level is shown; gaps mean no score, not zero. "
+                    "The Claude models use adaptive reasoning; Argon and Carbon stop at high, Hydrogen at xhigh. AA now covers Argon at medium and high. "
+                    "ARC Prize has no Sonnet max run. GDPval-AA and AA-Briefcase are relative Elo ratings, refreshed together. "
+                    "AA Intelligence Index is v5.0.1; its costs are for the whole index, while other cost axes are US dollars per task. "
+                    "AA publishes weighted task costs: we divide by its benchmark weights to recover per-task costs. "
+                    "Argon and Carbon's AA prices use Google's introductory US$2/US$10 per million tokens; Hydrogen is US$1.50/US$7.50. "
+                    "Missing costs do not remove scores: the effort chart remains available. OpenAI launch comparisons are labeled "
+                    "separately from AA runs. On Agents' Last Exam, Fable excludes nine fallback tasks, so it is not a perfectly "
+                    "matched-task comparison. HealthBench Professional replaces the older HealthBench; AA and OpenAI runs stay separate. "
+                    "System-card results without a stated effort are bars marked “not stated”, never assigned to max.",
+    "Coding": "FrontierCode 2.0 replaces the 1.1 Main chart. FrontierCode-AA 2.0 uses AA's harness; the other 2.0 chart "
+              "is OpenAI's published comparison and must not be treated as the same run. Neither GPT-6.2 model has a published "
+              "DeepSWE, SciCode or SWE-Bench Pro score in the checked sources. DeepSWE's Argon point is Google's high-effort run; "
+              "its GPT points are OpenAI's. SWE-Bench Pro bars are each lab's own harness, so compare cautiously. "
+              "The coding category uses FrontierCode-AA and Terminal-Bench 4.0 with 15:10 weights, including their costs. "
+              "SecureSWE, PatchBench and ExploitBench are internal cyber evaluations with safeguards disabled, not ordinary "
+              "deployment results. NanoGPT v5 omits older Astra's v4 score rather than mixing versions. AA-3D is human-preference "
+              "Elo, not percent accuracy; its reported effort is not specified. No benchmark is omitted just for sparse coverage. "
+              "The cost frontier compares the plotted point estimates, not statistical significance or differing harnesses.",
 }
 
 LINE_WIDTH = 1.8
@@ -824,10 +1175,10 @@ def value_part(metric: Metric, score: float) -> LabelPart:
 
 
 def away_is_above(metric: Metric, model: Model, index: int, scene: list[Model]) -> bool:
-    """Whether the side away from the nearest other model's line in the scene is above this point."""
+    """Prefer the side away from the nearest other model's line, or above for a single-model scene."""
     score = metric.scores[model][index]
     neighbor = min((nearest_score(metric.scores[other], index) for other in scene if other is not model),
-                   key=lambda other_score: abs(other_score - score))
+                   key=lambda other_score: abs(other_score - score), default=score)
     return score >= neighbor
 
 
@@ -1117,7 +1468,18 @@ def plot_html(metric: Metric, layout: Layout, mode: Mode) -> str:
     figure.savefig(svg, format="svg", metadata={"Date": None})
     plt.close(figure)
     modes = mode if metric.costs else "effort cost"
-    return f'<div class="plot {layout.name} {modes}"{attributes}>{inline_svg(svg.getvalue())}{hover}</div>'
+    plot = f'<div class="plot {layout.name} {modes}"{attributes}>{inline_svg(svg.getvalue())}{hover}</div>'
+    return layout_html(plot, layout)
+
+
+def layout_html(plot: str, layout: Layout) -> str:
+    """Keep inactive layouts inert, with a compact static chart when scripting is disabled.
+
+    >>> layout_html("<svg/>", LAYOUTS[1])
+    '<template data-layout="desktop"><svg/></template>'
+    """
+    fallback = f"<noscript>{plot}</noscript>" if layout is LAYOUTS[0] else ""
+    return f'<template data-layout="{layout.name}">{plot}</template>{fallback}'
 
 
 def panel_html(metric: Metric) -> str:
@@ -1142,10 +1504,10 @@ def draw_bars(axes: Axes, metric: ReportedMetric) -> None:
         axes.barh(row, score, height=BAR_THICKNESS, color=model.color.light, zorder=3, gid=element_id("bar", model))
         axes.annotate(model.name, (0, row), xytext=(-8, 0), textcoords="offset points", ha="right", va="center",
                       fontsize=LABEL_FONT_SIZE, color=TEXT_PRIMARY.light, annotation_clip=False, gid=element_id("name", model))
-    axes.set_xlim(0, 100)
+    axes.set_xlim(0, metric.x_max)
     axes.set_ylim(-0.6, len(rows) - 0.4)
     axes.set_yticks([])
-    axes.xaxis.set_major_locator(matplotlib.ticker.MultipleLocator(25))
+    axes.xaxis.set_major_locator(matplotlib.ticker.MultipleLocator(metric.tick_step))
     axes.grid(axis="x", color=GRIDLINE.light, linewidth=0.7)
     axes.set_axisbelow(True)
     for side in ("top", "right", "bottom"):
@@ -1155,7 +1517,7 @@ def draw_bars(axes: Axes, metric: ReportedMetric) -> None:
     axes.figure.canvas.draw()
     for row, model in enumerate(rows):
         score, effort = metric.scores[model]
-        for part in annotate_parts(axes, (score, row), [(f"{score:.1f}", POINT_LABEL_STYLE), (effort, DIM_LABEL_STYLE)],
+        for part in annotate_parts(axes, (score, row), [(f"{score:.{metric.decimals}f}", POINT_LABEL_STYLE), (effort, DIM_LABEL_STYLE)],
                                    RIGHT, element_id("end", model)):
             part.set_annotation_clip(False)
 
@@ -1171,15 +1533,31 @@ def bar_plot_html(metric: ReportedMetric, layout: Layout) -> str:
     svg = io.StringIO()
     figure.savefig(svg, format="svg", metadata={"Date": None})
     plt.close(figure)
-    return f'<div class="plot {layout.name} effort cost">{inline_svg(svg.getvalue())}</div>'
+    modes = "effort" if metric.costs else "effort cost"
+    return layout_html(f'<div class="plot {layout.name} {modes}">{inline_svg(svg.getvalue())}</div>', layout)
+
+
+def reported_cost_metric(metric: ReportedMetric) -> Metric:
+    """Shape reported scores at their known efforts for the existing cost-plot renderer.
+
+    >>> reported_cost_metric(ReportedMetric("example", "%", {GPT_6_ASTRA: (80.0, "high")})).scores[GPT_6_ASTRA]
+    [None, None, 80.0, None, None]
+    """
+    return Metric(metric.name, metric.unit_and_source,
+                  {model: [score if level == effort else None for level in EFFORT_LEVELS]
+                   for model, (score, effort) in metric.scores.items()},
+                  (0, metric.x_max), metric.tick_step, decimals=metric.decimals)
 
 
 def bar_panel_html(metric: ReportedMetric) -> str:
     missing = ", ".join(model.name for model in metric.missing)
     missing_note = f'<p class="missing">No reported score: {html.escape(missing)}</p>' if missing else ""
+    plots = "".join(bar_plot_html(metric, layout) for layout in LAYOUTS)
+    if metric.costs:
+        plots += "".join(plot_html(reported_cost_metric(metric), layout, "cost") for layout in LAYOUTS)
     return (f'<figure class="panel"><figcaption><h3>{html.escape(metric.name)}</h3>'
             f'<p>{html.escape(metric.unit_and_source)}</p>{missing_note}</figcaption>'
-            f'{"".join(bar_plot_html(metric, layout) for layout in LAYOUTS)}</figure>')
+            f'{plots}</figure>')
 
 
 def table_rows() -> Iterator[tuple[str, Metric, Model]]:
@@ -1201,7 +1579,15 @@ def table_html() -> str:
         if metric.costs and model in metric.costs:
             costs = "".join(f"<td>{'' if cost is None else cost_label(cost)}</td>" for cost in metric.costs[model])
             rows.append(f'<tr class="cost-row m-{model.slug}"><th scope="row"></th><td class="model">cost</td>{costs}</tr>')
-    return f'<table><thead><tr><th>Metric</th><th>Model</th>{head}</tr></thead><tbody>{"".join(rows)}</tbody></table>'
+    reported_rows = [f'<tr class="m-{model.slug}"><th scope="row">{html.escape(metric.name)}</th>'
+                     f'<td class="model">{html.escape(model.name)}</td><td>{score:.{metric.decimals}f}</td>'
+                     f'<td>{html.escape(effort)}</td><td>{html.escape(metric.unit_and_source)}</td>'
+                     f'<td>{cost_label(next(cost for cost in metric.costs[model] if cost is not None)) if metric.costs and model in metric.costs else ""}</td></tr>'
+                     for metrics in REPORTED.values() for metric in metrics
+                     for model, (score, effort) in metric.scores.items()]
+    return (f'<table><thead><tr><th>Metric</th><th>Model</th>{head}</tr></thead><tbody>{"".join(rows)}</tbody></table>'
+            f'<h3>Reported benchmarks and rankings</h3><table><thead><tr><th>Metric</th><th>Model</th>'
+            f'<th>Score</th><th>Effort</th><th>Unit and source</th><th>Reported cost</th></tr></thead><tbody>{"".join(reported_rows)}</tbody></table>')
 
 
 def layout_css() -> str:
@@ -1242,6 +1628,9 @@ PAGE_TEMPLATE = Template("""<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>$title</title>
+<noscript><style>
+body:has(#x-effort:checked) .plot.phone.effort, body:has(#x-cost:checked) .plot.phone.cost { display: block; }
+</style></noscript>
 <style>
 :root { color-scheme: light; $light }
 @media (prefers-color-scheme: dark) { :root { color-scheme: dark; $dark } }
@@ -1396,6 +1785,7 @@ def chart_data() -> dict[str, object]:
     """The scores the zoom script redraws from, keyed by the same slugs the page uses."""
     return {
         "levels": EFFORT_LEVELS,
+        "layouts": [{"name": layout.name, "minViewport": layout.min_viewport} for layout in LAYOUTS],
         "xLimits": X_LIMITS,
         "models": [{"slug": model.slug, "name": model.name, "color": model.color.variable} for model in MODELS],
         "metrics": {slugify(metric.name): {
@@ -1412,13 +1802,22 @@ def chart_data() -> dict[str, object]:
 def write_table(path: Path) -> None:
     with path.open("w", newline="") as file:
         writer = csv.writer(file)
-        writer.writerow(["category", "metric", "unit_and_source", "model", "measure", *EFFORT_LEVELS])
+        writer.writerow(["category", "metric", "unit_and_source", "model", "measure", *EFFORT_LEVELS,
+                         "reported_score", "reported_effort"])
         for category, metric, model in table_rows():
             writer.writerow([category.lower(), metric.name, metric.unit_and_source, model.name, "score",
-                             *("" if score is None else score for score in metric.scores[model])])
+                             *("" if score is None else score for score in metric.scores[model]), "", ""])
             if metric.costs and model in metric.costs:
                 writer.writerow([category.lower(), metric.name, metric.cost_unit, model.name, "cost_usd",
-                                 *("" if cost is None else cost for cost in metric.costs[model])])
+                                 *("" if cost is None else cost for cost in metric.costs[model]), "", ""])
+        for category, metrics in REPORTED.items():
+            for metric in metrics:
+                for model, (score, effort) in metric.scores.items():
+                    writer.writerow([category.lower(), metric.name, metric.unit_and_source, model.name, "score",
+                                     *(score if effort == level else "" for level in EFFORT_LEVELS), score, effort])
+                    if metric.costs and model in metric.costs:
+                        writer.writerow([category.lower(), metric.name, metric.cost_unit, model.name, "cost_usd",
+                                         *("" if cost is None else cost for cost in metric.costs[model]), "", effort])
 
 
 def main() -> None:

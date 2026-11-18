@@ -1,0 +1,487 @@
+{
+ "fetched": "2026-11-18",
+ "manifest": [
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image36.png",
+   "path": "/tmp/gpt62/source-assets/000-image36.png",
+   "bytes": 94927,
+   "sha256": "eb9e8a7eef1d64d917c842544b4d1cf5488b32a319d2b418b136d85a30622c9c"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image23.png",
+   "path": "/tmp/gpt62/source-assets/001-image23.png",
+   "bytes": 98490,
+   "sha256": "027a7906999e01d68c55d2c79601c04b59953ad5a2f2a6f003e07cbe0b7e07c2"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image8.png",
+   "path": "/tmp/gpt62/source-assets/002-image8.png",
+   "bytes": 90219,
+   "sha256": "5476776297638e8ddfe31db43a15211dd071e1e18a285bdcf537a18e3679ce65"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image9.png",
+   "path": "/tmp/gpt62/source-assets/003-image9.png",
+   "bytes": 100853,
+   "sha256": "93e6c65176895e8a69df366b64e76dd968b78f11b5c277f539f24ce93acb7d96"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image6.png",
+   "path": "/tmp/gpt62/source-assets/004-image6.png",
+   "bytes": 273541,
+   "sha256": "600bb743949091cf6742d435ad57b80ce2f58aa0093496204c4870bf27e303fc"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image49.png",
+   "path": "/tmp/gpt62/source-assets/005-image49.png",
+   "bytes": 90347,
+   "sha256": "cde37399eff14ad55585fba04255697fec2f60348ac6e2b1a136e0a4c68f0826"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image28.png",
+   "path": "/tmp/gpt62/source-assets/006-image28.png",
+   "bytes": 59845,
+   "sha256": "4669e69ed466595c5668155d2f2f1286f61b08fcdf83c15766002e2e3014dcfa"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image27.png",
+   "path": "/tmp/gpt62/source-assets/007-image27.png",
+   "bytes": 927920,
+   "sha256": "435e70dc4cbf690780ebe158991a9318637ea5c2b4301b97117eb9952b12bf13"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image43.png",
+   "path": "/tmp/gpt62/source-assets/008-image43.png",
+   "bytes": 219976,
+   "sha256": "b1e4aec892455bc1b3dd301007689ce899de320ff1fe667bb9a673a6d5b4d64f"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image40.png",
+   "path": "/tmp/gpt62/source-assets/009-image40.png",
+   "bytes": 145538,
+   "sha256": "397b3414cd2c3c23fba23693f9f86e7a7a966f0fae54211d882f6729bf5e090e"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image2.png",
+   "path": "/tmp/gpt62/source-assets/010-image2.png",
+   "bytes": 222680,
+   "sha256": "753b4c86f0fe5199b53fbe903b8a62517f1d3e8bf3267b54fa59f22744394983"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image11.png",
+   "path": "/tmp/gpt62/source-assets/011-image11.png",
+   "bytes": 206907,
+   "sha256": "cbc4dcdac225bbafb07f41c62960edd62d7186e673d01dada88b007f3487cafa"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image34.png",
+   "path": "/tmp/gpt62/source-assets/012-image34.png",
+   "bytes": 80282,
+   "sha256": "4b70edfa6146ff7e9a58e5fe254cb2f9c6d972e2cc90f5ddff373e20b77464d1"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image21.png",
+   "path": "/tmp/gpt62/source-assets/013-image21.png",
+   "bytes": 109298,
+   "sha256": "5ebe72aa1cd3eedaaacfea285d19c1026e3df8eb9d813b07675833f0ba2331f8"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image20.png",
+   "path": "/tmp/gpt62/source-assets/014-image20.png",
+   "bytes": 101558,
+   "sha256": "631e2b19ba57e707372f29d173b3b6632f68fb79c73bff0253cc9abd470073a9"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image47.png",
+   "path": "/tmp/gpt62/source-assets/015-image47.png",
+   "bytes": 97979,
+   "sha256": "e2c489ddccb27191c3db188577add025244e5b3ad66c5adcd4eeb5eb5799a027"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image15.png",
+   "path": "/tmp/gpt62/source-assets/016-image15.png",
+   "bytes": 103476,
+   "sha256": "c92afd1a0278e6d0b56039d3bc7a279e658095401e15d3b76eeb44142198d26b"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image37.png",
+   "path": "/tmp/gpt62/source-assets/017-image37.png",
+   "bytes": 92466,
+   "sha256": "e82a45b9b073a38b108f30d7f1c463b1620b20a2bbb1298e6609e6a05534eabb"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image12.png",
+   "path": "/tmp/gpt62/source-assets/018-image12.png",
+   "bytes": 308490,
+   "sha256": "b6c72d170cca7cdbcdbbebdc80f9d6ac620f2c53390f21d34fae4b9a15062446"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image55.png",
+   "path": "/tmp/gpt62/source-assets/019-image55.png",
+   "bytes": 336755,
+   "sha256": "e37073c94330b4ad1f699cc184bc28b694d3eccfa85b9efe13b340702b0ceeb7"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image30.png",
+   "path": "/tmp/gpt62/source-assets/020-image30.png",
+   "bytes": 278653,
+   "sha256": "89b2a428473216fc8e674f86927571ec59743745c40ff2b978b4eac414e862b4"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image51.png",
+   "path": "/tmp/gpt62/source-assets/021-image51.png",
+   "bytes": 1176170,
+   "sha256": "d05e7a4d3dc14b677966723b38aa0e5ab7f2cc0a3f59522def5020ed50234867"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image10.png",
+   "path": "/tmp/gpt62/source-assets/022-image10.png",
+   "bytes": 180761,
+   "sha256": "db51e6d39832d19250e8b575c4e1f7ad702a062fb5894412d836333a286d1bd3"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image48.png",
+   "path": "/tmp/gpt62/source-assets/023-image48.png",
+   "bytes": 307480,
+   "sha256": "428c218f2f98016e57c3f55670d12116b39a251f790015450dea53744fee3e45"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image18.png",
+   "path": "/tmp/gpt62/source-assets/024-image18.png",
+   "bytes": 205426,
+   "sha256": "32aa328c01db7f69d2598ade64569271e511957b7c3437dd9815fdbc82b5bed6"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image29.png",
+   "path": "/tmp/gpt62/source-assets/025-image29.png",
+   "bytes": 131254,
+   "sha256": "cbba832e190f0606fb58032e3bd02a5ec92ac8c169dafa8f1831394a5aca98aa"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image56.png",
+   "path": "/tmp/gpt62/source-assets/026-image56.png",
+   "bytes": 145163,
+   "sha256": "e4b4144bbb40ce6dae4725409f7e07bc36fd4bd2c36486dd0503dcbc55cf345d"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image33.png",
+   "path": "/tmp/gpt62/source-assets/027-image33.png",
+   "bytes": 326914,
+   "sha256": "515c8c7f15eca3933ff07aa7a89e5c9f03257fb5902a27257ca21739f8d8ec39"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image39.png",
+   "path": "/tmp/gpt62/source-assets/028-image39.png",
+   "bytes": 121699,
+   "sha256": "d0899a4f9ab733d798124e46f1dd4b06ad3f24dbb13d9ec618ca681b2aa0576b"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image22.png",
+   "path": "/tmp/gpt62/source-assets/029-image22.png",
+   "bytes": 378040,
+   "sha256": "efcf764012be432725e822331105170bbdcb2e56a42c68fd79f57adb2c8ec74c"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image25.png",
+   "path": "/tmp/gpt62/source-assets/030-image25.png",
+   "bytes": 91183,
+   "sha256": "8487103b6b3a23fe0fedaa15fc01cff40482499bbacd915b3d42127c0d04dd11"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image45.png",
+   "path": "/tmp/gpt62/source-assets/031-image45.png",
+   "bytes": 95928,
+   "sha256": "4df423b708d82e57e954a3a5287d5236f7a3c777a960a9b24ca4113a62c760de"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image4.png",
+   "path": "/tmp/gpt62/source-assets/032-image4.png",
+   "bytes": 112953,
+   "sha256": "b83a278d8c58d97d0b263ce1b66124b47d39d55c9b5198172a7c291f40a8477c"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image13.png",
+   "path": "/tmp/gpt62/source-assets/033-image13.png",
+   "bytes": 110392,
+   "sha256": "b3cdcc55d3c4fc41242a9803fa3c467b50694e7dd0f7eb8ff12730fc65517414"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image1.png",
+   "path": "/tmp/gpt62/source-assets/034-image1.png",
+   "bytes": 144836,
+   "sha256": "ee5eae49d15c93f6ed7a860cf0a09799c159a116a0c008c042571587ad704cc5"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image52.png",
+   "path": "/tmp/gpt62/source-assets/035-image52.png",
+   "bytes": 110017,
+   "sha256": "e4a237c2a8398ca2a186c90a208d8ce3ec61bdd902b8ccf2d12090f1d13a9161"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image53.png",
+   "path": "/tmp/gpt62/source-assets/036-image53.png",
+   "bytes": 144418,
+   "sha256": "8a9ce741e7d92179ac274910ebe2ba7452e32c6423ee7f9f4bbdf64fe9a987fb"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image54.png",
+   "path": "/tmp/gpt62/source-assets/037-image54.png",
+   "bytes": 99177,
+   "sha256": "5e5c07de507558d84b1b490c6821f5a0eb686a57b139e70c0cff44f777cb9d61"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image26.png",
+   "path": "/tmp/gpt62/source-assets/038-image26.png",
+   "bytes": 391404,
+   "sha256": "6d8da454811085db2c57e4d6438f0dd8d60a91c7c37f24f39a51dd772a1f0d3c"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image31.png",
+   "path": "/tmp/gpt62/source-assets/039-image31.png",
+   "bytes": 153605,
+   "sha256": "93ef5408d477ab86d3c77a8f90a3f6d3b66b2db63d2a462e1589f8c90dc5b5af"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image42.png",
+   "path": "/tmp/gpt62/source-assets/040-image42.png",
+   "bytes": 100573,
+   "sha256": "7480456731c0d1d4fd0e9eee4491ca8b22f1ffa4ea404ce1dc895c76a0dd069b"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image19.png",
+   "path": "/tmp/gpt62/source-assets/041-image19.png",
+   "bytes": 98152,
+   "sha256": "6651fc971ff224e40037515c68cfb5a07e5af0990391a2f0f0dbb373ec5a828b"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image16.png",
+   "path": "/tmp/gpt62/source-assets/042-image16.png",
+   "bytes": 252560,
+   "sha256": "201dab4c5f77525866654728953a3b78834ea064e7638aa84dbd73eeba087bf1"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image32.png",
+   "path": "/tmp/gpt62/source-assets/043-image32.png",
+   "bytes": 205019,
+   "sha256": "e142a7b7a9a7630d4c85104fe939db13d8bb306546b1cb5238f4a1db254dfb73"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image5.png",
+   "path": "/tmp/gpt62/source-assets/044-image5.png",
+   "bytes": 152262,
+   "sha256": "5ed293cc43866a9f28e8c338fad9cb49b59328caaf9800a9316718aebe9d54ae"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image7.png",
+   "path": "/tmp/gpt62/source-assets/045-image7.png",
+   "bytes": 241845,
+   "sha256": "4389bc6267fde1316cde399af4bc9a9ec01a623f073648dbefc50cf86c9bc001"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image35.png",
+   "path": "/tmp/gpt62/source-assets/046-image35.png",
+   "bytes": 771137,
+   "sha256": "dfbc86445ad5e00a4087b32581abb36ab5e4e5f0bb12c17b3976ca9f848cde74"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image44.png",
+   "path": "/tmp/gpt62/source-assets/047-image44.png",
+   "bytes": 346306,
+   "sha256": "2377889659eab4f0a1c4e72c810311af325d9582fd176e463094afac25fa9fcb"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image50.png",
+   "path": "/tmp/gpt62/source-assets/048-image50.png",
+   "bytes": 425174,
+   "sha256": "1849d993a95c8cfc81676a903e82f5e3373194f2f21bd55df7f39f255c208e5b"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image41.png",
+   "path": "/tmp/gpt62/source-assets/049-image41.png",
+   "bytes": 520646,
+   "sha256": "5c26051e4170b39cf7c7681f5577dd902ea93ce28cd327fc288f37b3c429bcac"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image17.png",
+   "path": "/tmp/gpt62/source-assets/050-image17.png",
+   "bytes": 501493,
+   "sha256": "e1a492d4f8f7012c80733eb1bbbe1d0668a082c3bc84f37fc6ca7713388a762c"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image46.png",
+   "path": "/tmp/gpt62/source-assets/051-image46.png",
+   "bytes": 322237,
+   "sha256": "22c31478e578ebb349dee15c4829c7435be24e70ed52d540f44d91a147886bd8"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image3.png",
+   "path": "/tmp/gpt62/source-assets/052-image3.png",
+   "bytes": 316600,
+   "sha256": "654f1b0280687aef213527e49bc11aebbc6ec3826a2efcb408028604c557f235"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image14.png",
+   "path": "/tmp/gpt62/source-assets/053-image14.png",
+   "bytes": 162762,
+   "sha256": "9776040bf7b5f0b9c7ecfbf66ca262169df6836d812c82f94e93e15d2a61401a"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image38.png",
+   "path": "/tmp/gpt62/source-assets/054-image38.png",
+   "bytes": 172816,
+   "sha256": "5b5d2d4c741fe1fdecb30f6bd16ae1568b8e71f2ce363991206d580ebfb9f492"
+  },
+  {
+   "url": "https://deploymentsafety.openai.com/data/eval-sets/gpt-6-2-astra-sol/assets/images/image24.png",
+   "path": "/tmp/gpt62/source-assets/055-image24.png",
+   "bytes": 160543,
+   "sha256": "8a8766c51c6a80e4516cc4d6e7c893286e05d16bc27961f0ec0fc2511dd55df8"
+  },
+  {
+   "url": "https://cdn.openai.com/mdx-assets/e193aefe-5e58-431c-8cd2-adadac0c1496/7a814a06-3d8b-4703-a24b-b1fb968ae1c8.eee9ea75.webp",
+   "path": "/tmp/gpt62/source-assets/056-7a814a06-3d8b-4703-a24b-b1fb968ae1c8.eee9ea75.webp",
+   "bytes": 83318,
+   "sha256": "eee9ea7547d33184df81f5e39d87c0a7deef081003b0235dd3f782a1de04f6df"
+  },
+  {
+   "url": "https://cdn.openai.com/mdx-assets/e193aefe-5e58-431c-8cd2-adadac0c1496/29d193ad-95cb-4a0d-892b-d4b391669684.d6868bd8.webp",
+   "path": "/tmp/gpt62/source-assets/057-29d193ad-95cb-4a0d-892b-d4b391669684.d6868bd8.webp",
+   "bytes": 10580,
+   "sha256": "d6868bd818cefc1a645c2c399039db026fe63832133d95f98853e5ae9bdcfb6e"
+  },
+  {
+   "url": "https://cdn.openai.com/mdx-assets/e193aefe-5e58-431c-8cd2-adadac0c1496/a65f0cc2-bfdc-4ad6-8a93-12628621bc0f.c298a622.webp",
+   "path": "/tmp/gpt62/source-assets/058-a65f0cc2-bfdc-4ad6-8a93-12628621bc0f.c298a622.webp",
+   "bytes": 8652,
+   "sha256": "c298a6225c69e27582e98ee95c09c810d974b60ee7a27ba4c48f451267ee6e28"
+  },
+  {
+   "url": "https://cdn.openai.com/mdx-assets/e193aefe-5e58-431c-8cd2-adadac0c1496/8b926633-c0e8-4fa1-a8e5-0116bf1cd67d.6977d303.webp",
+   "path": "/tmp/gpt62/source-assets/059-8b926633-c0e8-4fa1-a8e5-0116bf1cd67d.6977d303.webp",
+   "bytes": 36354,
+   "sha256": "6977d303cf57c20e1203acb874c234e85b866b858a4f558f7bcff84fc0fdd8d3"
+  },
+  {
+   "url": "https://cdn.openai.com/mdx-assets/e193aefe-5e58-431c-8cd2-adadac0c1496/f1bbe8f5-bd57-44d7-9ac1-2fd4ae22964c.894937c1.webp",
+   "path": "/tmp/gpt62/source-assets/060-f1bbe8f5-bd57-44d7-9ac1-2fd4ae22964c.894937c1.webp",
+   "bytes": 99962,
+   "sha256": "894937c1851db8c3ac1a0a12691b9471e2811572087c6c6dd0a800833df1b2ce"
+  },
+  {
+   "url": "https://cdn.openai.com/mdx-assets/e193aefe-5e58-431c-8cd2-adadac0c1496/dfc3637f-e18c-4cad-9187-6e3f91ce4c7e.efe8559b.webp",
+   "path": "/tmp/gpt62/source-assets/061-dfc3637f-e18c-4cad-9187-6e3f91ce4c7e.efe8559b.webp",
+   "bytes": 235190,
+   "sha256": "efe8559ba157432c5373e90d0688ee21fc781e6fd2cfceab927dccaf076119b8"
+  },
+  {
+   "url": "https://cdn.openai.com/mdx-assets/e193aefe-5e58-431c-8cd2-adadac0c1496/c72ca706-f91d-50f1-b6e8-39135b414e20.f0ff4fd0.webp",
+   "path": "/tmp/gpt62/source-assets/062-c72ca706-f91d-50f1-b6e8-39135b414e20.f0ff4fd0.webp",
+   "bytes": 166930,
+   "sha256": "f0ff4fd03b55709caf0d2528d6252093ab8b2ba7a30276713ebf809f8b21f09c"
+  },
+  {
+   "url": "https://cdn.openai.com/mdx-assets/e193aefe-5e58-431c-8cd2-adadac0c1496/c7768a84-f439-59ff-b838-c605cc4d233f.b587b8b0.webp",
+   "path": "/tmp/gpt62/source-assets/063-c7768a84-f439-59ff-b838-c605cc4d233f.b587b8b0.webp",
+   "bytes": 190542,
+   "sha256": "b587b8b06e82356e48684f20c57e4e6f8e58e0741a8b4b92a120b4da74e73c74"
+  },
+  {
+   "url": "https://cdn.openai.com/mdx-assets/e193aefe-5e58-431c-8cd2-adadac0c1496/633c2c8f-696f-5150-8c8c-c48348934422.57feb63d.webp",
+   "path": "/tmp/gpt62/source-assets/064-633c2c8f-696f-5150-8c8c-c48348934422.57feb63d.webp",
+   "bytes": 154812,
+   "sha256": "57feb63d081c06dac6c4cd79289444334f58d34c8d34fa90023abd0194c1b6e8"
+  },
+  {
+   "url": "https://cdn.openai.com/mdx-assets/e193aefe-5e58-431c-8cd2-adadac0c1496/4fa73f0d-f1a8-5a68-b350-814a9d1910e1.37aa4853.webp",
+   "path": "/tmp/gpt62/source-assets/065-4fa73f0d-f1a8-5a68-b350-814a9d1910e1.37aa4853.webp",
+   "bytes": 127734,
+   "sha256": "37aa4853b6c22ca052f749f5e6277697548a37bb7e3cb58401f7e479107f37fd"
+  },
+  {
+   "url": "https://cdn.openai.com/mdx-assets/e193aefe-5e58-431c-8cd2-adadac0c1496/d9e242ac-405e-5643-a211-8a006b7bd1ac.ad58d769.webp",
+   "path": "/tmp/gpt62/source-assets/066-d9e242ac-405e-5643-a211-8a006b7bd1ac.ad58d769.webp",
+   "bytes": 400,
+   "sha256": "ad58d769d24340986f8b7c006bf4350f3d689fcf2896ccecdbe13c0526ff7cc3"
+  },
+  {
+   "path": "/tmp/gpt62/source-assets/chart-00.png",
+   "title": "Agents' Last Exam v1.1",
+   "type": "rendered original Vega-Lite specification"
+  },
+  {
+   "path": "/tmp/gpt62/source-assets/chart-01.png",
+   "title": "Terminal-Bench-Science 0.1",
+   "type": "rendered original Vega-Lite specification"
+  },
+  {
+   "path": "/tmp/gpt62/source-assets/chart-02.png",
+   "title": "Artificial Analysis Intelligence Index v5.0.1",
+   "type": "rendered original Vega-Lite specification"
+  },
+  {
+   "path": "/tmp/gpt62/source-assets/chart-03.png",
+   "title": "FrontierCode 2.0",
+   "type": "rendered original Vega-Lite specification"
+  },
+  {
+   "path": "/tmp/gpt62/source-assets/chart-04.png",
+   "title": "LifeVal",
+   "type": "rendered original Vega-Lite specification"
+  },
+  {
+   "path": "/tmp/gpt62/source-assets/chart-05.png",
+   "title": "Harvey-LAB-AA v1.1",
+   "type": "rendered original Vega-Lite specification"
+  },
+  {
+   "path": "/tmp/gpt62/source-assets/chart-06.png",
+   "title": "GDPval v2 (Internal)",
+   "type": "rendered original Vega-Lite specification"
+  },
+  {
+   "path": "/tmp/gpt62/source-assets/chart-07.png",
+   "title": "DeepBinary",
+   "type": "rendered original Vega-Lite specification"
+  },
+  {
+   "path": "/tmp/gpt62/source-assets/chart-08.png",
+   "title": "SecureSWE",
+   "type": "rendered original Vega-Lite specification"
+  },
+  {
+   "path": "/tmp/gpt62/source-assets/chart-09.png",
+   "title": "Blocker deception",
+   "type": "rendered original Vega-Lite specification"
+  },
+  {
+   "path": "/tmp/gpt62/source-assets/chart-10.png",
+   "title": "Vals Science Index v1",
+   "type": "rendered original Vega-Lite specification"
+  },
+  {
+   "path": "/tmp/gpt62/source-assets/chart-11.png",
+   "title": "BenchCAD 2.1 Core",
+   "type": "rendered original Vega-Lite specification"
+  },
+  {
+   "path": "/tmp/gpt62/source-assets/chart-12.png",
+   "title": "AutomationBench 1.0.6",
+   "type": "rendered original Vega-Lite specification"
+  },
+  {
+   "path": "/tmp/gpt62/source-assets/chart-13.png",
+   "title": "ExploitBench – Internal Port (June–August 2026)",
+   "type": "rendered original Vega-Lite specification"
+  },
+  {
+   "path": "/tmp/gpt62/source-assets/chart-14.png",
+   "title": "PatchBench",
+   "type": "rendered original Vega-Lite specification"
+  },
+  {
+   "path": "/tmp/gpt62/source-assets/chart-15.png",
+   "title": "Improper actions in workplace tasks",
+   "type": "rendered original Vega-Lite specification"
+  }
+ ]
+}

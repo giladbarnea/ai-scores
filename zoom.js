@@ -1,3 +1,31 @@
+// Keep inactive SVG layouts out of the live document; large benchmark collections otherwise stall on resize.
+(() => {
+  const { layouts } = JSON.parse(document.getElementById("chart-data").textContent);
+  const entries = [...document.querySelectorAll("template[data-layout]")].map(template => ({
+    template, plot: template.content.firstElementChild, layout: template.dataset.layout,
+  }));
+  let active;
+
+  function mountLayout() {
+    const layout = layouts.findLast(layout => innerWidth >= layout.minViewport).name;
+    const mode = document.getElementById("x-cost").checked ? "cost" : "effort";
+    const selection = `${layout} ${mode}`;
+    if (selection === active) return;
+    for (const entry of entries) {
+      if (entry.layout === layout && entry.plot.classList.contains(mode)) {
+        entry.template.before(entry.plot);
+        continue;
+      }
+      entry.template.content.append(entry.plot);
+    }
+    active = selection;
+  }
+
+  mountLayout();
+  window.addEventListener("resize", mountLayout);
+  document.querySelectorAll('input[name="x-axis"]').forEach(input => input.addEventListener("change", mountLayout));
+})();
+
 // Drag across a chart to open a full-screen chart of only the points inside the rectangle. With a mouse the drag starts
 // at once; on a touch screen it starts after the finger presses still for a second, so a quick swipe still scrolls.
 // The page works without this script; it only adds the zoom where JavaScript runs.
