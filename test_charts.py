@@ -96,9 +96,9 @@ class ChartCoverageTests(unittest.TestCase):
         sections = re.findall(r"<section><h2>(.*?)</h2>(.*?)</section>", page, flags=re.DOTALL)
         charts_by_section = {html.unescape(heading): [html.unescape(name) for name in re.findall(r"<h3>(.*?)</h3>", body)]
                              for heading, body in sections}
-        self.assertEqual(list(charts_by_section), ["Aggregates", "Intelligence & knowledge", "Professional work",
-                                                   "Science & engineering", "Health", "Coding & security",
-                                                   "Machine-learning research", "Multimodal tasks"])
+        self.assertEqual(list(charts_by_section), ["Aggregates", "Intelligence & knowledge", "Coding & security",
+                                                   "Science & engineering", "Machine-learning research",
+                                                   "Professional work", "Health", "Multimodal tasks"])
         placed = [name for names in charts_by_section.values() for name in names]
         self.assertEqual(len(placed), 50, "Every chart must appear")
         self.assertEqual(len(set(placed)), 50, "No chart may appear twice")
