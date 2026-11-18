@@ -14,29 +14,71 @@ body:has(#x-effort:checked) .plot.phone.effort, body:has(#x-cost:checked) .plot.
 body { margin: 0; background: var(--page); color: var(--ink-1);
   font: 15px/1.45 "Helvetica Neue", system-ui, -apple-system, sans-serif; -webkit-text-size-adjust: 100%; }
 .shell { padding: 0 clamp(16px, 2vw, 40px); }
-header { padding: 28px 0 12px; }
-h1 { margin: 0 0 6px; font-size: 24px; letter-spacing: -0.01em; }
-.subtitle { margin: 0; max-width: 72ch; color: var(--ink-2); }
-.legend { position: sticky; top: 0; z-index: 10; background: var(--page); border-bottom: 1px solid var(--border); }
-.legend .shell { display: flex; flex-wrap: wrap; gap: 6px 18px; padding-top: 10px; padding-bottom: 10px; }
-.legend label { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;
-  -webkit-user-select: none; padding: 4px 0; font-weight: 500; }
-.legend label.model::before { content: ""; width: 18px; height: 3px; border-radius: 2px; background: var(--series); }
-.axis-switch { display: inline-flex; align-items: center; gap: 0; margin-left: auto; color: var(--ink-3); font-size: 13px; }
-.axis-switch span { margin-right: 8px; }
-.legend .axis-switch label { padding: 3px 12px; border: 1px solid var(--baseline); font-weight: 500; font-size: 13px; color: var(--ink-2); }
-.axis-switch label:first-of-type { border-radius: 6px 0 0 6px; }
-.axis-switch label:last-of-type { border-radius: 0 6px 6px 0; border-left: 0; }
-body:has(#x-effort:checked) label[for=x-effort], body:has(#x-cost:checked) label[for=x-cost] {
-  background: var(--ink-1); border-color: var(--ink-1); color: var(--surface); }
-body:has(#x-effort:focus-visible) label[for=x-effort], body:has(#x-cost:focus-visible) label[for=x-cost] {
+.intro { padding-top: 36px; padding-bottom: 24px; }
+h1 { margin: 0; font-size: 30px; line-height: 1.1; letter-spacing: -0.02em; }
+.tagline { margin: 8px 0 0; font-size: 17px; color: var(--ink-2); text-wrap: balance; }
+.hint { display: none; margin: 12px 0 0; font-size: 13px; color: var(--ink-3); }
+.zoomable .hint { display: block; }
+.cost-hint, body:has(#x-cost:checked) .effort-hint { display: none; }
+body:has(#x-cost:checked) .cost-hint { display: inline; }
+.controls { position: sticky; top: 0; z-index: 10; background: var(--page); border-bottom: 1px solid var(--border); }
+.controls label, .controls button { cursor: pointer; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
+.bar { display: flex; align-items: center; gap: 12px; min-height: 64px; }
+.filters-button { display: inline-flex; align-items: center; gap: 8px; min-width: 0; height: 42px; padding: 0 14px;
+  border: 1px solid var(--baseline); border-radius: 999px; font-weight: 600; transition: background-color .18s ease, transform .12s ease; }
+.filters-button svg { flex: none; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; }
+.filter-summary { display: none; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 400; color: var(--ink-3); }
+.filter-summary::first-letter { text-transform: uppercase; }
+.filter-dot { display: none; width: 7px; height: 7px; border-radius: 50%; background: var(--ink-1); }
+.narrowed .filter-dot { display: block; }
+.chevron { transition: transform .22s ease; }
+body:has(#filters-open:checked) .chevron { transform: rotate(180deg); }
+body:has(#filters-open:checked) .filters-button { background: color-mix(in srgb, var(--ink-1) 8%, transparent); }
+.segmented { display: inline-flex; flex: none; align-items: center; margin-left: auto; padding: 3px; border-radius: 999px;
+  background: color-mix(in srgb, var(--ink-1) 8%, transparent); }
+.segmented-caption { display: none; padding: 0 8px 0 10px; font-size: 12px; color: var(--ink-3); }
+.segmented label { position: relative; display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 999px;
+  font-size: 14px; font-weight: 600; color: var(--ink-3); transition: background-color .2s ease, color .2s ease, box-shadow .2s ease, transform .12s ease; }
+.segmented label:has(:checked) { background: var(--surface); color: var(--ink-1); box-shadow: 0 1px 4px rgba(0, 0, 0, .25); }
+.filters-button:active, .segmented label:active, .chip:active, .quick button:active, .done:active { transform: scale(.96); }
+:is(.segmented label, .chip):has(:focus-visible), body:has(#filters-open:focus-visible) .filters-button {
   outline: 2px solid var(--ink-2); outline-offset: 2px; }
-.level-filter { display: none; flex-basis: 100%; align-items: center; flex-wrap: wrap; gap: 6px; font-size: 13px; }
-.zoomable .level-filter { display: flex; }
-.level-filter > span { margin-right: 4px; color: var(--ink-3); }
-.legend .level-filter label { padding: 3px 9px; border: 1px solid var(--baseline); border-radius: 6px; font-size: 13px; }
-.level-filter button { font: inherit; color: var(--ink-2); background: none; border: 0; cursor: pointer; padding: 4px 6px; }
-.level-filter button:hover { text-decoration: underline; }
+@media (min-width: 480px) { .segmented-caption, .filter-summary { display: inline; } .narrowed .filter-dot { display: none; } }
+.filter-panel { display: grid; grid-template-rows: 0fr; visibility: hidden; opacity: 0; }
+body:has(#filters-open:checked) .filter-panel { grid-template-rows: 1fr; visibility: visible; opacity: 1; }
+.zoomable .filter-panel { transition: grid-template-rows .24s ease, opacity .18s ease, visibility 0s linear .24s; }
+body.zoomable:has(#filters-open:checked) .filter-panel { transition: grid-template-rows .24s ease, opacity .18s ease; }
+.panel-inner { min-height: 0; max-height: calc(100dvh - 65px); overflow-y: auto; overscroll-behavior: contain; }
+.panel-inner::after { content: ""; display: block; height: 20px; }
+.filter-group + .filter-group { margin-top: 28px; }
+.levels, .quick { display: none; }
+.zoomable .levels { display: block; }
+.zoomable .quick { display: flex; gap: 4px; }
+.group-head { display: flex; align-items: center; justify-content: space-between; min-height: 36px; margin: 4px 0 10px; }
+.group-title { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.quick button { font: inherit; font-size: 14px; color: var(--ink-2); background: none; border: 0; padding: 8px 10px; border-radius: 8px;
+  transition: background-color .15s ease, transform .12s ease; }
+.quick button:hover { background: color-mix(in srgb, var(--ink-1) 8%, transparent); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { position: relative; display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 0 14px 0 12px; white-space: nowrap;
+  border: 1px solid var(--baseline); border-radius: 12px; font-size: 14px; font-weight: 500; color: var(--ink-3);
+  transition: background-color .18s ease, border-color .18s ease, color .18s ease, transform .12s ease; }
+.chip:has(:checked) { color: var(--ink-1); border-color: color-mix(in srgb, var(--series) 60%, transparent);
+  background: color-mix(in srgb, var(--series) 14%, transparent); }
+.tick { display: grid; flex: none; place-items: center; width: 18px; height: 18px; border: 2px solid var(--series); border-radius: 50%;
+  transition: background-color .18s ease; }
+.chip:has(:checked) .tick { background: var(--series); }
+.tick svg { width: 12px; height: 12px; fill: none; stroke: var(--surface); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+  opacity: 0; transform: scale(.4); transition: opacity .15s ease, transform .22s cubic-bezier(.3, 1.6, .5, 1); }
+.chip:has(:checked) .tick svg { opacity: 1; transform: scale(1); }
+.done { display: flex; align-items: center; justify-content: center; height: 46px; margin-top: 28px; border-radius: 12px;
+  background: var(--ink-1); color: var(--surface); font-weight: 600; transition: transform .12s ease; }
+@media (min-width: 960px) {
+  .panel-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 48px; align-items: start; }
+  .filter-group + .filter-group { margin-top: 0; }
+  .done { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .controls *, .filter-panel { transition: none !important; } }
 .no-points { display: none; }
 .panel:has(.plot.empty) .no-points { display: block; }
 .missing { color: var(--ink-3); }
@@ -52,6 +94,8 @@ h2 { margin: 32px 0 12px; font-size: 13px; letter-spacing: .08em; text-transform
 figcaption h3 { margin: 0; font-size: 16px; }
 figcaption p { margin: 2px 0 0; font-size: 13px; color: var(--ink-3); }
 .plot { position: relative; display: none; }
+/* With JavaScript, only the active layout and mode are mounted, so the old charts stay until the new ones replace them. */
+.zoomable .panel > .plot { display: block; }
 @media (max-width: 699.98px) { .panel { padding: 12px 10px 6px; } }
 @media (min-width: 0px) and (max-width: 699.98px) { body:has(#x-effort:checked) .plot.phone.effort, body:has(#x-cost:checked) .plot.phone.cost { display: block; } }
 @media (min-width: 700px) and (max-width: 1599.98px) { body:has(#x-effort:checked) .plot.desktop.effort, body:has(#x-cost:checked) .plot.desktop.cost { display: block; } }
@@ -127,32 +171,14 @@ tr.first > * { border-top: 1px solid var(--grid); }
 .zoom-plot { flex: 1; min-height: 0; position: relative; }
 .zoom-plot svg { display: block; width: 100%; height: 100%; overflow: visible; }
 body:has(#show-gpt-6-astra:not(:checked)) .m-gpt-6-astra { display: none; }
-body:has(#show-gpt-6-astra:not(:checked)) label[for=show-gpt-6-astra] { opacity: .45; text-decoration: line-through; }
-body:has(#show-gpt-6-astra:focus-visible) label[for=show-gpt-6-astra] { outline: 2px solid var(--ink-2); outline-offset: 2px; }
 body:has(#show-gpt-6-2-astra:not(:checked)) .m-gpt-6-2-astra { display: none; }
-body:has(#show-gpt-6-2-astra:not(:checked)) label[for=show-gpt-6-2-astra] { opacity: .45; text-decoration: line-through; }
-body:has(#show-gpt-6-2-astra:focus-visible) label[for=show-gpt-6-2-astra] { outline: 2px solid var(--ink-2); outline-offset: 2px; }
 body:has(#show-gpt-6-1-sol:not(:checked)) .m-gpt-6-1-sol { display: none; }
-body:has(#show-gpt-6-1-sol:not(:checked)) label[for=show-gpt-6-1-sol] { opacity: .45; text-decoration: line-through; }
-body:has(#show-gpt-6-1-sol:focus-visible) label[for=show-gpt-6-1-sol] { outline: 2px solid var(--ink-2); outline-offset: 2px; }
 body:has(#show-gpt-6-2-sol:not(:checked)) .m-gpt-6-2-sol { display: none; }
-body:has(#show-gpt-6-2-sol:not(:checked)) label[for=show-gpt-6-2-sol] { opacity: .45; text-decoration: line-through; }
-body:has(#show-gpt-6-2-sol:focus-visible) label[for=show-gpt-6-2-sol] { outline: 2px solid var(--ink-2); outline-offset: 2px; }
 body:has(#show-fable-5-2:not(:checked)) .m-fable-5-2 { display: none; }
-body:has(#show-fable-5-2:not(:checked)) label[for=show-fable-5-2] { opacity: .45; text-decoration: line-through; }
-body:has(#show-fable-5-2:focus-visible) label[for=show-fable-5-2] { outline: 2px solid var(--ink-2); outline-offset: 2px; }
 body:has(#show-opus-5-5:not(:checked)) .m-opus-5-5 { display: none; }
-body:has(#show-opus-5-5:not(:checked)) label[for=show-opus-5-5] { opacity: .45; text-decoration: line-through; }
-body:has(#show-opus-5-5:focus-visible) label[for=show-opus-5-5] { outline: 2px solid var(--ink-2); outline-offset: 2px; }
 body:has(#show-sonnet-5-5:not(:checked)) .m-sonnet-5-5 { display: none; }
-body:has(#show-sonnet-5-5:not(:checked)) label[for=show-sonnet-5-5] { opacity: .45; text-decoration: line-through; }
-body:has(#show-sonnet-5-5:focus-visible) label[for=show-sonnet-5-5] { outline: 2px solid var(--ink-2); outline-offset: 2px; }
 body:has(#show-gemini-4-carbon:not(:checked)) .m-gemini-4-carbon { display: none; }
-body:has(#show-gemini-4-carbon:not(:checked)) label[for=show-gemini-4-carbon] { opacity: .45; text-decoration: line-through; }
-body:has(#show-gemini-4-carbon:focus-visible) label[for=show-gemini-4-carbon] { outline: 2px solid var(--ink-2); outline-offset: 2px; }
 body:has(#show-gemini-4-hydrogen:not(:checked)) .m-gemini-4-hydrogen { display: none; }
-body:has(#show-gemini-4-hydrogen:not(:checked)) label[for=show-gemini-4-hydrogen] { opacity: .45; text-decoration: line-through; }
-body:has(#show-gemini-4-hydrogen:focus-visible) label[for=show-gemini-4-hydrogen] { outline: 2px solid var(--ink-2); outline-offset: 2px; }
 body:has(#show-gpt-6-astra:checked):has(#show-gpt-6-2-astra:checked):has(#show-gpt-6-1-sol:not(:checked)):has(#show-gpt-6-2-sol:not(:checked)):has(#show-fable-5-2:not(:checked)):has(#show-opus-5-5:not(:checked)):has(#show-sonnet-5-5:not(:checked)):has(#show-gemini-4-carbon:not(:checked)):has(#show-gemini-4-hydrogen:not(:checked)) :is(.meeting, .meeting-line).m-gpt-6-astra.m-gpt-6-2-astra { display: inline; }
 body:has(#show-gpt-6-astra:checked):has(#show-gpt-6-2-astra:not(:checked)):has(#show-gpt-6-1-sol:checked):has(#show-gpt-6-2-sol:not(:checked)):has(#show-fable-5-2:not(:checked)):has(#show-opus-5-5:not(:checked)):has(#show-sonnet-5-5:not(:checked)):has(#show-gemini-4-carbon:not(:checked)):has(#show-gemini-4-hydrogen:not(:checked)) :is(.meeting, .meeting-line).m-gpt-6-astra.m-gpt-6-1-sol { display: inline; }
 body:has(#show-gpt-6-astra:checked):has(#show-gpt-6-2-astra:not(:checked)):has(#show-gpt-6-1-sol:not(:checked)):has(#show-gpt-6-2-sol:checked):has(#show-fable-5-2:not(:checked)):has(#show-opus-5-5:not(:checked)):has(#show-sonnet-5-5:not(:checked)):has(#show-gemini-4-carbon:not(:checked)):has(#show-gemini-4-hydrogen:not(:checked)) :is(.meeting, .meeting-line).m-gpt-6-astra.m-gpt-6-2-sol { display: inline; }
@@ -190,29 +216,18 @@ body:has(#show-gpt-6-astra:not(:checked)):has(#show-gpt-6-2-astra:not(:checked))
 body:has(#show-gpt-6-astra:not(:checked)):has(#show-gpt-6-2-astra:not(:checked)):has(#show-gpt-6-1-sol:not(:checked)):has(#show-gpt-6-2-sol:not(:checked)):has(#show-fable-5-2:not(:checked)):has(#show-opus-5-5:not(:checked)):has(#show-sonnet-5-5:checked):has(#show-gemini-4-carbon:not(:checked)):has(#show-gemini-4-hydrogen:checked) :is(.meeting, .meeting-line).m-sonnet-5-5.m-gemini-4-hydrogen { display: inline; }
 body:has(#show-gpt-6-astra:not(:checked)):has(#show-gpt-6-2-astra:not(:checked)):has(#show-gpt-6-1-sol:not(:checked)):has(#show-gpt-6-2-sol:not(:checked)):has(#show-fable-5-2:not(:checked)):has(#show-opus-5-5:not(:checked)):has(#show-sonnet-5-5:not(:checked)):has(#show-gemini-4-carbon:checked):has(#show-gemini-4-hydrogen:checked) :is(.meeting, .meeting-line).m-gemini-4-carbon.m-gemini-4-hydrogen { display: inline; }
 body:has(#level-low:not(:checked)) [data-level="low"] { display: none; }
-body:has(#level-low:checked) label[for=level-low] { background: var(--ink-1); border-color: var(--ink-1); color: var(--surface); }
-body:has(#level-low:focus-visible) label[for=level-low] { outline: 2px solid var(--ink-2); outline-offset: 2px; }
 body:has(#level-medium:not(:checked)) [data-level="medium"] { display: none; }
-body:has(#level-medium:checked) label[for=level-medium] { background: var(--ink-1); border-color: var(--ink-1); color: var(--surface); }
-body:has(#level-medium:focus-visible) label[for=level-medium] { outline: 2px solid var(--ink-2); outline-offset: 2px; }
 body:has(#level-high:not(:checked)) [data-level="high"] { display: none; }
-body:has(#level-high:checked) label[for=level-high] { background: var(--ink-1); border-color: var(--ink-1); color: var(--surface); }
-body:has(#level-high:focus-visible) label[for=level-high] { outline: 2px solid var(--ink-2); outline-offset: 2px; }
 body:has(#level-xhigh:not(:checked)) [data-level="xhigh"] { display: none; }
-body:has(#level-xhigh:checked) label[for=level-xhigh] { background: var(--ink-1); border-color: var(--ink-1); color: var(--surface); }
-body:has(#level-xhigh:focus-visible) label[for=level-xhigh] { outline: 2px solid var(--ink-2); outline-offset: 2px; }
 body:has(#level-max:not(:checked)) [data-level="max"] { display: none; }
-body:has(#level-max:checked) label[for=level-max] { background: var(--ink-1); border-color: var(--ink-1); color: var(--surface); }
-body:has(#level-max:focus-visible) label[for=level-max] { outline: 2px solid var(--ink-2); outline-offset: 2px; }
 body:has(#level-not-stated:not(:checked)) [data-level="not-stated"] { display: none; }
-body:has(#level-not-stated:checked) label[for=level-not-stated] { background: var(--ink-1); border-color: var(--ink-1); color: var(--surface); }
-body:has(#level-not-stated:focus-visible) label[for=level-not-stated] { outline: 2px solid var(--ink-2); outline-offset: 2px; }
 </style>
 </head>
 <body>
-<input type="checkbox" class="toggle" id="show-gpt-6-astra" value="gpt-6-astra" checked><input type="checkbox" class="toggle" id="show-gpt-6-2-astra" value="gpt-6-2-astra" checked><input type="checkbox" class="toggle" id="show-gpt-6-1-sol" value="gpt-6-1-sol" checked><input type="checkbox" class="toggle" id="show-gpt-6-2-sol" value="gpt-6-2-sol" checked><input type="checkbox" class="toggle" id="show-fable-5-2" value="fable-5-2" checked><input type="checkbox" class="toggle" id="show-opus-5-5" value="opus-5-5" checked><input type="checkbox" class="toggle" id="show-sonnet-5-5" value="sonnet-5-5" checked><input type="checkbox" class="toggle" id="show-gemini-4-carbon" value="gemini-4-carbon" checked><input type="checkbox" class="toggle" id="show-gemini-4-hydrogen" value="gemini-4-hydrogen" checked><input type="radio" class="toggle" name="x-axis" id="x-effort" checked><input type="radio" class="toggle" name="x-axis" id="x-cost"><input type="checkbox" class="toggle" name="thinking-level" id="level-low" value="low" checked><input type="checkbox" class="toggle" name="thinking-level" id="level-medium" value="medium" checked><input type="checkbox" class="toggle" name="thinking-level" id="level-high" value="high" checked><input type="checkbox" class="toggle" name="thinking-level" id="level-xhigh" value="xhigh" checked><input type="checkbox" class="toggle" name="thinking-level" id="level-max" value="max" checked><input type="checkbox" class="toggle" name="thinking-level" id="level-not-stated" value="not-stated" checked>
-<header class="shell"><h1>AI scores</h1><p class="subtitle">Tap a model to hide or show it. Select thinking levels to compare only those settings. Share the URL to share your filters. Show exactly two models to see where they come closest: a dashed line joins their nearest scores at different effort levels. Hover a level to read every score. To zoom in on some points, drag across them with a mouse, or press and hold a finger for a second, then drag. In Cost, each grey arrow points from a beaten setting to the nearest unbeaten setting that beats it. The winner costs no more and scores no lower, with at least one improvement. Hover an arrow to highlight both points.</p></header>
-<nav class="legend" aria-label="Chart filters"><div class="shell"><label class="model" for="show-gpt-6-astra" style="--series: var(--series-2)">GPT-6 Astra</label><label class="model" for="show-gpt-6-2-astra" style="--series: var(--series-8)">GPT-6.2 Astra</label><label class="model" for="show-gpt-6-1-sol" style="--series: var(--series-6)">GPT-6.1 Sol</label><label class="model" for="show-gpt-6-2-sol" style="--series: var(--series-9)">GPT-6.2 Sol</label><label class="model" for="show-fable-5-2" style="--series: var(--series-4)">Fable 5.2</label><label class="model" for="show-opus-5-5" style="--series: var(--series-5)">Opus 5.5</label><label class="model" for="show-sonnet-5-5" style="--series: var(--series-7)">Sonnet 5.5</label><label class="model" for="show-gemini-4-carbon" style="--series: var(--series-1)">Gemini 4 Carbon</label><label class="model" for="show-gemini-4-hydrogen" style="--series: var(--series-10)">Gemini 4 Hydrogen</label><span class="axis-switch" role="group" aria-label="X axis"><span>X axis</span><label for="x-effort">Effort level</label><label for="x-cost">Cost</label></span><div class="level-filter" role="group" aria-label="Thinking levels"><span>Thinking level</span><label for="level-low">low</label><label for="level-medium">medium</label><label for="level-high">high</label><label for="level-xhigh">xhigh</label><label for="level-max">max</label><label for="level-not-stated">not stated</label><button type="button" id="levels-all">All</button><button type="button" id="levels-none">None</button></div></div></nav>
+<header class="shell intro"><h1>AI scores</h1><p class="tagline">Every published score, by thinking level and price.</p>
+<p class="hint"><span class="effort-hint">Hold, then drag across a chart to zoom.</span>
+<span class="cost-hint">Grey arrows point to a better deal.</span></p></header>
+<nav class="controls" aria-label="Chart controls"><input type="checkbox" class="toggle" id="filters-open" aria-controls="filter-panel"><div class="shell bar"><label class="filters-button" for="filters-open"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h8m4 0h2M3 14h2m4 0h8"/><circle cx="13" cy="6" r="2"/><circle cx="7" cy="14" r="2"/></svg>Filters<span class="filter-summary"></span><span class="filter-dot"></span><svg class="chevron" viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></label><div class="segmented" role="radiogroup" aria-label="X axis"><span class="segmented-caption">X axis</span><label for="x-effort"><input type="radio" class="toggle" name="x-axis" id="x-effort" value="effort" checked>Thinking level</label><label for="x-cost"><input type="radio" class="toggle" name="x-axis" id="x-cost" value="cost">Cost</label></div></div><div class="filter-panel" id="filter-panel"><div class="panel-inner shell"><section class="filter-group models" aria-label="Models"><div class="group-head"><span class="group-title">Models</span><span class="quick"><button type="button" id="models-all" data-group="models" data-checked="true">All</button><button type="button" id="models-none" data-group="models" data-checked="false">None</button></span></div><div class="chips"><label class="chip" for="show-gpt-6-astra" style="--series: var(--series-2)"><input type="checkbox" class="toggle" name="model" id="show-gpt-6-astra" value="gpt-6-astra" data-label="GPT-6 Astra" checked><span class="tick"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"/></svg></span>GPT-6 Astra</label><label class="chip" for="show-gpt-6-2-astra" style="--series: var(--series-8)"><input type="checkbox" class="toggle" name="model" id="show-gpt-6-2-astra" value="gpt-6-2-astra" data-label="GPT-6.2 Astra" checked><span class="tick"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"/></svg></span>GPT-6.2 Astra</label><label class="chip" for="show-gpt-6-1-sol" style="--series: var(--series-6)"><input type="checkbox" class="toggle" name="model" id="show-gpt-6-1-sol" value="gpt-6-1-sol" data-label="GPT-6.1 Sol" checked><span class="tick"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"/></svg></span>GPT-6.1 Sol</label><label class="chip" for="show-gpt-6-2-sol" style="--series: var(--series-9)"><input type="checkbox" class="toggle" name="model" id="show-gpt-6-2-sol" value="gpt-6-2-sol" data-label="GPT-6.2 Sol" checked><span class="tick"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"/></svg></span>GPT-6.2 Sol</label><label class="chip" for="show-fable-5-2" style="--series: var(--series-4)"><input type="checkbox" class="toggle" name="model" id="show-fable-5-2" value="fable-5-2" data-label="Fable 5.2" checked><span class="tick"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"/></svg></span>Fable 5.2</label><label class="chip" for="show-opus-5-5" style="--series: var(--series-5)"><input type="checkbox" class="toggle" name="model" id="show-opus-5-5" value="opus-5-5" data-label="Opus 5.5" checked><span class="tick"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"/></svg></span>Opus 5.5</label><label class="chip" for="show-sonnet-5-5" style="--series: var(--series-7)"><input type="checkbox" class="toggle" name="model" id="show-sonnet-5-5" value="sonnet-5-5" data-label="Sonnet 5.5" checked><span class="tick"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"/></svg></span>Sonnet 5.5</label><label class="chip" for="show-gemini-4-carbon" style="--series: var(--series-1)"><input type="checkbox" class="toggle" name="model" id="show-gemini-4-carbon" value="gemini-4-carbon" data-label="Gemini 4 Carbon" checked><span class="tick"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"/></svg></span>Gemini 4 Carbon</label><label class="chip" for="show-gemini-4-hydrogen" style="--series: var(--series-10)"><input type="checkbox" class="toggle" name="model" id="show-gemini-4-hydrogen" value="gemini-4-hydrogen" data-label="Gemini 4 Hydrogen" checked><span class="tick"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"/></svg></span>Gemini 4 Hydrogen</label></div></section><section class="filter-group levels" aria-label="Thinking level"><div class="group-head"><span class="group-title">Thinking level</span><span class="quick"><button type="button" id="levels-all" data-group="levels" data-checked="true">All</button><button type="button" id="levels-none" data-group="levels" data-checked="false">None</button></span></div><div class="chips"><label class="chip" for="level-low" style="--series: var(--ink-2)"><input type="checkbox" class="toggle" name="thinking-level" id="level-low" value="low" data-label="low" checked><span class="tick"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"/></svg></span>low</label><label class="chip" for="level-medium" style="--series: var(--ink-2)"><input type="checkbox" class="toggle" name="thinking-level" id="level-medium" value="medium" data-label="medium" checked><span class="tick"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"/></svg></span>medium</label><label class="chip" for="level-high" style="--series: var(--ink-2)"><input type="checkbox" class="toggle" name="thinking-level" id="level-high" value="high" data-label="high" checked><span class="tick"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"/></svg></span>high</label><label class="chip" for="level-xhigh" style="--series: var(--ink-2)"><input type="checkbox" class="toggle" name="thinking-level" id="level-xhigh" value="xhigh" data-label="xhigh" checked><span class="tick"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"/></svg></span>xhigh</label><label class="chip" for="level-max" style="--series: var(--ink-2)"><input type="checkbox" class="toggle" name="thinking-level" id="level-max" value="max" data-label="max" checked><span class="tick"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"/></svg></span>max</label><label class="chip" for="level-not-stated" style="--series: var(--ink-2)"><input type="checkbox" class="toggle" name="thinking-level" id="level-not-stated" value="not-stated" data-label="not stated" checked><span class="tick"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"/></svg></span>not stated</label></div></section><label class="done" for="filters-open">Done</label></div></div></nav>
 <main class="shell">
 <section><h2>Intelligence</h2><div class="grid"><figure class="panel"><figcaption><h3>AA Intelligence Index</h3><p>v5.0.1 · Artificial Analysis</p><p class="no-points">No scores for this selection.</p></figcaption><template data-layout="phone"><div class="plot phone effort" data-metric="aa-intelligence-index" data-mode="effort" data-axes="9.231,5.641,65.495,86.154" data-x-limits="-0.85,4.9"><svg xmlns:xlink="http://www.w3.org/1999/xlink" class="chart" viewBox="0 0 327.6 280.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
  
@@ -349460,7 +349475,7 @@ z
     const layout = layouts.findLast(layout => innerWidth >= layout.minViewport).name;
     const mode = document.getElementById("x-cost").checked ? "cost" : "effort";
     const selection = `${layout} ${mode}`;
-    if (selection === active) return;
+    if (selection === active) return false;
     for (const entry of entries) {
       if (entry.layout === layout && entry.plot.classList.contains(mode)) {
         entry.template.before(entry.plot);
@@ -349469,7 +349484,7 @@ z
       entry.template.content.append(entry.plot);
     }
     active = selection;
-    applyFilters();
+    return true;
   }
 
   // With a mouse, drag to zoom. On touch screens, hold still first so a quick swipe can still scroll.
@@ -349990,30 +350005,59 @@ z
     history.replaceState(history.state, "", url);
   }
 
-  function filtersChanged() {
-    applyFilters();
-    writeViewToUrl();
+  const controls = document.querySelector(".controls");
+  const filtersOpen = document.getElementById("filters-open");
+  const summary = controls.querySelector(".filter-summary");
+  const groups = { models: modelInputs, levels: levelInputs };
+  const wide = matchMedia("(min-width: 960px)");
+  let pendingRender = 0;
+
+  function describe(inputs, noun) {
+    const chosen = inputs.filter(input => input.checked).map(input => input.dataset.label);
+    if (chosen.length === inputs.length) return `all ${noun}`;
+    return chosen.length > 2 ? `${chosen.length} ${noun}` : chosen.join(", ") || `no ${noun}`;
   }
 
-  for (const [id, checked] of [["levels-all", true], ["levels-none", false]]) {
-    document.getElementById(id).addEventListener("click", () => {
-      levelInputs.forEach(input => { input.checked = checked; });
-      filtersChanged();
-    });
+  function renderCharts() {
+    mountLayout();
+    applyFilters();
   }
-  document.querySelectorAll('input[type="checkbox"]').forEach(input => input.addEventListener("change", filtersChanged));
-  readViewFromUrl();
-  mountLayout();
-  window.addEventListener("resize", mountLayout);
-  document.querySelectorAll('input[name="x-axis"]').forEach(input => input.addEventListener("change", () => {
-    mountLayout();
+
+  function showSelection() {
+    summary.textContent = `${describe(modelInputs, "models")} · ${describe(levelInputs, "levels")}`;
+    controls.classList.toggle("narrowed", [...modelInputs, ...levelInputs].some(input => !input.checked));
+  }
+
+  // Optimistic: the controls repaint at once; the charts follow on the next frame, coalescing rapid taps.
+  function controlsChanged() {
+    showSelection();
     writeViewToUrl();
-  }));
-  window.addEventListener("popstate", () => {
-    readViewFromUrl();
-    active = undefined;
-    mountLayout();
+    cancelAnimationFrame(pendingRender);
+    pendingRender = requestAnimationFrame(() => { pendingRender = requestAnimationFrame(renderCharts); });
+  }
+
+  controls.addEventListener("change", event => { if (event.target !== filtersOpen) controlsChanged(); });
+  controls.addEventListener("click", event => {
+    const button = event.target.closest("button[data-group]");
+    if (!button) return;
+    groups[button.dataset.group].forEach(input => { input.checked = button.dataset.checked === "true"; });
+    controlsChanged();
   });
+  // On narrow screens the open panel covers the charts, so a tap elsewhere or Escape closes it.
+  document.addEventListener("pointerdown", event => {
+    if (!wide.matches && !controls.contains(event.target)) filtersOpen.checked = false;
+  });
+  document.addEventListener("keydown", event => { if (event.key === "Escape") filtersOpen.checked = false; });
+
+  function showUrlView() {
+    readViewFromUrl();
+    showSelection();
+    renderCharts();
+  }
+
+  showUrlView();
+  window.addEventListener("resize", () => { if (mountLayout()) applyFilters(); });
+  window.addEventListener("popstate", showUrlView);
   dialog.addEventListener("close", () => { shown = null; });
   window.addEventListener("resize", () => { if (shown) render(); });
 })();

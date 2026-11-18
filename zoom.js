@@ -14,7 +14,7 @@
     const layout = layouts.findLast(layout => innerWidth >= layout.minViewport).name;
     const mode = document.getElementById("x-cost").checked ? "cost" : "effort";
     const selection = `${layout} ${mode}`;
-    if (selection === active) return;
+    if (selection === active) return false;
     for (const entry of entries) {
       if (entry.layout === layout && entry.plot.classList.contains(mode)) {
         entry.template.before(entry.plot);
@@ -23,7 +23,7 @@
       entry.template.content.append(entry.plot);
     }
     active = selection;
-    applyFilters();
+    return true;
   }
 
   // With a mouse, drag to zoom. On touch screens, hold still first so a quick swipe can still scroll.
@@ -544,30 +544,59 @@
     history.replaceState(history.state, "", url);
   }
 
-  function filtersChanged() {
-    applyFilters();
-    writeViewToUrl();
+  const controls = document.querySelector(".controls");
+  const filtersOpen = document.getElementById("filters-open");
+  const summary = controls.querySelector(".filter-summary");
+  const groups = { models: modelInputs, levels: levelInputs };
+  const wide = matchMedia("(min-width: 960px)");
+  let pendingRender = 0;
+
+  function describe(inputs, noun) {
+    const chosen = inputs.filter(input => input.checked).map(input => input.dataset.label);
+    if (chosen.length === inputs.length) return `all ${noun}`;
+    return chosen.length > 2 ? `${chosen.length} ${noun}` : chosen.join(", ") || `no ${noun}`;
   }
 
-  for (const [id, checked] of [["levels-all", true], ["levels-none", false]]) {
-    document.getElementById(id).addEventListener("click", () => {
-      levelInputs.forEach(input => { input.checked = checked; });
-      filtersChanged();
-    });
+  function renderCharts() {
+    mountLayout();
+    applyFilters();
   }
-  document.querySelectorAll('input[type="checkbox"]').forEach(input => input.addEventListener("change", filtersChanged));
-  readViewFromUrl();
-  mountLayout();
-  window.addEventListener("resize", mountLayout);
-  document.querySelectorAll('input[name="x-axis"]').forEach(input => input.addEventListener("change", () => {
-    mountLayout();
+
+  function showSelection() {
+    summary.textContent = `${describe(modelInputs, "models")} · ${describe(levelInputs, "levels")}`;
+    controls.classList.toggle("narrowed", [...modelInputs, ...levelInputs].some(input => !input.checked));
+  }
+
+  // Optimistic: the controls repaint at once; the charts follow on the next frame, coalescing rapid taps.
+  function controlsChanged() {
+    showSelection();
     writeViewToUrl();
-  }));
-  window.addEventListener("popstate", () => {
-    readViewFromUrl();
-    active = undefined;
-    mountLayout();
+    cancelAnimationFrame(pendingRender);
+    pendingRender = requestAnimationFrame(() => { pendingRender = requestAnimationFrame(renderCharts); });
+  }
+
+  controls.addEventListener("change", event => { if (event.target !== filtersOpen) controlsChanged(); });
+  controls.addEventListener("click", event => {
+    const button = event.target.closest("button[data-group]");
+    if (!button) return;
+    groups[button.dataset.group].forEach(input => { input.checked = button.dataset.checked === "true"; });
+    controlsChanged();
   });
+  // On narrow screens the open panel covers the charts, so a tap elsewhere or Escape closes it.
+  document.addEventListener("pointerdown", event => {
+    if (!wide.matches && !controls.contains(event.target)) filtersOpen.checked = false;
+  });
+  document.addEventListener("keydown", event => { if (event.key === "Escape") filtersOpen.checked = false; });
+
+  function showUrlView() {
+    readViewFromUrl();
+    showSelection();
+    renderCharts();
+  }
+
+  showUrlView();
+  window.addEventListener("resize", () => { if (mountLayout()) applyFilters(); });
+  window.addEventListener("popstate", showUrlView);
   dialog.addEventListener("close", () => { shown = null; });
   window.addEventListener("resize", () => { if (shown) render(); });
 })();

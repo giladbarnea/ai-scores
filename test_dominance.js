@@ -2,12 +2,14 @@
 (async () => {
   if (document.readyState !== "complete") await new Promise(resolve => window.addEventListener("load", resolve, { once: true }));
   const assert = (condition, message) => { if (!condition) throw new Error(message); };
+  const settle = () => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(resolve))));
   const models = ["gpt-6-2-astra", "gpt-6-2-sol", "opus-5-5"];
   document.querySelectorAll('input[id^="show-"]').forEach(input => {
     if (input.checked !== models.includes(input.value)) input.click();
   });
   document.getElementById("levels-all").click();
   document.querySelector('label[for="x-cost"]').click();
+  await settle();
 
   const arc = document.querySelector('.plot[data-mode="cost"][data-metric="arc-agi-2"]');
   const sol = "gpt-6-2-sol";
@@ -17,8 +19,10 @@
   assert(arc.querySelectorAll(".dominance-link").length === 8, "ARC must have one grey arrow for each of eight beaten points");
   assert(directsTo("high"), "ARC Sol max must point straight to high, not to the nearer but beaten xhigh");
   document.querySelector('label[for="level-high"]').click();
+  await settle();
   assert(directsTo("xhigh"), "Hiding high must reroute the arrow to the visible unbeaten xhigh setting");
   document.querySelector('label[for="level-high"]').click();
+  await settle();
 
   arc.scrollIntoView({ block: "center" });
   const hit = arc.querySelector(`.dominance-hit${max}`);
@@ -31,12 +35,12 @@
   const bounds = () => markers.map(marker => marker.getBoundingClientRect());
   const before = bounds();
   const pointer = type => hit.dispatchEvent(new PointerEvent(type, { pointerType: "mouse", clientX: middle.x, clientY: middle.y }));
-  const settle = async () => {
+  const animationsFinish = async () => {
     getComputedStyle(markers[0]).transform;
     await Promise.all(markers.flatMap(marker => marker.getAnimations().map(animation => animation.finished)));
   };
   pointer("pointerenter");
-  await settle();
+  await animationsFinish();
   for (const [index, after] of bounds().entries()) {
     const prior = before[index];
     const growth = after.width / prior.width;
@@ -51,7 +55,7 @@
   assert(bounds().every(box => box.bottom <= tipBox.top || box.top >= tipBox.bottom
     || box.right <= tipBox.left || box.left >= tipBox.right), "The tooltip must not hide either highlighted point");
   pointer("pointerleave");
-  await settle();
+  await animationsFinish();
   assert(bounds().every((box, index) => Math.abs(box.width - before[index].width) < .5), "Leaving the arrow must restore both sizes");
   return "Dominance checks passed: direct links, filter changes, grey points, centered hover and bounded tooltip";
 })();

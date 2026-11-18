@@ -2,6 +2,7 @@
 (async () => {
   if (document.readyState !== "complete") await new Promise(resolve => window.addEventListener("load", resolve, { once: true }));
   const assert = (condition, message) => { if (!condition) throw new Error(message); };
+  const settle = () => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(resolve))));
   const visible = node => {
     for (let parent = node; parent; parent = parent.parentElement) {
       if (getComputedStyle(parent).display === "none") return false;
@@ -14,6 +15,7 @@
   document.querySelector('label[for="x-effort"]').click();
   document.querySelector("#levels-none").click();
   document.querySelector('label[for="level-high"]').click();
+  await settle();
   const plot = document.querySelector('.plot[data-metric="aa-intelligence-index"]');
   const markers = [...plot.querySelectorAll(".marker")].filter(visible);
   assert(markers.length === 9, `High-only must show nine AA Index points, got ${markers.length}`);
@@ -31,10 +33,12 @@
   assert(bars("Vals Index").length === 2, "High-only must keep only Fable and Carbon's high-effort Vals bars");
   assert(bars("GPQA Diamond (OpenAI)").length === 0, "Unknown effort must not masquerade as high");
   document.querySelector('label[for="level-not-stated"]').click();
+  await settle();
   assert(bars("GPQA Diamond (OpenAI)").length === 3, "Not stated must independently show the three unknown-effort results");
   document.querySelector('label[for="level-not-stated"]').click();
 
   document.querySelector('label[for="x-cost"]').click();
+  await settle();
   const costPlot = document.querySelector('.plot[data-metric="aa-intelligence-index"]');
   const costMarkers = [...costPlot.querySelectorAll(".marker")].filter(visible);
   const links = () => [...costPlot.querySelectorAll(".dominance-link")];
@@ -46,12 +50,14 @@
     && link.dataset.winnerLevel === "high" && link.dataset.loserLevel === "high"),
     "Only Sol 6.2, Astra 6.2 and Fable high are unbeaten. Each arrow must end at one of them");
   document.querySelector('label[for="show-gpt-6-2-sol"]').click();
+  await settle();
   const remaining = [...costPlot.querySelectorAll(".marker")].filter(visible);
   assert(remaining.length === 8 && links().length === 4,
     "Hiding Sol 6.2 must leave only four beaten points");
   assert(links().every(link => link.dataset.winnerModel !== "gpt-6-2-sol" && link.dataset.loserModel !== "gemini-4-hydrogen"),
     "A hidden model must not beat Hydrogen high");
   document.querySelector('label[for="show-gpt-6-2-sol"]').click();
+  await settle();
   const bounds = costPlot.getBoundingClientRect();
   const clipped = [...costPlot.querySelectorAll(".filtered-labels text")].filter(visible)
     .filter(node => node.getBoundingClientRect().left < bounds.left || node.getBoundingClientRect().right > bounds.right);
@@ -59,9 +65,11 @@
 
   document.querySelector('label[for="x-effort"]').click();
   document.querySelector("#levels-none").click();
+  await settle();
   assert([...document.querySelectorAll(".panel > .plot")].every(node => node.classList.contains("empty")),
     "With no levels selected, every chart must explain its empty selection");
   document.querySelector('label[for="level-max"]').click();
+  await settle();
   const maxPlot = document.querySelector('.plot[data-metric="aa-intelligence-index"]');
   assert([...maxPlot.querySelectorAll(".marker")].filter(visible).length === 7,
     "Max-only must not invent max scores for the Gemini models");
@@ -71,6 +79,7 @@
 
   document.querySelector("#levels-none").click();
   document.querySelector('label[for="level-high"]').click();
+  await settle();
   const zoomSource = document.querySelector('.plot[data-metric="aa-intelligence-index"]');
   const sourceBox = zoomSource.getBoundingClientRect();
   const [left, top, width, height] = zoomSource.dataset.axes.split(",").map(Number);
@@ -87,6 +96,7 @@
   zoom.querySelector("button").click();
   assert(!zoom.open, "The zoom must still close normally");
   document.querySelector("#levels-all").click();
+  await settle();
   const reset = document.querySelector('.plot[data-metric="aa-intelligence-index"]');
   assert([...reset.querySelectorAll(".marker")].filter(visible).length === 42, "All must restore every published AA Index point");
   const defaults = new URL(location.href).searchParams;

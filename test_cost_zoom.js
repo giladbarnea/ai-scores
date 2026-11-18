@@ -2,6 +2,7 @@
 (async () => {
   if (document.readyState !== "complete") await new Promise(resolve => window.addEventListener("load", resolve, { once: true }));
   const assert = (condition, message) => { if (!condition) throw new Error(message); };
+  const settle = () => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(resolve))));
   document.querySelectorAll('input[id^="show-"]').forEach(input => {
     const wanted = ["gpt-6-2-sol", "gpt-6-2-astra"].includes(input.value);
     if (input.checked !== wanted) input.click();
@@ -10,6 +11,7 @@
   document.querySelector('label[for="level-high"]').click();
   document.querySelector('label[for="level-max"]').click();
   document.querySelector('label[for="x-cost"]').click();
+  await settle();
   const plot = document.querySelector('.plot[data-metric="aa-intelligence-index"]');
   const box = plot.getBoundingClientRect();
   const drag = (start, end) => {

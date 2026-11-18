@@ -800,12 +800,8 @@ COST_UNITS = {"AA Intelligence Index": "US$ to run the whole index, log scale",
 DEFAULT_COST_UNIT = "US$ per task, log scale"
 
 TITLE = "AI scores"
-SUBTITLE = ("Tap a model to hide or show it. Select thinking levels to compare only those settings. "
-            "Share the URL to share your filters. Show exactly two models to see where they come closest: "
-            "a dashed line joins their nearest scores at different effort levels. Hover a level to read every score. "
-            "To zoom in on some points, drag across them with a mouse, or press and hold a finger for a second, then drag. "
-            "In Cost, each grey arrow points from a beaten setting to the nearest unbeaten setting that beats it. "
-            "The winner costs no more and scores no lower, with at least one improvement. Hover an arrow to highlight both points.")
+TAGLINE = "Every published score, by thinking level and price."
+FILTER_LEVELS = [*EFFORT_LEVELS, "not-stated"]
 
 FOOTNOTES = {
     "Intelligence": "Scores checked on 18 November 2026. Every published effort level is shown; gaps mean no score, not zero. "
@@ -1502,19 +1498,12 @@ def toggle_css() -> str:
     for model in MODELS:
         off = f"body:has(#show-{model.slug}:not(:checked))"
         rules.append(f"{off} .m-{model.slug} {{ display: none; }}")
-        rules.append(f"{off} label[for=show-{model.slug}] {{ opacity: .45; text-decoration: line-through; }}")
-        rules.append(f"body:has(#show-{model.slug}:focus-visible) label[for=show-{model.slug}] "
-                     f"{{ outline: 2px solid var(--ink-2); outline-offset: 2px; }}")
     for pair in itertools.combinations(MODELS, 2):
         states = "".join(f":has(#show-{model.slug}:{'checked' if model in pair else 'not(:checked)'})" for model in MODELS)
         rules.append(f"body{states} :is(.meeting, .meeting-line)"
                      f"{''.join(f'.m-{model.slug}' for model in pair)} {{ display: inline; }}")
-    for level in [*EFFORT_LEVELS, "not-stated"]:
+    for level in FILTER_LEVELS:
         rules.append(f'body:has(#level-{level}:not(:checked)) [data-level="{level}"] {{ display: none; }}')
-        rules.append(f"body:has(#level-{level}:checked) label[for=level-{level}] "
-                     "{ background: var(--ink-1); border-color: var(--ink-1); color: var(--surface); }")
-        rules.append(f"body:has(#level-{level}:focus-visible) label[for=level-{level}] "
-                     "{ outline: 2px solid var(--ink-2); outline-offset: 2px; }")
     return "\n".join(rules)
 
 
@@ -1534,29 +1523,71 @@ body:has(#x-effort:checked) .plot.phone.effort, body:has(#x-cost:checked) .plot.
 body { margin: 0; background: var(--page); color: var(--ink-1);
   font: 15px/1.45 "Helvetica Neue", system-ui, -apple-system, sans-serif; -webkit-text-size-adjust: 100%; }
 .shell { padding: 0 clamp(16px, 2vw, 40px); }
-header { padding: 28px 0 12px; }
-h1 { margin: 0 0 6px; font-size: 24px; letter-spacing: -0.01em; }
-.subtitle { margin: 0; max-width: 72ch; color: var(--ink-2); }
-.legend { position: sticky; top: 0; z-index: 10; background: var(--page); border-bottom: 1px solid var(--border); }
-.legend .shell { display: flex; flex-wrap: wrap; gap: 6px 18px; padding-top: 10px; padding-bottom: 10px; }
-.legend label { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;
-  -webkit-user-select: none; padding: 4px 0; font-weight: 500; }
-.legend label.model::before { content: ""; width: 18px; height: 3px; border-radius: 2px; background: var(--series); }
-.axis-switch { display: inline-flex; align-items: center; gap: 0; margin-left: auto; color: var(--ink-3); font-size: 13px; }
-.axis-switch span { margin-right: 8px; }
-.legend .axis-switch label { padding: 3px 12px; border: 1px solid var(--baseline); font-weight: 500; font-size: 13px; color: var(--ink-2); }
-.axis-switch label:first-of-type { border-radius: 6px 0 0 6px; }
-.axis-switch label:last-of-type { border-radius: 0 6px 6px 0; border-left: 0; }
-body:has(#x-effort:checked) label[for=x-effort], body:has(#x-cost:checked) label[for=x-cost] {
-  background: var(--ink-1); border-color: var(--ink-1); color: var(--surface); }
-body:has(#x-effort:focus-visible) label[for=x-effort], body:has(#x-cost:focus-visible) label[for=x-cost] {
+.intro { padding-top: 36px; padding-bottom: 24px; }
+h1 { margin: 0; font-size: 30px; line-height: 1.1; letter-spacing: -0.02em; }
+.tagline { margin: 8px 0 0; font-size: 17px; color: var(--ink-2); text-wrap: balance; }
+.hint { display: none; margin: 12px 0 0; font-size: 13px; color: var(--ink-3); }
+.zoomable .hint { display: block; }
+.cost-hint, body:has(#x-cost:checked) .effort-hint { display: none; }
+body:has(#x-cost:checked) .cost-hint { display: inline; }
+.controls { position: sticky; top: 0; z-index: 10; background: var(--page); border-bottom: 1px solid var(--border); }
+.controls label, .controls button { cursor: pointer; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
+.bar { display: flex; align-items: center; gap: 12px; min-height: 64px; }
+.filters-button { display: inline-flex; align-items: center; gap: 8px; min-width: 0; height: 42px; padding: 0 14px;
+  border: 1px solid var(--baseline); border-radius: 999px; font-weight: 600; transition: background-color .18s ease, transform .12s ease; }
+.filters-button svg { flex: none; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; }
+.filter-summary { display: none; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 400; color: var(--ink-3); }
+.filter-summary::first-letter { text-transform: uppercase; }
+.filter-dot { display: none; width: 7px; height: 7px; border-radius: 50%; background: var(--ink-1); }
+.narrowed .filter-dot { display: block; }
+.chevron { transition: transform .22s ease; }
+body:has(#filters-open:checked) .chevron { transform: rotate(180deg); }
+body:has(#filters-open:checked) .filters-button { background: color-mix(in srgb, var(--ink-1) 8%, transparent); }
+.segmented { display: inline-flex; flex: none; align-items: center; margin-left: auto; padding: 3px; border-radius: 999px;
+  background: color-mix(in srgb, var(--ink-1) 8%, transparent); }
+.segmented-caption { display: none; padding: 0 8px 0 10px; font-size: 12px; color: var(--ink-3); }
+.segmented label { position: relative; display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 999px;
+  font-size: 14px; font-weight: 600; color: var(--ink-3); transition: background-color .2s ease, color .2s ease, box-shadow .2s ease, transform .12s ease; }
+.segmented label:has(:checked) { background: var(--surface); color: var(--ink-1); box-shadow: 0 1px 4px rgba(0, 0, 0, .25); }
+.filters-button:active, .segmented label:active, .chip:active, .quick button:active, .done:active { transform: scale(.96); }
+:is(.segmented label, .chip):has(:focus-visible), body:has(#filters-open:focus-visible) .filters-button {
   outline: 2px solid var(--ink-2); outline-offset: 2px; }
-.level-filter { display: none; flex-basis: 100%; align-items: center; flex-wrap: wrap; gap: 6px; font-size: 13px; }
-.zoomable .level-filter { display: flex; }
-.level-filter > span { margin-right: 4px; color: var(--ink-3); }
-.legend .level-filter label { padding: 3px 9px; border: 1px solid var(--baseline); border-radius: 6px; font-size: 13px; }
-.level-filter button { font: inherit; color: var(--ink-2); background: none; border: 0; cursor: pointer; padding: 4px 6px; }
-.level-filter button:hover { text-decoration: underline; }
+@media (min-width: 480px) { .segmented-caption, .filter-summary { display: inline; } .narrowed .filter-dot { display: none; } }
+.filter-panel { display: grid; grid-template-rows: 0fr; visibility: hidden; opacity: 0; }
+body:has(#filters-open:checked) .filter-panel { grid-template-rows: 1fr; visibility: visible; opacity: 1; }
+.zoomable .filter-panel { transition: grid-template-rows .24s ease, opacity .18s ease, visibility 0s linear .24s; }
+body.zoomable:has(#filters-open:checked) .filter-panel { transition: grid-template-rows .24s ease, opacity .18s ease; }
+.panel-inner { min-height: 0; max-height: calc(100dvh - 65px); overflow-y: auto; overscroll-behavior: contain; }
+.panel-inner::after { content: ""; display: block; height: 20px; }
+.filter-group + .filter-group { margin-top: 28px; }
+.levels, .quick { display: none; }
+.zoomable .levels { display: block; }
+.zoomable .quick { display: flex; gap: 4px; }
+.group-head { display: flex; align-items: center; justify-content: space-between; min-height: 36px; margin: 4px 0 10px; }
+.group-title { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.quick button { font: inherit; font-size: 14px; color: var(--ink-2); background: none; border: 0; padding: 8px 10px; border-radius: 8px;
+  transition: background-color .15s ease, transform .12s ease; }
+.quick button:hover { background: color-mix(in srgb, var(--ink-1) 8%, transparent); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { position: relative; display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 0 14px 0 12px; white-space: nowrap;
+  border: 1px solid var(--baseline); border-radius: 12px; font-size: 14px; font-weight: 500; color: var(--ink-3);
+  transition: background-color .18s ease, border-color .18s ease, color .18s ease, transform .12s ease; }
+.chip:has(:checked) { color: var(--ink-1); border-color: color-mix(in srgb, var(--series) 60%, transparent);
+  background: color-mix(in srgb, var(--series) 14%, transparent); }
+.tick { display: grid; flex: none; place-items: center; width: 18px; height: 18px; border: 2px solid var(--series); border-radius: 50%;
+  transition: background-color .18s ease; }
+.chip:has(:checked) .tick { background: var(--series); }
+.tick svg { width: 12px; height: 12px; fill: none; stroke: var(--surface); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+  opacity: 0; transform: scale(.4); transition: opacity .15s ease, transform .22s cubic-bezier(.3, 1.6, .5, 1); }
+.chip:has(:checked) .tick svg { opacity: 1; transform: scale(1); }
+.done { display: flex; align-items: center; justify-content: center; height: 46px; margin-top: 28px; border-radius: 12px;
+  background: var(--ink-1); color: var(--surface); font-weight: 600; transition: transform .12s ease; }
+@media (min-width: 960px) {
+  .panel-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 48px; align-items: start; }
+  .filter-group + .filter-group { margin-top: 0; }
+  .done { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .controls *, .filter-panel { transition: none !important; } }
 .no-points { display: none; }
 .panel:has(.plot.empty) .no-points { display: block; }
 .missing { color: var(--ink-3); }
@@ -1572,6 +1603,8 @@ h2 { margin: 32px 0 12px; font-size: 13px; letter-spacing: .08em; text-transform
 figcaption h3 { margin: 0; font-size: 16px; }
 figcaption p { margin: 2px 0 0; font-size: 13px; color: var(--ink-3); }
 .plot { position: relative; display: none; }
+/* With JavaScript, only the active layout and mode are mounted, so the old charts stay until the new ones replace them. */
+.zoomable .panel > .plot { display: block; }
 @media (max-width: 699.98px) { .panel { padding: 12px 10px 6px; } }
 $layouts
 .chart { display: block; width: 100%; height: auto; overflow: visible; }
@@ -1646,9 +1679,10 @@ $toggles
 </style>
 </head>
 <body>
-$inputs
-<header class="shell"><h1>$title</h1><p class="subtitle">$subtitle</p></header>
-<nav class="legend" aria-label="Chart filters"><div class="shell">$legend</div></nav>
+<header class="shell intro"><h1>$title</h1><p class="tagline">$tagline</p>
+<p class="hint"><span class="effort-hint">Hold, then drag across a chart to zoom.</span>
+<span class="cost-hint">Grey arrows point to a better deal.</span></p></header>
+<nav class="controls" aria-label="Chart controls">$controls</nav>
 <main class="shell">
 $sections
 <details><summary>Data table</summary><div class="table-wrap">$table</div></details>
@@ -1668,6 +1702,49 @@ $script
 """)
 
 
+CHECK_ICON = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"/></svg>'
+FILTER_ICON = ('<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h8m4 0h2M3 14h2m4 0h8"/>'
+               '<circle cx="13" cy="6" r="2"/><circle cx="7" cy="14" r="2"/></svg>')
+CHEVRON_ICON = '<svg class="chevron" viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg>'
+
+
+def chip_html(name: str, input_id: str, value: str, label: str, color: str) -> str:
+    """A multi-select chip whose checkbox lives inside it, so CSS styles it from its own state.
+
+    >>> chip_html("model", "show-a", "a", "A", "ink-2").count('checked')
+    1
+    """
+    return (f'<label class="chip" for="{input_id}" style="--series: var(--{color})">'
+            f'<input type="checkbox" class="toggle" name="{name}" id="{input_id}" value="{value}" '
+            f'data-label="{html.escape(label)}" checked><span class="tick">{CHECK_ICON}</span>{html.escape(label)}</label>')
+
+
+def filter_group_html(group: str, title: str, chips: str) -> str:
+    return (f'<section class="filter-group {group}" aria-label="{title}"><div class="group-head">'
+            f'<span class="group-title">{title}</span><span class="quick">'
+            f'<button type="button" id="{group}-all" data-group="{group}" data-checked="true">All</button>'
+            f'<button type="button" id="{group}-none" data-group="{group}" data-checked="false">None</button>'
+            f'</span></div><div class="chips">{chips}</div></section>')
+
+
+def controls_html() -> str:
+    """The sticky bar: a filters disclosure and the x-axis switch, with the model and thinking-level chips below."""
+    models = "".join(chip_html("model", f"show-{model.slug}", model.slug, model.name, model.color.variable)
+                     for model in MODELS)
+    levels = "".join(chip_html("thinking-level", f"level-{level}", level, level.replace("-", " "), "ink-2")
+                     for level in FILTER_LEVELS)
+    axes = "".join(f'<label for="x-{mode}"><input type="radio" class="toggle" name="x-axis" id="x-{mode}" value="{mode}"'
+                   f'{" checked" if mode == "effort" else ""}>{label}</label>'
+                   for mode, label in (("effort", "Thinking level"), ("cost", "Cost")))
+    return ('<input type="checkbox" class="toggle" id="filters-open" aria-controls="filter-panel">'
+            f'<div class="shell bar"><label class="filters-button" for="filters-open">{FILTER_ICON}Filters'
+            f'<span class="filter-summary"></span><span class="filter-dot"></span>{CHEVRON_ICON}</label>'
+            f'<div class="segmented" role="radiogroup" aria-label="X axis"><span class="segmented-caption">X axis</span>{axes}</div></div>'
+            f'<div class="filter-panel" id="filter-panel"><div class="panel-inner shell">'
+            f'{filter_group_html("models", "Models", models)}{filter_group_html("levels", "Thinking level", levels)}'
+            '<label class="done" for="filters-open">Done</label></div></div>')
+
+
 def page_html() -> str:
     sections = []
     for name, metrics in SECTIONS:
@@ -1677,25 +1754,12 @@ def page_html() -> str:
                         f'<p class="footnote">{html.escape(FOOTNOTES[name])}</p></section>')
     return PAGE_TEMPLATE.substitute(
         title=TITLE,
-        subtitle=html.escape(SUBTITLE),
+        tagline=html.escape(TAGLINE),
         light=" ".join(f"--{color.variable}: {color.light};" for color in COLORS),
         dark=" ".join(f"--{color.variable}: {color.dark};" for color in COLORS),
         toggles=toggle_css(),
         layouts=layout_css(),
-        inputs="".join(f'<input type="checkbox" class="toggle" id="show-{model.slug}" value="{model.slug}" checked>' for model in MODELS)
-               + '<input type="radio" class="toggle" name="x-axis" id="x-effort" checked>'
-               + '<input type="radio" class="toggle" name="x-axis" id="x-cost">'
-               + "".join(f'<input type="checkbox" class="toggle" name="thinking-level" id="level-{level}" '
-                         f'value="{level}" checked>' for level in [*EFFORT_LEVELS, "not-stated"]),
-        legend="".join(f'<label class="model" for="show-{model.slug}" style="--series: var(--{model.color.variable})">'
-                       f'{html.escape(model.name)}</label>' for model in MODELS)
-               + '<span class="axis-switch" role="group" aria-label="X axis"><span>X axis</span>'
-                 '<label for="x-effort">Effort level</label><label for="x-cost">Cost</label></span>'
-               + '<div class="level-filter" role="group" aria-label="Thinking levels"><span>Thinking level</span>'
-               + "".join(f'<label for="level-{level}">{level.replace("-", " ")}</label>'
-                         for level in [*EFFORT_LEVELS, "not-stated"])
-               + '<button type="button" id="levels-all">All</button>'
-                 '<button type="button" id="levels-none">None</button></div>',
+        controls=controls_html(),
         sections="\n".join(sections),
         table=table_html(),
         data=json.dumps(chart_data(), ensure_ascii=False).replace("</", "<\\/"),
