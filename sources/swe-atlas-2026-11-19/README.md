@@ -12,3 +12,7 @@ The chart "SWE Atlas v1.1" uses the overall score from Scale's leaderboard embed
 Transformations: scores rounded to one decimal. Price per task = Scale's full 284-task run cost (judge excluded) divided by 284, three significant figures. GPT-6.2 Sol and GPT-6.2 Astra costs are Scale's own estimates from token usage at list prices.
 
 Not charted: Gemini 4 Neon and Hydrogen (absent from the leaderboard on Nov 19 recheck). Microsoft's Copilot CLI SWE Atlas run (MAI Code 2 43.1, GPT-6.1 Sol 47.4, Opus 5.5 57.5) is not comparable and was not approved. Legacy v1.0 GPT-6 Astra category scores stay in `REPORT.md` only. `REPORT.md` is the full research report.
+
+## SWE-Atlas-QnA-AA (Artificial Analysis)
+
+`aa-qna/` holds the "SWE-Atlas-QnA-AA" chart's source, from https://artificialanalysis.ai/agents/coding-agents (methodology: https://huggingface.co/datasets/ArtificialAnalysis/SWE-Atlas-QnA-AA). Scale's 124 Q&A tasks only, 3 attempts per task, binary all-rubric pass. AA rewrote 127 of 1,306 rubric criteria and judges with GPT-6 Luna xhigh, five votes per criterion. It is a separate task set and grading from Scale's v1.1 overall score, so it is its own chart, not a version of it. Refusals count as failures (Opus max 52 of 372 attempts). Scores rounded to one decimal. No Q&A-specific cost is published; AA's whole Coding Agent Index task costs are not used.

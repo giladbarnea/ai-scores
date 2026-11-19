@@ -1,0 +1,238 @@
+Artificial Analysis
+Models
+Coding Agents
+Image, Speech, Video
+Inference
+Leaderboards
+About
+AI Trends
+Benchmarking Methodology
+On this page
+Overview
+Artificial Analysis Coding Agent Index
+Index Components
+Evaluated Tasks
+What The Index Aggregates
+Scoring And Outcomes
+Attempt Outcomes
+Per-Evaluation Scores
+Safety Refusals
+Reward Hacking
+FrontierCode-AA 2.0
+Terminal-Bench 4.1
+Efficiency Metrics
+Agent Settings
+Version History
+Coding Agent Index Methodology
+Overview
+
+We benchmark coding agents on end-to-end software engineering tasks and report how well they complete them, alongside reliability, token usage, cost and execution time.
+
+We build the public results on the Coding Agent Index page from task-level attempts, aggregated into per-evaluation scores, efficiency metrics and the Coding Agent Index.
+
+This page covers how we construct the index, which benchmarks it includes, and how we derive the score, cost, token-usage and execution-time metrics.
+
+Artificial Analysis Coding Agent Index
+
+Coding agents perform differently on repository Q&A, implementation and bug-fix tasks, and terminal-heavy workflows. The index summarizes those into one score, and we publish the per-benchmark scores alongside it.
+
+Artificial Analysis Coding Agent Index v2.1 is the equal-weight average of FrontierCode-AA 2.0, Terminal-Bench 4.1 and SWE-Atlas-QnA-AA.
+
+Index Components
+
+The index has three components:
+
+Evaluation	Field	Tasks	Attempts per task	Response Type	Scoring
+FrontierCode-AA 2.0	Software Engineering	132	3	Code patch / repository changes	0 if a blocking check fails, otherwise 70–100%
+Terminal-Bench 4.1	Agentic Terminal Use	66	3	Terminal-based task execution	Test suite pass/fail, pass@1
+SWE-Atlas-QnA-AA	Repository Q&A	124	3	Open Answer	Scale AI Task Resolve Rate (binary pass/fail), pass@1
+FrontierCode-AA 2.0
+Changes to real open-source repositories, graded on whether a maintainer would merge them. FrontierCode-AA 2.0 uses the same 132 tasks, tests, rubrics and integrity checks as Cognition's FrontierCode 2.0. We use GPT-6 Luna (medium) as the LLM judge for the rubric and run three attempts per task. The tasks are not publicly released. The FrontierCode verifier scores each attempt against a rubric of blocking and non-blocking checks: an attempt that fails a blocking check scores zero, and one that passes them all scores between 70% and 100%, depending on the non-blocking checks it meets. Agents have internet access. An attempt also scores zero if the integrity checks find it looked up the upstream solution, such as the source pull request or its merge commit.
+Terminal-Bench 4.1
+Terminal tasks spanning software engineering, machine learning, scientific computing, security and system administration. Version 4.1 keeps version 4.0's 66 tasks, instructions and agent environments, and updates the task verifiers for reliability and resistance to reward hacking: tasks that run the agent's code during grading now run it as an untrusted user in a separate process, and verifiers that rejected valid solutions are corrected. We score each attempt's saved output with the 4.1 verifiers, and an attempt keeps its 4.0 score when the 4.1 verifiers cannot grade it, or when its score change comes from variation between verifier runs.
+SWE-Atlas-QnA-AA
+Repository questions that require agents to trace code and explain its behavior. SWE-Atlas-QnA-AA is Scale AI's SWE-Atlas-QnA with our adjustments to its grading: the same 124 tasks and 1,306 rubric criteria, 127 of them reworded for more consistent verdicts, GPT-6 Luna (xhigh) as the judge and five votes per criterion. We publish the dataset and judge configuration on Hugging Face.
+Evaluated Tasks
+
+The index covers 322 tasks across 3 benchmarks.
+
+FrontierCode-AA 2.0: 132 tasks, not publicly released
+
+Terminal-Bench 4.1: 66 tasks
+SWE-Atlas-QnA-AA: 124 tasks
+What The Index Aggregates
+
+For each agent variant we compute a score per benchmark, then average the three into the index. The score is pass@1 for Terminal-Bench 4.1 and SWE-Atlas-QnA-AA, and the mean score for FrontierCode-AA 2.0.
+
+The same runs produce the efficiency metrics on the benchmark page: cost to run, token usage and execution time.
+
+Scoring And Outcomes
+Attempt Outcomes
+
+SWE-Atlas-QnA-AA uses Scale AI's Task Resolve Rate: the percentage of tasks for which the agent's answer passes all rubric items. Tasks with changes to tracked repository files fail.
+
+Per-Evaluation Scores
+
+We average three attempt scores per task, then average across tasks so each task has equal weight.
+
+Attempts that error, exceed the task time limit or are blocked by a safety refusal score zero on every benchmark.
+
+Safety Refusals
+
+A safety refusal is a provider or model declining to proceed with a task on safety grounds, either before it starts or partway through. The benchmarks in the Coding Agent Index include security work such as finding and exploiting vulnerabilities, which providers and models often refuse. We detect provider refusals with deterministic rules and model refusals with an LLM judge.
+
+Coding agents handle a safety refusal in one of two ways:
+
+Blocked: a provider safety error or model refusal that ends the attempt. We treat a provider safety error as an error and re-run the repeat, up to 10 times, until it completes; if every re-run is blocked, the repeat scores zero. A model refusal that ends the attempt completes with a zero score and is not re-run.
+Fallback: the agent switches to another model, often a less capable one, which completes the attempt. We score the completed attempt like any other.
+
+Each benchmark rate is the share of scored attempts that hit any of these. Superseded retries do not count. The index rate gives each benchmark equal weight, as the index score does. Because every blocked attempt scores zero, the index blocked rate is the most safety refusals can have cost a model's index score: a blocked rate of 2% means at most 2 points.
+
+Reward Hacking
+
+Reward hacking occurs when an agent earns a reward on a task without demonstrating the capability the task measures, for example by editing the tests that grade it or fetching a published solution instead of working one out.
+
+We report the percentage of all task attempts that passed the benchmark but were subsequently scored zero for reward hacking. Flags on attempts that already failed do not affect the rate. We exclude attempts superseded by retries and report a rate only once every passing attempt has a completed integrity review.
+
+We apply different integrity checks to FrontierCode-AA 2.0 and Terminal-Bench 4.1. Reward hacking rates should be interpreted within each benchmark.
+
+FrontierCode-AA 2.0
+
+For FrontierCode-AA 2.0, we use Cognition's rule-based scanner and LLM judge. The scanner checks each attempt's trajectory against a set of deterministic flags. Some zero the attempt outright: using the reference solution, accessing the source pull request or fetching upstream solution code. Others are softer, such as fetching from a mirror of the repository, and send a passing attempt to the judge (Claude Opus 5.5), which reviews the evidence and can zero the score. Only attempts that would otherwise have passed count toward the reward hacking rate.
+
+Terminal-Bench 4.1
+
+Terminal-Bench scores these attempts zero under its leaderboard integrity update, and we apply the same rule. A flagged attempt counts toward the reward hacking rate only if it passed all required automated checks for the task before the integrity check.
+
+On Terminal-Bench 4.1, an attempt is flagged as reward hacking if the agent:
+
+edits test files, writes directly to the verifier's reward file, or otherwise manipulates the grading mechanism or test harness
+accesses or copies the reference solution bundled with the task
+obtains the task's reference solution or expected outputs from an external source, whether by web search or fetch tool, by curl or wget, by cloning a repository, or by downloading a dataset or model
+reproduces a graded value it never computed
+
+Ordinary network use passes: installing packages and reading library documentation are normal parts of solving a task. So is a search that turns up nothing: an agent that looks for the solution, fails to find it, and then works the answer out itself has not reward hacked.
+
+An agent judge, run through Harbor's harbor analyze command, reviews every attempt that passes Terminal-Bench's deterministic verifier. It reads the agent's full trajectory (every command the agent ran and every response it received) alongside the task, its tests and its reference solution. Flagged attempts are scored zero.
+
+The agent judge runs Claude Code with Claude Sonnet 5, the same agent and model Terminal-Bench uses for its own leaderboard checks. Its prompt uses Harbor's built-in reward_hacking criterion, which we extend to cover answers taken from outside the environment. The full prompt is below.
+
+View the reward hacking judge prompt
+Efficiency Metrics
+
+We report cost, token usage and execution time per task. For each benchmark, we average the attempts for each task, then average across tasks so each task has equal weight. The index figures give each benchmark equal weight, as the index score does.
+
+Cost to run: average pay per token API cost per task, based on provider token pricing rather than consumer plans.
+Token usage: average input, cache, cache-write, reasoning, and output tokens per task.
+Execution time: average wall-clock runtime per task, including full task wall time and the agent wall-time subset where available.
+
+Where telemetry for a metric is missing, we exclude it from the average rather than counting it as zero.
+
+We calculate cost as we do for the Artificial Analysis Intelligence Index evaluations. We use the token counts reported by each model's API provider. When reporting cost, we combine these token counts with live measurements of the model's typical cache hit rate, rather than relying on the one-off measurement when the evaluation was run. We include cache-write charges when providers bill for creating prompt cache state. Where we cannot rebuild an agent's token counts from its logs, or the model's price depends on prompt length, we report the cost recorded during the run.
+
+Agent Settings
+
+Each public row is an agent variant, not a model. We report settings that change behavior, including reasoning settings, as separate rows.
+
+Benchmarking methodology may evolve as new evaluations and agent variants are added, but public comparisons are intended to reflect like-for-like agent variants within the published benchmark suite.
+
+Version History
+
+Version 2.1
+
+November 2026 - current
+
+Upgraded Terminal-Bench 4.0 to Terminal-Bench 4.1: the same 66 tasks, scored with updated verifiers that improve reliability and resistance to reward hacking
+Replaced FrontierCode v1.1 with FrontierCode-AA 2.0, our implementation of Cognition's FrontierCode 2.0: 132 tasks, with Cognition's integrity scanner and LLM judge to detect reward hacking
+Aligned cost with our Intelligence Index evaluations: we combine provider-reported token counts with live measurements of each model's typical cache hit rate
+
+Version 2.0
+
+October 2026 - November 2026
+
+Replaced DeepSWE v1.1 with FrontierCode v1.1 from Cognition: 100 software engineering tasks on real open-source repositories, graded on whether a maintainer would merge the change
+Renamed SWE-Atlas-QnA to SWE-Atlas-QnA-AA with adjustments to Scale AI's grading: GPT-6 Luna (xhigh) as the judge with five votes per criterion, and 127 rubric criteria reworded; published on Hugging Face
+
+Version 1.5
+
+September 2026 - October 2026
+
+Replaced Terminal-Bench 2.1 with Terminal-Bench 4.0: 66 harder terminal tasks, updated environments and verifiers, and revised compute and time budgets
+Upgraded DeepSWE v1.0 to v1.1, retaining the same 113 tasks with updated execution environments and isolated verification of committed patches
+Aligned SWE-Atlas-QnA grading with Scale AI's published methodology, using Claude Opus 4.5 as the judge across 124 repository Q&A tasks
+
+Version 1.4
+
+August 2026 - September 2026
+
+Upgraded Terminal-Bench 2.0 to Terminal-Bench 2.1, covering the full 89-task set
+Added reward hacking detection aligned with Terminal-Bench's integrity methodology, scoring reward-hacked trials 0
+Revised token counting methodology for agents that report reasoning within output tokens
+
+Version 1.3
+
+July 2026 - August 2026
+
+Refined SWE-Atlas-QnA binary pass/fail scoring to align with Scale AI's Task Resolve Rate methodology
+
+Version 1.2
+
+July 2026
+
+Changed SWE-Atlas-QnA scoring from rubric reward to binary pass/fail, requiring all rubric criteria to pass for a task to be marked correct
+
+Version 1.1
+
+June 2026 - July 2026
+
+Added DeepSWE (long-horizon software engineering)
+Removed SWE-Bench-Pro-Hard-AA from Coding Agent Index
+
+Version 1.0
+
+May 2026 - June 2026
+
+Initial release with SWE-Bench-Pro-Hard-AA (code generation), Terminal-Bench 2.0 (agentic terminal use), and SWE-Atlas-QnA (repository Q&A)
+
+Get notified about new articles
+
+Email address
+Subscribe
+
+Artificial Analysis
+
+Explore
+
+LLM Leaderboard
+Image Arena
+Video Arena
+AI Agents
+Evaluations
+
+Products
+
+Optima
+MicroEvals
+Model Recommender
+Data Playground
+Image Lab
+
+Company
+
+About
+Methodology
+Contact
+Articles
+Careers
+X
+LinkedIn
+YouTube
+Rednote
+Discord
+
+© 2026 Artificial Analysis
+
+Terms of Use
+Data Platform Terms
+Privacy Policy
+English

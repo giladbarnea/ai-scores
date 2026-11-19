@@ -1,0 +1,596 @@
+[
+  {
+    "model": "Gemini 4 Carbon",
+    "effort": {
+      "slug": "high",
+      "label": "high",
+      "level": 40
+    },
+    "agent": "Antigravity CLI",
+    "agent_versions": {
+      "min": {
+        "version": "1.4.3",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "1.4.3",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 63.709677419354804,
+    "attempt_count": 372,
+    "refused_attempts": 0,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 9.750051288560172,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "Claude Fable 5.2",
+    "effort": {
+      "slug": "high",
+      "label": "high",
+      "level": 40
+    },
+    "agent": "Claude Code",
+    "agent_versions": {
+      "min": {
+        "version": "2.1.291",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "2.1.291",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 61.8279569892473,
+    "attempt_count": 372,
+    "refused_attempts": 38,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 7.506833848955203,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "Claude Fable 5.2",
+    "effort": {
+      "slug": "low",
+      "label": "low",
+      "level": 20
+    },
+    "agent": "Claude Code",
+    "agent_versions": {
+      "min": {
+        "version": "2.1.291",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "2.1.291",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 59.9462365591398,
+    "attempt_count": 372,
+    "refused_attempts": 34,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 2.4949967536178352,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "Claude Fable 5.2",
+    "effort": {
+      "slug": "xhigh",
+      "label": "xhigh",
+      "level": 50
+    },
+    "agent": "Claude Code",
+    "agent_versions": {
+      "min": {
+        "version": "2.1.291",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "2.1.291",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 62.0967741935484,
+    "attempt_count": 372,
+    "refused_attempts": 38,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 15.469299652229711,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "Claude Fable 5.2",
+    "effort": {
+      "slug": "medium",
+      "label": "medium",
+      "level": 30
+    },
+    "agent": "Claude Code",
+    "agent_versions": {
+      "min": {
+        "version": "2.1.291",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "2.1.291",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 63.709677419354804,
+    "attempt_count": 372,
+    "refused_attempts": 33,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 2.89038509425835,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "Claude Fable 5.2",
+    "effort": {
+      "slug": "max",
+      "label": "max",
+      "level": 60
+    },
+    "agent": "Claude Code",
+    "agent_versions": {
+      "min": {
+        "version": "2.1.291",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "2.1.291",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 60.48387096774191,
+    "attempt_count": 372,
+    "refused_attempts": 45,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 44.22449825671103,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "Gemini 4 Hydrogen",
+    "effort": {
+      "slug": "xhigh",
+      "label": "xhigh",
+      "level": 50
+    },
+    "agent": "Antigravity CLI",
+    "agent_versions": {
+      "min": {
+        "version": "1.5.8",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "1.5.8",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 60.21505376344089,
+    "attempt_count": 372,
+    "refused_attempts": 6,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 4.452750169905282,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "GPT-6.2 Sol",
+    "effort": {
+      "slug": "high",
+      "label": "high",
+      "level": 40
+    },
+    "agent": "Codex",
+    "agent_versions": {
+      "min": {
+        "version": "0.166.0",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "0.166.0",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 50.537634408602194,
+    "attempt_count": 372,
+    "refused_attempts": 14,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 0.7638440246776945,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "GPT-6.2 Sol",
+    "effort": {
+      "slug": "low",
+      "label": "low",
+      "level": 20
+    },
+    "agent": "Codex",
+    "agent_versions": {
+      "min": {
+        "version": "0.166.0",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "0.166.0",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 42.4731182795699,
+    "attempt_count": 372,
+    "refused_attempts": 6,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 0.32526370956583217,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "GPT-6.1 Sol",
+    "effort": {
+      "slug": "max",
+      "label": "max",
+      "level": 60
+    },
+    "agent": "Codex",
+    "agent_versions": {
+      "min": {
+        "version": "0.154.0",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "0.154.0",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 59.9462365591398,
+    "attempt_count": 372,
+    "refused_attempts": 15,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 1.5065869065928608,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "GPT-6.2 Astra",
+    "effort": {
+      "slug": "xhigh",
+      "label": "xhigh",
+      "level": 50
+    },
+    "agent": "Codex",
+    "agent_versions": {
+      "min": {
+        "version": "0.166.0",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "0.166.0",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 53.7634408602151,
+    "attempt_count": 372,
+    "refused_attempts": 6,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 3.1979110852488017,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "GPT-6 Astra",
+    "effort": {
+      "slug": "max",
+      "label": "max",
+      "level": 60
+    },
+    "agent": "Codex",
+    "agent_versions": {
+      "min": {
+        "version": "0.151.0",
+        "dateReleased": "2026-08-29"
+      },
+      "max": {
+        "version": "0.151.0",
+        "dateReleased": "2026-08-29"
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 59.139784946236595,
+    "attempt_count": 372,
+    "refused_attempts": 13,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 7.625489243747186,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "GPT-6.2 Astra",
+    "effort": {
+      "slug": "medium",
+      "label": "medium",
+      "level": 30
+    },
+    "agent": "Codex",
+    "agent_versions": {
+      "min": {
+        "version": "0.166.0",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "0.166.0",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 53.7634408602151,
+    "attempt_count": 372,
+    "refused_attempts": 6,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 1.202238571568918,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "GPT-6.2 Astra",
+    "effort": {
+      "slug": "max",
+      "label": "max",
+      "level": 60
+    },
+    "agent": "Codex",
+    "agent_versions": {
+      "min": {
+        "version": "0.166.0",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "0.166.0",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 55.1075268817204,
+    "attempt_count": 372,
+    "refused_attempts": 8,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 5.116919949371592,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "GPT-6.2 Astra",
+    "effort": {
+      "slug": "high",
+      "label": "high",
+      "level": 40
+    },
+    "agent": "Codex",
+    "agent_versions": {
+      "min": {
+        "version": "0.166.0",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "0.166.0",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 54.5698924731183,
+    "attempt_count": 372,
+    "refused_attempts": 6,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 2.371803913771108,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "GPT-6.2 Astra",
+    "effort": {
+      "slug": "low",
+      "label": "low",
+      "level": 20
+    },
+    "agent": "Codex",
+    "agent_versions": {
+      "min": {
+        "version": "0.166.0",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "0.166.0",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 36.2903225806452,
+    "attempt_count": 372,
+    "refused_attempts": 6,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 0.7041831624949644,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "Gemini 4 Neon",
+    "effort": {
+      "slug": "xhigh",
+      "label": "xhigh",
+      "level": 50
+    },
+    "agent": "Antigravity CLI",
+    "agent_versions": {
+      "min": {
+        "version": "1.5.8",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "1.5.8",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 67.741935483871,
+    "attempt_count": 372,
+    "refused_attempts": 0,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 6.860329686294014,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "GPT-6.2 Sol",
+    "effort": {
+      "slug": "xhigh",
+      "label": "xhigh",
+      "level": 50
+    },
+    "agent": "Codex",
+    "agent_versions": {
+      "min": {
+        "version": "0.166.0",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "0.166.0",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 51.3440860215054,
+    "attempt_count": 372,
+    "refused_attempts": 22,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 0.8980194131553201,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "GPT-6.2 Sol",
+    "effort": {
+      "slug": "max",
+      "label": "max",
+      "level": 60
+    },
+    "agent": "Codex",
+    "agent_versions": {
+      "min": {
+        "version": "0.166.0",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "0.166.0",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 46.2365591397849,
+    "attempt_count": 372,
+    "refused_attempts": 25,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 1.2157296114476108,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "GPT-6.2 Sol",
+    "effort": {
+      "slug": "medium",
+      "label": "medium",
+      "level": 30
+    },
+    "agent": "Codex",
+    "agent_versions": {
+      "min": {
+        "version": "0.166.0",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "0.166.0",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 50.2688172043011,
+    "attempt_count": 372,
+    "refused_attempts": 13,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 0.5717863807280066,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "Claude Opus 5.5",
+    "effort": {
+      "slug": "max",
+      "label": "max",
+      "level": 60
+    },
+    "agent": "Claude Code",
+    "agent_versions": {
+      "min": {
+        "version": "2.1.280",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "2.1.280",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 65.8602150537634,
+    "attempt_count": 372,
+    "refused_attempts": 52,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 12.613182516098568,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  },
+  {
+    "model": "Claude Sonnet 5.5",
+    "effort": {
+      "slug": "max",
+      "label": "max",
+      "level": 60
+    },
+    "agent": "Claude Code",
+    "agent_versions": {
+      "min": {
+        "version": "2.1.280",
+        "dateReleased": null
+      },
+      "max": {
+        "version": "2.1.280",
+        "dateReleased": null
+      }
+    },
+    "benchmark": "SWE-Atlas-QnA-AA",
+    "score_percent": 64.24731182795699,
+    "attempt_count": 372,
+    "refused_attempts": 39,
+    "cost_usd_per_qna_task": null,
+    "index_average_cost_usd_per_task_not_qna_cost": 11.39857189877927,
+    "source_url": "https://artificialanalysis.ai/agents/coding-agents",
+    "compatible_with_scale_overall": false
+  }
+]

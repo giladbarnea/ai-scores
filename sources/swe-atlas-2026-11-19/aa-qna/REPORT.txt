@@ -1,0 +1,40 @@
+SWE Atlas missing-model search — retrieved 2026-11-19
+
+Outcome: no comparable new score found for Scale's SWE Atlas v1.1 overall chart. BUT primary Artificial Analysis publishes valid Q&A-only results for Gemini 4 Neon and Gemini 4 Hydrogen. These need a separate SWE-Atlas-QnA-AA chart.
+
+New usable primary results:
+- Gemini 4 Neon: 67.741935483871%, xhigh, Antigravity CLI 1.5.8, 124 tasks × 3 attempts (372). Runner: Artificial Analysis. Refusals 0/372.
+- Gemini 4 Hydrogen: 60.21505376344089%, xhigh, Antigravity CLI 1.5.8, 124 tasks × 3 attempts (372). Runner: Artificial Analysis. Refusals 6/372, counted in scoring rather than discarded.
+- Neither exact per-Q&A-task cost is available in the benchmark result objects. The published $6.8603296863 Neon / $4.4527501699 Hydrogen are whole Coding Agent Index average task costs, NOT Q&A-specific costs. Do not attach these to SWE-Atlas-QnA-AA points or derive dollars from tokens.
+
+Primary sources:
+https://artificialanalysis.ai/agents/coding-agents
+https://artificialanalysis.ai/methodology/coding-agents-benchmarking
+https://huggingface.co/datasets/ArtificialAnalysis/SWE-Atlas-QnA-AA
+
+Why separate from Scale v1.1:
+- AA runs only Scale's 124 repository-Q&A tasks, not Scale's overall equal-weight Q&A/Test Writing/Refactoring index (284 tasks).
+- AA changed 127 of 1,306 rubric criteria, uses GPT-6 Luna xhigh judge instead of Scale v1.1's GPT-6.1 Sol high, with five majority votes per criterion instead of Scale's three votes.
+- Task score is binary all-rubric resolve rate, averaged across 3 attempts/task (pass@1, not best-of-three).
+- The same questions/repos/pinned commits do not establish score equivalence given changed grading.
+
+Extra backfills already captured incidentally from the same fresh source: aa-supported-models.json contains 22 rows across every supported non-MAI model. Fable, GPT-6.2 Astra and GPT-6.2 Sol have all five efforts; others have one. Full source objects in aa-agent-detail-rows.json and aa-top-rows.json. Raw Next.js HTML in aa-agents.html; decoded RSC in aa-agents-decoded.txt. Exact AA agent versions remain in each row.
+
+MAI Code 2:
+No new independent evaluation found. Existing Microsoft primary sources remain:
+- Quality table: 43.1%, max, $0.228/task at 50% promotional pricing, MSBench via Copilot CLI 1.0.102, subagents disabled, average of three independent single-attempt runs/task. SWE Atlas version/judge/category weighting unspecified.
+- Model-card advanced-autonomy table (p18): 80.9%, effort/harness not stated there. Conflicts with p6 quality table 43.1%, with no explanation. Do not silently substitute it or infer settings from p6.
+https://microsoft.ai/news/introducing-mai-code-2-and-mai-code-2-flash/
+https://microsoft.ai/pdf/MAI-Code-2-And-MAI-Code-2-Flash-Model-Card.pdf
+A separate Microsoft-reported chart would be necessary for either. Neither may join Scale's v1.1 chart. Gilad previously chose Scale only, so no import is currently approved.
+
+Negative checks:
+- Live Scale leaderboard and embed downloaded again. Neon, Hydrogen and MAI absent from current overall entries.
+- Official Google Neon and Hydrogen model cards fetched and searched. No SWE Atlas result there.
+- Perplexity, Google organic (Serper) and Exa searches for all three model/benchmark pairs yielded no independent Scale-equivalent scores.
+- Third-party BenchGap estimates are explicitly predictions, not measurements, and must not be imported. BenchLM and articles only repeat Microsoft's 43.1%; SWE-sweep results are a different benchmark.
+
+Visual checks:
+- aa-qna-chart.png inspected: Neon rounded 68 and Hydrogen 60 are shown on AA's SWE-Atlas-QnA-AA chart, consistent with exact source JSON.
+- scale-current.png inspected: current Scale v1.1 leaderboard and task/judge definition.
+All task browser sessions are closed. Repository was not edited.
