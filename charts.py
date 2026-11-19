@@ -115,7 +115,7 @@ class Metric:
 
 
 CURVES = [
-    Metric("AA Intelligence Index", "v5.0.1 · Artificial Analysis", {
+    Metric("AA Intelligence Index", "v5.0.1 · Artificial Analysis · Carbon at Google's introductory price", {
         GEMINI_4_NEON: [44.1, 54.9, 59.6, 61.4, None],
         GPT_6_ASTRA: [43.3, 51.6, 54.8, 55.3, 56.9],
         GPT_6_1_SOL: [34.8, 46.3, 50.3, 52.5, 54.6],
@@ -614,7 +614,7 @@ class ReportedMetric:
 
 # One score per model, at the effort level its reporter ran; sources in sources/*.json.
 REPORTED = [
-    ReportedMetric("Vals Index", "% · v2.2 · Vals AI, one harness for all models", {
+    ReportedMetric("Vals Index", "% · v2.2 · Vals AI, one harness for all models · Claude includes fallback answers", {
         GEMINI_4_NEON: (70.87, 'xhigh'),
         GPT_6_ASTRA: (65.02, "max"),
         GPT_6_1_SOL: (63.94, "max"),
@@ -651,7 +651,7 @@ REPORTED = [
         CLAUDE_SONNET_5_5: (59.6, 'max'),
         GEMINI_4_CARBON: (64.0, 'high'),
     }),
-    ReportedMetric("Vibe Code Bench v1.1", "% · Vals AI, OpenHands harness for all models", {
+    ReportedMetric("Vibe Code Bench v1.1", "% · Vals AI, OpenHands harness for all models · Claude includes fallback answers", {
         GEMINI_4_NEON: (93.7, 'xhigh'),
         GPT_6_ASTRA: (89.59, "max"),
         GPT_6_1_SOL: (88.93, "max"),
@@ -865,7 +865,7 @@ REPORTED = [
         GPT_6_ASTRA: (31.1, 'max'),
         GEMINI_4_CARBON: (30.6, 'high'),
     }, decimals=1),
-    ReportedMetric('Vals Finance Index v1', '% · equal-weight Finance Agent/EMB/Tax composite · Vals AI', {
+    ReportedMetric('Vals Finance Index v1', '% · equal-weight Finance Agent/EMB/Tax composite · Vals AI · Claude includes fallback answers', {
         GEMINI_4_NEON: (68.32, 'xhigh'),
         GPT_6_ASTRA: (55.64, 'max'),
         GPT_6_2_ASTRA: (57.31, 'max'),
@@ -877,7 +877,7 @@ REPORTED = [
         GEMINI_4_CARBON: (67.05, 'high'),
         GEMINI_4_HYDROGEN: (66.14, 'xhigh'),
     }, decimals=2),
-    ReportedMetric('Vals Legal Index v1', '% · equal-weight Legal Research/HLAB composite · Vals AI', {
+    ReportedMetric('Vals Legal Index v1', '% · equal-weight Legal Research/HLAB composite · Vals AI · Claude includes fallback answers', {
         GEMINI_4_NEON: (78.36, 'xhigh'),
         GPT_6_ASTRA: (68.39, 'max'),
         GPT_6_2_ASTRA: (69.68, 'max'),
@@ -889,7 +889,7 @@ REPORTED = [
         GEMINI_4_CARBON: (75.93, 'high'),
         GEMINI_4_HYDROGEN: (73.63, 'xhigh'),
     }, decimals=2),
-    ReportedMetric('Vals Science Index v1 (Vals)', '% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run', {
+    ReportedMetric('Vals Science Index v1 (Vals)', '% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run · Claude includes fallback answers', {
         GEMINI_4_NEON: (62.63, 'xhigh'),
         GPT_6_ASTRA: (65.09, 'max'),
         GPT_6_2_ASTRA: (68.44, 'max'),
@@ -911,7 +911,7 @@ REPORTED = [
         GEMINI_4_CARBON: (76.47, 'high'),
         GEMINI_4_HYDROGEN: (75.8, 'xhigh'),
     }, decimals=2),
-    ReportedMetric('Finance Agent v2.1', '% financial research accuracy · Vals AI', {
+    ReportedMetric('Finance Agent v2.1', '% financial research accuracy · Vals AI · Claude includes fallback answers', {
         GEMINI_4_NEON: (68.56, 'xhigh'),
         GPT_6_ASTRA: (60.43, 'max'),
         GPT_6_2_ASTRA: (60.75, 'max'),
@@ -923,7 +923,7 @@ REPORTED = [
         GEMINI_4_CARBON: (67.16, 'high'),
         GEMINI_4_HYDROGEN: (65.12, 'xhigh'),
     }, decimals=2),
-    ReportedMetric('Legal Research Bench v1', '% legal-research task pass · Vals AI', {
+    ReportedMetric('Legal Research Bench v1', '% legal-research task pass · Vals AI · Claude includes fallback answers', {
         GEMINI_4_NEON: (56.25, 'xhigh'),
         GPT_6_ASTRA: (39.42, 'max'),
         GPT_6_2_ASTRA: (42.79, 'max'),
@@ -935,7 +935,7 @@ REPORTED = [
         GEMINI_4_CARBON: (55.77, 'high'),
         GEMINI_4_HYDROGEN: (53.85, 'xhigh'),
     }, decimals=2),
-    ReportedMetric('MysteryMechanism v1', '% mechanistic chemistry inference · Vals AI', {
+    ReportedMetric('MysteryMechanism v1', '% mechanistic chemistry inference · Vals AI · Claude includes fallback answers', {
         GEMINI_4_NEON: (45.05, 'xhigh'),
         GPT_6_ASTRA: (53.15, 'max'),
         GPT_6_2_ASTRA: (53.15, 'max'),
@@ -945,7 +945,7 @@ REPORTED = [
         CLAUDE_OPUS_5_5: (49.55, 'max'),
         CLAUDE_SONNET_5_5: (49.1, 'max'),
     }, decimals=2),
-    ReportedMetric('Tax Agent Bench v1', '% tax research accuracy · Vals AI', {
+    ReportedMetric('Tax Agent Bench v1', '% tax research accuracy · Vals AI · Claude includes fallback answers', {
         GEMINI_4_NEON: (54.89, 'xhigh'),
         GPT_6_ASTRA: (20.72, 'max'),
         GPT_6_2_ASTRA: (21.84, 'max'),
@@ -957,7 +957,7 @@ REPORTED = [
         GEMINI_4_CARBON: (51.79, 'high'),
         GEMINI_4_HYDROGEN: (52.31, 'xhigh'),
     }, decimals=2),
-    ReportedMetric('BioMysteryBench v1', '% computational biology task pass · Vals AI · Terminus 2', {
+    ReportedMetric('BioMysteryBench v1', '% computational biology task pass · Vals AI · Terminus 2 · Claude includes fallback answers', {
         GEMINI_4_NEON: (80.0, 'xhigh'),
         GPT_6_ASTRA: (79.26, 'max'),
         GPT_6_2_ASTRA: (80.74, 'max'),
@@ -979,7 +979,7 @@ REPORTED = [
         GEMINI_4_CARBON: (17.5, 'high'),
         GEMINI_4_HYDROGEN: (11.25, 'xhigh'),
     }, decimals=2),
-    ReportedMetric('Terminal-Bench 4.0 (Vals)', '% avg@3 · Vals AI Mini-SWE-agent; not AA’s run', {
+    ReportedMetric('Terminal-Bench 4.0 (Vals)', '% avg@3 · Vals AI Mini-SWE-agent; not AA’s run · Claude includes fallback answers', {
         GEMINI_4_NEON: (61.62, 'xhigh'),
         GPT_6_ASTRA: (59.6, 'max'),
         GPT_6_2_ASTRA: (63.13, 'max'),
@@ -991,7 +991,7 @@ REPORTED = [
         GEMINI_4_CARBON: (63.13, 'high'),
         GEMINI_4_HYDROGEN: (54.04, 'xhigh'),
     }, decimals=2),
-    ReportedMetric('Terminal-Bench Science 0.1 (Vals)', '% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries', {
+    ReportedMetric('Terminal-Bench Science 0.1 (Vals)', '% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries · Claude includes fallback answers', {
         GEMINI_4_NEON: (62.86, 'xhigh'),
         GPT_6_ASTRA: (62.86, 'max'),
         GPT_6_2_ASTRA: (71.43, 'max'),
@@ -1895,19 +1895,8 @@ TAGLINE = "Every published score, by thinking level and price."
 FILTER_LEVELS = [*EFFORT_LEVELS, "not-stated"]
 
 FOOTNOTES = {
-    "Aggregates": "Scores checked on 19 November 2026. Every published effort level is shown; gaps mean no score, not zero. "
-                  "The Claude models use adaptive reasoning; Carbon stops at high, Hydrogen at xhigh. "
-                  "AA Intelligence Index is v5.0.1; its costs are for the whole index, while other cost axes are US dollars per task. "
-                  "AA publishes weighted task costs: we divide by its benchmark weights to recover per-task costs. "
-                  "Carbon's AA prices use Google's introductory US$2/US$10 per million tokens; Hydrogen is US$1.50/US$7.50. "
-                  "Missing costs do not remove scores: the effort chart remains available. "
-                  "System-card results without a stated effort are bars marked \u201cnot stated\u201d, never assigned to max. "
-                  "No benchmark is omitted just for sparse coverage. Cost comparisons use the visible point estimates. "
-                  "They do not account for statistical uncertainty or differences in harnesses. "
-                  "Vals headline scores retain its published fallback policy, including other models’ answers for some Claude failures; "
-                  "the separate reasoning studies use fixed approximately half-task subsets, not full-board runs. "
-                  "Exact nonstandard effort labels remain on bars: none, between tools and highest (level not stated) are grouped "
-                  "under Not stated; highest/high mixed is grouped under max. These filter mappings are judgment calls, not equivalent settings.",
+    "Aggregates": "Scores checked on 19 November 2026. Gaps mean no score, not zero. "
+                  "Costs are point estimates: they ignore statistical uncertainty and harness differences.",
     "Intelligence & knowledge": "ARC Prize has no Sonnet max run. Agents' Last Exam and LifeVal are OpenAI launch comparisons, "
                                 "labeled separately from AA runs. On Agents' Last Exam, Fable excludes nine fallback tasks, "
                                 "so it is not a perfectly matched-task comparison. The public+Google ALE chart is a separate provider-agent run. "

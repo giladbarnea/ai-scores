@@ -1,23 +1,23 @@
 category,metric,unit_and_source,model,measure,low,medium,high,xhigh,max,reported_score,reported_effort
-aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis,Gemini 4 Neon,score,44.1,54.9,59.6,61.4,,,
+aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis · Carbon at Google's introductory price,Gemini 4 Neon,score,44.1,54.9,59.6,61.4,,,
 aggregates,AA Intelligence Index,"US$ to run the whole index, log scale",Gemini 4 Neon,cost_usd,830.0,1870.0,3690.0,7790.0,,,
-aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis,GPT-6 Astra,score,43.3,51.6,54.8,55.3,56.9,,
+aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis · Carbon at Google's introductory price,GPT-6 Astra,score,43.3,51.6,54.8,55.3,56.9,,
 aggregates,AA Intelligence Index,"US$ to run the whole index, log scale",GPT-6 Astra,cost_usd,1650.0,2640.0,3200.0,3750.0,5660.0,,
-aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis,GPT-6.2 Astra,score,45.7,57.0,60.1,61.6,62.1,,
+aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis · Carbon at Google's introductory price,GPT-6.2 Astra,score,45.7,57.0,60.1,61.6,62.1,,
 aggregates,AA Intelligence Index,"US$ to run the whole index, log scale",GPT-6.2 Astra,cost_usd,794.0,1460.0,2010.0,2480.0,4530.0,,
-aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis,GPT-6.1 Sol,score,34.8,46.3,50.3,52.5,54.6,,
+aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis · Carbon at Google's introductory price,GPT-6.1 Sol,score,34.8,46.3,50.3,52.5,54.6,,
 aggregates,AA Intelligence Index,"US$ to run the whole index, log scale",GPT-6.1 Sol,cost_usd,238.0,389.0,573.0,718.0,1120.0,,
-aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis,GPT-6.2 Sol,score,40.6,52.7,54.9,55.7,57.3,,
+aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis · Carbon at Google's introductory price,GPT-6.2 Sol,score,40.6,52.7,54.9,55.7,57.3,,
 aggregates,AA Intelligence Index,"US$ to run the whole index, log scale",GPT-6.2 Sol,cost_usd,224.0,405.0,553.0,698.0,1110.0,,
-aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis,Fable 5.2,score,53.9,56.4,61.8,62.2,64.6,,
+aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis · Carbon at Google's introductory price,Fable 5.2,score,53.9,56.4,61.8,62.2,64.6,,
 aggregates,AA Intelligence Index,"US$ to run the whole index, log scale",Fable 5.2,cost_usd,2860.0,3360.0,7110.0,11700.0,22200.0,,
-aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis,Opus 5.5,score,34.8,48.2,51.8,57.4,59.1,,
+aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis · Carbon at Google's introductory price,Opus 5.5,score,34.8,48.2,51.8,57.4,59.1,,
 aggregates,AA Intelligence Index,"US$ to run the whole index, log scale",Opus 5.5,cost_usd,980.0,2030.0,2720.0,4770.0,8910.0,,
-aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis,Sonnet 5.5,score,25.6,30.8,41.5,49.9,54.5,,
+aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis · Carbon at Google's introductory price,Sonnet 5.5,score,25.6,30.8,41.5,49.9,54.5,,
 aggregates,AA Intelligence Index,"US$ to run the whole index, log scale",Sonnet 5.5,cost_usd,499.0,679.0,1270.0,2900.0,7980.0,,
-aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis,Gemini 4 Carbon,score,54.2,58.3,60.0,,,,
+aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis · Carbon at Google's introductory price,Gemini 4 Carbon,score,54.2,58.3,60.0,,,,
 aggregates,AA Intelligence Index,"US$ to run the whole index, log scale",Gemini 4 Carbon,cost_usd,4050.0,4000.0,5330.0,,,,
-aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis,Gemini 4 Hydrogen,score,26.9,41.2,50.8,53.9,,,
+aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis · Carbon at Google's introductory price,Gemini 4 Hydrogen,score,26.9,41.2,50.8,53.9,,,
 aggregates,AA Intelligence Index,"US$ to run the whole index, log scale",Gemini 4 Hydrogen,cost_usd,332.0,804.0,1770.0,4090.0,,,
 aggregates,Vals Index (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",GPT-6 Astra,score,57.7,,62.4,,65.2,,
 aggregates,Vals Index (Vals reasoning study),"US$ per test, log scale",GPT-6 Astra,cost_usd,4.0,,8.63,,22.2,,
@@ -635,65 +635,65 @@ multimodal tasks,MMMU-Pro,% · visual reasoning · Artificial Analysis,GPT-6.2 A
 multimodal tasks,MMMU-Pro,% · visual reasoning · Artificial Analysis,GPT-6.1 Sol,score,83.1,83.9,84.9,85.1,86.0,,
 multimodal tasks,MMMU-Pro,% · visual reasoning · Artificial Analysis,Opus 5.5,score,84.7,85.7,85.8,86.6,87.7,,
 multimodal tasks,MMMU-Pro,% · visual reasoning · Artificial Analysis,Gemini 4 Carbon,score,,89.2,,,,,
-aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models",Gemini 4 Neon,score,,,,70.87,,70.87,xhigh
+aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models · Claude includes fallback answers",Gemini 4 Neon,score,,,,70.87,,70.87,xhigh
 aggregates,Vals Index,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,7.4,,,xhigh
-aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models",GPT-6 Astra,score,,,,,65.02,65.02,max
+aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models · Claude includes fallback answers",GPT-6 Astra,score,,,,,65.02,65.02,max
 aggregates,Vals Index,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,21.28,,max
-aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models",GPT-6.1 Sol,score,,,,,63.94,63.94,max
+aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models · Claude includes fallback answers",GPT-6.1 Sol,score,,,,,63.94,63.94,max
 aggregates,Vals Index,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,3.61,,max
-aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models",Fable 5.2,score,,,71.31,,,71.31,high
+aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models · Claude includes fallback answers",Fable 5.2,score,,,71.31,,,71.31,high
 aggregates,Vals Index,"US$ per test, log scale",Fable 5.2,cost_usd,,,17.94,,,,high
-aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models",Opus 5.5,score,,,,,70.14,70.14,max
+aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models · Claude includes fallback answers",Opus 5.5,score,,,,,70.14,70.14,max
 aggregates,Vals Index,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,24.77,,max
-aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models",Sonnet 5.5,score,,,,,70.85,70.85,max
+aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models · Claude includes fallback answers",Sonnet 5.5,score,,,,,70.85,70.85,max
 aggregates,Vals Index,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,16.18,,max
-aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models",Gemini 4 Carbon,score,,,70.45,,,70.45,high
+aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models · Claude includes fallback answers",Gemini 4 Carbon,score,,,70.45,,,70.45,high
 aggregates,Vals Index,"US$ per test, log scale",Gemini 4 Carbon,cost_usd,,,10.51,,,,high
-aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models",GPT-6.2 Astra,score,,,,,67.66,67.66,max
+aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models · Claude includes fallback answers",GPT-6.2 Astra,score,,,,,67.66,67.66,max
 aggregates,Vals Index,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,10.68,,max
-aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models",GPT-6.2 Sol,score,,,,,66.06,66.06,max
+aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models · Claude includes fallback answers",GPT-6.2 Sol,score,,,,,66.06,66.06,max
 aggregates,Vals Index,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,3.18,,max
-aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models",Gemini 4 Hydrogen,score,,,,68.49,,68.49,xhigh
+aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models · Claude includes fallback answers",Gemini 4 Hydrogen,score,,,,68.49,,68.49,xhigh
 aggregates,Vals Index,"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,9.84,,,xhigh
-aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,Gemini 4 Neon,score,,,,68.32,,68.32,xhigh
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI · Claude includes fallback answers,Gemini 4 Neon,score,,,,68.32,,68.32,xhigh
 aggregates,Vals Finance Index v1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,4.88,,,xhigh
-aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,GPT-6 Astra,score,,,,,55.64,55.64,max
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI · Claude includes fallback answers,GPT-6 Astra,score,,,,,55.64,55.64,max
 aggregates,Vals Finance Index v1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,6.48,,max
-aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,GPT-6.2 Astra,score,,,,,57.31,57.31,max
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI · Claude includes fallback answers,GPT-6.2 Astra,score,,,,,57.31,57.31,max
 aggregates,Vals Finance Index v1,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,6.23,,max
-aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,GPT-6.1 Sol,score,,,,,55.81,55.81,max
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI · Claude includes fallback answers,GPT-6.1 Sol,score,,,,,55.81,55.81,max
 aggregates,Vals Finance Index v1,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,1.36,,max
-aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,GPT-6.2 Sol,score,,,,,56.66,56.66,max
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI · Claude includes fallback answers,GPT-6.2 Sol,score,,,,,56.66,56.66,max
 aggregates,Vals Finance Index v1,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,1.77,,max
-aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,Fable 5.2,score,,,63.58,,,63.58,high
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI · Claude includes fallback answers,Fable 5.2,score,,,63.58,,,63.58,high
 aggregates,Vals Finance Index v1,"US$ per test, log scale",Fable 5.2,cost_usd,,,4.94,,,,high
-aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,Opus 5.5,score,,,,,65.34,65.34,max
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI · Claude includes fallback answers,Opus 5.5,score,,,,,65.34,65.34,max
 aggregates,Vals Finance Index v1,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,10.9,,max
-aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,Sonnet 5.5,score,,,,,64.53,64.53,max
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI · Claude includes fallback answers,Sonnet 5.5,score,,,,,64.53,64.53,max
 aggregates,Vals Finance Index v1,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,7.4,,max
-aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,Gemini 4 Carbon,score,,,67.05,,,67.05,high
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI · Claude includes fallback answers,Gemini 4 Carbon,score,,,67.05,,,67.05,high
 aggregates,Vals Finance Index v1,"US$ per test, log scale",Gemini 4 Carbon,cost_usd,,,6.46,,,,high
-aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,Gemini 4 Hydrogen,score,,,,66.14,,66.14,xhigh
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI · Claude includes fallback answers,Gemini 4 Hydrogen,score,,,,66.14,,66.14,xhigh
 aggregates,Vals Finance Index v1,"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,3.8,,,xhigh
-aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,Gemini 4 Neon,score,,,,78.36,,78.36,xhigh
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI · Claude includes fallback answers,Gemini 4 Neon,score,,,,78.36,,78.36,xhigh
 aggregates,Vals Legal Index v1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,6.1,,,xhigh
-aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,GPT-6 Astra,score,,,,,68.39,68.39,max
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI · Claude includes fallback answers,GPT-6 Astra,score,,,,,68.39,68.39,max
 aggregates,Vals Legal Index v1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,13.9,,max
-aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,GPT-6.2 Astra,score,,,,,69.68,69.68,max
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI · Claude includes fallback answers,GPT-6.2 Astra,score,,,,,69.68,69.68,max
 aggregates,Vals Legal Index v1,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,9.35,,max
-aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,GPT-6.1 Sol,score,,,,,68.72,68.72,max
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI · Claude includes fallback answers,GPT-6.1 Sol,score,,,,,68.72,68.72,max
 aggregates,Vals Legal Index v1,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,2.75,,max
-aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,GPT-6.2 Sol,score,,,,,66.68,66.68,max
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI · Claude includes fallback answers,GPT-6.2 Sol,score,,,,,66.68,66.68,max
 aggregates,Vals Legal Index v1,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,2.8,,max
-aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,Fable 5.2,score,,,69.18,,,69.18,high
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI · Claude includes fallback answers,Fable 5.2,score,,,69.18,,,69.18,high
 aggregates,Vals Legal Index v1,"US$ per test, log scale",Fable 5.2,cost_usd,,,8.88,,,,high
-aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,Opus 5.5,score,,,,,72.37,72.37,max
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI · Claude includes fallback answers,Opus 5.5,score,,,,,72.37,72.37,max
 aggregates,Vals Legal Index v1,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,19.9,,max
-aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,Sonnet 5.5,score,,,,,68.02,68.02,max
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI · Claude includes fallback answers,Sonnet 5.5,score,,,,,68.02,68.02,max
 aggregates,Vals Legal Index v1,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,13.4,,max
-aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,Gemini 4 Carbon,score,,,75.93,,,75.93,high
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI · Claude includes fallback answers,Gemini 4 Carbon,score,,,75.93,,,75.93,high
 aggregates,Vals Legal Index v1,"US$ per test, log scale",Gemini 4 Carbon,cost_usd,,,7.2,,,,high
-aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,Gemini 4 Hydrogen,score,,,,73.63,,73.63,xhigh
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI · Claude includes fallback answers,Gemini 4 Hydrogen,score,,,,73.63,,73.63,xhigh
 aggregates,Vals Legal Index v1,"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,4.47,,,xhigh
 intelligence & knowledge,ComplexConstraints v1.1 (agentic),% full-rubric pass · Surge v1.1 agentic · 75 tasks × 10 trials,Gemini 4 Hydrogen,score,,,,73.7,,73.7,xhigh
 intelligence & knowledge,ComplexConstraints v1.1 (agentic),% full-rubric pass · Surge v1.1 agentic · 75 tasks × 10 trials,Gemini 4 Neon,score,,,72.9,,,72.9,high
@@ -708,45 +708,45 @@ intelligence & knowledge,ComplexConstraints v1.1 (agentic),% full-rubric pass ·
 intelligence & knowledge,"GraphWalks (256k–1M, Google)",% BFS F1 · 200 problems · Google runs,Gemini 4 Neon,score,,,,95.2,,95.2,xhigh
 intelligence & knowledge,"GraphWalks (256k–1M, Google)",% BFS F1 · 200 problems · Google runs,Opus 5.5,score,,,,,,66.8,not stated
 intelligence & knowledge,"GraphWalks (256k–1M, Google)",% BFS F1 · 200 problems · Google runs,GPT-6.2 Sol,score,,,,,,80.1,not stated
-coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,Gemini 4 Neon,score,,,,61.62,,61.62,xhigh
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run · Claude includes fallback answers,Gemini 4 Neon,score,,,,61.62,,61.62,xhigh
 coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,6.42,,,xhigh
-coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,GPT-6 Astra,score,,,,,59.6,59.6,max
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run · Claude includes fallback answers,GPT-6 Astra,score,,,,,59.6,59.6,max
 coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,9.58,,max
-coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,GPT-6.2 Astra,score,,,,,63.13,63.13,max
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run · Claude includes fallback answers,GPT-6.2 Astra,score,,,,,63.13,63.13,max
 coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,4.69,,max
-coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,GPT-6.1 Sol,score,,,,,55.05,55.05,max
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run · Claude includes fallback answers,GPT-6.1 Sol,score,,,,,55.05,55.05,max
 coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,1.72,,max
-coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,GPT-6.2 Sol,score,,,,,60.61,60.61,max
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run · Claude includes fallback answers,GPT-6.2 Sol,score,,,,,60.61,60.61,max
 coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,1.13,,max
-coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,Fable 5.2,score,,,65.15,,,65.15,high
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run · Claude includes fallback answers,Fable 5.2,score,,,65.15,,,65.15,high
 coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",Fable 5.2,cost_usd,,,14.6,,,,high
-coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,Opus 5.5,score,,,,,65.15,65.15,max
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run · Claude includes fallback answers,Opus 5.5,score,,,,,65.15,65.15,max
 coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",Opus 5.5,cost_usd,,,,,12.0,,max
-coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,Sonnet 5.5,score,,,,,64.14,64.14,max
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run · Claude includes fallback answers,Sonnet 5.5,score,,,,,64.14,64.14,max
 coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,10.8,,max
-coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,Gemini 4 Carbon,score,,,63.13,,,63.13,high
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run · Claude includes fallback answers,Gemini 4 Carbon,score,,,63.13,,,63.13,high
 coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",Gemini 4 Carbon,cost_usd,,,7.45,,,,high
-coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,Gemini 4 Hydrogen,score,,,,54.04,,54.04,xhigh
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run · Claude includes fallback answers,Gemini 4 Hydrogen,score,,,,54.04,,54.04,xhigh
 coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,7.56,,,xhigh
-coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models",Gemini 4 Neon,score,,,,93.7,,93.7,xhigh
+coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models · Claude includes fallback answers",Gemini 4 Neon,score,,,,93.7,,93.7,xhigh
 coding & security,Vibe Code Bench v1.1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,6.76,,,xhigh
-coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models",GPT-6 Astra,score,,,,,89.59,89.59,max
+coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models · Claude includes fallback answers",GPT-6 Astra,score,,,,,89.59,89.59,max
 coding & security,Vibe Code Bench v1.1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,38.51,,max
-coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models",GPT-6.1 Sol,score,,,,,88.93,88.93,max
+coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models · Claude includes fallback answers",GPT-6.1 Sol,score,,,,,88.93,88.93,max
 coding & security,Vibe Code Bench v1.1,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,6.23,,max
-coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models",Fable 5.2,score,,,93.77,,,93.77,high
+coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models · Claude includes fallback answers",Fable 5.2,score,,,93.77,,,93.77,high
 coding & security,Vibe Code Bench v1.1,"US$ per test, log scale",Fable 5.2,cost_usd,,,22.13,,,,high
-coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models",Opus 5.5,score,,,,,90.29,90.29,max
+coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models · Claude includes fallback answers",Opus 5.5,score,,,,,90.29,90.29,max
 coding & security,Vibe Code Bench v1.1,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,35.77,,max
-coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models",Sonnet 5.5,score,,,,,92.39,92.39,max
+coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models · Claude includes fallback answers",Sonnet 5.5,score,,,,,92.39,92.39,max
 coding & security,Vibe Code Bench v1.1,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,19.73,,max
-coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models",Gemini 4 Carbon,score,,,89.06,,,89.06,high
+coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models · Claude includes fallback answers",Gemini 4 Carbon,score,,,89.06,,,89.06,high
 coding & security,Vibe Code Bench v1.1,"US$ per test, log scale",Gemini 4 Carbon,cost_usd,,,8.25,,,,high
-coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models",GPT-6.2 Astra,score,,,,,89.9,89.9,max
+coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models · Claude includes fallback answers",GPT-6.2 Astra,score,,,,,89.9,89.9,max
 coding & security,Vibe Code Bench v1.1,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,7.92,,max
-coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models",GPT-6.2 Sol,score,,,,,87.62,87.62,max
+coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models · Claude includes fallback answers",GPT-6.2 Sol,score,,,,,87.62,87.62,max
 coding & security,Vibe Code Bench v1.1,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,3.23,,max
-coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models",Gemini 4 Hydrogen,score,,,,87.78,,87.78,xhigh
+coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models · Claude includes fallback answers",Gemini 4 Hydrogen,score,,,,87.78,,87.78,xhigh
 coding & security,Vibe Code Bench v1.1,"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,4.55,,,xhigh
 coding & security,SWE-Bench Pro,% resolved · each lab’s own run on its own agent harness,Opus 5.5,score,,,,,89.9,89.9,max
 coding & security,SWE-Bench Pro,% resolved · each lab’s own run on its own agent harness,Sonnet 5.5,score,,,,,81.3,81.3,max
@@ -863,42 +863,42 @@ coding & security,ExploitGym (token-budgeted),intended-vulnerability exploits / 
 science & engineering,GPQA Diamond (OpenAI),"% · no tools · OpenAI system card, effort not stated",GPT-6 Astra,score,,,,,,96.0,not stated
 science & engineering,GPQA Diamond (OpenAI),"% · no tools · OpenAI system card, effort not stated",GPT-6.2 Astra,score,,,,,,97.0,not stated
 science & engineering,GPQA Diamond (OpenAI),"% · no tools · OpenAI system card, effort not stated",GPT-6.2 Sol,score,,,,,,96.0,not stated
-science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries,Gemini 4 Neon,score,,,,62.86,,62.86,xhigh
+science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries · Claude includes fallback answers,Gemini 4 Neon,score,,,,62.86,,62.86,xhigh
 science & engineering,Terminal-Bench Science 0.1 (Vals),"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,13.7,,,xhigh
-science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries,GPT-6 Astra,score,,,,,62.86,62.86,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries · Claude includes fallback answers,GPT-6 Astra,score,,,,,62.86,62.86,max
 science & engineering,Terminal-Bench Science 0.1 (Vals),"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,20.8,,max
-science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries,GPT-6.2 Astra,score,,,,,71.43,71.43,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries · Claude includes fallback answers,GPT-6.2 Astra,score,,,,,71.43,71.43,max
 science & engineering,Terminal-Bench Science 0.1 (Vals),"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,11.1,,max
-science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries,GPT-6.1 Sol,score,,,,,52.86,52.86,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries · Claude includes fallback answers,GPT-6.1 Sol,score,,,,,52.86,52.86,max
 science & engineering,Terminal-Bench Science 0.1 (Vals),"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,3.44,,max
-science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries,GPT-6.2 Sol,score,,,,,58.57,58.57,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries · Claude includes fallback answers,GPT-6.2 Sol,score,,,,,58.57,58.57,max
 science & engineering,Terminal-Bench Science 0.1 (Vals),"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,2.53,,max
-science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries,Fable 5.2,score,,,55.71,,,55.71,high
+science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries · Claude includes fallback answers,Fable 5.2,score,,,55.71,,,55.71,high
 science & engineering,Terminal-Bench Science 0.1 (Vals),"US$ per test, log scale",Fable 5.2,cost_usd,,,23.1,,,,high
-science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries,Opus 5.5,score,,,,,47.14,47.14,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries · Claude includes fallback answers,Opus 5.5,score,,,,,47.14,47.14,max
 science & engineering,Terminal-Bench Science 0.1 (Vals),"US$ per test, log scale",Opus 5.5,cost_usd,,,,,19.1,,max
-science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries,Sonnet 5.5,score,,,,,47.14,47.14,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries · Claude includes fallback answers,Sonnet 5.5,score,,,,,47.14,47.14,max
 science & engineering,Terminal-Bench Science 0.1 (Vals),"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,19.6,,max
 science & engineering,Terminal-Bench Science 0.1 (public board),% average resolution · public provider agents · 70 tasks × 3 trials,GPT-6 Astra,score,,,,,68.1,68.1,max
 science & engineering,Terminal-Bench Science 0.1 (public board),"US$ per task, log scale",GPT-6 Astra,cost_usd,,,,,23.8,,max
 science & engineering,Terminal-Bench Science 0.1 (public board),% average resolution · public provider agents · 70 tasks × 3 trials,Opus 5.5,score,,,,,63.33,63.33,max
 science & engineering,Terminal-Bench Science 0.1 (public board),"US$ per task, log scale",Opus 5.5,cost_usd,,,,,23.2,,max
 science & engineering,Terminal-Bench Science 0.1 (Google Neon),% average reward · Google mini-swe-agent vision · five attempts/task,Gemini 4 Neon,score,,,,70.5,,70.5,xhigh
-science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run,Gemini 4 Neon,score,,,,62.63,,62.63,xhigh
+science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run · Claude includes fallback answers,Gemini 4 Neon,score,,,,62.63,,62.63,xhigh
 science & engineering,Vals Science Index v1 (Vals),"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,8.26,,,xhigh
-science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run,GPT-6 Astra,score,,,,,65.09,65.09,max
+science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run · Claude includes fallback answers,GPT-6 Astra,score,,,,,65.09,65.09,max
 science & engineering,Vals Science Index v1 (Vals),"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,8.03,,max
-science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run,GPT-6.2 Astra,score,,,,,68.44,68.44,max
+science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run · Claude includes fallback answers,GPT-6.2 Astra,score,,,,,68.44,68.44,max
 science & engineering,Vals Science Index v1 (Vals),"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,4.76,,max
-science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run,GPT-6.1 Sol,score,,,,,59.63,59.63,max
+science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run · Claude includes fallback answers,GPT-6.1 Sol,score,,,,,59.63,59.63,max
 science & engineering,Vals Science Index v1 (Vals),"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,1.36,,max
-science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run,GPT-6.2 Sol,score,,,,,57.76,57.76,max
+science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run · Claude includes fallback answers,GPT-6.2 Sol,score,,,,,57.76,57.76,max
 science & engineering,Vals Science Index v1 (Vals),"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,1.12,,max
-science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run,Fable 5.2,score,,,63.74,,,63.74,high
+science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run · Claude includes fallback answers,Fable 5.2,score,,,63.74,,,63.74,high
 science & engineering,Vals Science Index v1 (Vals),"US$ per test, log scale",Fable 5.2,cost_usd,,,8.79,,,,high
-science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run,Opus 5.5,score,,,,,58.65,58.65,max
+science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run · Claude includes fallback answers,Opus 5.5,score,,,,,58.65,58.65,max
 science & engineering,Vals Science Index v1 (Vals),"US$ per test, log scale",Opus 5.5,cost_usd,,,,,8.71,,max
-science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run,Sonnet 5.5,score,,,,,59.12,59.12,max
+science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run · Claude includes fallback answers,Sonnet 5.5,score,,,,,59.12,59.12,max
 science & engineering,Vals Science Index v1 (Vals),"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,8.5,,max
 science & engineering,Riemann-bench v1.1,% pass@1 · Surge v1.1 corrected answer keys · 25 research-math problems,Gemini 4 Neon,score,,,84.0,,,84.0,high
 science & engineering,Riemann-bench v1.1,% pass@1 · Surge v1.1 corrected answer keys · 25 research-math problems,Fable 5.2,score,,,,,83.2,83.2,max
@@ -909,37 +909,37 @@ science & engineering,Riemann-bench v1.1,% pass@1 · Surge v1.1 corrected answer
 science & engineering,Riemann-bench v1.1,% pass@1 · Surge v1.1 corrected answer keys · 25 research-math problems,GPT-6.1 Sol,score,,,,,79.2,79.2,max
 science & engineering,Riemann-bench v1.1,% pass@1 · Surge v1.1 corrected answer keys · 25 research-math problems,Sonnet 5.5,score,,,,,76.8,76.8,max
 science & engineering,Riemann-bench v1.1,% pass@1 · Surge v1.1 corrected answer keys · 25 research-math problems,GPT-6.2 Astra,score,,,,,76.0,76.0,max
-science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI,Gemini 4 Neon,score,,,,45.05,,45.05,xhigh
+science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI · Claude includes fallback answers,Gemini 4 Neon,score,,,,45.05,,45.05,xhigh
 science & engineering,MysteryMechanism v1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,6.63,,,xhigh
-science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI,GPT-6 Astra,score,,,,,53.15,53.15,max
+science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI · Claude includes fallback answers,GPT-6 Astra,score,,,,,53.15,53.15,max
 science & engineering,MysteryMechanism v1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,1.56,,max
-science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI,GPT-6.2 Astra,score,,,,,53.15,53.15,max
+science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI · Claude includes fallback answers,GPT-6.2 Astra,score,,,,,53.15,53.15,max
 science & engineering,MysteryMechanism v1,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,1.72,,max
-science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI,GPT-6.1 Sol,score,,,,,46.4,46.4,max
+science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI · Claude includes fallback answers,GPT-6.1 Sol,score,,,,,46.4,46.4,max
 science & engineering,MysteryMechanism v1,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,0.285,,max
-science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI,GPT-6.2 Sol,score,,,,,36.94,36.94,max
+science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI · Claude includes fallback answers,GPT-6.2 Sol,score,,,,,36.94,36.94,max
 science & engineering,MysteryMechanism v1,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,0.487,,max
-science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI,Fable 5.2,score,,,51.8,,,51.8,high
+science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI · Claude includes fallback answers,Fable 5.2,score,,,51.8,,,51.8,high
 science & engineering,MysteryMechanism v1,"US$ per test, log scale",Fable 5.2,cost_usd,,,1.55,,,,high
-science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI,Opus 5.5,score,,,,,49.55,49.55,max
+science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI · Claude includes fallback answers,Opus 5.5,score,,,,,49.55,49.55,max
 science & engineering,MysteryMechanism v1,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,4.06,,max
-science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI,Sonnet 5.5,score,,,,,49.1,49.1,max
+science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI · Claude includes fallback answers,Sonnet 5.5,score,,,,,49.1,49.1,max
 science & engineering,MysteryMechanism v1,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,2.98,,max
-science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2,Gemini 4 Neon,score,,,,80.0,,80.0,xhigh
+science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2 · Claude includes fallback answers,Gemini 4 Neon,score,,,,80.0,,80.0,xhigh
 science & engineering,BioMysteryBench v1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,4.41,,,xhigh
-science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2,GPT-6 Astra,score,,,,,79.26,79.26,max
+science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2 · Claude includes fallback answers,GPT-6 Astra,score,,,,,79.26,79.26,max
 science & engineering,BioMysteryBench v1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,1.72,,max
-science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2,GPT-6.2 Astra,score,,,,,80.74,80.74,max
+science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2 · Claude includes fallback answers,GPT-6.2 Astra,score,,,,,80.74,80.74,max
 science & engineering,BioMysteryBench v1,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,1.49,,max
-science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2,GPT-6.1 Sol,score,,,,,79.63,79.63,max
+science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2 · Claude includes fallback answers,GPT-6.1 Sol,score,,,,,79.63,79.63,max
 science & engineering,BioMysteryBench v1,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,0.372,,max
-science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2,GPT-6.2 Sol,score,,,,,77.78,77.78,max
+science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2 · Claude includes fallback answers,GPT-6.2 Sol,score,,,,,77.78,77.78,max
 science & engineering,BioMysteryBench v1,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,0.338,,max
-science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2,Fable 5.2,score,,,83.7,,,83.7,high
+science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2 · Claude includes fallback answers,Fable 5.2,score,,,83.7,,,83.7,high
 science & engineering,BioMysteryBench v1,"US$ per test, log scale",Fable 5.2,cost_usd,,,1.68,,,,high
-science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2,Opus 5.5,score,,,,,79.26,79.26,max
+science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2 · Claude includes fallback answers,Opus 5.5,score,,,,,79.26,79.26,max
 science & engineering,BioMysteryBench v1,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,2.95,,max
-science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2,Sonnet 5.5,score,,,,,81.11,81.11,max
+science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2 · Claude includes fallback answers,Sonnet 5.5,score,,,,,81.11,81.11,max
 science & engineering,BioMysteryBench v1,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,2.95,,max
 machine-learning research,Internal Research Debugging,"% mean rubric credit · OpenAI system card, effort not stated",GPT-6 Astra,score,,,,,,78.05,not stated
 machine-learning research,Internal Research Debugging,"% mean rubric credit · OpenAI system card, effort not stated",GPT-6.2 Astra,score,,,,,,81.85,not stated
@@ -1003,65 +1003,65 @@ professional work,AutomationBench 1.0.6 (nonstandard efforts),% strict task pass
 professional work,AutomationBench 1.0.6 (nonstandard efforts),"US$ per task, log scale",GPT-6 Astra,cost_usd,,,,,,1.28,none
 professional work,AutomationBench 1.0.6 (nonstandard efforts),% strict task pass · Zapier · exact effort labels; grouped under Not stated filter,Sonnet 5.5,score,,,,,,18.57,between tools
 professional work,AutomationBench 1.0.6 (nonstandard efforts),"US$ per task, log scale",Sonnet 5.5,cost_usd,,,,,,0.3,between tools
-professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,Gemini 4 Neon,score,,,,68.56,,68.56,xhigh
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI · Claude includes fallback answers,Gemini 4 Neon,score,,,,68.56,,68.56,xhigh
 professional work,Finance Agent v2.1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,5.85,,,xhigh
-professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,GPT-6 Astra,score,,,,,60.43,60.43,max
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI · Claude includes fallback answers,GPT-6 Astra,score,,,,,60.43,60.43,max
 professional work,Finance Agent v2.1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,7.82,,max
-professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,GPT-6.2 Astra,score,,,,,60.75,60.75,max
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI · Claude includes fallback answers,GPT-6.2 Astra,score,,,,,60.75,60.75,max
 professional work,Finance Agent v2.1,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,7.98,,max
-professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,GPT-6.1 Sol,score,,,,,61.82,61.82,max
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI · Claude includes fallback answers,GPT-6.1 Sol,score,,,,,61.82,61.82,max
 professional work,Finance Agent v2.1,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,1.63,,max
-professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,GPT-6.2 Sol,score,,,,,58.91,58.91,max
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI · Claude includes fallback answers,GPT-6.2 Sol,score,,,,,58.91,58.91,max
 professional work,Finance Agent v2.1,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,2.06,,max
-professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,Fable 5.2,score,,,69.47,,,69.47,high
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI · Claude includes fallback answers,Fable 5.2,score,,,69.47,,,69.47,high
 professional work,Finance Agent v2.1,"US$ per test, log scale",Fable 5.2,cost_usd,,,4.83,,,,high
-professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,Opus 5.5,score,,,,,67.85,67.85,max
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI · Claude includes fallback answers,Opus 5.5,score,,,,,67.85,67.85,max
 professional work,Finance Agent v2.1,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,8.91,,max
-professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,Sonnet 5.5,score,,,,,67.28,67.28,max
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI · Claude includes fallback answers,Sonnet 5.5,score,,,,,67.28,67.28,max
 professional work,Finance Agent v2.1,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,6.95,,max
-professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,Gemini 4 Carbon,score,,,67.16,,,67.16,high
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI · Claude includes fallback answers,Gemini 4 Carbon,score,,,67.16,,,67.16,high
 professional work,Finance Agent v2.1,"US$ per test, log scale",Gemini 4 Carbon,cost_usd,,,7.29,,,,high
-professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,Gemini 4 Hydrogen,score,,,,65.12,,65.12,xhigh
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI · Claude includes fallback answers,Gemini 4 Hydrogen,score,,,,65.12,,65.12,xhigh
 professional work,Finance Agent v2.1,"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,4.36,,,xhigh
-professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,Gemini 4 Neon,score,,,,56.25,,56.25,xhigh
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI · Claude includes fallback answers,Gemini 4 Neon,score,,,,56.25,,56.25,xhigh
 professional work,Legal Research Bench v1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,7.37,,,xhigh
-professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,GPT-6 Astra,score,,,,,39.42,39.42,max
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI · Claude includes fallback answers,GPT-6 Astra,score,,,,,39.42,39.42,max
 professional work,Legal Research Bench v1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,10.6,,max
-professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,GPT-6.2 Astra,score,,,,,42.79,42.79,max
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI · Claude includes fallback answers,GPT-6.2 Astra,score,,,,,42.79,42.79,max
 professional work,Legal Research Bench v1,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,12.8,,max
-professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,GPT-6.1 Sol,score,,,,,38.46,38.46,max
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI · Claude includes fallback answers,GPT-6.1 Sol,score,,,,,38.46,38.46,max
 professional work,Legal Research Bench v1,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,3.38,,max
-professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,GPT-6.2 Sol,score,,,,,37.02,37.02,max
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI · Claude includes fallback answers,GPT-6.2 Sol,score,,,,,37.02,37.02,max
 professional work,Legal Research Bench v1,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,3.77,,max
-professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,Fable 5.2,score,,,46.15,,,46.15,high
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI · Claude includes fallback answers,Fable 5.2,score,,,46.15,,,46.15,high
 professional work,Legal Research Bench v1,"US$ per test, log scale",Fable 5.2,cost_usd,,,3.96,,,,high
-professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,Opus 5.5,score,,,,,50.48,50.48,max
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI · Claude includes fallback answers,Opus 5.5,score,,,,,50.48,50.48,max
 professional work,Legal Research Bench v1,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,23.6,,max
-professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,Sonnet 5.5,score,,,,,48.08,48.08,max
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI · Claude includes fallback answers,Sonnet 5.5,score,,,,,48.08,48.08,max
 professional work,Legal Research Bench v1,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,13.7,,max
-professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,Gemini 4 Carbon,score,,,55.77,,,55.77,high
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI · Claude includes fallback answers,Gemini 4 Carbon,score,,,55.77,,,55.77,high
 professional work,Legal Research Bench v1,"US$ per test, log scale",Gemini 4 Carbon,cost_usd,,,8.74,,,,high
-professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,Gemini 4 Hydrogen,score,,,,53.85,,53.85,xhigh
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI · Claude includes fallback answers,Gemini 4 Hydrogen,score,,,,53.85,,53.85,xhigh
 professional work,Legal Research Bench v1,"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,6.27,,,xhigh
-professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,Gemini 4 Neon,score,,,,54.89,,54.89,xhigh
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI · Claude includes fallback answers,Gemini 4 Neon,score,,,,54.89,,54.89,xhigh
 professional work,Tax Agent Bench v1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,4.95,,,xhigh
-professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,GPT-6 Astra,score,,,,,20.72,20.72,max
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI · Claude includes fallback answers,GPT-6 Astra,score,,,,,20.72,20.72,max
 professional work,Tax Agent Bench v1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,5.8,,max
-professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,GPT-6.2 Astra,score,,,,,21.84,21.84,max
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI · Claude includes fallback answers,GPT-6.2 Astra,score,,,,,21.84,21.84,max
 professional work,Tax Agent Bench v1,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,7.9,,max
-professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,GPT-6.1 Sol,score,,,,,21.75,21.75,max
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI · Claude includes fallback answers,GPT-6.1 Sol,score,,,,,21.75,21.75,max
 professional work,Tax Agent Bench v1,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,1.32,,max
-professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,GPT-6.2 Sol,score,,,,,24.84,24.84,max
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI · Claude includes fallback answers,GPT-6.2 Sol,score,,,,,24.84,24.84,max
 professional work,Tax Agent Bench v1,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,2.4,,max
-professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,Fable 5.2,score,,,32.09,,,32.09,high
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI · Claude includes fallback answers,Fable 5.2,score,,,32.09,,,32.09,high
 professional work,Tax Agent Bench v1,"US$ per test, log scale",Fable 5.2,cost_usd,,,3.31,,,,high
-professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,Opus 5.5,score,,,,,44.54,44.54,max
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI · Claude includes fallback answers,Opus 5.5,score,,,,,44.54,44.54,max
 professional work,Tax Agent Bench v1,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,14.4,,max
-professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,Sonnet 5.5,score,,,,,41.96,41.96,max
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI · Claude includes fallback answers,Sonnet 5.5,score,,,,,41.96,41.96,max
 professional work,Tax Agent Bench v1,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,8.73,,max
-professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,Gemini 4 Carbon,score,,,51.79,,,51.79,high
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI · Claude includes fallback answers,Gemini 4 Carbon,score,,,51.79,,,51.79,high
 professional work,Tax Agent Bench v1,"US$ per test, log scale",Gemini 4 Carbon,cost_usd,,,6.34,,,,high
-professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,Gemini 4 Hydrogen,score,,,,52.31,,52.31,xhigh
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI · Claude includes fallback answers,Gemini 4 Hydrogen,score,,,,52.31,,52.31,xhigh
 professional work,Tax Agent Bench v1,"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,3.87,,,xhigh
 professional work,EMB v1.1,% financial modeling spreadsheet score · Vals AI,Gemini 4 Neon,score,,,,76.46,,76.46,xhigh
 professional work,EMB v1.1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,3.82,,,xhigh
