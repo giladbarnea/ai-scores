@@ -1,0 +1,85 @@
+{
+  "retrieved": "2026-11-19",
+  "restored_from": {
+    "repository": "https://github.com/giladbarnea/ai-scores",
+    "revision": "ec88fff^",
+    "path": "charts.py",
+    "sha256": "7fbd24241e9f11970557fef3eeb911562e5f090efad37296e1684df4a2eea035"
+  },
+  "provenance": "Existing local scores restored without new benchmark research. Original source records remain in sources/aa_new_models.json, sources/aa_haiku.json, sources/lab_new_models.json and sources/argon.json. Retired Fable 5.1 and Argon remain historical sources only, never relabeled as current models.",
+  "effort_order": ["low", "medium", "high", "xhigh", "max"],
+  "benchmarks": {
+    "Terminal-Bench 2.1": {
+      "unit": "percent",
+      "runner": "Artificial Analysis",
+      "source_url": "https://artificialanalysis.ai/",
+      "scores": {"GPT-6 Astra": [88.0, 89.5, 89.9, 89.1, 88.4]}
+    },
+    "FrontierCode 1.1 Main": {
+      "unit": "score",
+      "runner": "Cognition leaderboard",
+      "source_url": "https://cognition.ai/",
+      "scores": {
+        "GPT-6 Astra": [45.3, 48.8, 50.9, 50.6, 53.3],
+        "GPT-6.1 Sol": [45.5, 50.2, 48.0, 49.3, 47.6],
+        "Opus 5.5": [47.3, 54.6, 54.0, 51.4, 54.4],
+        "Sonnet 5.5": [29.3, 36.5, 49.4, 52.1, 46.2]
+      }
+    },
+    "Humanity's Last Exam": {
+      "unit": "percent",
+      "runner": "Artificial Analysis",
+      "source_url": "https://artificialanalysis.ai/",
+      "task_set": "Original full set, not the later HLE-Diamond subset",
+      "scores": {
+        "GPT-6 Astra": [49.2, 52.7, 53.1, 54.6, 54.7],
+        "GPT-6.1 Sol": [47.4, 49.9, 51.4, 52.6, 52.9],
+        "Opus 5.5": [48.3, 54.7, 55.6, 57.5, 61.4],
+        "Sonnet 5.5": [36.2, 39.8, 45.8, 50.0, 55.0]
+      },
+      "cost_usd_per_task": {
+        "GPT-6 Astra": [0.0389, 0.101, 0.162, 0.253, 0.378],
+        "GPT-6.1 Sol": [0.00731, 0.0126, 0.0266, 0.0428, 0.0776],
+        "Opus 5.5": [0.0286, 0.0619, 0.104, 0.241, 0.718],
+        "Sonnet 5.5": [0.0128, 0.0232, 0.0473, 0.118, 0.544]
+      }
+    },
+    "CritPt v1": {
+      "original_name": "CritPt",
+      "unit": "percent",
+      "runner": "Artificial Analysis",
+      "source_url": "https://artificialanalysis.ai/",
+      "scores": {
+        "GPT-6 Astra": [26.3, 29.1, 28.9, 31.4, 31.7],
+        "GPT-6.1 Sol": [24.9, 27.7, 30.0, 31.7, 31.7],
+        "Opus 5.5": [17.7, 27.7, 30.9, 31.7, 31.7],
+        "Sonnet 5.5": [11.4, 16.9, 24.6, 31.1, 31.4]
+      },
+      "cost_usd_per_task": {
+        "GPT-6 Astra": [0.145, 0.285, 0.434, 0.798, 1.17],
+        "GPT-6.1 Sol": [0.0272, 0.0395, 0.0757, 0.119, 0.242],
+        "Opus 5.5": [0.124, 0.345, 0.53, 1.17, 2.19],
+        "Sonnet 5.5": [0.0862, 0.149, 0.281, 0.65, 1.89]
+      }
+    }
+  },
+  "incidentally_found": {
+    "retrieved": "2026-11-19",
+    "source_url": "https://microsoft.ai/news/introducing-mai-code-2-and-mai-code-2-flash/",
+    "raw_source": "sources/neon-2026-11-19/microsoft/embed-0.json",
+    "effort": "max",
+    "cost_unit": "US dollars per task",
+    "mai_pricing": "50% promotional price",
+    "Terminal-Bench 2.1 (Microsoft)": {
+      "runner": "Microsoft MSBench, Copilot CLI 1.0.102, subagents disabled, mean single-attempt pass across three independent runs",
+      "scores": {"MAI Code 2": 84.6, "GPT-6.1 Sol": 85.0, "Opus 5.5": 78.7},
+      "costs": {"MAI Code 2": 0.081, "GPT-6.1 Sol": 0.265, "Opus 5.5": 1.842}
+    },
+    "FrontierCode-AA 1.1": {
+      "runner": "Artificial Analysis as reproduced in the Microsoft announcement, not Microsoft Copilot CLI",
+      "scores": {"MAI Code 2": 52.0, "GPT-6.1 Sol": 49.4, "Opus 5.5": 56.0},
+      "costs": {"MAI Code 2": 0.310, "GPT-6.1 Sol": 0.960, "Opus 5.5": 8.430}
+    }
+  },
+  "backfill_policy": "Research only the latest benchmark version. Preserve older scores already held or encountered incidentally, but never seek older-version backfills."
+}

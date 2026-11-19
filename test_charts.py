@@ -63,8 +63,6 @@ class ChartCoverageTests(unittest.TestCase):
         model_names = {model["slug"]: model["name"] for model in data["models"]}
         metrics = {metric["name"]: metric for metric in data["metrics"].values()}
         for name, scores in snapshot["scores"].items():
-            if name == "CursorBench 4.0":
-                continue
             actual = {model_names[slug]: values for slug, values in metrics[name]["scores"].items()}
             for model, values in scores.items():
                 if model not in model_names.values():
@@ -123,14 +121,17 @@ class ChartCoverageTests(unittest.TestCase):
         self.assertEqual(metric.scores[charts.GEMINI_4_NEON], [45.5, 57.7, 63.7, 65.4, None])
         self.assertEqual(metric.costs[charts.GEMINI_4_NEON], [1.26, 3.07, 6.54, 10.67, None])
         self.assertEqual(metric.scores[charts.CLAUDE_OPUS_5_5][-1], 58.1)
-        self.assertNotIn("CursorBench 4.0", [metric.name for metric in charts.CURVES])
+        older = next(metric for metric in charts.CURVES if metric.name == "CursorBench 4.0")
+        self.assertEqual(older.scores[charts.CLAUDE_OPUS_5_5][-1], 57.8)
         historical = json.loads((Path(__file__).parent / "sources/gpt62.json").read_text())
         self.assertEqual(historical["scores"]["CursorBench 4.0"]["Opus 5.5"][-1], 57.8)
 
-    def test_mai_code_2_has_only_the_approved_deepswe_point(self) -> None:
+    def test_mai_code_2_preserves_approved_and_incidental_historical_points(self) -> None:
         points = [(metric.name, metric.scores[charts.MAI_CODE_2]) for metric in charts.CURVES
                   if charts.MAI_CODE_2 in metric.scores]
-        self.assertEqual(points, [("DeepSWE v1.1", [None, None, None, None, 73.2])])
+        self.assertEqual(points, [("DeepSWE v1.1", [None, None, None, None, 73.2]),
+                                  ("Terminal-Bench 2.1 (Microsoft)", [None, None, None, None, 84.6]),
+                                  ("FrontierCode-AA 1.1", [None, None, None, None, 52.0])])
         self.assertFalse(any(charts.MAI_CODE_2 in metric.scores for metric in charts.REPORTED))
         metric = next(metric for metric in charts.CURVES if metric.name == "DeepSWE v1.1")
         self.assertEqual(metric.costs[charts.MAI_CODE_2], [None, None, None, None, 0.618])
@@ -168,6 +169,35 @@ class ChartCoverageTests(unittest.TestCase):
         self.assertEqual(categories["SciCode"], "science & engineering")
         self.assertEqual(categories["NanoGPT v5"], "machine-learning research")
         self.assertEqual(len(set(categories.values())), 8)
+
+    def test_page_exports_ordered_benchmark_versions(self) -> None:
+        data = charts.chart_data()
+        self.assertIn("versions", data, "The browser needs explicit newest-first benchmark families")
+        terminal = next(family for family in data["versions"] if family["name"] == "Terminal-Bench")
+        self.assertEqual([version["label"] for version in terminal["versions"]], ["4.1", "4.0", "2.1"])
+        self.assertEqual(terminal["versions"][-1]["charts"], [
+            {"key": "terminal-bench-2-1", "runner": "Artificial Analysis"},
+            {"key": "terminal-bench-2-1-microsoft", "runner": "Microsoft Copilot CLI"},
+        ])
+        names = {charts.slugify(metric.name) for metric in [*charts.CURVES, *charts.REPORTED]}
+        members = [member["key"] for family in data["versions"] for version in family["versions"] for member in version["charts"]]
+        self.assertTrue(set(members) <= names, "Every version member must name a declared chart")
+        self.assertEqual(len(members), len(set(members)), "A runner chart must belong to exactly one benchmark version")
+        self.assertIn('data-chart="terminal-bench-2-1"', charts.panel_html(
+            next(metric for metric in charts.CURVES if metric.name == "Terminal-Bench 2.1")))
+
+    def test_historical_versions_preserve_their_original_scores(self) -> None:
+        metrics = {metric.name: metric for metric in charts.CURVES}
+        for name, values in {
+            "Terminal-Bench 2.1": [88.0, 89.5, 89.9, 89.1, 88.4],
+            "FrontierCode 1.1 Main": [45.3, 48.8, 50.9, 50.6, 53.3],
+            "Humanity's Last Exam": [49.2, 52.7, 53.1, 54.6, 54.7],
+            "CritPt v1": [26.3, 29.1, 28.9, 31.4, 31.7],
+        }.items():
+            with self.subTest(metric=name):
+                self.assertTrue(name in metrics, f"Stored historical version {name} must remain available")
+                self.assertEqual(metrics[name].scores[charts.GPT_6_ASTRA], values)
+        self.assertEqual(metrics["CritPt v1"].costs[charts.GPT_6_ASTRA][0], 0.145)
 
     def test_csv_preserves_scores_with_an_unspecified_effort(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

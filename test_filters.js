@@ -67,8 +67,8 @@
   document.querySelector('label[for="x-effort"]').click();
   document.querySelector("#levels-none").click();
   await settle();
-  assert([...document.querySelectorAll(".panel > .plot")].every(node => node.classList.contains("empty")),
-    "With no levels selected, every chart must explain its empty selection");
+  assert(![...document.querySelectorAll(".panel")].some(visible),
+    "With no levels selected, every chart must disappear instead of showing an empty selection");
   document.querySelector('label[for="level-max"]').click();
   await settle();
   const maxPlot = document.querySelector('.plot[data-metric="aa-intelligence-index"]');
@@ -102,5 +102,5 @@
   assert([...reset.querySelectorAll(".marker")].filter(visible).length === 46, "All must restore every published AA Index point");
   const defaults = new URL(location.href).searchParams;
   assert(!defaults.has("models") && !defaults.has("levels") && !defaults.has("axis"), "The all-model, all-level effort view must keep a clean URL");
-  return "Thinking-level filter checks passed: effort, Cost dominance, model combinations, sparse/unknown results, empty state, reset and zoom";
+  return "Thinking-level filter checks passed: effort, Cost dominance, model combinations, sparse/unknown results, hidden empty charts, reset and zoom";
 })();

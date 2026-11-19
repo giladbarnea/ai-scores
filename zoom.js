@@ -9,6 +9,13 @@
     template, plot: template.content.firstElementChild, layout: template.dataset.layout,
   }));
   let active;
+  const panels = new Map([...document.querySelectorAll(".panel")].map(panel => [panel.dataset.chart, panel]));
+  const versionFamilies = data.versions.map(family => ({ ...family, versions: family.versions.map(version => ({
+    ...version, charts: version.charts.map(chart => ({ ...chart, panel: panels.get(chart.key) })),
+  })) }));
+  const versionOverrides = new Map();
+  const versionDialog = document.getElementById("benchmark-versions");
+  let versionCoverage = new Map();
 
   function mountLayout() {
     const layout = layouts.findLast(layout => innerWidth >= layout.minViewport).name;
@@ -557,20 +564,102 @@
     drawDominance(plot.querySelector("svg.chart"), metric, points, `dominance-chart-${plot.dataset.metric}`);
   }
 
+  function updateVersions(models) {
+    versionCoverage = new Map([...panels.values()].map(panel => {
+      const plot = panel.querySelector(":scope > .plot");
+      const marks = [...plot.querySelectorAll(".marker, .bar")].filter(mark => levelIsShown(mark.dataset.level));
+      const present = models.filter(model => marks.some(mark => mark.classList.contains(`m-${model.slug}`)));
+      panel.hidden = !present.length;
+      return [panel, present];
+    }));
+    for (const family of versionFamilies) {
+      const available = chart => versionCoverage.get(chart.panel).length;
+      const current = family.versions.find(version => version.charts.some(available));
+      const override = family.versions.flatMap(version => version.charts)
+        .find(chart => chart.key === versionOverrides.get(family.name) && available(chart));
+      for (const [index, version] of family.versions.entries()) {
+        for (const chart of version.charts) {
+          const { panel } = chart;
+          panel.hidden = !available(chart) || (override ? chart !== override : version !== current);
+          if (panel.hidden) continue;
+          panel.dataset.temporary = String(Boolean(override));
+          let controls = panel.querySelector(".version-controls");
+          if (!controls) {
+            controls = document.createElement("div");
+            controls.className = "version-controls";
+            panel.querySelector("figcaption").append(controls);
+          }
+          controls.replaceChildren();
+          if (index > 0) {
+            const label = document.createElement("span");
+            label.className = "old-version";
+            label.textContent = "Older version";
+            label.title = "Different tasks or scoring. Scores are not comparable across benchmark versions.";
+            controls.append(label);
+          }
+          if (override) {
+            const reset = document.createElement("button");
+            reset.type = "button";
+            reset.className = "version-reset";
+            reset.textContent = "Back to latest available";
+            reset.addEventListener("click", () => {
+              versionOverrides.delete(family.name);
+              renderCharts();
+              current.charts.find(available).panel.scrollIntoView({ block: "nearest" });
+            });
+            controls.append(document.createTextNode("Temporary view · "), reset);
+          }
+          const earlier = family.versions.slice(index + 1).flatMap(version => version.charts).filter(available);
+          if (!earlier.length) continue;
+          const notice = document.createElement("button");
+          notice.type = "button";
+          notice.className = "older-versions";
+          notice.setAttribute("aria-haspopup", "dialog");
+          notice.textContent = "Some of the selected models have scores in older versions";
+          const open = () => showVersions(family, earlier);
+          notice.addEventListener("click", open);
+          notice.addEventListener("pointerenter", event => { if (event.pointerType === "mouse") open(); });
+          controls.append(notice);
+        }
+      }
+    }
+    for (const section of document.querySelectorAll("main > section")) section.hidden = !section.querySelector(".panel:not([hidden])");
+  }
+
+  function showVersions(family, earlier) {
+    if (versionDialog.open) return;
+    const list = versionDialog.querySelector(".version-list");
+    list.replaceChildren(...earlier.map(chart => {
+      const row = document.createElement("button");
+      row.type = "button";
+      row.dataset.versionChoice = chart.key;
+      const models = document.createElement("span");
+      models.textContent = versionCoverage.get(chart.panel).map(model => model.name).join(", ");
+      const version = document.createElement("span");
+      version.textContent = `${chart.panel.querySelector("h3").textContent} · ${chart.runner}`;
+      row.append(models, version);
+      row.addEventListener("click", () => {
+        versionOverrides.set(family.name, chart.key);
+        versionDialog.close();
+        renderCharts();
+        chart.panel.scrollIntoView({ block: "nearest" });
+      });
+      return row;
+    }));
+    versionDialog.showModal();
+  }
+
+  versionDialog.addEventListener("click", event => { if (event.target === versionDialog) versionDialog.close(); });
+
   function applyFilters() {
     const models = data.models.filter(model => document.getElementById(`show-${model.slug}`).checked);
+    updateVersions(models);
     const partial = data.levels.some(level => !levelIsShown(level));
-    for (const { plot } of entries.filter(entry => entry.plot.isConnected)) {
+    for (const { plot } of entries.filter(entry => entry.plot.isConnected && !entry.plot.closest(".panel").hidden)) {
       const metric = data.metrics[plot.dataset.metric];
-      if (!metric) {
-        const bars = [...plot.querySelectorAll(".bar")].filter(bar => levelIsShown(bar.dataset.level)
-          && models.some(model => bar.classList.contains(`m-${model.slug}`)));
-        plot.classList.toggle("empty", !bars.length);
-        continue;
-      }
+      if (!metric) continue;
       const allPoints = plotPoints(plot, metric);
       const points = allPoints.filter(point => models.includes(point.model) && levelIsShown(data.levels[point.level]));
-      plot.classList.toggle("empty", !points.length);
       const fitted = fitScoreAxis(plot, metric, allPoints, points);
       const redrawLabels = partial || fitted;
       for (const series of plot.querySelectorAll(".series")) {
@@ -640,6 +729,8 @@
 
   // Optimistic: the controls repaint at once; the charts follow on the next frame, coalescing rapid taps.
   function controlsChanged() {
+    versionOverrides.clear();
+    if (versionDialog.open) versionDialog.close();
     showSelection();
     writeViewToUrl();
     cancelAnimationFrame(pendingRender);
@@ -660,6 +751,7 @@
   document.addEventListener("keydown", event => { if (event.key === "Escape") filtersOpen.checked = false; });
 
   function showUrlView() {
+    versionOverrides.clear();
     readViewFromUrl();
     showSelection();
     renderCharts();

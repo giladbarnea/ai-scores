@@ -548,6 +548,44 @@ CURVES = [
         GEMINI_4_HYDROGEN: [51.68, 63.75, 68.89, 71.4, None],
         GEMINI_4_NEON: [None, None, None, 75.8, None],
     }, (40, 90), 20, decimals=2),
+    Metric("CursorBench 4.0", "% · Cursor leaderboard; historical task set and time limit", {
+        GEMINI_4_CARBON: [58.6, 60.1, 60.4, None, None],
+        CLAUDE_FABLE_5_2: [53.2, 54.8, 56.9, 56.3, 60.0],
+        CLAUDE_OPUS_5_5: [43.7, 52.5, 56.0, 56.0, 57.8],
+        GEMINI_4_HYDROGEN: [27.9, 46.7, 54.3, 57.8, None],
+        CLAUDE_SONNET_5_5: [35.8, 39.2, 47.8, 53.1, 55.5],
+    }, (20, 70), 10),
+    Metric("Terminal-Bench 2.1 (Microsoft)", "% · Microsoft Copilot CLI 1.0.102 · max · mean single attempt across three runs", {
+        MAI_CODE_2: [None, None, None, None, 84.6],
+        GPT_6_1_SOL: [None, None, None, None, 85.0],
+        CLAUDE_OPUS_5_5: [None, None, None, None, 78.7],
+    }, (75, 95), 5),
+    Metric("FrontierCode-AA 1.1", "score · Artificial Analysis via Microsoft announcement", {
+        MAI_CODE_2: [None, None, None, None, 52.0],
+        GPT_6_1_SOL: [None, None, None, None, 49.4],
+        CLAUDE_OPUS_5_5: [None, None, None, None, 56.0],
+    }, (40, 60), 5),
+    Metric("Terminal-Bench 2.1", "% · Artificial Analysis; historical run", {
+        GPT_6_ASTRA: [88.0, 89.5, 89.9, 89.1, 88.4],
+    }, (80, 95), 5),
+    Metric("FrontierCode 1.1 Main", "score · Cognition leaderboard; historical run", {
+        GPT_6_ASTRA: [45.3, 48.8, 50.9, 50.6, 53.3],
+        GPT_6_1_SOL: [45.5, 50.2, 48.0, 49.3, 47.6],
+        CLAUDE_OPUS_5_5: [47.3, 54.6, 54.0, 51.4, 54.4],
+        CLAUDE_SONNET_5_5: [29.3, 36.5, 49.4, 52.1, 46.2],
+    }, (20, 60), 10),
+    Metric("Humanity's Last Exam", "% · full set · Artificial Analysis; historical run, not HLE-Diamond", {
+        GPT_6_ASTRA: [49.2, 52.7, 53.1, 54.6, 54.7],
+        GPT_6_1_SOL: [47.4, 49.9, 51.4, 52.6, 52.9],
+        CLAUDE_OPUS_5_5: [48.3, 54.7, 55.6, 57.5, 61.4],
+        CLAUDE_SONNET_5_5: [36.2, 39.8, 45.8, 50.0, 55.0],
+    }, (30, 70), 10),
+    Metric("CritPt v1", "% · Artificial Analysis; historical run, original task set", {
+        GPT_6_ASTRA: [26.3, 29.1, 28.9, 31.4, 31.7],
+        GPT_6_1_SOL: [24.9, 27.7, 30.0, 31.7, 31.7],
+        CLAUDE_OPUS_5_5: [17.7, 27.7, 30.9, 31.7, 31.7],
+        CLAUDE_SONNET_5_5: [11.4, 16.9, 24.6, 31.1, 31.4],
+    }, (0, 40), 10),
 ]
 
 
@@ -1080,12 +1118,12 @@ REPORTED = [
 # Each chart appears once, under the kind of task it asks the model to do.
 SECTION_CHARTS: dict[str, list[str]] = {
     "Aggregates": ['Vals Index (Vals reasoning study)', 'Vals Finance Index v1', 'Vals Legal Index v1', "AA Intelligence Index", "Vals Index"],
-    "Intelligence & knowledge": ['ComplexConstraints v1.1 (agentic)', "Agents' Last Exam v1.1 (public + Google)", 'Extended NYT Connections (940)', 'Extended NYT Connections (newest 100)', 'GraphWalks (256k–1M, Google)', "HLE-Diamond", "ARC-AGI-2", "AA-Omniscience Index", "AA-LCR", "Agents' Last Exam v1.1",
+    "Intelligence & knowledge": ['ComplexConstraints v1.1 (agentic)', "Agents' Last Exam v1.1 (public + Google)", 'Extended NYT Connections (940)', 'Extended NYT Connections (newest 100)', 'GraphWalks (256k–1M, Google)', "HLE-Diamond", "Humanity's Last Exam", "ARC-AGI-2", "AA-Omniscience Index", "AA-LCR", "Agents' Last Exam v1.1",
                                  "LifeVal"],
-    "Coding & security": ['AutoBaxBench easy (functional)', 'AutoBaxBench easy (functional + secure)', 'AutoBaxBench medium (functional)', 'AutoBaxBench medium (functional + secure)', 'AutoBaxBench hard (functional)', 'AutoBaxBench hard (functional + secure)', 'ExploitGym (2h timeout)', 'ExploitGym (6h timeout)', 'ExploitGym (token-budgeted)', 'Code Migration v1.1 (Vals Index subset)', 'Code Migration v1.1 (Vals full test set)', 'sudo L7', 'Vibe Code Bench v1.1 (Vals reasoning study)', 'Terminal-Bench 4.0 (Vals)', 'Terminal-Bench 4.0 (Vals) (Vals reasoning study)', 'Terminal-Bench 4.1 (provider agents)', 'FrontierCode 2.0 (Cognition)', 'CWE-bench v2 (250 tasks)', 'SEC-bench Pro 260505 (183 tasks)', 'WebExploitBench v1.2 (277 vulnerabilities)', 'SWE-sweep (provider harness)', 'SWE-sweep (Mini-SWE vision)', "AA Index coding category", "Terminal-Bench 4.0", "FrontierCode-AA 2.0", "FrontierCode 2.0",
-                          "DeepSWE v1.1", "CursorBench 4.1", "Vibe Code Bench v1.1", "SWE-Bench Pro", "ITBench-AA",
+    "Coding & security": ['AutoBaxBench easy (functional)', 'AutoBaxBench easy (functional + secure)', 'AutoBaxBench medium (functional)', 'AutoBaxBench medium (functional + secure)', 'AutoBaxBench hard (functional)', 'AutoBaxBench hard (functional + secure)', 'ExploitGym (2h timeout)', 'ExploitGym (6h timeout)', 'ExploitGym (token-budgeted)', 'Code Migration v1.1 (Vals Index subset)', 'Code Migration v1.1 (Vals full test set)', 'sudo L7', 'Vibe Code Bench v1.1 (Vals reasoning study)', 'Terminal-Bench 4.0 (Vals)', 'Terminal-Bench 4.0 (Vals) (Vals reasoning study)', 'Terminal-Bench 4.1 (provider agents)', 'FrontierCode 2.0 (Cognition)', 'CWE-bench v2 (250 tasks)', 'SEC-bench Pro 260505 (183 tasks)', 'WebExploitBench v1.2 (277 vulnerabilities)', 'SWE-sweep (provider harness)', 'SWE-sweep (Mini-SWE vision)', "AA Index coding category", "Terminal-Bench 4.0", "Terminal-Bench 2.1", "Terminal-Bench 2.1 (Microsoft)", "FrontierCode-AA 2.0", "FrontierCode-AA 1.1", "FrontierCode 2.0", "FrontierCode 1.1 Main",
+                          "DeepSWE v1.1", "CursorBench 4.1", "CursorBench 4.0", "Vibe Code Bench v1.1", "SWE-Bench Pro", "ITBench-AA",
                           "SecureSWE", "PatchBench", "ExploitBench – Internal Port (June–August 2026)"],
-    "Science & engineering": ['Riemann-bench v1.1', 'Vals Science Index v1 (Vals)', 'MysteryMechanism v1', 'BioMysteryBench v1', 'Terminal-Bench Science 0.1 (Vals)', 'Terminal-Bench Science 0.1 (public board)', 'Terminal-Bench Science 0.1 (Google Neon)', "CritPt v2", "GPQA Diamond (AA)", "GPQA Diamond (OpenAI)", "Terminal-Bench Science 0.1",
+    "Science & engineering": ['Riemann-bench v1.1', 'Vals Science Index v1 (Vals)', 'MysteryMechanism v1', 'BioMysteryBench v1', 'Terminal-Bench Science 0.1 (Vals)', 'Terminal-Bench Science 0.1 (public board)', 'Terminal-Bench Science 0.1 (Google Neon)', "CritPt v2", "CritPt v1", "GPQA Diamond (AA)", "GPQA Diamond (OpenAI)", "Terminal-Bench Science 0.1",
                               "SciCode", "Vals Science Index v1", "BenchCAD 2.1 Core"],
     "Machine-learning research": ["Internal Research Debugging", "KernelGen 1P", "NanoGPT v5", "PostTrainBench Lite",
                                   "MLE-Bench Revised"],
@@ -1110,9 +1148,53 @@ def sections_from(chart_names: dict[str, list[str]]) -> list[tuple[str, list[Met
 
 SECTIONS = sections_from(SECTION_CHARTS)
 
+@dataclass(frozen=True)
+class BenchmarkVersion:
+    label: str
+    runners: dict[str, str]
+
+
+BENCHMARK_VERSIONS = {
+    "Terminal-Bench": [
+        BenchmarkVersion("4.1", {"Terminal-Bench 4.1 (provider agents)": "Public provider-agent board"}),
+        BenchmarkVersion("4.0", {"Terminal-Bench 4.0": "Artificial Analysis", "Terminal-Bench 4.0 (Vals)": "Vals Mini-SWE-agent"}),
+        BenchmarkVersion("2.1", {"Terminal-Bench 2.1": "Artificial Analysis", "Terminal-Bench 2.1 (Microsoft)": "Microsoft Copilot CLI"}),
+    ],
+    "FrontierCode": [
+        BenchmarkVersion("2.0", {"FrontierCode-AA 2.0": "Artificial Analysis", "FrontierCode 2.0": "OpenAI", "FrontierCode 2.0 (Cognition)": "Cognition"}),
+        BenchmarkVersion("1.1", {"FrontierCode 1.1 Main": "Cognition Main", "FrontierCode-AA 1.1": "Artificial Analysis via Microsoft"}),
+    ],
+    "Humanity's Last Exam": [
+        BenchmarkVersion("Diamond", {"HLE-Diamond": "Artificial Analysis · 1,000-question subset"}),
+        BenchmarkVersion("Original full set", {"Humanity's Last Exam": "Artificial Analysis · full set"}),
+    ],
+    "CritPt": [
+        BenchmarkVersion("2", {"CritPt v2": "Artificial Analysis · hard subset"}),
+        BenchmarkVersion("1", {"CritPt v1": "Artificial Analysis · original task set"}),
+    ],
+    "CursorBench": [
+        BenchmarkVersion("4.1", {"CursorBench 4.1": "Cursor"}),
+        BenchmarkVersion("4.0", {"CursorBench 4.0": "Cursor"}),
+    ],
+    "SEC-bench Pro": [
+        BenchmarkVersion("260617", {}),
+        BenchmarkVersion("260505", {"SEC-bench Pro 260505 (183 tasks)": "Provider-reported · 183 tasks"}),
+    ],
+}
+
 # US dollars per task of each benchmark at each effort level, from the same AA records (ARC Prize for ARC-AGI-2).
 # AA weightedCostPerTask divided by its index weight; the coding category uses the same 15:10 weights as its score.
 COSTS: dict[str, dict[Model, Scores]] = {
+    "Terminal-Bench 2.1 (Microsoft)": {
+        MAI_CODE_2: [None, None, None, None, 0.081],
+        GPT_6_1_SOL: [None, None, None, None, 0.265],
+        CLAUDE_OPUS_5_5: [None, None, None, None, 1.842],
+    },
+    "FrontierCode-AA 1.1": {
+        MAI_CODE_2: [None, None, None, None, 0.310],
+        GPT_6_1_SOL: [None, None, None, None, 0.960],
+        CLAUDE_OPUS_5_5: [None, None, None, None, 8.430],
+    },
     'Code Migration v1.1 (Vals Index subset)': {
         CLAUDE_SONNET_5_5: [None, None, None, None, 45.4],
         CLAUDE_FABLE_5_2: [None, None, 68.7, None, None],
@@ -1392,6 +1474,18 @@ COSTS: dict[str, dict[Model, Scores]] = {
         GPT_6_2_ASTRA: [None, None, 0.01462, None, None],
         GPT_6_1_SOL: [None, None, 0.00686, None, None],
         GPT_6_2_SOL: [None, None, 0.00507, None, None],
+    },
+    "Humanity's Last Exam": {
+        GPT_6_ASTRA: [0.0389, 0.101, 0.162, 0.253, 0.378],
+        GPT_6_1_SOL: [0.00731, 0.0126, 0.0266, 0.0428, 0.0776],
+        CLAUDE_OPUS_5_5: [0.0286, 0.0619, 0.104, 0.241, 0.718],
+        CLAUDE_SONNET_5_5: [0.0128, 0.0232, 0.0473, 0.118, 0.544],
+    },
+    "CritPt v1": {
+        GPT_6_ASTRA: [0.145, 0.285, 0.434, 0.798, 1.17],
+        GPT_6_1_SOL: [0.0272, 0.0395, 0.0757, 0.119, 0.242],
+        CLAUDE_OPUS_5_5: [0.124, 0.345, 0.53, 1.17, 2.19],
+        CLAUDE_SONNET_5_5: [0.0862, 0.149, 0.281, 0.65, 1.89],
     },
     "Vibe Code Bench v1.1": {
         GEMINI_4_NEON: [None, None, None, 6.76, None],
@@ -1724,8 +1818,9 @@ FOOTNOTES = {
                          "SWE-Bench Pro bars are each lab's own harness, so compare cautiously. "
                          "The coding category uses FrontierCode-AA and Terminal-Bench 4.0 with 15:10 weights, including their costs. "
                          "SecureSWE, PatchBench and ExploitBench are internal cyber evaluations with safeguards disabled, not "
-                         "ordinary deployment results. CursorBench 4.1 supersedes 4.0; historical scores remain in sources. "
-                         "MAI Code 2’s sole point is DeepSWE v1.1 at max in Copilot CLI 1.0.102; its US$0.618/task uses 50% promotional pricing. "
+                         "ordinary deployment results. CursorBench 4.1 supersedes 4.0; older versions are available through the older-scores line. "
+                         "MAI Code 2’s DeepSWE and historical Terminal-Bench use Copilot CLI 1.0.102; its old FrontierCode point is AA’s. "
+                         "MAI costs use 50% promotional pricing. Older versions have different tasks or scoring, not comparable percentages. "
                          "Terminal-Bench 4.1’s Neon point is AA via Google, not a native-board entry. SEC 260505 has 183 tasks, not the newer 344-task split. "
                          "Code Migration’s 60-task Vals Index subset and 130-task full set are separate; both weight CLI:COBOL 75:25. "
                          "AutoBax highest/high mixed reruns context-limited tasks at high; unspecified highest is not max. "
@@ -2292,9 +2387,8 @@ def layout_html(plot: str, layout: Layout) -> str:
 def panel_html(metric: Metric) -> str:
     modes = ["effort", "cost"] if metric.costs else ["effort"]
     note = "" if metric.costs else '<p class="no-cost">No cost data for this benchmark. Showing scores by effort level.</p>'
-    return (f'<figure class="panel"><figcaption><h3>{html.escape(metric.name)}</h3>'
-            f'<p>{html.escape(metric.unit_and_source)}</p>{note}'
-            f'<p class="no-points">No scores for this selection.</p></figcaption>'
+    return (f'<figure class="panel" data-chart="{slugify(metric.name)}"><figcaption><h3>{html.escape(metric.name)}</h3>'
+            f'<p>{html.escape(metric.unit_and_source)}</p>{note}</figcaption>'
             f'{"".join(plot_html(metric, layout, mode) for layout in LAYOUTS for mode in modes)}</figure>')
 
 
@@ -2366,9 +2460,8 @@ def bar_panel_html(metric: ReportedMetric) -> str:
     plots = "".join(bar_plot_html(metric, layout) for layout in LAYOUTS)
     if metric.costs:
         plots += "".join(plot_html(reported_cost_metric(metric), layout, "cost") for layout in LAYOUTS)
-    return (f'<figure class="panel"><figcaption><h3>{html.escape(metric.name)}</h3>'
-            f'<p>{html.escape(metric.unit_and_source)}</p>{missing_note}'
-            f'<p class="no-points">No scores for this selection.</p></figcaption>'
+    return (f'<figure class="panel" data-chart="{slugify(metric.name)}"><figcaption><h3>{html.escape(metric.name)}</h3>'
+            f'<p>{html.escape(metric.unit_and_source)}</p>{missing_note}</figcaption>'
             f'{plots}</figure>')
 
 
@@ -2427,6 +2520,10 @@ def layout_css() -> str:
 def toggle_css() -> str:
     """Hide unselected models and levels, and show a meeting only when its two models alone are on."""
     rules = []
+    for family in BENCHMARK_VERSIONS.values():
+        default = next(version for version in family if version.runners)
+        rules.extend(f'body:not(.zoomable) .panel[data-chart="{slugify(name)}"] {{ display: none; }}'
+                     for version in family if version is not default for name in version.runners)
     for model in MODELS:
         off = f"body:has(#show-{model.slug}:not(:checked))"
         rules.append(f"{off} .m-{model.slug} {{ display: none; }}")
@@ -2520,8 +2617,24 @@ body.zoomable:has(#filters-open:checked) .filter-panel { transition: grid-templa
   .done { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .controls *, .filter-panel { transition: none !important; } }
-.no-points { display: none; }
-.panel:has(.plot.empty) .no-points { display: block; }
+.version-controls { margin-top: 8px; font-size: 12px; color: var(--ink-3); }
+.version-controls button { font: inherit; padding: 0; color: inherit; background: none; border: 0; cursor: pointer; }
+.old-version { display: inline-block; margin-right: 8px; padding: 1px 6px; border: 1px solid var(--border); border-radius: 4px; font-size: 11px; }
+.version-controls .older-versions { display: block; margin-top: 5px; text-align: left; text-decoration: underline dotted; text-underline-offset: 3px; }
+.version-controls .version-reset { color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; }
+.panel[data-temporary="true"] { border-style: dashed; }
+#benchmark-versions { width: min(420px, calc(100vw - 32px)); max-height: calc(100dvh - 48px); padding: 20px;
+  color: var(--ink-1); background: var(--surface); border: 1px solid var(--border); border-radius: 14px; }
+#benchmark-versions::backdrop { background: rgba(0, 0, 0, .3); }
+#benchmark-versions h3 { margin: 0; font-size: 18px; }
+#benchmark-versions p { margin: 8px 0 16px; font-size: 13px; color: var(--ink-3); }
+.version-dialog-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.version-dialog-head button { font: 24px/1 system-ui; padding: 0 4px; color: var(--ink-2); background: none; border: 0; cursor: pointer; }
+.version-list { display: grid; gap: 8px; }
+.version-list button { display: grid; gap: 3px; width: 100%; padding: 12px; text-align: left; font: inherit;
+  background: none; color: var(--ink-1); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; }
+.version-list button:hover { background: color-mix(in srgb, var(--ink-1) 5%, transparent); }
+.version-list button span:last-child { font-size: 12px; color: var(--ink-3); }
 .missing { color: var(--ink-3); }
 .no-cost { display: none; }
 body:has(#x-cost:checked) .no-cost { display: block; }
@@ -2625,6 +2738,11 @@ $sections
 <div class="zoom-legend"></div>
 <div class="zoom-plot"></div>
 </dialog>
+<dialog id="benchmark-versions" aria-labelledby="version-heading">
+<div class="version-dialog-head"><h3 id="version-heading">Older scores</h3>
+<form method="dialog"><button aria-label="Close older scores">×</button></form></div>
+<p>Different versions use different tasks or scoring.</p><div class="version-list"></div>
+</dialog>
 <script type="application/json" id="chart-data">$data</script>
 <script>
 $script
@@ -2701,6 +2819,10 @@ def page_html() -> str:
 def chart_data() -> dict[str, object]:
     """The scores the zoom script redraws from, keyed by the same slugs the page uses."""
     return {
+        "versions": [{"name": name, "versions": [
+            {"label": version.label, "charts": [{"key": slugify(chart), "runner": runner}
+                                                 for chart, runner in version.runners.items()]}
+            for version in family]} for name, family in BENCHMARK_VERSIONS.items()],
         "levels": EFFORT_LEVELS,
         "layouts": [{"name": layout.name, "minViewport": layout.min_viewport} for layout in LAYOUTS],
         "markerRadius": MARKER_SIZE / 2,
