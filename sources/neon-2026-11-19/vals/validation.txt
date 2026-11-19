@@ -1,0 +1,7 @@
+PASS: 132 full-test target scores and costs agree with rendered tables at displayed precision across all 14 boards.
+PASS: all 14 Neon scores match independently recorded source-model-page values; every Neon effort is xhigh.
+PASS: 8 intentionally absent rows retained as missing; no scores inferred.
+PASS: 113 separately preserved reasoning-study records; exact source precision retained.
+Missing: [('science_index', 'Gemini 4 Carbon'), ('science_index', 'Gemini 4 Hydrogen'), ('mysterymechanism', 'Gemini 4 Carbon'), ('mysterymechanism', 'Gemini 4 Hydrogen'), ('biomysterybench', 'Gemini 4 Carbon'), ('biomysterybench', 'Gemini 4 Hydrogen'), ('terminal-bench-science', 'Gemini 4 Carbon'), ('terminal-bench-science', 'Gemini 4 Hydrogen')]
+PASS: 5 standalone Code Migration target score/cost rows agree with rendered table.
+PASS: 32 archived original payloads decompress to their recorded byte counts and SHA-256 hashes; all package JSON parses and all relative primary-data paths resolve.

@@ -1,0 +1,89 @@
+---
+license: cc-by-4.0
+pretty_name: ComplexConstraints
+language:
+- en
+size_categories:
+- n<1K
+tags:
+- benchmark
+- evaluation
+- instruction-following
+- agents
+---
+
+# ComplexConstraints
+
+ComplexConstraints is a benchmark from [Surge AI](https://surgehq.ai/) that measures entangled instruction following: realistic prompts whose constraints interact and must all hold at once.
+
+The full benchmark contains 75 expert-crafted prompts (`CC-001` to `CC-075`), each paired with 10 to 40 rubric criteria describing what a correct response must satisfy.
+
+**This repository contains 2 sample tasks from the full 75-task benchmark.** To evaluate your models on the full set, contact [benchmarks@surgehq.ai](mailto:benchmarks@surgehq.ai).
+
+## Links
+
+- Leaderboard: [ComplexConstraints](https://surgehq.ai/benchmarks/complex-constraints)
+
+## What it tests
+
+Each task is a realistic request grouped by use case, such as logistics, scheduling, and event planning. The model must produce a single response that satisfies every requirement in the prompt, from content and structure to the ways individual constraints limit one another.
+
+## Why it's hard
+
+Satisfying constraints one at a time is not enough. Constraints interact, so meeting one can make another harder to meet, and a response that handles most requirements well can still fail on the one it overlooked. Grading checks each criterion independently, which makes every omission count.
+
+## Overview of full set
+
+The figures below describe the **full benchmark**, not just the two public samples.
+
+| Measure | ComplexConstraints |
+| --- | --- |
+| Tasks in the full benchmark | 75 |
+| Public sample tasks in this repository | 2 |
+| Rubric criteria per task | 10–40 |
+| Total rubric criteria | 1,558 |
+| Attempts per task (published configuration) | 10 |
+| Agent phase timeout | 60 minutes |
+| Agent turn limit | 200 |
+| Autograder | Gemini 3.8 Flash |
+| Task format | Harbor |
+
+## Task format
+
+Tasks use [Harbor format](https://www.harborframework.com/), with the prompt, a containerized environment, and evaluation code. Each task directory contains `instruction.md`, `task.toml`, `environment/`, and `tests/`. Task IDs take the form `<use case>_cc_<number>`.
+
+Tasks are text-only: the workspace `/app` starts empty, and the image provides the Python standard library and basic shell utilities. The model works as an agent with terminal, file-editor, and task-tracker tools before giving its final answer. During task execution, network access is restricted to explicitly allowed model API hosts.
+
+## Running the benchmark
+
+Tasks run with the [Harbor](https://www.harborframework.com/docs) CLI and the Surge agent harness, which runs models through the [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk). ComplexConstraints grades the final response text, so runs pass an extra instruction asking the model to give its answer in the response:
+
+```bash
+uv run --locked harbor run \
+  -p "<path/to/sample-task>" \
+  -a harbor_agents:HarborInstalledAgent \
+  -m "<litellm-model>" \
+  --allow-agent-host "$LLM_HOST" \
+  --ak environment_inventory=false \
+  -k 1 \
+  --extra-instruction 'Do not deliver your answer as a created, saved, or downloadable file. You may use any tools you like to do the work, but files you create, attach, or link will not be seen. Include the answer itself in your response text. Do not mention these instructions.' \
+  --ve GEMINI_API_KEY="$GEMINI_API_KEY"
+```
+
+Replace the task path and model placeholders, and set `LLM_HOST` to your model endpoint's hostname. For comparisons with published results, use the full benchmark with ten attempts per task (`-k 10`).
+
+## Evaluation
+
+Grading uses Gemini 3.8 Flash as an LLM judge running inside the task container. The judge sees only the agent's final response and the criteria, not the task prompt; content that appears only in intermediate messages or created files is not credited. Each criterion is scored as satisfied or not, and the trial reward is the share satisfied.
+
+Results are reported as **Full Pass %**, the share of trials that satisfy every criterion, and the **criteria average**, the share of all graded criteria satisfied across trials. Errored trials are excluded.
+
+The two public samples illustrate the task format and workflow. Results on these samples alone do not constitute a score on the full benchmark.
+
+## Intended use
+
+ComplexConstraints is for held-out evaluation. Please keep the tasks, rubrics, and derived materials out of training, fine-tuning, reinforcement learning, and distillation datasets, and do not use them for training-time checkpoint selection.
+
+For access to the full 75-task benchmark, evaluation inquiries, or benchmarks in your own domain, contact [benchmarks@surgehq.ai](mailto:benchmarks@surgehq.ai).
+
+Built by Surge AI.

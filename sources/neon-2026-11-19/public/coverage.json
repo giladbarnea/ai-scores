@@ -1,0 +1,271 @@
+[
+  {
+    "benchmark": "Agents' Last Exam v1.1 (native board)",
+    "rows": 22,
+    "present_models": [
+      "Claude Fable 5.2",
+      "Claude Opus 5.5",
+      "GPT-6 Astra",
+      "GPT-6.2 Astra",
+      "GPT-6.2 Sol",
+      "Gemini 4 Carbon",
+      "Gemini 4 Hydrogen"
+    ],
+    "absent_models": [
+      "GPT-6.1 Sol",
+      "Claude Sonnet 5.5",
+      "Gemini 4 Neon"
+    ]
+  },
+  {
+    "benchmark": "AutoBaxBench easy (no security prompt)",
+    "rows": 5,
+    "present_models": [
+      "Claude Fable 5.2",
+      "Claude Opus 5.5",
+      "GPT-6 Astra",
+      "Gemini 4 Carbon",
+      "Gemini 4 Neon"
+    ],
+    "absent_models": [
+      "GPT-6.2 Astra",
+      "GPT-6.1 Sol",
+      "GPT-6.2 Sol",
+      "Claude Sonnet 5.5",
+      "Gemini 4 Hydrogen"
+    ]
+  },
+  {
+    "benchmark": "AutoBaxBench hard (no security prompt)",
+    "rows": 5,
+    "present_models": [
+      "Claude Fable 5.2",
+      "Claude Opus 5.5",
+      "GPT-6 Astra",
+      "Gemini 4 Carbon",
+      "Gemini 4 Neon"
+    ],
+    "absent_models": [
+      "GPT-6.2 Astra",
+      "GPT-6.1 Sol",
+      "GPT-6.2 Sol",
+      "Claude Sonnet 5.5",
+      "Gemini 4 Hydrogen"
+    ]
+  },
+  {
+    "benchmark": "AutoBaxBench medium (no security prompt)",
+    "rows": 5,
+    "present_models": [
+      "Claude Fable 5.2",
+      "Claude Opus 5.5",
+      "GPT-6 Astra",
+      "Gemini 4 Carbon",
+      "Gemini 4 Neon"
+    ],
+    "absent_models": [
+      "GPT-6.2 Astra",
+      "GPT-6.1 Sol",
+      "GPT-6.2 Sol",
+      "Claude Sonnet 5.5",
+      "Gemini 4 Hydrogen"
+    ]
+  },
+  {
+    "benchmark": "AutomationBench 1.0.6 (Zapier)",
+    "rows": 42,
+    "present_models": [
+      "Claude Fable 5.2",
+      "Claude Opus 5.5",
+      "Claude Sonnet 5.5",
+      "GPT-6 Astra",
+      "GPT-6.2 Astra",
+      "GPT-6.2 Sol",
+      "Gemini 4 Carbon",
+      "Gemini 4 Hydrogen",
+      "Gemini 4 Neon"
+    ],
+    "absent_models": [
+      "GPT-6.1 Sol"
+    ]
+  },
+  {
+    "benchmark": "CWE-bench v2 (combined 250)",
+    "rows": 9,
+    "present_models": [
+      "Claude Fable 5.2",
+      "Claude Opus 5.5",
+      "Claude Sonnet 5.5",
+      "GPT-6 Astra",
+      "GPT-6.2 Astra",
+      "GPT-6.2 Sol",
+      "Gemini 4 Carbon",
+      "Gemini 4 Hydrogen",
+      "Gemini 4 Neon"
+    ],
+    "absent_models": [
+      "GPT-6.1 Sol"
+    ]
+  },
+  {
+    "benchmark": "ExploitGym (intended-vulnerability exploit count; 2h timeout)",
+    "rows": 1,
+    "present_models": [
+      "Claude Opus 5.5"
+    ],
+    "absent_models": [
+      "GPT-6 Astra",
+      "GPT-6.2 Astra",
+      "GPT-6.1 Sol",
+      "GPT-6.2 Sol",
+      "Claude Fable 5.2",
+      "Claude Sonnet 5.5",
+      "Gemini 4 Carbon",
+      "Gemini 4 Hydrogen",
+      "Gemini 4 Neon"
+    ]
+  },
+  {
+    "benchmark": "ExploitGym (intended-vulnerability exploit count; 6h timeout)",
+    "rows": 1,
+    "present_models": [
+      "Claude Opus 5.5"
+    ],
+    "absent_models": [
+      "GPT-6 Astra",
+      "GPT-6.2 Astra",
+      "GPT-6.1 Sol",
+      "GPT-6.2 Sol",
+      "Claude Fable 5.2",
+      "Claude Sonnet 5.5",
+      "Gemini 4 Carbon",
+      "Gemini 4 Hydrogen",
+      "Gemini 4 Neon"
+    ]
+  },
+  {
+    "benchmark": "ExploitGym (intended-vulnerability exploit count; token-budgeted)",
+    "rows": 2,
+    "present_models": [
+      "GPT-6 Astra",
+      "GPT-6.1 Sol"
+    ],
+    "absent_models": [
+      "GPT-6.2 Astra",
+      "GPT-6.2 Sol",
+      "Claude Fable 5.2",
+      "Claude Opus 5.5",
+      "Claude Sonnet 5.5",
+      "Gemini 4 Carbon",
+      "Gemini 4 Hydrogen",
+      "Gemini 4 Neon"
+    ]
+  },
+  {
+    "benchmark": "FrontierCode 2.0 (Cognition)",
+    "rows": 46,
+    "present_models": [
+      "Claude Fable 5.2",
+      "Claude Opus 5.5",
+      "Claude Sonnet 5.5",
+      "GPT-6 Astra",
+      "GPT-6.1 Sol",
+      "GPT-6.2 Astra",
+      "GPT-6.2 Sol",
+      "Gemini 4 Carbon",
+      "Gemini 4 Hydrogen",
+      "Gemini 4 Neon"
+    ],
+    "absent_models": []
+  },
+  {
+    "benchmark": "SEC-bench Pro 260505 (183 V8 + Firefox)",
+    "rows": 6,
+    "present_models": [
+      "GPT-6 Astra",
+      "GPT-6.1 Sol",
+      "GPT-6.2 Astra",
+      "GPT-6.2 Sol",
+      "Gemini 4 Carbon",
+      "Gemini 4 Neon"
+    ],
+    "absent_models": [
+      "Claude Fable 5.2",
+      "Claude Opus 5.5",
+      "Claude Sonnet 5.5",
+      "Gemini 4 Hydrogen"
+    ]
+  },
+  {
+    "benchmark": "Terminal-Bench 4.1",
+    "rows": 13,
+    "present_models": [
+      "Claude Fable 5.2",
+      "Claude Opus 5.5",
+      "Claude Sonnet 5.5",
+      "GPT-6 Astra",
+      "GPT-6.1 Sol",
+      "GPT-6.2 Astra",
+      "GPT-6.2 Sol",
+      "Gemini 4 Carbon",
+      "Gemini 4 Hydrogen"
+    ],
+    "absent_models": [
+      "Gemini 4 Neon"
+    ]
+  },
+  {
+    "benchmark": "Terminal-Bench-Science 0.1 (native board)",
+    "rows": 2,
+    "present_models": [
+      "Claude Opus 5.5",
+      "GPT-6 Astra"
+    ],
+    "absent_models": [
+      "GPT-6.2 Astra",
+      "GPT-6.1 Sol",
+      "GPT-6.2 Sol",
+      "Claude Fable 5.2",
+      "Claude Sonnet 5.5",
+      "Gemini 4 Carbon",
+      "Gemini 4 Hydrogen",
+      "Gemini 4 Neon"
+    ]
+  },
+  {
+    "benchmark": "WebExploitBench v1.2 (277 vulnerabilities)",
+    "rows": 4,
+    "present_models": [
+      "Claude Opus 5.5",
+      "GPT-6 Astra",
+      "Gemini 4 Carbon",
+      "Gemini 4 Neon"
+    ],
+    "absent_models": [
+      "GPT-6.2 Astra",
+      "GPT-6.1 Sol",
+      "GPT-6.2 Sol",
+      "Claude Fable 5.2",
+      "Claude Sonnet 5.5",
+      "Gemini 4 Hydrogen"
+    ]
+  },
+  {
+    "benchmark": "SEC-bench Pro 260617 (344 V8 + Firefox + Linux)",
+    "rows": 0,
+    "present_models": [],
+    "absent_models": [
+      "GPT-6 Astra",
+      "GPT-6.2 Astra",
+      "GPT-6.1 Sol",
+      "GPT-6.2 Sol",
+      "Claude Fable 5.2",
+      "Claude Opus 5.5",
+      "Claude Sonnet 5.5",
+      "Gemini 4 Carbon",
+      "Gemini 4 Hydrogen",
+      "Gemini 4 Neon"
+    ],
+    "note": "Latest linked version has no supported target model; preserve older root 260505 results."
+  }
+]

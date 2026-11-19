@@ -1,0 +1,381 @@
+{
+  "aa_scores": {
+    "AA Intelligence Index": [
+      44.1,
+      54.9,
+      59.6,
+      61.4,
+      null
+    ],
+    "HLE-Diamond": [
+      54.2,
+      63.6,
+      68.4,
+      71.3,
+      null
+    ],
+    "CritPt v2": [
+      62.0,
+      61.5,
+      59.0,
+      60.5,
+      null
+    ],
+    "AA-Omniscience Index": [
+      48.5,
+      51.1,
+      53.8,
+      54.8,
+      null
+    ],
+    "AA-Briefcase": [
+      1297.0,
+      1518.0,
+      1632.0,
+      1700.0,
+      null
+    ],
+    "AutomationBench-AA": [
+      76.0,
+      77.8,
+      79.2,
+      79.3,
+      null
+    ],
+    "GDP.pdf": [
+      31.4,
+      32.8,
+      33.4,
+      28.0,
+      null
+    ],
+    "Terminal-Bench 4.0": [
+      32.8,
+      54.5,
+      61.6,
+      63.6,
+      null
+    ],
+    "FrontierCode-AA 2.0": [
+      26.9,
+      36.9,
+      43.3,
+      44.4,
+      null
+    ],
+    "Terminal-Bench Science 0.1": [
+      27.1,
+      54.8,
+      65.7,
+      70.0,
+      null
+    ],
+    "AA Index coding category": [
+      29.3,
+      44.0,
+      50.6,
+      52.1,
+      null
+    ]
+  },
+  "costs": {
+    "AA Intelligence Index": {
+      "Gemini 4 Neon": [
+        830.0,
+        1870.0,
+        3690.0,
+        7790.0,
+        null
+      ]
+    },
+    "HLE-Diamond": {
+      "Gemini 4 Neon": [
+        0.0814,
+        0.28,
+        0.742,
+        1.95,
+        null
+      ]
+    },
+    "CritPt v2": {
+      "Gemini 4 Neon": [
+        0.359,
+        1.05,
+        2.06,
+        3.46,
+        null
+      ]
+    },
+    "AA-Omniscience Index": {
+      "Gemini 4 Neon": [
+        0.008,
+        0.0189,
+        0.0469,
+        0.395,
+        null
+      ]
+    },
+    "AA-Briefcase": {
+      "Gemini 4 Neon": [
+        0.833,
+        2.17,
+        4.23,
+        6.69,
+        null
+      ]
+    },
+    "AutomationBench-AA": {
+      "Gemini 4 Neon": [
+        0.407,
+        0.601,
+        0.936,
+        1.45,
+        null
+      ]
+    },
+    "GDP.pdf": {
+      "Gemini 4 Neon": [
+        0.32,
+        0.372,
+        0.466,
+        0.875,
+        null
+      ]
+    },
+    "Terminal-Bench 4.0": {
+      "Gemini 4 Neon": [
+        1.28,
+        2.92,
+        4.92,
+        6.7,
+        null
+      ]
+    },
+    "FrontierCode-AA 2.0": {
+      "Gemini 4 Neon": [
+        0.949,
+        2.42,
+        4.91,
+        8.65,
+        null
+      ]
+    },
+    "Terminal-Bench Science 0.1": {
+      "Gemini 4 Neon": [
+        1.79,
+        4.93,
+        10.1,
+        18.4,
+        null
+      ]
+    },
+    "AA Index coding category": {
+      "Gemini 4 Neon": [
+        1.08,
+        2.62,
+        4.92,
+        7.87,
+        null
+      ]
+    },
+    "CursorBench 4.1": {
+      "Gemini 4 Neon": [
+        1.26,
+        3.07,
+        6.54,
+        10.67,
+        null
+      ],
+      "Gemini 4 Carbon": [
+        8.64,
+        7.22,
+        8.52,
+        null,
+        null
+      ],
+      "Fable 5.2": [
+        4.26,
+        5.01,
+        10.51,
+        17.84,
+        48.11
+      ],
+      "Opus 5.5": [
+        1.43,
+        2.85,
+        3.87,
+        6.54,
+        11.88
+      ],
+      "Gemini 4 Hydrogen": [
+        0.28,
+        1.28,
+        4.57,
+        8.09,
+        null
+      ],
+      "Sonnet 5.5": [
+        0.44,
+        0.63,
+        1.41,
+        3.13,
+        8.63
+      ]
+    },
+    "DeepSWE v1.1": {
+      "MAI Code 2": [
+        null,
+        null,
+        null,
+        null,
+        0.618
+      ]
+    },
+    "Extended NYT Connections (940)": {
+      "Gemini 4 Neon": [
+        null,
+        null,
+        0.0708,
+        null,
+        null
+      ],
+      "Gemini 4 Carbon": [
+        null,
+        null,
+        0.0939,
+        null,
+        null
+      ],
+      "GPT-6 Astra": [
+        null,
+        null,
+        0.02807,
+        null,
+        null
+      ],
+      "GPT-6.2 Astra": [
+        null,
+        null,
+        0.01462,
+        null,
+        null
+      ],
+      "GPT-6.1 Sol": [
+        null,
+        null,
+        0.00686,
+        null,
+        null
+      ],
+      "GPT-6.2 Sol": [
+        null,
+        null,
+        0.00507,
+        null,
+        null
+      ]
+    }
+  },
+  "cursor_scores": {
+    "Gemini 4 Neon": [
+      45.5,
+      57.7,
+      63.7,
+      65.4,
+      null
+    ],
+    "Gemini 4 Carbon": [
+      55.0,
+      60.4,
+      61.5,
+      null,
+      null
+    ],
+    "Fable 5.2": [
+      53.4,
+      54.2,
+      56.5,
+      58.8,
+      61.3
+    ],
+    "Opus 5.5": [
+      42.7,
+      50.0,
+      54.5,
+      56.7,
+      58.1
+    ],
+    "Gemini 4 Hydrogen": [
+      23.9,
+      46.4,
+      57.3,
+      61.4,
+      null
+    ],
+    "Sonnet 5.5": [
+      31.8,
+      34.3,
+      43.8,
+      49.9,
+      54.4
+    ]
+  },
+  "mka": {
+    "Gemini 4 Neon": [
+      43.4,
+      50.9,
+      54.6,
+      56.5,
+      null
+    ],
+    "Fable 5.2": [
+      null,
+      null,
+      null,
+      null,
+      56.6
+    ],
+    "GPT-6.2 Astra": [
+      null,
+      null,
+      null,
+      null,
+      52.7
+    ],
+    "Gemini 4 Carbon": [
+      null,
+      null,
+      54.3,
+      null,
+      null
+    ],
+    "Opus 5.5": [
+      null,
+      null,
+      null,
+      null,
+      53.0
+    ],
+    "Sonnet 5.5": [
+      null,
+      null,
+      null,
+      null,
+      52.0
+    ],
+    "GPT-6 Astra": [
+      null,
+      null,
+      null,
+      null,
+      50.2
+    ],
+    "GPT-6.1 Sol": [
+      null,
+      null,
+      null,
+      null,
+      47.7
+    ]
+  }
+}

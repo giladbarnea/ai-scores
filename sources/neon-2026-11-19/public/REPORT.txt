@@ -1,0 +1,96 @@
+PUBLIC BENCHMARK AUDIT — retrieved 2026-11-19
+Scope: eight requested native boards, plus AutoBaxBuilder, ExploitGym and Gray Swan IPI provenance. Repository untouched; all artifacts in /tmp/neon-public/. Browser session public-boards-20261119 closed successfully.
+
+Deliverables
+- observations-final.json: 163 validated observations, exact native scores, effort labels, USD costs/denominators, harness/runner/source/retrieval provenance, raw rows where available.
+- observations.json: 144 observations from the original eight boards only.
+- known-effort-observations.json: 133 original observations with explicit none/low/medium/high/xhigh/max levels. This intentionally excludes the noncanonical 'between tools' label and unspecified/mixed/highest-available settings; those remain in the full file.
+- coverage.json: present/absent supported models for each series, including zero coverage on latest SEC version.
+- extract.py / finalize.py: reproducible normalization. finalize.py asserts unique benchmark/model/effort tuples, valid score ranges, nonnegative costs, and absence of explicit Neon on native Terminal-Bench, Science and ALE.
+- boards.har, unbundled/, unbundled-manifest.json: 535-request browser capture and extracted response bodies.
+- images-manifest.json / extra-images-manifest.json: downloaded embedded source figures, images and their URLs.
+
+Use native observations rather than Google rounded reprints
+Neon is explicitly present on FrontierCode, AutomationBench, CWE-bench, the older SEC snapshot, WebExploitBench, and AutoBaxBench. Neon is absent from the native Terminal-Bench 4.1, Terminal-Bench-Science 0.1, ALE v1.1, ExploitGym and latest SEC 260617 datasets inspected. Native absence does not invalidate a separately labeled Google-run result, but it prevents calling that result native-board coverage.
+
+Neon explicit rows (USD denominators must stay attached)
+FrontierCode 2.0: low 27.41 / $0.959; medium 38.16 / $2.174; high 46.24 / $4.382; xhigh 44.83 / $7.666. Costs are mean USD per rollout, list API pricing including public discounts. Antigravity-CLI, Cognition runner.
+AutomationBench 1.0.6: low 49.62 / $0.40; medium 53.27 / $0.58; high 54.34 / $0.88; xhigh 56.32 / $1.69. Costs per task. Zapier API-mode harness.
+CWE-bench v2, combined 250 tasks: high 70.7 / $6.52 per rollout. Antigravity.
+SEC-bench Pro 260505, 183 V8+Firefox tasks: 90.5, effort/cost/harness not stated in native row, provider Google DeepMind. Google PDF separately identifies Antigravity and mean of three independent attempts/task.
+WebExploitBench v1.2, 277 vulnerabilities: 51.26; effort/cost unspecified; Google Antigravity; DeepMind Team submission.
+AutoBaxBench no-security-prompt: Easy 71.428571; Medium 66.071429; Hard 76.428571 correct-and-secure pass@1. Highest available reasoning; exact level unspecified. No task costs reported.
+
+BOARD NOTES AND GOOGLE DIFFERENCES
+
+1. Terminal-Bench 4.1 — https://www.tbench.ai/
+13 supported-model/effort rows, nine supported models; Neon absent. Raw embedded Next.js flight data saved to tbench/flight.txt and tbench/data.json.
+Native scores include Opus(max) 65.76, Fable(max) 65.76, Carbon(high) 64.55, Sonnet(max) 63.94, Astra6.2(max) 62.12, Sol6.2(max) 61.52, Sol6.1(max) 60.91, Astra6(max/high/xhigh/medium/low) 60.30/60.00/59.70/55.15/50.91, Hydrogen(high) 56.36.
+Cost normalization: total_cost_usd / n_trials = USD per rollout, not total board spend. Original totals/trial counts remain in every row. Native accuracy includes confidence intervals in raw metrics.
+Google's Opus65.8 and Sol61.5 round native values. Its Neon65.2 is separately attributed to Artificial Analysis and Antigravity-CLI1.5.9, and is absent from the native board. Do not merge this into AA Terminal-Bench4.0 or relabel as native. Google labels its metric cheating-adjusted accuracy; native board labels resolution rate/accuracy.
+Evidence: tbench/top.png, screenshot.png, rendered.txt, data.json.
+
+2. FrontierCode 2.0 — https://cognition.com/blog/frontier-code-2.0
+Data https://cognition.com/data/frontier-code-2.0/data.json, saved unbundled/cognition.com/b042e8176196.json. 46 supported observations, all ten supported models. 132 tasks. Weighted rubric aggregate; failing any blocking criterion gives zero. new_score is a fraction and was multiplied by100; use main subset only, not historic implementation/scope criteria from1.1.
+Google Neon46.2 = native high46.24 (NOT xhigh44.83); Opus47.3 = max47.34; Sol43.8 = max43.76. Native high beats xhigh for Neon; do not assume monotonic effort or draw a single-point curve.
+Harness map is embedded and retained per row. Costs are explicitly mean USD per rollout including public discounts.
+Evidence: frontiercode/chart.png, top.png; article includes several historic charts, which are not FrontierCode2.0 scores.
+
+3. AutomationBench — https://zapier.com/benchmarks
+Native version1.0.6; 42 supported observations, nine supported models (Sol6.1 absent). Expanded full 151-entry table saved automation/expanded.txt and rows.json.
+Strict deterministic task_completed_correctly final-state assertions, not partial-credit progress. API mode, search/execute tools, 50-step cap; cost USD/task.
+CRITICAL fallback caveat: Fable5.2 used Anthropic default fallbacks on EVERY request. Opus5.5/Sonnet5.5 refused tasks were rerun with provider default fallbacks; other task results unchanged. These are not guaranteed pure-model runs. Every affected normalized row carries this caveat.
+Google56.3/42.5/41.3 round native Neon(xhigh)56.32, Opus(max)42.47, Sol6.2(high)41.25. Sol's high row exceeds max41.10. Preserve best-observed versus maximum-effort distinction.
+Evidence: automation/top.png, screenshot-expanded.png, expanded.txt; native footnotes capture fallback policy. 'Between tools' is an explicit Sonnet native setting, retained unmodified rather than coerced to a numeric effort.
+
+4. Agents' Last Exam — https://agents-last-exam.org/leaderboard
+Native v1.1,122 tasks; data https://agents-last-exam.org/api/demo/leaderboard/v1.1, saved unbundled/agents-last-exam.org/a242e0fdac62.1. 22 supported effort observations, seven supported models. Neon, Sol6.1 and Sonnet absent.
+Use avgScore*100 = average partial-credit rubric SCORE. Native passRate is the perfect-score task share and is a DIFFERENT metric. Default visual chart is pass rate, so using its bars as rubric scores is wrong.
+Fable(max)72.789661 excludes nine downgraded tasks, denominator113 rather than122; retain limitation. Estimated costs normalized totalCostUsd/tasks, retaining row totals and task counts. Prices dated by costRatesAsOf field. Gemini Carbon/Hydrogen marked externally run; harnesses ALE-Claw/Antigravity CLI differ from Codex/Claude Code.
+Google Opus71.6 agrees with native max71.602049. Google Sol73.0 agrees with native max73.043986, while default pass-rate-selected display shows xhigh72.482009. Google Neon75.8 is a Google-run Antigravity-CLI1.4.8 122-task/5-hour result, NOT a native row. 'Hy4' is Tencent, not an alias for Neon.
+Evidence: ale/top.png and screenshot-ready.png; data includes dropdown-only effort rows.
+
+5. Terminal-Bench-Science — https://www.terminal-bench-science.ai/
+Native version0.1,70 tasks,3 trials/task (210). Only Astra6(max)68.095238 and Opus5.5(max)63.333333 among supported models. Costs normalized total_cost_usd/n_trials, USD/rollout; raw trials/totals retained. Codex/Claude Code harnesses. Average resolution rate ± standard error.
+Google Neon70.5 is separately Google-run mini-swe-agent vision, FIVE attempts/task. It is absent from native board. Google Opus63.3 agrees. Google attributes68.0 to GPT-6.2 Sol, but inspected native68.1 row is GPT-6 ASTRA, and Sol6.2 is absent; do not copy that attribution into a native series.
+Evidence: science/top.png, screenshot.png and unbundled/www.terminal-bench-science.ai/745a1f8527e7.txt.
+
+6. CWE-bench — https://cwe-bench.com/
+Native v2 combines public100 + held-out150 =250 tasks. Nine supported models; Sol6.1 absent. Every row high reasoning; four valid rollouts/task; one-hour cap; infrastructure failures rerun, not counted as model failures. Programmatic pass@1; pass@4 breaks ranking ties. JSON includes combined score plus public/held-out pass@1 and pass@4 as distinct fields; do not interchange them. Costs USD/rollout.
+Fable75.0/$7.85, Neon70.7/$6.52, Hydrogen68.1/$2.63, Carbon67.3/$4.27, Opus67.1/$1.85, Astra6.2 66.8/$4.32, Sol6.2 66.0/$0.81, Astra6 64.2/$3.87, Sonnet61.4/$0.58.
+Google rounded scores agree but its generic maximum-effort wording must not override native explicit high setting. Collinear and Artificial Analysis partnership described; per-model submitting runner is not identified in the row.
+Evidence: cwe/top.png, raw.html JSON-LD; linked-data-*.json and unbundled/cwe-bench.com/50d5bf1950c0.js.
+
+7. SEC-bench Pro — https://sec-bench.github.io/
+ROOT defaults to older version260505:183 V8+Firefox tasks. Six supported rows: Neon90.5, Sol6.2 88.34, Carbon88.2, Astra6.2 86.75, Astra6 85.4, Sol6.1 78.8. Provider-reported (not an independent board rerun), effort/harness/cost unspecified in these native rows. Google Neon90.5 agrees; Sol88.3 rounds88.34. Keep 260505 in chart title.
+NEWER version https://sec-bench.github.io/260617/ has344 tasks:V8 103,Firefox104,Linux137. Its eight native rows have NO supported target models. Do not call older183-task scores latest or relabel them344-task. New raw HTML/data/screenshot saved sec/version-260617{.html,-data.json,.png}.
+Evidence: sec/top.png confirms older version selector183; version-260617.png confirms newer344 selector. sec/data.json is OLD version only.
+
+8. WebExploitBench — https://agentcyberrange.io/
+Native v1.2 expanded277 vulnerabilities across15 apps (Nov13 update). Four supported rows: Neon51.26,Carbon44.65,Astra6 38.99,Opus37.06. Nov18 submissions. Gemini Google Antigravity/DeepMind Team; Astra Codex0.170.0/ACR Team; Opus Claude Code2.1.327/DeepMind Team. Effort/cost unspecified.
+Native metric explicitly 'Succ. Rate Pass@3 (AVG.)'. Google calls rounded51.3/37.1 '% vulnerabilities solved'. Preserve native wording rather than asserting pass@1 equivalence. Post-exploitation scores are separate and TBA for these models.
+Evidence: cyber/top.png, screenshot-ready.png, rendered-ready.txt, assets.json and JS bundle unbundled/agentcyberrange.io/86e991f62b05.js.
+
+ADDITIONAL REQUESTED METHODOLOGY RESOURCES
+
+AutoBaxBuilder — https://baxbench.com/autobaxbuilder/
+A real dynamic native leaderboard, not methodology-only.15 supported rows across Easy/Medium/Hard; five supported models each. Subsets have1/3/5 API endpoints respectively and must remain separate. Correct-and-secure pass@1 is main metric; raw correct pass@1 and percent insecure-of-correct also retained. Data /static/data/leaderboard_data_abb_{easy,medium,hard}.json saved autobax-{difficulty}.json; JS saved autobax-index.js.
+2026 reasoning models highest setting; exact settings are not named. Fable/Opus context-limit tasks rerun TWO SETTINGS LOWER at HIGH, so label mixed highest/high, not pure max. No security-specific prompting. Models marked* were used for generation; no supported row inspected carries*. No published task costs in JSON.
+Easy Fable88.571429/Opus80.714286/Neon71.428571/Carbon61.428571/Astra59.285714.
+Medium Fable77.857143/Opus73.214286/Neon66.071429/Carbon60.0/Astra56.785714.
+Hard Neon76.428571/Carbon73.571429/Fable67.857143/Opus67.857143/Astra57.142857.
+Evidence: autobax-easy-board.png, autobax-medium.png, autobax-hard.png; extra-images/abb_overview.png and stats_autobaxbench_vs_baxbench.png downloaded and viewed. Comparison figure is historical validation, not current model leaderboard data.
+
+ExploitGym — https://www.cybergym.io/exploitgym/
+Native data /assets/data/exploitgym.json saved exploitgym-data.json.869 tasks,502 userspace/181 V8/186 kernel; intended-vulnerability exploit COUNT, not any flag capture. Supported rows Opus300 at6h,289 at2h; Astra368 and Sol6.1 305 token-budgeted. No Neon. Costs and effort unspecified for supported rows. Astra/Sol counts are explicitly approximate board transformations of provider peak per-attempt rates*869; output-token cap value unspecified; v1/offline/no package installation. Do not reinterpret them as controlled6h trials. Preserve counts, original provider source links and separate budgets rather than infer precise percentages or curves.
+Images overview/flag/venn/time-curve/case-study downloaded and viewed. Historical prose/figures include old v0 scores while current JSON v1 differs (e.g.GPT5.5 intended120 vs129); do not mix those. No supported Neon score found in native JSON or figures.
+Evidence: exploitgym-board.png plus extra-images-manifest.json; exploitgym.md text alone missed dynamic board entirely.
+
+Gray Swan IPI — https://app.grayswan.ai/arena/challenge/ipi-q2-2026
+Opened public Q2 challenge and captured grayswan-q2-rendered.txt/png. It exposes attack scenarios, an opaque target name, and signup/login gates, NOT a Neon model-level transfer evaluation. Its visible wave is May15–22, whereas Google PDF describes pooled2026Q1/Q2(April) high-transfer curated attacks. Do not substitute public participant break counts or an opaque challenge target for Google's held-out evaluation. No reliable public Neon model score extracted. grayswan-search.txt contains discovery leads only, not evidence for numbers.
+
+Verification and limitations
+- All eight native boards were captured; dynamic ALE/AgentCyberRange waited for readiness; Zapier expanded; extra AutoBax subsets switched and visually cross-checked; ExploitGym waited for model rows.
+- Downloaded/unbundled embedded data, not merely prose. Main source figures and screenshots were viewed; decorative logos are not score evidence.
+- Unknown effort remains unknown. Cost values are published/estimated API spend or explicitly derived from native totals; no price inference added.
+- Browser cleanup successful. No repository edits or commits were made by this audit worker. Papercut notes are confined to /tmp/neon-public/papercuts.jsonl.

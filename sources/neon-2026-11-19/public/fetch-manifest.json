@@ -1,0 +1,66 @@
+[
+  {
+    "name": "tbench",
+    "source": "https://tbench.ai",
+    "final_url": "https://www.tbench.ai/",
+    "status": 200,
+    "bytes": 347636,
+    "links": 138
+  },
+  {
+    "name": "frontiercode",
+    "source": "https://cognition.com/blog/frontier-code-2.0",
+    "final_url": "https://cognition.com/blog/frontier-code-2.0",
+    "status": 200,
+    "bytes": 236978,
+    "links": 60
+  },
+  {
+    "name": "automation",
+    "source": "https://zapier.com/benchmarks",
+    "final_url": "https://zapier.com/benchmarks",
+    "status": 200,
+    "bytes": 174513,
+    "links": 22
+  },
+  {
+    "name": "ale",
+    "source": "https://agents-last-exam.org/leaderboard",
+    "final_url": "https://agents-last-exam.org/leaderboard",
+    "status": 200,
+    "bytes": 24053,
+    "links": 37
+  },
+  {
+    "name": "science",
+    "source": "https://terminal-bench-science.ai",
+    "final_url": "https://www.terminal-bench-science.ai/",
+    "status": 200,
+    "bytes": 53345,
+    "links": 37
+  },
+  {
+    "name": "cwe",
+    "source": "https://cwe-bench.com",
+    "final_url": "https://cwe-bench.com",
+    "status": 200,
+    "bytes": 154033,
+    "links": 38
+  },
+  {
+    "name": "sec",
+    "source": "https://sec-bench.github.io",
+    "final_url": "https://sec-bench.github.io",
+    "status": 200,
+    "bytes": 145917,
+    "links": 100
+  },
+  {
+    "name": "cyber",
+    "source": "https://agentcyberrange.io",
+    "final_url": "https://agentcyberrange.io",
+    "status": 200,
+    "bytes": 5020,
+    "links": 1
+  }
+]

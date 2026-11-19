@@ -1,0 +1,345 @@
+[
+  {
+    "chart": "AutoBaxBench easy (functional)",
+    "model": "Fable 5.2",
+    "effort": "highest/high mixed",
+    "score": 89.29,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench easy (functional)",
+    "model": "Opus 5.5",
+    "effort": "highest/high mixed",
+    "score": 92.86,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench easy (functional)",
+    "model": "Gemini 4 Carbon",
+    "effort": "highest (level not stated)",
+    "score": 87.14,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench easy (functional)",
+    "model": "GPT-6 Astra",
+    "effort": "highest (level not stated)",
+    "score": 91.43,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench easy (functional)",
+    "model": "Gemini 4 Neon",
+    "effort": "highest (level not stated)",
+    "score": 85.0,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench easy (functional + secure)",
+    "model": "Fable 5.2",
+    "effort": "highest/high mixed",
+    "score": 88.57,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench easy (functional + secure)",
+    "model": "Opus 5.5",
+    "effort": "highest/high mixed",
+    "score": 80.71,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench easy (functional + secure)",
+    "model": "Gemini 4 Carbon",
+    "effort": "highest (level not stated)",
+    "score": 61.43,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench easy (functional + secure)",
+    "model": "GPT-6 Astra",
+    "effort": "highest (level not stated)",
+    "score": 59.29,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench easy (functional + secure)",
+    "model": "Gemini 4 Neon",
+    "effort": "highest (level not stated)",
+    "score": 71.43,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench medium (functional)",
+    "model": "Fable 5.2",
+    "effort": "highest/high mixed",
+    "score": 91.43,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench medium (functional)",
+    "model": "Opus 5.5",
+    "effort": "highest/high mixed",
+    "score": 87.5,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench medium (functional)",
+    "model": "Gemini 4 Carbon",
+    "effort": "highest (level not stated)",
+    "score": 81.43,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench medium (functional)",
+    "model": "GPT-6 Astra",
+    "effort": "highest (level not stated)",
+    "score": 86.79,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench medium (functional)",
+    "model": "Gemini 4 Neon",
+    "effort": "highest (level not stated)",
+    "score": 79.64,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench medium (functional + secure)",
+    "model": "Fable 5.2",
+    "effort": "highest/high mixed",
+    "score": 77.86,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench medium (functional + secure)",
+    "model": "Opus 5.5",
+    "effort": "highest/high mixed",
+    "score": 73.21,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench medium (functional + secure)",
+    "model": "Gemini 4 Carbon",
+    "effort": "highest (level not stated)",
+    "score": 60.0,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench medium (functional + secure)",
+    "model": "GPT-6 Astra",
+    "effort": "highest (level not stated)",
+    "score": 56.79,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench medium (functional + secure)",
+    "model": "Gemini 4 Neon",
+    "effort": "highest (level not stated)",
+    "score": 66.07,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench hard (functional)",
+    "model": "Fable 5.2",
+    "effort": "highest/high mixed",
+    "score": 78.57,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench hard (functional)",
+    "model": "Opus 5.5",
+    "effort": "highest/high mixed",
+    "score": 71.43,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench hard (functional)",
+    "model": "Gemini 4 Carbon",
+    "effort": "highest (level not stated)",
+    "score": 88.57,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench hard (functional)",
+    "model": "GPT-6 Astra",
+    "effort": "highest (level not stated)",
+    "score": 93.57,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench hard (functional)",
+    "model": "Gemini 4 Neon",
+    "effort": "highest (level not stated)",
+    "score": 77.14,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench hard (functional + secure)",
+    "model": "Fable 5.2",
+    "effort": "highest/high mixed",
+    "score": 67.86,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench hard (functional + secure)",
+    "model": "Opus 5.5",
+    "effort": "highest/high mixed",
+    "score": 67.86,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench hard (functional + secure)",
+    "model": "Gemini 4 Carbon",
+    "effort": "highest (level not stated)",
+    "score": 73.57,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench hard (functional + secure)",
+    "model": "GPT-6 Astra",
+    "effort": "highest (level not stated)",
+    "score": 57.14,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutoBaxBench hard (functional + secure)",
+    "model": "Gemini 4 Neon",
+    "effort": "highest (level not stated)",
+    "score": 76.43,
+    "cost_usd": null
+  },
+  {
+    "chart": "ExploitGym (2h timeout)",
+    "model": "Opus 5.5",
+    "effort": "not stated",
+    "score": 289.0,
+    "cost_usd": null
+  },
+  {
+    "chart": "ExploitGym (6h timeout)",
+    "model": "Opus 5.5",
+    "effort": "not stated",
+    "score": 300.0,
+    "cost_usd": null
+  },
+  {
+    "chart": "ExploitGym (token-budgeted)",
+    "model": "GPT-6 Astra",
+    "effort": "not stated",
+    "score": 368.0,
+    "cost_usd": null
+  },
+  {
+    "chart": "ExploitGym (token-budgeted)",
+    "model": "GPT-6.1 Sol",
+    "effort": "not stated",
+    "score": 305.0,
+    "cost_usd": null
+  },
+  {
+    "chart": "Code Migration v1.1 (Vals Index subset)",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 87.37,
+    "cost_usd": 45.405088
+  },
+  {
+    "chart": "Code Migration v1.1 (Vals Index subset)",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 85.85,
+    "cost_usd": 68.678428
+  },
+  {
+    "chart": "Code Migration v1.1 (Vals Index subset)",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 85.35,
+    "cost_usd": 9.761639
+  },
+  {
+    "chart": "Code Migration v1.1 (Vals Index subset)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 83.59,
+    "cost_usd": 33.997952
+  },
+  {
+    "chart": "Code Migration v1.1 (Vals Index subset)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 82.67,
+    "cost_usd": 45.638403
+  },
+  {
+    "chart": "Code Migration v1.1 (Vals Index subset)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 80.49,
+    "cost_usd": 72.30083
+  },
+  {
+    "chart": "Code Migration v1.1 (Vals Index subset)",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 80.05,
+    "cost_usd": 33.711908
+  },
+  {
+    "chart": "Code Migration v1.1 (Vals Index subset)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 78.03,
+    "cost_usd": 66.641779
+  },
+  {
+    "chart": "Code Migration v1.1 (Vals Index subset)",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 75.76,
+    "cost_usd": 18.093695
+  },
+  {
+    "chart": "Code Migration v1.1 (Vals Index subset)",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 75.14,
+    "cost_usd": 9.938473
+  },
+  {
+    "chart": "Code Migration v1.1 (Vals full test set)",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 86.88,
+    "cost_usd": 43.879213
+  },
+  {
+    "chart": "Code Migration v1.1 (Vals full test set)",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 83.27,
+    "cost_usd": 69.18581
+  },
+  {
+    "chart": "Code Migration v1.1 (Vals full test set)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 81.01,
+    "cost_usd": 72.39516
+  },
+  {
+    "chart": "Code Migration v1.1 (Vals full test set)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 80.58,
+    "cost_usd": 62.066613
+  },
+  {
+    "chart": "Code Migration v1.1 (Vals full test set)",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 77.32,
+    "cost_usd": 9.505623
+  }
+]

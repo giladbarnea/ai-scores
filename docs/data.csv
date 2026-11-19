@@ -1,4 +1,14 @@
 category,metric,unit_and_source,model,measure,low,medium,high,xhigh,max,reported_score,reported_effort
+aggregates,Vals Index (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",GPT-6 Astra,score,57.7,,62.4,,65.2,,
+aggregates,Vals Index (Vals reasoning study),"US$ per test, log scale",GPT-6 Astra,cost_usd,4.0,,8.63,,22.2,,
+aggregates,Vals Index (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",GPT-6.2 Astra,score,60.9,63.9,65.8,67.3,67.7,,
+aggregates,Vals Index (Vals reasoning study),"US$ per test, log scale",GPT-6.2 Astra,cost_usd,2.81,4.32,5.81,7.0,11.1,,
+aggregates,Vals Index (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",Fable 5.2,score,,,71.0,,,,
+aggregates,Vals Index (Vals reasoning study),"US$ per test, log scale",Fable 5.2,cost_usd,,,20.2,,,,
+aggregates,Vals Index (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",Opus 5.5,score,55.9,,68.1,,69.6,,
+aggregates,Vals Index (Vals reasoning study),"US$ per test, log scale",Opus 5.5,cost_usd,4.26,,10.8,,26.5,,
+aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis,Gemini 4 Neon,score,44.1,54.9,59.6,61.4,,,
+aggregates,AA Intelligence Index,"US$ to run the whole index, log scale",Gemini 4 Neon,cost_usd,830.0,1870.0,3690.0,7790.0,,,
 aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis,GPT-6 Astra,score,43.3,51.6,54.8,55.3,56.9,,
 aggregates,AA Intelligence Index,"US$ to run the whole index, log scale",GPT-6 Astra,cost_usd,1650.0,2640.0,3200.0,3750.0,5660.0,,
 aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis,GPT-6.2 Astra,score,45.7,57.0,60.1,61.6,62.1,,
@@ -17,6 +27,47 @@ aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis,Gemini 4 Carbon,s
 aggregates,AA Intelligence Index,"US$ to run the whole index, log scale",Gemini 4 Carbon,cost_usd,4050.0,4000.0,5330.0,,,,
 aggregates,AA Intelligence Index,v5.0.1 · Artificial Analysis,Gemini 4 Hydrogen,score,26.9,41.2,50.8,53.9,,,
 aggregates,AA Intelligence Index,"US$ to run the whole index, log scale",Gemini 4 Hydrogen,cost_usd,332.0,804.0,1770.0,4090.0,,,
+intelligence & knowledge,Agents' Last Exam v1.1 (public + Google),% partial-credit rubric score · public provider agents; Neon Google Antigravity CLI 1.4.8,Gemini 4 Neon,score,,,,75.8,,,
+intelligence & knowledge,Agents' Last Exam v1.1 (public + Google),% partial-credit rubric score · public provider agents; Neon Google Antigravity CLI 1.4.8,GPT-6 Astra,score,67.87,71.16,71.04,71.68,73.14,,
+intelligence & knowledge,Agents' Last Exam v1.1 (public + Google),"US$ per task, log scale",GPT-6 Astra,cost_usd,5.4,6.21,6.87,7.56,8.99,,
+intelligence & knowledge,Agents' Last Exam v1.1 (public + Google),% partial-credit rubric score · public provider agents; Neon Google Antigravity CLI 1.4.8,GPT-6.2 Astra,score,65.77,72.06,75.96,78.33,77.61,,
+intelligence & knowledge,Agents' Last Exam v1.1 (public + Google),"US$ per task, log scale",GPT-6.2 Astra,cost_usd,0.521,1.14,2.17,3.05,4.68,,
+intelligence & knowledge,Agents' Last Exam v1.1 (public + Google),% partial-credit rubric score · public provider agents; Neon Google Antigravity CLI 1.4.8,GPT-6.2 Sol,score,66.65,70.26,72.04,72.48,73.04,,
+intelligence & knowledge,Agents' Last Exam v1.1 (public + Google),"US$ per task, log scale",GPT-6.2 Sol,cost_usd,0.286,0.609,0.733,0.912,1.39,,
+intelligence & knowledge,Agents' Last Exam v1.1 (public + Google),% partial-credit rubric score · public provider agents; Neon Google Antigravity CLI 1.4.8,Fable 5.2,score,,,,,72.79,,
+intelligence & knowledge,Agents' Last Exam v1.1 (public + Google),"US$ per task, log scale",Fable 5.2,cost_usd,,,,,60.1,,
+intelligence & knowledge,Agents' Last Exam v1.1 (public + Google),% partial-credit rubric score · public provider agents; Neon Google Antigravity CLI 1.4.8,Opus 5.5,score,,,,,71.6,,
+intelligence & knowledge,Agents' Last Exam v1.1 (public + Google),"US$ per task, log scale",Opus 5.5,cost_usd,,,,,17.6,,
+intelligence & knowledge,Agents' Last Exam v1.1 (public + Google),% partial-credit rubric score · public provider agents; Neon Google Antigravity CLI 1.4.8,Gemini 4 Carbon,score,,,77.41,,,,
+intelligence & knowledge,Agents' Last Exam v1.1 (public + Google),"US$ per task, log scale",Gemini 4 Carbon,cost_usd,,,4.6,,,,
+intelligence & knowledge,Agents' Last Exam v1.1 (public + Google),% partial-credit rubric score · public provider agents; Neon Google Antigravity CLI 1.4.8,Gemini 4 Hydrogen,score,51.68,63.75,68.89,71.4,,,
+intelligence & knowledge,Agents' Last Exam v1.1 (public + Google),"US$ per task, log scale",Gemini 4 Hydrogen,cost_usd,0.363,0.837,1.97,4.3,,,
+intelligence & knowledge,Extended NYT Connections (940),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",Gemini 4 Neon,score,,,99.11,,,,
+intelligence & knowledge,Extended NYT Connections (940),"Estimated US$ per puzzle, standard prices, log scale",Gemini 4 Neon,cost_usd,,,0.0708,,,,
+intelligence & knowledge,Extended NYT Connections (940),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",GPT-6 Astra,score,,,97.73,98.1,98.4,,
+intelligence & knowledge,Extended NYT Connections (940),"Estimated US$ per puzzle, standard prices, log scale",GPT-6 Astra,cost_usd,,,0.02807,,,,
+intelligence & knowledge,Extended NYT Connections (940),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",GPT-6.2 Astra,score,,,98.23,,,,
+intelligence & knowledge,Extended NYT Connections (940),"Estimated US$ per puzzle, standard prices, log scale",GPT-6.2 Astra,cost_usd,,,0.01462,,,,
+intelligence & knowledge,Extended NYT Connections (940),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",GPT-6.1 Sol,score,,,95.49,,97.8,,
+intelligence & knowledge,Extended NYT Connections (940),"Estimated US$ per puzzle, standard prices, log scale",GPT-6.1 Sol,cost_usd,,,0.00686,,,,
+intelligence & knowledge,Extended NYT Connections (940),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",GPT-6.2 Sol,score,,,94.12,,,,
+intelligence & knowledge,Extended NYT Connections (940),"Estimated US$ per puzzle, standard prices, log scale",GPT-6.2 Sol,cost_usd,,,0.00507,,,,
+intelligence & knowledge,Extended NYT Connections (940),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",Fable 5.2,score,,,97.3,,,,
+intelligence & knowledge,Extended NYT Connections (940),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",Opus 5.5,score,,87.8,88.5,,,,
+intelligence & knowledge,Extended NYT Connections (940),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",Sonnet 5.5,score,,,80.5,,,,
+intelligence & knowledge,Extended NYT Connections (940),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",Gemini 4 Carbon,score,,,99.3,,,,
+intelligence & knowledge,Extended NYT Connections (940),"Estimated US$ per puzzle, standard prices, log scale",Gemini 4 Carbon,cost_usd,,,0.0939,,,,
+intelligence & knowledge,Extended NYT Connections (newest 100),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",Gemini 4 Neon,score,,,99.56,,,,
+intelligence & knowledge,Extended NYT Connections (newest 100),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",GPT-6 Astra,score,,,97.81,98.7,97.9,,
+intelligence & knowledge,Extended NYT Connections (newest 100),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",GPT-6.2 Astra,score,,,98.25,,,,
+intelligence & knowledge,Extended NYT Connections (newest 100),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",GPT-6.1 Sol,score,,,95.63,,98.7,,
+intelligence & knowledge,Extended NYT Connections (newest 100),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",GPT-6.2 Sol,score,,,92.94,,,,
+intelligence & knowledge,Extended NYT Connections (newest 100),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",Fable 5.2,score,,,96.9,,,,
+intelligence & knowledge,Extended NYT Connections (newest 100),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",Opus 5.5,score,,83.4,90.6,,,,
+intelligence & knowledge,Extended NYT Connections (newest 100),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",Sonnet 5.5,score,,,79.1,,,,
+intelligence & knowledge,Extended NYT Connections (newest 100),"% quadratic-v1 · one attempt, up to four trick words · Lech Mazur",Gemini 4 Carbon,score,,,99.56,,,,
+intelligence & knowledge,HLE-Diamond,"% · Humanity's Last Exam, AA's 1,000-question set · Artificial Analysis",Gemini 4 Neon,score,54.2,63.6,68.4,71.3,,,
+intelligence & knowledge,HLE-Diamond,"US$ per task, log scale",Gemini 4 Neon,cost_usd,0.0814,0.28,0.742,1.95,,,
 intelligence & knowledge,HLE-Diamond,"% · Humanity's Last Exam, AA's 1,000-question set · Artificial Analysis",GPT-6 Astra,score,45.1,52.7,59.3,61.5,63.8,,
 intelligence & knowledge,HLE-Diamond,"US$ per task, log scale",GPT-6 Astra,cost_usd,0.05,0.12,0.257,0.37,0.551,,
 intelligence & knowledge,HLE-Diamond,"% · Humanity's Last Exam, AA's 1,000-question set · Artificial Analysis",GPT-6.2 Astra,score,47.7,56.0,65.9,67.3,72.2,,
@@ -51,6 +102,8 @@ intelligence & knowledge,ARC-AGI-2,% semi-private · ARC Prize,Sonnet 5.5,score,
 intelligence & knowledge,ARC-AGI-2,"US$ per task, log scale",Sonnet 5.5,cost_usd,0.109,0.155,0.277,0.546,,,
 intelligence & knowledge,ARC-AGI-2,% semi-private · ARC Prize,Gemini 4 Carbon,score,49.6,94.2,92.1,,,,
 intelligence & knowledge,ARC-AGI-2,"US$ per task, log scale",Gemini 4 Carbon,cost_usd,0.0985,0.375,0.684,,,,
+intelligence & knowledge,AA-Omniscience Index,v1.1 · −100 to 100 · Artificial Analysis,Gemini 4 Neon,score,48.5,51.1,53.8,54.8,,,
+intelligence & knowledge,AA-Omniscience Index,"US$ per task, log scale",Gemini 4 Neon,cost_usd,0.008,0.0189,0.0469,0.395,,,
 intelligence & knowledge,AA-Omniscience Index,v1.1 · −100 to 100 · Artificial Analysis,GPT-6 Astra,score,40.3,41.4,44.6,43.7,42.4,,
 intelligence & knowledge,AA-Omniscience Index,"US$ per task, log scale",GPT-6 Astra,cost_usd,0.00697,0.0109,0.028,0.0518,0.0988,,
 intelligence & knowledge,AA-Omniscience Index,v1.1 · −100 to 100 · Artificial Analysis,GPT-6.2 Astra,score,38.7,44.8,46.8,48.3,50.0,,
@@ -101,6 +154,63 @@ intelligence & knowledge,LifeVal,% · everyday agentic tasks · OpenAI's own eva
 intelligence & knowledge,LifeVal,"US$ per task, log scale",GPT-6.1 Sol,cost_usd,0.52,0.73,0.88,0.96,1.27,,
 intelligence & knowledge,LifeVal,% · everyday agentic tasks · OpenAI's own evaluation,GPT-6.2 Sol,score,25.3,70.3,80.8,82.6,83.8,,
 intelligence & knowledge,LifeVal,"US$ per task, log scale",GPT-6.2 Sol,cost_usd,0.089,0.38,0.65,0.88,1.27,,
+coding & security,Vibe Code Bench v1.1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",GPT-6 Astra,score,83.5,,85.5,,91.1,,
+coding & security,Vibe Code Bench v1.1 (Vals reasoning study),"US$ per test, log scale",GPT-6 Astra,cost_usd,8.55,,16.8,,34.0,,
+coding & security,Vibe Code Bench v1.1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",GPT-6.2 Astra,score,79.6,81.7,91.4,93.8,93.6,,
+coding & security,Vibe Code Bench v1.1 (Vals reasoning study),"US$ per test, log scale",GPT-6.2 Astra,cost_usd,1.3,3.22,4.9,5.83,7.73,,
+coding & security,Vibe Code Bench v1.1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",Fable 5.2,score,93.9,,94.9,,,,
+coding & security,Vibe Code Bench v1.1 (Vals reasoning study),"US$ per test, log scale",Fable 5.2,cost_usd,6.86,,21.3,,,,
+coding & security,Vibe Code Bench v1.1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",Opus 5.5,score,85.6,,92.3,,91.2,,
+coding & security,Vibe Code Bench v1.1 (Vals reasoning study),"US$ per test, log scale",Opus 5.5,cost_usd,2.36,,9.14,,36.4,,
+coding & security,Terminal-Bench 4.0 (Vals) (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",GPT-6 Astra,score,44.4,,58.6,,56.6,,
+coding & security,Terminal-Bench 4.0 (Vals) (Vals reasoning study),"US$ per test, log scale",GPT-6 Astra,cost_usd,7.49,,5.87,,8.98,,
+coding & security,Terminal-Bench 4.0 (Vals) (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",GPT-6.2 Astra,score,49.5,54.5,61.6,64.6,61.6,,
+coding & security,Terminal-Bench 4.0 (Vals) (Vals reasoning study),"US$ per test, log scale",GPT-6.2 Astra,cost_usd,1.48,1.35,1.98,2.33,3.72,,
+coding & security,Terminal-Bench 4.0 (Vals) (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",Fable 5.2,score,64.6,,71.7,66.7,59.6,,
+coding & security,Terminal-Bench 4.0 (Vals) (Vals reasoning study),"US$ per test, log scale",Fable 5.2,cost_usd,5.17,,13.6,19.1,29.5,,
+coding & security,Terminal-Bench 4.0 (Vals) (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",Opus 5.5,score,40.4,,67.7,,68.7,,
+coding & security,Terminal-Bench 4.0 (Vals) (Vals reasoning study),"US$ per test, log scale",Opus 5.5,cost_usd,2.59,,4.7,,12.6,,
+coding & security,Terminal-Bench 4.1 (provider agents),"% cheating-adjusted · public board; Neon: AA via Google, Antigravity CLI 1.5.9",Gemini 4 Neon,score,,,,65.2,,,
+coding & security,Terminal-Bench 4.1 (provider agents),"% cheating-adjusted · public board; Neon: AA via Google, Antigravity CLI 1.5.9",GPT-6 Astra,score,50.91,55.15,60.0,59.7,60.3,,
+coding & security,Terminal-Bench 4.1 (provider agents),"US$ per task, log scale",GPT-6 Astra,cost_usd,4.72,5.8,6.88,7.12,9.9,,
+coding & security,Terminal-Bench 4.1 (provider agents),"% cheating-adjusted · public board; Neon: AA via Google, Antigravity CLI 1.5.9",GPT-6.2 Astra,score,,,,,62.12,,
+coding & security,Terminal-Bench 4.1 (provider agents),"US$ per task, log scale",GPT-6.2 Astra,cost_usd,,,,,4.27,,
+coding & security,Terminal-Bench 4.1 (provider agents),"% cheating-adjusted · public board; Neon: AA via Google, Antigravity CLI 1.5.9",GPT-6.1 Sol,score,,,,,60.91,,
+coding & security,Terminal-Bench 4.1 (provider agents),"US$ per task, log scale",GPT-6.1 Sol,cost_usd,,,,,1.92,,
+coding & security,Terminal-Bench 4.1 (provider agents),"% cheating-adjusted · public board; Neon: AA via Google, Antigravity CLI 1.5.9",GPT-6.2 Sol,score,,,,,61.52,,
+coding & security,Terminal-Bench 4.1 (provider agents),"US$ per task, log scale",GPT-6.2 Sol,cost_usd,,,,,1.06,,
+coding & security,Terminal-Bench 4.1 (provider agents),"% cheating-adjusted · public board; Neon: AA via Google, Antigravity CLI 1.5.9",Fable 5.2,score,,,,,65.76,,
+coding & security,Terminal-Bench 4.1 (provider agents),"US$ per task, log scale",Fable 5.2,cost_usd,,,,,50.0,,
+coding & security,Terminal-Bench 4.1 (provider agents),"% cheating-adjusted · public board; Neon: AA via Google, Antigravity CLI 1.5.9",Opus 5.5,score,,,,,65.76,,
+coding & security,Terminal-Bench 4.1 (provider agents),"US$ per task, log scale",Opus 5.5,cost_usd,,,,,14.3,,
+coding & security,Terminal-Bench 4.1 (provider agents),"% cheating-adjusted · public board; Neon: AA via Google, Antigravity CLI 1.5.9",Sonnet 5.5,score,,,,,63.94,,
+coding & security,Terminal-Bench 4.1 (provider agents),"US$ per task, log scale",Sonnet 5.5,cost_usd,,,,,22.2,,
+coding & security,Terminal-Bench 4.1 (provider agents),"% cheating-adjusted · public board; Neon: AA via Google, Antigravity CLI 1.5.9",Gemini 4 Carbon,score,,,64.55,,,,
+coding & security,Terminal-Bench 4.1 (provider agents),"US$ per task, log scale",Gemini 4 Carbon,cost_usd,,,4.12,,,,
+coding & security,Terminal-Bench 4.1 (provider agents),"% cheating-adjusted · public board; Neon: AA via Google, Antigravity CLI 1.5.9",Gemini 4 Hydrogen,score,,,56.36,,,,
+coding & security,Terminal-Bench 4.1 (provider agents),"US$ per task, log scale",Gemini 4 Hydrogen,cost_usd,,,2.38,,,,
+coding & security,FrontierCode 2.0 (Cognition),% weighted rubric aggregate · Cognition public provider-agent runs; not AA/OpenAI,Gemini 4 Neon,score,27.41,38.16,46.24,44.83,,,
+coding & security,FrontierCode 2.0 (Cognition),"US$ per task, log scale",Gemini 4 Neon,cost_usd,0.959,2.17,4.38,7.67,,,
+coding & security,FrontierCode 2.0 (Cognition),% weighted rubric aggregate · Cognition public provider-agent runs; not AA/OpenAI,GPT-6 Astra,score,31.11,37.29,38.83,41.69,44.02,,
+coding & security,FrontierCode 2.0 (Cognition),"US$ per task, log scale",GPT-6 Astra,cost_usd,2.44,3.49,4.28,4.54,6.68,,
+coding & security,FrontierCode 2.0 (Cognition),% weighted rubric aggregate · Cognition public provider-agent runs; not AA/OpenAI,GPT-6.2 Astra,score,38.07,42.2,43.56,44.12,44.19,,
+coding & security,FrontierCode 2.0 (Cognition),"US$ per task, log scale",GPT-6.2 Astra,cost_usd,1.42,2.47,3.95,4.29,5.97,,
+coding & security,FrontierCode 2.0 (Cognition),% weighted rubric aggregate · Cognition public provider-agent runs; not AA/OpenAI,GPT-6.1 Sol,score,25.74,30.27,35.09,33.03,39.65,,
+coding & security,FrontierCode 2.0 (Cognition),"US$ per task, log scale",GPT-6.1 Sol,cost_usd,0.341,0.492,0.647,0.695,1.03,,
+coding & security,FrontierCode 2.0 (Cognition),% weighted rubric aggregate · Cognition public provider-agent runs; not AA/OpenAI,GPT-6.2 Sol,score,33.14,38.29,39.72,39.78,43.76,,
+coding & security,FrontierCode 2.0 (Cognition),"US$ per task, log scale",GPT-6.2 Sol,cost_usd,0.402,0.685,0.876,0.98,1.29,,
+coding & security,FrontierCode 2.0 (Cognition),% weighted rubric aggregate · Cognition public provider-agent runs; not AA/OpenAI,Fable 5.2,score,35.26,38.78,46.24,50.18,48.23,,
+coding & security,FrontierCode 2.0 (Cognition),"US$ per task, log scale",Fable 5.2,cost_usd,2.62,3.1,8.4,17.7,55.9,,
+coding & security,FrontierCode 2.0 (Cognition),% weighted rubric aggregate · Cognition public provider-agent runs; not AA/OpenAI,Opus 5.5,score,14.85,31.43,36.27,44.72,47.34,,
+coding & security,FrontierCode 2.0 (Cognition),"US$ per task, log scale",Opus 5.5,cost_usd,0.746,1.7,2.42,5.18,12.8,,
+coding & security,FrontierCode 2.0 (Cognition),% weighted rubric aggregate · Cognition public provider-agent runs; not AA/OpenAI,Sonnet 5.5,score,9.66,14.96,22.95,36.5,42.24,,
+coding & security,FrontierCode 2.0 (Cognition),"US$ per task, log scale",Sonnet 5.5,cost_usd,0.369,0.482,1.07,3.31,19.9,,
+coding & security,FrontierCode 2.0 (Cognition),% weighted rubric aggregate · Cognition public provider-agent runs; not AA/OpenAI,Gemini 4 Carbon,score,31.53,40.9,42.62,,,,
+coding & security,FrontierCode 2.0 (Cognition),"US$ per task, log scale",Gemini 4 Carbon,cost_usd,7.72,4.49,5.06,,,,
+coding & security,FrontierCode 2.0 (Cognition),% weighted rubric aggregate · Cognition public provider-agent runs; not AA/OpenAI,Gemini 4 Hydrogen,score,10.52,28.21,38.23,38.87,,,
+coding & security,FrontierCode 2.0 (Cognition),"US$ per task, log scale",Gemini 4 Hydrogen,cost_usd,0.353,0.901,2.4,4.95,,,
+coding & security,AA Index coding category,"FrontierCode-AA 2.0 at 15%, Terminal-Bench 4.0 at 10% · derived from AA",Gemini 4 Neon,score,29.3,44.0,50.6,52.1,,,
+coding & security,AA Index coding category,"US$ per task, log scale",Gemini 4 Neon,cost_usd,1.08,2.62,4.92,7.87,,,
 coding & security,AA Index coding category,"FrontierCode-AA 2.0 at 15%, Terminal-Bench 4.0 at 10% · derived from AA",GPT-6 Astra,score,32.5,41.7,45.7,48.7,49.1,,
 coding & security,AA Index coding category,"US$ per task, log scale",GPT-6 Astra,cost_usd,1.7,3.45,3.88,4.77,7.32,,
 coding & security,AA Index coding category,"FrontierCode-AA 2.0 at 15%, Terminal-Bench 4.0 at 10% · derived from AA",GPT-6.2 Astra,score,40.0,51.4,52.3,55.0,52.9,,
@@ -119,6 +229,8 @@ coding & security,AA Index coding category,"FrontierCode-AA 2.0 at 15%, Terminal
 coding & security,AA Index coding category,"US$ per task, log scale",Gemini 4 Carbon,cost_usd,8.5,6.96,8.17,,,,
 coding & security,AA Index coding category,"FrontierCode-AA 2.0 at 15%, Terminal-Bench 4.0 at 10% · derived from AA",Gemini 4 Hydrogen,score,8.2,30.6,43.4,44.8,,,
 coding & security,AA Index coding category,"US$ per task, log scale",Gemini 4 Hydrogen,cost_usd,0.49,1.21,2.67,4.14,,,
+coding & security,Terminal-Bench 4.0,% · Artificial Analysis,Gemini 4 Neon,score,32.8,54.5,61.6,63.6,,,
+coding & security,Terminal-Bench 4.0,"US$ per task, log scale",Gemini 4 Neon,cost_usd,1.28,2.92,4.92,6.7,,,
 coding & security,Terminal-Bench 4.0,% · Artificial Analysis,GPT-6 Astra,score,41.9,49.5,54.0,59.6,59.1,,
 coding & security,Terminal-Bench 4.0,"US$ per task, log scale",GPT-6 Astra,cost_usd,2.25,4.43,4.05,5.86,8.5,,
 coding & security,Terminal-Bench 4.0,% · Artificial Analysis,GPT-6.2 Astra,score,51.0,58.6,60.1,64.1,64.1,,
@@ -137,6 +249,8 @@ coding & security,Terminal-Bench 4.0,% · Artificial Analysis,Gemini 4 Carbon,sc
 coding & security,Terminal-Bench 4.0,"US$ per task, log scale",Gemini 4 Carbon,cost_usd,6.05,6.24,7.11,,,,
 coding & security,Terminal-Bench 4.0,% · Artificial Analysis,Gemini 4 Hydrogen,score,6.6,29.3,54.0,53.5,,,
 coding & security,Terminal-Bench 4.0,"US$ per task, log scale",Gemini 4 Hydrogen,cost_usd,0.526,1.58,2.8,3.66,,,
+coding & security,FrontierCode-AA 2.0,"score · Cognition's tasks, AA's harness · Artificial Analysis",Gemini 4 Neon,score,26.9,36.9,43.3,44.4,,,
+coding & security,FrontierCode-AA 2.0,"US$ per task, log scale",Gemini 4 Neon,cost_usd,0.949,2.42,4.91,8.65,,,
 coding & security,FrontierCode-AA 2.0,"score · Cognition's tasks, AA's harness · Artificial Analysis",GPT-6 Astra,score,26.2,36.6,40.1,41.4,42.4,,
 coding & security,FrontierCode-AA 2.0,"US$ per task, log scale",GPT-6 Astra,cost_usd,1.34,2.8,3.77,4.04,6.54,,
 coding & security,FrontierCode-AA 2.0,"score · Cognition's tasks, AA's harness · Artificial Analysis",GPT-6.2 Astra,score,32.7,46.6,47.1,49.0,45.4,,
@@ -169,19 +283,23 @@ coding & security,FrontierCode 2.0,"% · OpenAI launch comparison, not AA's harn
 coding & security,FrontierCode 2.0,"US$ per task, log scale",Opus 5.5,cost_usd,0.75,1.7,2.42,5.18,12.8,,
 coding & security,FrontierCode 2.0,"% · OpenAI launch comparison, not AA's harness",Gemini 4 Carbon,score,32.4,41.1,38.4,,,,
 coding & security,FrontierCode 2.0,"US$ per task, log scale",Gemini 4 Carbon,cost_usd,5.49,5.16,5.83,,,,
-coding & security,DeepSWE v1.1,% · reported by each lab,GPT-6 Astra,score,67.0,72.8,73.2,74.1,73.2,,
-coding & security,DeepSWE v1.1,% · reported by each lab,GPT-6.1 Sol,score,64.4,73.0,75.2,71.9,71.9,,
-coding & security,DeepSWE v1.1,% · reported by each lab,Sonnet 5.5,score,,,,,71.0,,
-coding & security,CursorBench 4.0,% · Cursor leaderboard,Fable 5.2,score,53.2,54.8,56.9,56.3,60.0,,
-coding & security,CursorBench 4.0,"US$ per task, log scale",Fable 5.2,cost_usd,3.94,4.66,9.7,15.48,32.79,,
-coding & security,CursorBench 4.0,% · Cursor leaderboard,Opus 5.5,score,43.7,52.5,56.0,56.0,57.8,,
-coding & security,CursorBench 4.0,"US$ per task, log scale",Opus 5.5,cost_usd,1.17,2.91,3.97,6.98,13.43,,
-coding & security,CursorBench 4.0,% · Cursor leaderboard,Sonnet 5.5,score,35.8,39.2,47.8,53.1,55.5,,
-coding & security,CursorBench 4.0,"US$ per task, log scale",Sonnet 5.5,cost_usd,0.37,0.52,1.2,2.81,7.05,,
-coding & security,CursorBench 4.0,% · Cursor leaderboard,Gemini 4 Carbon,score,58.6,60.1,60.4,,,,
-coding & security,CursorBench 4.0,"US$ per task, log scale",Gemini 4 Carbon,cost_usd,11.89,8.49,9.22,,,,
-coding & security,CursorBench 4.0,% · Cursor leaderboard,Gemini 4 Hydrogen,score,27.9,46.7,54.3,57.8,,,
-coding & security,CursorBench 4.0,"US$ per task, log scale",Gemini 4 Hydrogen,cost_usd,0.28,1.76,5.59,5.86,,,
+coding & security,DeepSWE v1.1,% · each lab’s own harness; MAI: Copilot CLI 1.0.102,MAI Code 2,score,,,,,73.2,,
+coding & security,DeepSWE v1.1,"US$ per task, log scale",MAI Code 2,cost_usd,,,,,0.618,,
+coding & security,DeepSWE v1.1,% · each lab’s own harness; MAI: Copilot CLI 1.0.102,GPT-6 Astra,score,67.0,72.8,73.2,74.1,73.2,,
+coding & security,DeepSWE v1.1,% · each lab’s own harness; MAI: Copilot CLI 1.0.102,GPT-6.1 Sol,score,64.4,73.0,75.2,71.9,71.9,,
+coding & security,DeepSWE v1.1,% · each lab’s own harness; MAI: Copilot CLI 1.0.102,Sonnet 5.5,score,,,,,71.0,,
+coding & security,CursorBench 4.1,% · Cursor leaderboard · updated tasks and agent time limit,Gemini 4 Neon,score,45.5,57.7,63.7,65.4,,,
+coding & security,CursorBench 4.1,"US$ per task, log scale",Gemini 4 Neon,cost_usd,1.26,3.07,6.54,10.67,,,
+coding & security,CursorBench 4.1,% · Cursor leaderboard · updated tasks and agent time limit,Fable 5.2,score,53.4,54.2,56.5,58.8,61.3,,
+coding & security,CursorBench 4.1,"US$ per task, log scale",Fable 5.2,cost_usd,4.26,5.01,10.51,17.84,48.11,,
+coding & security,CursorBench 4.1,% · Cursor leaderboard · updated tasks and agent time limit,Opus 5.5,score,42.7,50.0,54.5,56.7,58.1,,
+coding & security,CursorBench 4.1,"US$ per task, log scale",Opus 5.5,cost_usd,1.43,2.85,3.87,6.54,11.88,,
+coding & security,CursorBench 4.1,% · Cursor leaderboard · updated tasks and agent time limit,Sonnet 5.5,score,31.8,34.3,43.8,49.9,54.4,,
+coding & security,CursorBench 4.1,"US$ per task, log scale",Sonnet 5.5,cost_usd,0.44,0.63,1.41,3.13,8.63,,
+coding & security,CursorBench 4.1,% · Cursor leaderboard · updated tasks and agent time limit,Gemini 4 Carbon,score,55.0,60.4,61.5,,,,
+coding & security,CursorBench 4.1,"US$ per task, log scale",Gemini 4 Carbon,cost_usd,8.64,7.22,8.52,,,,
+coding & security,CursorBench 4.1,% · Cursor leaderboard · updated tasks and agent time limit,Gemini 4 Hydrogen,score,23.9,46.4,57.3,61.4,,,
+coding & security,CursorBench 4.1,"US$ per task, log scale",Gemini 4 Hydrogen,cost_usd,0.28,1.28,4.57,8.09,,,
 coding & security,SecureSWE,"% · secure implementation · OpenAI's internal evaluation, cyber safeguards off",GPT-6 Astra,score,41.3,45.7,47.9,48.7,46.5,,
 coding & security,SecureSWE,"US$ per task, log scale",GPT-6 Astra,cost_usd,1.1,1.91,2.88,3.21,4.91,,
 coding & security,SecureSWE,"% · secure implementation · OpenAI's internal evaluation, cyber safeguards off",GPT-6.2 Astra,score,54.5,57.7,61.7,63.8,65.7,,
@@ -202,6 +320,8 @@ coding & security,ExploitBench – Internal Port (June–August 2026),"% · Open
 coding & security,ExploitBench – Internal Port (June–August 2026),"% · OpenAI's internal cyber evaluation, safeguards off",GPT-6.2 Astra,score,19.5,46.5,48.0,53.0,53.5,,
 coding & security,ExploitBench – Internal Port (June–August 2026),"% · OpenAI's internal cyber evaluation, safeguards off",GPT-6.1 Sol,score,2.0,8.5,14.5,18.0,21.5,,
 coding & security,ExploitBench – Internal Port (June–August 2026),"% · OpenAI's internal cyber evaluation, safeguards off",GPT-6.2 Sol,score,0.0,24.5,47.0,45.5,50.5,,
+science & engineering,CritPt v2,% · hard subset · Artificial Analysis,Gemini 4 Neon,score,62.0,61.5,59.0,60.5,,,
+science & engineering,CritPt v2,"US$ per task, log scale",Gemini 4 Neon,cost_usd,0.359,1.05,2.06,3.46,,,
 science & engineering,CritPt v2,% · hard subset · Artificial Analysis,GPT-6 Astra,score,63.0,72.0,71.5,71.0,70.5,,
 science & engineering,CritPt v2,"US$ per task, log scale",GPT-6 Astra,cost_usd,0.237,0.407,0.714,0.849,1.14,,
 science & engineering,CritPt v2,% · hard subset · Artificial Analysis,GPT-6.2 Astra,score,61.0,67.5,71.5,70.5,71.5,,
@@ -221,6 +341,8 @@ science & engineering,CritPt v2,"US$ per task, log scale",Gemini 4 Carbon,cost_u
 science & engineering,CritPt v2,% · hard subset · Artificial Analysis,Gemini 4 Hydrogen,score,48.0,61.0,61.5,66.0,,,
 science & engineering,CritPt v2,"US$ per task, log scale",Gemini 4 Hydrogen,cost_usd,0.122,0.374,0.878,1.9,,,
 science & engineering,GPQA Diamond (AA),% · no tools · Artificial Analysis,GPT-6 Astra,score,93.1,93.9,94.9,96.3,96.1,,
+science & engineering,Terminal-Bench Science 0.1,% · Artificial Analysis,Gemini 4 Neon,score,27.1,54.8,65.7,70.0,,,
+science & engineering,Terminal-Bench Science 0.1,"US$ per task, log scale",Gemini 4 Neon,cost_usd,1.79,4.93,10.1,18.4,,,
 science & engineering,Terminal-Bench Science 0.1,% · Artificial Analysis,GPT-6 Astra,score,37.1,53.3,59.5,54.8,63.3,,
 science & engineering,Terminal-Bench Science 0.1,"US$ per task, log scale",GPT-6 Astra,cost_usd,4.12,7.2,8.66,7.91,17.5,,
 science & engineering,Terminal-Bench Science 0.1,% · Artificial Analysis,GPT-6.2 Astra,score,51.0,74.8,75.2,78.6,78.1,,
@@ -272,6 +394,64 @@ science & engineering,BenchCAD 2.1 Core,% · hardware engineering · OpenAI laun
 science & engineering,BenchCAD 2.1 Core,"US$ per task, log scale",Fable 5.2,cost_usd,1.89,2.66,9.99,23.2,50.8,,
 science & engineering,BenchCAD 2.1 Core,% · hardware engineering · OpenAI launch comparison,Opus 5.5,score,6.3,19.1,29.7,54.5,65.3,,
 science & engineering,BenchCAD 2.1 Core,"US$ per task, log scale",Opus 5.5,cost_usd,0.17,1.2,2.7,9.0,20.0,,
+professional work,EMB v1.1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",GPT-6 Astra,score,75.6,,75.2,,76.2,,
+professional work,EMB v1.1 (Vals reasoning study),"US$ per test, log scale",GPT-6 Astra,cost_usd,0.789,,2.58,,4.8,,
+professional work,EMB v1.1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",GPT-6.2 Astra,score,77.5,78.4,78.1,79.4,79.8,,
+professional work,EMB v1.1 (Vals reasoning study),"US$ per test, log scale",GPT-6.2 Astra,cost_usd,0.464,0.64,1.22,1.89,2.49,,
+professional work,EMB v1.1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",Fable 5.2,score,77.1,,79.3,79.6,79.3,,
+professional work,EMB v1.1 (Vals reasoning study),"US$ per test, log scale",Fable 5.2,cost_usd,2.24,,6.44,12.3,25.2,,
+professional work,EMB v1.1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",Opus 5.5,score,75.3,,77.3,,78.6,,
+professional work,EMB v1.1 (Vals reasoning study),"US$ per test, log scale",Opus 5.5,cost_usd,0.525,,1.56,,6.8,,
+professional work,Finance Agent v2.1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",GPT-6 Astra,score,54.9,,57.3,,57.6,,
+professional work,Finance Agent v2.1 (Vals reasoning study),"US$ per test, log scale",GPT-6 Astra,cost_usd,3.77,,5.63,,7.97,,
+professional work,Finance Agent v2.1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",GPT-6.2 Astra,score,55.0,57.0,56.0,55.1,56.3,,
+professional work,Finance Agent v2.1 (Vals reasoning study),"US$ per test, log scale",GPT-6.2 Astra,cost_usd,1.89,2.62,4.08,5.16,7.81,,
+professional work,Finance Agent v2.1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",Fable 5.2,score,62.1,,63.7,64.0,63.6,,
+professional work,Finance Agent v2.1 (Vals reasoning study),"US$ per test, log scale",Fable 5.2,cost_usd,3.19,,4.99,7.22,18.5,,
+professional work,Finance Agent v2.1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",Opus 5.5,score,45.9,,60.8,,61.8,,
+professional work,Finance Agent v2.1 (Vals reasoning study),"US$ per test, log scale",Opus 5.5,cost_usd,0.855,,1.93,,9.01,,
+professional work,Legal Research Bench v1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",GPT-6 Astra,score,36.5,,38.5,,49.0,,
+professional work,Legal Research Bench v1 (Vals reasoning study),"US$ per test, log scale",GPT-6 Astra,cost_usd,1.59,,5.19,,11.3,,
+professional work,Legal Research Bench v1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",GPT-6.2 Astra,score,28.8,37.5,36.5,46.2,47.1,,
+professional work,Legal Research Bench v1 (Vals reasoning study),"US$ per test, log scale",GPT-6.2 Astra,cost_usd,0.361,1.2,4.23,6.61,12.5,,
+professional work,Legal Research Bench v1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",Fable 5.2,score,44.2,,51.0,50.0,,,
+professional work,Legal Research Bench v1 (Vals reasoning study),"US$ per test, log scale",Fable 5.2,cost_usd,0.591,,3.79,9.31,,,
+professional work,Legal Research Bench v1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",Opus 5.5,score,27.9,,48.1,,55.8,,
+professional work,Legal Research Bench v1 (Vals reasoning study),"US$ per test, log scale",Opus 5.5,cost_usd,0.107,,0.525,,22.8,,
+professional work,Tax Agent Bench v1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",GPT-6 Astra,score,20.8,,27.1,,26.0,,
+professional work,Tax Agent Bench v1 (Vals reasoning study),"US$ per test, log scale",GPT-6 Astra,cost_usd,1.21,,2.82,,5.55,,
+professional work,Tax Agent Bench v1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",GPT-6.2 Astra,score,13.1,21.1,24.3,26.1,25.2,,
+professional work,Tax Agent Bench v1 (Vals reasoning study),"US$ per test, log scale",GPT-6.2 Astra,cost_usd,0.534,1.04,2.63,3.91,8.03,,
+professional work,Tax Agent Bench v1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",Fable 5.2,score,26.8,,35.4,40.6,39.6,,
+professional work,Tax Agent Bench v1 (Vals reasoning study),"US$ per test, log scale",Fable 5.2,cost_usd,1.05,,3.4,6.75,21.1,,
+professional work,Tax Agent Bench v1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",Opus 5.5,score,20.9,,31.2,,43.7,,
+professional work,Tax Agent Bench v1 (Vals reasoning study),"US$ per test, log scale",Opus 5.5,cost_usd,0.0891,,0.996,,14.6,,
+professional work,HLAB-Vals v1.1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",GPT-6 Astra,score,1.7,,5.0,,5.0,,
+professional work,HLAB-Vals v1.1 (Vals reasoning study),"US$ per test, log scale",GPT-6 Astra,cost_usd,4.14,,11.6,,23.8,,
+professional work,HLAB-Vals v1.1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",GPT-6.2 Astra,score,0.8,10.0,10.8,16.7,12.5,,
+professional work,HLAB-Vals v1.1 (Vals reasoning study),"US$ per test, log scale",GPT-6.2 Astra,cost_usd,1.17,2.34,3.91,4.77,7.31,,
+professional work,HLAB-Vals v1.1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",Fable 5.2,score,4.2,,4.2,,0.0,,
+professional work,HLAB-Vals v1.1 (Vals reasoning study),"US$ per test, log scale",Fable 5.2,cost_usd,11.1,,19.6,,44.9,,
+professional work,HLAB-Vals v1.1 (Vals reasoning study),"% · Vals reasoning study · fixed ~half-task subset, not the full leaderboard",Opus 5.5,score,5.0,,7.5,,7.5,,
+professional work,HLAB-Vals v1.1 (Vals reasoning study),"US$ per test, log scale",Opus 5.5,cost_usd,4.03,,8.13,,22.2,,
+professional work,AutomationBench 1.0.6 (Zapier),% strict final-state task pass · Zapier API mode; provider-default fallbacks for Claude,Gemini 4 Neon,score,49.62,53.27,54.34,56.32,,,
+professional work,AutomationBench 1.0.6 (Zapier),"US$ per task, log scale",Gemini 4 Neon,cost_usd,0.4,0.58,0.88,1.69,,,
+professional work,AutomationBench 1.0.6 (Zapier),% strict final-state task pass · Zapier API mode; provider-default fallbacks for Claude,GPT-6 Astra,score,30.29,34.09,37.14,38.96,41.4,,
+professional work,AutomationBench 1.0.6 (Zapier),"US$ per task, log scale",GPT-6 Astra,cost_usd,1.08,1.27,1.44,1.5,1.73,,
+professional work,AutomationBench 1.0.6 (Zapier),% strict final-state task pass · Zapier API mode; provider-default fallbacks for Claude,GPT-6.2 Astra,score,37.14,43.84,47.95,47.18,52.36,,
+professional work,AutomationBench 1.0.6 (Zapier),"US$ per task, log scale",GPT-6.2 Astra,cost_usd,0.44,0.55,0.67,0.7,0.83,,
+professional work,AutomationBench 1.0.6 (Zapier),% strict final-state task pass · Zapier API mode; provider-default fallbacks for Claude,GPT-6.2 Sol,score,31.2,40.18,41.25,40.64,41.1,,
+professional work,AutomationBench 1.0.6 (Zapier),"US$ per task, log scale",GPT-6.2 Sol,cost_usd,0.13,0.18,0.21,0.23,0.27,,
+professional work,AutomationBench 1.0.6 (Zapier),% strict final-state task pass · Zapier API mode; provider-default fallbacks for Claude,Fable 5.2,score,39.73,40.18,44.29,47.95,51.45,,
+professional work,AutomationBench 1.0.6 (Zapier),"US$ per task, log scale",Fable 5.2,cost_usd,1.3,1.35,1.69,2.29,4.64,,
+professional work,AutomationBench 1.0.6 (Zapier),% strict final-state task pass · Zapier API mode; provider-default fallbacks for Claude,Opus 5.5,score,24.2,29.53,33.03,35.77,42.47,,
+professional work,AutomationBench 1.0.6 (Zapier),"US$ per task, log scale",Opus 5.5,cost_usd,0.51,0.65,0.71,0.89,1.44,,
+professional work,AutomationBench 1.0.6 (Zapier),% strict final-state task pass · Zapier API mode; provider-default fallbacks for Claude,Sonnet 5.5,score,18.26,23.29,29.38,36.83,44.75,,
+professional work,AutomationBench 1.0.6 (Zapier),"US$ per task, log scale",Sonnet 5.5,cost_usd,0.28,0.31,0.36,0.48,1.14,,
+professional work,AutomationBench 1.0.6 (Zapier),% strict final-state task pass · Zapier API mode; provider-default fallbacks for Claude,Gemini 4 Carbon,score,31.51,52.97,53.88,,,,
+professional work,AutomationBench 1.0.6 (Zapier),"US$ per task, log scale",Gemini 4 Carbon,cost_usd,1.02,1.65,2.12,,,,
+professional work,AutomationBench 1.0.6 (Zapier),% strict final-state task pass · Zapier API mode; provider-default fallbacks for Claude,Gemini 4 Hydrogen,score,30.59,46.73,51.14,,,,
+professional work,AutomationBench 1.0.6 (Zapier),"US$ per task, log scale",Gemini 4 Hydrogen,cost_usd,0.18,0.41,0.82,,,,
 professional work,GDPval-AA,Elo · Artificial Analysis,GPT-6 Astra,score,1404,1501,1538,1572,1587,,
 professional work,GDPval-AA,"US$ per task, log scale",GPT-6 Astra,cost_usd,0.855,1.82,2.43,3.04,4.53,,
 professional work,GDPval-AA,Elo · Artificial Analysis,GPT-6.1 Sol,score,1322,1463,1521,1563,1607,,
@@ -289,6 +469,8 @@ professional work,GDPval v2 (Internal),% · professional workflows · OpenAI's i
 professional work,GDPval v2 (Internal),% · professional workflows · OpenAI's internal evaluation,Fable 5.2,score,39.5,40.3,41.5,44.1,44.8,,
 professional work,GDPval v2 (Internal),% · professional workflows · OpenAI's internal evaluation,Opus 5.5,score,26.6,35.2,37.0,41.6,43.5,,
 professional work,GDPval v2 (Internal),% · professional workflows · OpenAI's internal evaluation,Gemini 4 Carbon,score,45.1,48.0,48.8,,,,
+professional work,AA-Briefcase,Elo · long-horizon knowledge work · Artificial Analysis,Gemini 4 Neon,score,1297.0,1518.0,1632.0,1700.0,,,
+professional work,AA-Briefcase,"US$ per task, log scale",Gemini 4 Neon,cost_usd,0.833,2.17,4.23,6.69,,,
 professional work,AA-Briefcase,Elo · long-horizon knowledge work · Artificial Analysis,GPT-6 Astra,score,1256,1462,1503,1544,1569,,
 professional work,AA-Briefcase,"US$ per task, log scale",GPT-6 Astra,cost_usd,1.44,3.94,4.76,6.56,9.5,,
 professional work,AA-Briefcase,Elo · long-horizon knowledge work · Artificial Analysis,GPT-6.2 Astra,score,1039,1408,1570,1594,1644,,
@@ -307,6 +489,16 @@ professional work,AA-Briefcase,Elo · long-horizon knowledge work · Artificial 
 professional work,AA-Briefcase,"US$ per task, log scale",Gemini 4 Carbon,cost_usd,5.33,5.06,5.85,,,,
 professional work,AA-Briefcase,Elo · long-horizon knowledge work · Artificial Analysis,Gemini 4 Hydrogen,score,947,1296,1497,1568,,,
 professional work,AA-Briefcase,"US$ per task, log scale",Gemini 4 Hydrogen,cost_usd,0.21,0.651,1.73,3.19,,,
+professional work,MKA,% weighted rubric score · Climb · Artificial Analysis,Gemini 4 Neon,score,43.4,50.9,54.6,56.5,,,
+professional work,MKA,% weighted rubric score · Climb · Artificial Analysis,GPT-6 Astra,score,,,,,50.2,,
+professional work,MKA,% weighted rubric score · Climb · Artificial Analysis,GPT-6.2 Astra,score,,,,,52.7,,
+professional work,MKA,% weighted rubric score · Climb · Artificial Analysis,GPT-6.1 Sol,score,,,,,47.7,,
+professional work,MKA,% weighted rubric score · Climb · Artificial Analysis,Fable 5.2,score,,,,,56.6,,
+professional work,MKA,% weighted rubric score · Climb · Artificial Analysis,Opus 5.5,score,,,,,53.0,,
+professional work,MKA,% weighted rubric score · Climb · Artificial Analysis,Sonnet 5.5,score,,,,,52.0,,
+professional work,MKA,% weighted rubric score · Climb · Artificial Analysis,Gemini 4 Carbon,score,,,54.3,,,,
+professional work,GDP.pdf,% all-pass · Q&A over complex PDFs · Artificial Analysis,Gemini 4 Neon,score,31.4,32.8,33.4,28.0,,,
+professional work,GDP.pdf,"US$ per task, log scale",Gemini 4 Neon,cost_usd,0.32,0.372,0.466,0.875,,,
 professional work,GDP.pdf,% all-pass · Q&A over complex PDFs · Artificial Analysis,GPT-6 Astra,score,30.4,30.4,31.0,32.2,31.0,,
 professional work,GDP.pdf,"US$ per task, log scale",GPT-6 Astra,cost_usd,1.7,1.72,1.79,1.91,2.08,,
 professional work,GDP.pdf,% all-pass · Q&A over complex PDFs · Artificial Analysis,GPT-6.2 Astra,score,28.0,28.4,28.6,28.0,29.8,,
@@ -347,6 +539,8 @@ professional work,Harvey LAB-AA v1.1,% all-pass · Artificial Analysis; costs re
 professional work,tau3-Banking,"% · Sierra banking workflow, AA's implementation",GPT-6 Astra,score,32.0,35.5,40.0,43.1,41.4,,
 professional work,EnterpriseOps-Gym-AA,"% strict task success · ServiceNow workflows, AA's implementation",GPT-6.2 Astra,score,21.8,22.6,25.2,25.3,29.9,,
 professional work,EnterpriseOps-Gym-AA,"% strict task success · ServiceNow workflows, AA's implementation",GPT-6.2 Sol,score,19.9,21.4,23.4,26.3,28.9,,
+professional work,AutomationBench-AA,% · Artificial Analysis,Gemini 4 Neon,score,76.0,77.8,79.2,79.3,,,
+professional work,AutomationBench-AA,"US$ per task, log scale",Gemini 4 Neon,cost_usd,0.407,0.601,0.936,1.45,,,
 professional work,AutomationBench-AA,% · Artificial Analysis,GPT-6 Astra,score,59.1,64.6,66.6,67.2,68.5,,
 professional work,AutomationBench-AA,"US$ per task, log scale",GPT-6 Astra,cost_usd,0.999,1.18,1.3,1.41,1.6,,
 professional work,AutomationBench-AA,% · Artificial Analysis,GPT-6.2 Astra,score,68.6,72.8,76.0,76.1,77.2,,
@@ -398,6 +592,48 @@ multimodal tasks,MMMU-Pro,% · visual reasoning · Artificial Analysis,GPT-6.2 A
 multimodal tasks,MMMU-Pro,% · visual reasoning · Artificial Analysis,GPT-6.1 Sol,score,83.1,83.9,84.9,85.1,86.0,,
 multimodal tasks,MMMU-Pro,% · visual reasoning · Artificial Analysis,Opus 5.5,score,84.7,85.7,85.8,86.6,87.7,,
 multimodal tasks,MMMU-Pro,% · visual reasoning · Artificial Analysis,Gemini 4 Carbon,score,,89.2,,,,,
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,Gemini 4 Neon,score,,,,68.32,,68.32,xhigh
+aggregates,Vals Finance Index v1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,4.88,,,xhigh
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,GPT-6 Astra,score,,,,,55.64,55.64,max
+aggregates,Vals Finance Index v1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,6.48,,max
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,GPT-6.2 Astra,score,,,,,57.31,57.31,max
+aggregates,Vals Finance Index v1,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,6.23,,max
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,GPT-6.1 Sol,score,,,,,55.81,55.81,max
+aggregates,Vals Finance Index v1,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,1.36,,max
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,GPT-6.2 Sol,score,,,,,56.66,56.66,max
+aggregates,Vals Finance Index v1,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,1.77,,max
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,Fable 5.2,score,,,63.58,,,63.58,high
+aggregates,Vals Finance Index v1,"US$ per test, log scale",Fable 5.2,cost_usd,,,4.94,,,,high
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,Opus 5.5,score,,,,,65.34,65.34,max
+aggregates,Vals Finance Index v1,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,10.9,,max
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,Sonnet 5.5,score,,,,,64.53,64.53,max
+aggregates,Vals Finance Index v1,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,7.4,,max
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,Gemini 4 Carbon,score,,,67.05,,,67.05,high
+aggregates,Vals Finance Index v1,"US$ per test, log scale",Gemini 4 Carbon,cost_usd,,,6.46,,,,high
+aggregates,Vals Finance Index v1,% · equal-weight Finance Agent/EMB/Tax composite · Vals AI,Gemini 4 Hydrogen,score,,,,66.14,,66.14,xhigh
+aggregates,Vals Finance Index v1,"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,3.8,,,xhigh
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,Gemini 4 Neon,score,,,,78.36,,78.36,xhigh
+aggregates,Vals Legal Index v1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,6.1,,,xhigh
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,GPT-6 Astra,score,,,,,68.39,68.39,max
+aggregates,Vals Legal Index v1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,13.9,,max
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,GPT-6.2 Astra,score,,,,,69.68,69.68,max
+aggregates,Vals Legal Index v1,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,9.35,,max
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,GPT-6.1 Sol,score,,,,,68.72,68.72,max
+aggregates,Vals Legal Index v1,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,2.75,,max
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,GPT-6.2 Sol,score,,,,,66.68,66.68,max
+aggregates,Vals Legal Index v1,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,2.8,,max
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,Fable 5.2,score,,,69.18,,,69.18,high
+aggregates,Vals Legal Index v1,"US$ per test, log scale",Fable 5.2,cost_usd,,,8.88,,,,high
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,Opus 5.5,score,,,,,72.37,72.37,max
+aggregates,Vals Legal Index v1,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,19.9,,max
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,Sonnet 5.5,score,,,,,68.02,68.02,max
+aggregates,Vals Legal Index v1,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,13.4,,max
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,Gemini 4 Carbon,score,,,75.93,,,75.93,high
+aggregates,Vals Legal Index v1,"US$ per test, log scale",Gemini 4 Carbon,cost_usd,,,7.2,,,,high
+aggregates,Vals Legal Index v1,% · equal-weight Legal Research/HLAB composite · Vals AI,Gemini 4 Hydrogen,score,,,,73.63,,73.63,xhigh
+aggregates,Vals Legal Index v1,"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,4.47,,,xhigh
+aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models",Gemini 4 Neon,score,,,,70.87,,70.87,xhigh
+aggregates,Vals Index,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,7.4,,,xhigh
 aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models",GPT-6 Astra,score,,,,,65.02,65.02,max
 aggregates,Vals Index,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,21.28,,max
 aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models",GPT-6.1 Sol,score,,,,,63.94,63.94,max
@@ -416,6 +652,149 @@ aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models",GPT-6.2
 aggregates,Vals Index,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,3.18,,max
 aggregates,Vals Index,"% · v2.2 · Vals AI, one harness for all models",Gemini 4 Hydrogen,score,,,,68.49,,68.49,xhigh
 aggregates,Vals Index,"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,9.84,,,xhigh
+intelligence & knowledge,ComplexConstraints v1.1 (agentic),% full-rubric pass · Surge v1.1 agentic · 75 tasks × 10 trials,Gemini 4 Hydrogen,score,,,,73.7,,73.7,xhigh
+intelligence & knowledge,ComplexConstraints v1.1 (agentic),% full-rubric pass · Surge v1.1 agentic · 75 tasks × 10 trials,Gemini 4 Neon,score,,,72.9,,,72.9,high
+intelligence & knowledge,ComplexConstraints v1.1 (agentic),% full-rubric pass · Surge v1.1 agentic · 75 tasks × 10 trials,Gemini 4 Carbon,score,,,70.9,,,70.9,high
+intelligence & knowledge,ComplexConstraints v1.1 (agentic),% full-rubric pass · Surge v1.1 agentic · 75 tasks × 10 trials,GPT-6 Astra,score,,,,,70.8,70.8,max
+intelligence & knowledge,ComplexConstraints v1.1 (agentic),% full-rubric pass · Surge v1.1 agentic · 75 tasks × 10 trials,GPT-6.1 Sol,score,,,,,70.1,70.1,max
+intelligence & knowledge,ComplexConstraints v1.1 (agentic),% full-rubric pass · Surge v1.1 agentic · 75 tasks × 10 trials,GPT-6.2 Astra,score,,,,,69.6,69.6,max
+intelligence & knowledge,ComplexConstraints v1.1 (agentic),% full-rubric pass · Surge v1.1 agentic · 75 tasks × 10 trials,GPT-6.2 Sol,score,,,,,69.5,69.5,max
+intelligence & knowledge,ComplexConstraints v1.1 (agentic),% full-rubric pass · Surge v1.1 agentic · 75 tasks × 10 trials,Sonnet 5.5,score,,,,,67.2,67.2,max
+intelligence & knowledge,ComplexConstraints v1.1 (agentic),% full-rubric pass · Surge v1.1 agentic · 75 tasks × 10 trials,Fable 5.2,score,,,,,64.5,64.5,max
+intelligence & knowledge,ComplexConstraints v1.1 (agentic),% full-rubric pass · Surge v1.1 agentic · 75 tasks × 10 trials,Opus 5.5,score,,,,,64.4,64.4,max
+intelligence & knowledge,"GraphWalks (256k–1M, Google)",% BFS F1 · 200 problems · Google runs,Gemini 4 Neon,score,,,,95.2,,95.2,xhigh
+intelligence & knowledge,"GraphWalks (256k–1M, Google)",% BFS F1 · 200 problems · Google runs,Opus 5.5,score,,,,,,66.8,not stated
+intelligence & knowledge,"GraphWalks (256k–1M, Google)",% BFS F1 · 200 problems · Google runs,GPT-6.2 Sol,score,,,,,,80.1,not stated
+coding & security,AutoBaxBench easy (functional),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Fable 5.2,score,,,,,,89.29,highest/high mixed
+coding & security,AutoBaxBench easy (functional),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Opus 5.5,score,,,,,,92.86,highest/high mixed
+coding & security,AutoBaxBench easy (functional),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Gemini 4 Carbon,score,,,,,,87.14,highest (level not stated)
+coding & security,AutoBaxBench easy (functional),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,GPT-6 Astra,score,,,,,,91.43,highest (level not stated)
+coding & security,AutoBaxBench easy (functional),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Gemini 4 Neon,score,,,,,,85.0,highest (level not stated)
+coding & security,AutoBaxBench easy (functional + secure),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Fable 5.2,score,,,,,,88.57,highest/high mixed
+coding & security,AutoBaxBench easy (functional + secure),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Opus 5.5,score,,,,,,80.71,highest/high mixed
+coding & security,AutoBaxBench easy (functional + secure),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Gemini 4 Carbon,score,,,,,,61.43,highest (level not stated)
+coding & security,AutoBaxBench easy (functional + secure),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,GPT-6 Astra,score,,,,,,59.29,highest (level not stated)
+coding & security,AutoBaxBench easy (functional + secure),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Gemini 4 Neon,score,,,,,,71.43,highest (level not stated)
+coding & security,AutoBaxBench medium (functional),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Fable 5.2,score,,,,,,91.43,highest/high mixed
+coding & security,AutoBaxBench medium (functional),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Opus 5.5,score,,,,,,87.5,highest/high mixed
+coding & security,AutoBaxBench medium (functional),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Gemini 4 Carbon,score,,,,,,81.43,highest (level not stated)
+coding & security,AutoBaxBench medium (functional),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,GPT-6 Astra,score,,,,,,86.79,highest (level not stated)
+coding & security,AutoBaxBench medium (functional),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Gemini 4 Neon,score,,,,,,79.64,highest (level not stated)
+coding & security,AutoBaxBench medium (functional + secure),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Fable 5.2,score,,,,,,77.86,highest/high mixed
+coding & security,AutoBaxBench medium (functional + secure),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Opus 5.5,score,,,,,,73.21,highest/high mixed
+coding & security,AutoBaxBench medium (functional + secure),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Gemini 4 Carbon,score,,,,,,60.0,highest (level not stated)
+coding & security,AutoBaxBench medium (functional + secure),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,GPT-6 Astra,score,,,,,,56.79,highest (level not stated)
+coding & security,AutoBaxBench medium (functional + secure),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Gemini 4 Neon,score,,,,,,66.07,highest (level not stated)
+coding & security,AutoBaxBench hard (functional),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Fable 5.2,score,,,,,,78.57,highest/high mixed
+coding & security,AutoBaxBench hard (functional),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Opus 5.5,score,,,,,,71.43,highest/high mixed
+coding & security,AutoBaxBench hard (functional),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Gemini 4 Carbon,score,,,,,,88.57,highest (level not stated)
+coding & security,AutoBaxBench hard (functional),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,GPT-6 Astra,score,,,,,,93.57,highest (level not stated)
+coding & security,AutoBaxBench hard (functional),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Gemini 4 Neon,score,,,,,,77.14,highest (level not stated)
+coding & security,AutoBaxBench hard (functional + secure),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Fable 5.2,score,,,,,,67.86,highest/high mixed
+coding & security,AutoBaxBench hard (functional + secure),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Opus 5.5,score,,,,,,67.86,highest/high mixed
+coding & security,AutoBaxBench hard (functional + secure),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Gemini 4 Carbon,score,,,,,,73.57,highest (level not stated)
+coding & security,AutoBaxBench hard (functional + secure),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,GPT-6 Astra,score,,,,,,57.14,highest (level not stated)
+coding & security,AutoBaxBench hard (functional + secure),% pass@1 · AutoBaxBuilder · no security prompt; mixed effort where labeled,Gemini 4 Neon,score,,,,,,76.43,highest (level not stated)
+coding & security,ExploitGym (2h timeout),intended-vulnerability exploits / 869 · provider-reported; effort not stated,Opus 5.5,score,,,,,,289.0,not stated
+coding & security,ExploitGym (6h timeout),intended-vulnerability exploits / 869 · provider-reported; effort not stated,Opus 5.5,score,,,,,,300.0,not stated
+coding & security,ExploitGym (token-budgeted),intended-vulnerability exploits / 869 · provider-reported; effort not stated · approximate counts derived by board; output cap unspecified,GPT-6 Astra,score,,,,,,368.0,not stated
+coding & security,ExploitGym (token-budgeted),intended-vulnerability exploits / 869 · provider-reported; effort not stated · approximate counts derived by board; output cap unspecified,GPT-6.1 Sol,score,,,,,,305.0,not stated
+coding & security,Code Migration v1.1 (Vals Index subset),% hidden-test pass · Vals v1.1 Pi agent · 50 CLI + 10 COBOL subset · weighted 75:25,Sonnet 5.5,score,,,,,87.37,87.37,max
+coding & security,Code Migration v1.1 (Vals Index subset),"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,45.4,,max
+coding & security,Code Migration v1.1 (Vals Index subset),% hidden-test pass · Vals v1.1 Pi agent · 50 CLI + 10 COBOL subset · weighted 75:25,Fable 5.2,score,,,85.85,,,85.85,high
+coding & security,Code Migration v1.1 (Vals Index subset),"US$ per test, log scale",Fable 5.2,cost_usd,,,68.7,,,,high
+coding & security,Code Migration v1.1 (Vals Index subset),% hidden-test pass · Vals v1.1 Pi agent · 50 CLI + 10 COBOL subset · weighted 75:25,GPT-6.2 Sol,score,,,,,85.35,85.35,max
+coding & security,Code Migration v1.1 (Vals Index subset),"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,9.76,,max
+coding & security,Code Migration v1.1 (Vals Index subset),% hidden-test pass · Vals v1.1 Pi agent · 50 CLI + 10 COBOL subset · weighted 75:25,GPT-6.2 Astra,score,,,,,83.59,83.59,max
+coding & security,Code Migration v1.1 (Vals Index subset),"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,34.0,,max
+coding & security,Code Migration v1.1 (Vals Index subset),% hidden-test pass · Vals v1.1 Pi agent · 50 CLI + 10 COBOL subset · weighted 75:25,Gemini 4 Hydrogen,score,,,,82.67,,82.67,xhigh
+coding & security,Code Migration v1.1 (Vals Index subset),"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,45.6,,,xhigh
+coding & security,Code Migration v1.1 (Vals Index subset),% hidden-test pass · Vals v1.1 Pi agent · 50 CLI + 10 COBOL subset · weighted 75:25,Opus 5.5,score,,,,,80.49,80.49,max
+coding & security,Code Migration v1.1 (Vals Index subset),"US$ per test, log scale",Opus 5.5,cost_usd,,,,,72.3,,max
+coding & security,Code Migration v1.1 (Vals Index subset),% hidden-test pass · Vals v1.1 Pi agent · 50 CLI + 10 COBOL subset · weighted 75:25,Gemini 4 Carbon,score,,,80.05,,,80.05,high
+coding & security,Code Migration v1.1 (Vals Index subset),"US$ per test, log scale",Gemini 4 Carbon,cost_usd,,,33.7,,,,high
+coding & security,Code Migration v1.1 (Vals Index subset),% hidden-test pass · Vals v1.1 Pi agent · 50 CLI + 10 COBOL subset · weighted 75:25,GPT-6 Astra,score,,,,,78.03,78.03,max
+coding & security,Code Migration v1.1 (Vals Index subset),"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,66.6,,max
+coding & security,Code Migration v1.1 (Vals Index subset),% hidden-test pass · Vals v1.1 Pi agent · 50 CLI + 10 COBOL subset · weighted 75:25,Gemini 4 Neon,score,,,,75.76,,75.76,xhigh
+coding & security,Code Migration v1.1 (Vals Index subset),"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,18.1,,,xhigh
+coding & security,Code Migration v1.1 (Vals Index subset),% hidden-test pass · Vals v1.1 Pi agent · 50 CLI + 10 COBOL subset · weighted 75:25,GPT-6.1 Sol,score,,,,,75.14,75.14,max
+coding & security,Code Migration v1.1 (Vals Index subset),"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,9.94,,max
+coding & security,Code Migration v1.1 (Vals full test set),% hidden-test pass · Vals v1.1 Pi agent · 120 CLI + 10 COBOL full test set · weighted 75:25,Sonnet 5.5,score,,,,,86.88,86.88,max
+coding & security,Code Migration v1.1 (Vals full test set),"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,43.9,,max
+coding & security,Code Migration v1.1 (Vals full test set),% hidden-test pass · Vals v1.1 Pi agent · 120 CLI + 10 COBOL full test set · weighted 75:25,Fable 5.2,score,,,83.27,,,83.27,high
+coding & security,Code Migration v1.1 (Vals full test set),"US$ per test, log scale",Fable 5.2,cost_usd,,,69.2,,,,high
+coding & security,Code Migration v1.1 (Vals full test set),% hidden-test pass · Vals v1.1 Pi agent · 120 CLI + 10 COBOL full test set · weighted 75:25,Opus 5.5,score,,,,,81.01,81.01,max
+coding & security,Code Migration v1.1 (Vals full test set),"US$ per test, log scale",Opus 5.5,cost_usd,,,,,72.4,,max
+coding & security,Code Migration v1.1 (Vals full test set),% hidden-test pass · Vals v1.1 Pi agent · 120 CLI + 10 COBOL full test set · weighted 75:25,GPT-6 Astra,score,,,,,80.58,80.58,max
+coding & security,Code Migration v1.1 (Vals full test set),"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,62.1,,max
+coding & security,Code Migration v1.1 (Vals full test set),% hidden-test pass · Vals v1.1 Pi agent · 120 CLI + 10 COBOL full test set · weighted 75:25,GPT-6.1 Sol,score,,,,,77.32,77.32,max
+coding & security,Code Migration v1.1 (Vals full test set),"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,9.51,,max
+coding & security,sudo L7,% published engineering-task score · Surge · 60 tasks; threshold unspecified,Fable 5.2,score,,,,,52.2,52.2,max
+coding & security,sudo L7,% published engineering-task score · Surge · 60 tasks; threshold unspecified,Sonnet 5.5,score,,,,,50.6,50.6,max
+coding & security,sudo L7,% published engineering-task score · Surge · 60 tasks; threshold unspecified,Opus 5.5,score,,,,,46.1,46.1,max
+coding & security,sudo L7,% published engineering-task score · Surge · 60 tasks; threshold unspecified,GPT-6.2 Astra,score,,,,,38.3,38.3,max
+coding & security,sudo L7,% published engineering-task score · Surge · 60 tasks; threshold unspecified,Gemini 4 Neon,score,,,38.3,,,38.3,high
+coding & security,sudo L7,% published engineering-task score · Surge · 60 tasks; threshold unspecified,GPT-6.2 Sol,score,,,,,36.1,36.1,max
+coding & security,sudo L7,% published engineering-task score · Surge · 60 tasks; threshold unspecified,GPT-6.1 Sol,score,,,,,33.9,33.9,max
+coding & security,sudo L7,% published engineering-task score · Surge · 60 tasks; threshold unspecified,Gemini 4 Hydrogen,score,,,,31.7,,31.7,xhigh
+coding & security,sudo L7,% published engineering-task score · Surge · 60 tasks; threshold unspecified,GPT-6 Astra,score,,,,,31.1,31.1,max
+coding & security,sudo L7,% published engineering-task score · Surge · 60 tasks; threshold unspecified,Gemini 4 Carbon,score,,,30.6,,,30.6,high
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,Gemini 4 Neon,score,,,,61.62,,61.62,xhigh
+coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,6.42,,,xhigh
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,GPT-6 Astra,score,,,,,59.6,59.6,max
+coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,9.58,,max
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,GPT-6.2 Astra,score,,,,,63.13,63.13,max
+coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,4.69,,max
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,GPT-6.1 Sol,score,,,,,55.05,55.05,max
+coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,1.72,,max
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,GPT-6.2 Sol,score,,,,,60.61,60.61,max
+coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,1.13,,max
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,Fable 5.2,score,,,65.15,,,65.15,high
+coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",Fable 5.2,cost_usd,,,14.6,,,,high
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,Opus 5.5,score,,,,,65.15,65.15,max
+coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",Opus 5.5,cost_usd,,,,,12.0,,max
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,Sonnet 5.5,score,,,,,64.14,64.14,max
+coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,10.8,,max
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,Gemini 4 Carbon,score,,,63.13,,,63.13,high
+coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",Gemini 4 Carbon,cost_usd,,,7.45,,,,high
+coding & security,Terminal-Bench 4.0 (Vals),% avg@3 · Vals AI Mini-SWE-agent; not AA’s run,Gemini 4 Hydrogen,score,,,,54.04,,54.04,xhigh
+coding & security,Terminal-Bench 4.0 (Vals),"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,7.56,,,xhigh
+coding & security,CWE-bench v2 (250 tasks),% programmatic pass@1 · public+held-out 250 tasks · provider agents · four rollouts/task,Fable 5.2,score,,,75.0,,,75.0,high
+coding & security,CWE-bench v2 (250 tasks),"US$ per task, log scale",Fable 5.2,cost_usd,,,7.85,,,,high
+coding & security,CWE-bench v2 (250 tasks),% programmatic pass@1 · public+held-out 250 tasks · provider agents · four rollouts/task,Gemini 4 Neon,score,,,70.7,,,70.7,high
+coding & security,CWE-bench v2 (250 tasks),"US$ per task, log scale",Gemini 4 Neon,cost_usd,,,6.52,,,,high
+coding & security,CWE-bench v2 (250 tasks),% programmatic pass@1 · public+held-out 250 tasks · provider agents · four rollouts/task,Gemini 4 Hydrogen,score,,,68.1,,,68.1,high
+coding & security,CWE-bench v2 (250 tasks),"US$ per task, log scale",Gemini 4 Hydrogen,cost_usd,,,2.63,,,,high
+coding & security,CWE-bench v2 (250 tasks),% programmatic pass@1 · public+held-out 250 tasks · provider agents · four rollouts/task,Gemini 4 Carbon,score,,,67.3,,,67.3,high
+coding & security,CWE-bench v2 (250 tasks),"US$ per task, log scale",Gemini 4 Carbon,cost_usd,,,4.27,,,,high
+coding & security,CWE-bench v2 (250 tasks),% programmatic pass@1 · public+held-out 250 tasks · provider agents · four rollouts/task,Opus 5.5,score,,,67.1,,,67.1,high
+coding & security,CWE-bench v2 (250 tasks),"US$ per task, log scale",Opus 5.5,cost_usd,,,1.85,,,,high
+coding & security,CWE-bench v2 (250 tasks),% programmatic pass@1 · public+held-out 250 tasks · provider agents · four rollouts/task,GPT-6.2 Astra,score,,,66.8,,,66.8,high
+coding & security,CWE-bench v2 (250 tasks),"US$ per task, log scale",GPT-6.2 Astra,cost_usd,,,4.32,,,,high
+coding & security,CWE-bench v2 (250 tasks),% programmatic pass@1 · public+held-out 250 tasks · provider agents · four rollouts/task,GPT-6.2 Sol,score,,,66.0,,,66.0,high
+coding & security,CWE-bench v2 (250 tasks),"US$ per task, log scale",GPT-6.2 Sol,cost_usd,,,0.81,,,,high
+coding & security,CWE-bench v2 (250 tasks),% programmatic pass@1 · public+held-out 250 tasks · provider agents · four rollouts/task,GPT-6 Astra,score,,,64.2,,,64.2,high
+coding & security,CWE-bench v2 (250 tasks),"US$ per task, log scale",GPT-6 Astra,cost_usd,,,3.87,,,,high
+coding & security,CWE-bench v2 (250 tasks),% programmatic pass@1 · public+held-out 250 tasks · provider agents · four rollouts/task,Sonnet 5.5,score,,,61.4,,,61.4,high
+coding & security,CWE-bench v2 (250 tasks),"US$ per task, log scale",Sonnet 5.5,cost_usd,,,0.58,,,,high
+coding & security,SEC-bench Pro 260505 (183 tasks),% pass@1 · provider-reported · 183 JS-engine tasks; not newer 344-task split,Gemini 4 Neon,score,,,,90.5,,90.5,xhigh
+coding & security,SEC-bench Pro 260505 (183 tasks),% pass@1 · provider-reported · 183 JS-engine tasks; not newer 344-task split,GPT-6.2 Sol,score,,,,,,88.34,not stated
+coding & security,SEC-bench Pro 260505 (183 tasks),% pass@1 · provider-reported · 183 JS-engine tasks; not newer 344-task split,Gemini 4 Carbon,score,,,,,,88.2,not stated
+coding & security,SEC-bench Pro 260505 (183 tasks),% pass@1 · provider-reported · 183 JS-engine tasks; not newer 344-task split,GPT-6.2 Astra,score,,,,,,86.75,not stated
+coding & security,SEC-bench Pro 260505 (183 tasks),% pass@1 · provider-reported · 183 JS-engine tasks; not newer 344-task split,GPT-6 Astra,score,,,,,,85.4,not stated
+coding & security,SEC-bench Pro 260505 (183 tasks),% pass@1 · provider-reported · 183 JS-engine tasks; not newer 344-task split,GPT-6.1 Sol,score,,,,,,78.8,not stated
+coding & security,WebExploitBench v1.2 (277 vulnerabilities),"% success · board’s Pass@3 (AVG.) · 15 apps, provider agents; effort not stated",Gemini 4 Neon,score,,,,,,51.26,not stated
+coding & security,WebExploitBench v1.2 (277 vulnerabilities),"% success · board’s Pass@3 (AVG.) · 15 apps, provider agents; effort not stated",Gemini 4 Carbon,score,,,,,,44.65,not stated
+coding & security,WebExploitBench v1.2 (277 vulnerabilities),"% success · board’s Pass@3 (AVG.) · 15 apps, provider agents; effort not stated",GPT-6 Astra,score,,,,,,38.99,not stated
+coding & security,WebExploitBench v1.2 (277 vulnerabilities),"% success · board’s Pass@3 (AVG.) · 15 apps, provider agents; effort not stated",Opus 5.5,score,,,,,,37.06,not stated
+coding & security,SWE-sweep (provider harness),% subtask-weighted reward · Google runs · provider-specific agents/subagents,Gemini 4 Neon,score,,,,39,,39,xhigh
+coding & security,SWE-sweep (provider harness),% subtask-weighted reward · Google runs · provider-specific agents/subagents,Opus 5.5,score,,,,,,10.1,not stated
+coding & security,SWE-sweep (provider harness),% subtask-weighted reward · Google runs · provider-specific agents/subagents,GPT-6.2 Sol,score,,,,,,8.3,not stated
+coding & security,SWE-sweep (Mini-SWE vision),% subtask-weighted reward · Google runs · mini-swe-agent vision,Gemini 4 Neon,score,,,,12.8,,12.8,xhigh
+coding & security,SWE-sweep (Mini-SWE vision),% subtask-weighted reward · Google runs · mini-swe-agent vision,Opus 5.5,score,,,,,,3.6,not stated
+coding & security,SWE-sweep (Mini-SWE vision),% subtask-weighted reward · Google runs · mini-swe-agent vision,GPT-6.2 Sol,score,,,,,,11.6,not stated
+coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models",Gemini 4 Neon,score,,,,93.7,,93.7,xhigh
+coding & security,Vibe Code Bench v1.1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,6.76,,,xhigh
 coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models",GPT-6 Astra,score,,,,,89.59,89.59,max
 coding & security,Vibe Code Bench v1.1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,38.51,,max
 coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all models",GPT-6.1 Sol,score,,,,,88.93,88.93,max
@@ -438,6 +817,84 @@ coding & security,SWE-Bench Pro,% resolved · each lab’s own run on its own ag
 coding & security,SWE-Bench Pro,% resolved · each lab’s own run on its own agent harness,Sonnet 5.5,score,,,,,81.3,81.3,max
 coding & security,ITBench-AA,% precision at full recall · Kubernetes root-cause analysis · Artificial Analysis,GPT-6 Astra,score,,,,,48.6,48.6,max
 coding & security,ITBench-AA,% precision at full recall · Kubernetes root-cause analysis · Artificial Analysis,Opus 5.5,score,,,,,38.2,38.2,max
+science & engineering,Riemann-bench v1.1,% pass@1 · Surge v1.1 corrected answer keys · 25 research-math problems,Gemini 4 Neon,score,,,84.0,,,84.0,high
+science & engineering,Riemann-bench v1.1,% pass@1 · Surge v1.1 corrected answer keys · 25 research-math problems,Fable 5.2,score,,,,,83.2,83.2,max
+science & engineering,Riemann-bench v1.1,% pass@1 · Surge v1.1 corrected answer keys · 25 research-math problems,GPT-6 Astra,score,,,,,81.6,81.6,max
+science & engineering,Riemann-bench v1.1,% pass@1 · Surge v1.1 corrected answer keys · 25 research-math problems,GPT-6.2 Sol,score,,,,,80.0,80.0,max
+science & engineering,Riemann-bench v1.1,% pass@1 · Surge v1.1 corrected answer keys · 25 research-math problems,Gemini 4 Carbon,score,,,80.0,,,80.0,high
+science & engineering,Riemann-bench v1.1,% pass@1 · Surge v1.1 corrected answer keys · 25 research-math problems,Opus 5.5,score,,,,,80.0,80.0,max
+science & engineering,Riemann-bench v1.1,% pass@1 · Surge v1.1 corrected answer keys · 25 research-math problems,GPT-6.1 Sol,score,,,,,79.2,79.2,max
+science & engineering,Riemann-bench v1.1,% pass@1 · Surge v1.1 corrected answer keys · 25 research-math problems,Sonnet 5.5,score,,,,,76.8,76.8,max
+science & engineering,Riemann-bench v1.1,% pass@1 · Surge v1.1 corrected answer keys · 25 research-math problems,GPT-6.2 Astra,score,,,,,76.0,76.0,max
+science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run,Gemini 4 Neon,score,,,,62.63,,62.63,xhigh
+science & engineering,Vals Science Index v1 (Vals),"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,8.26,,,xhigh
+science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run,GPT-6 Astra,score,,,,,65.09,65.09,max
+science & engineering,Vals Science Index v1 (Vals),"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,8.03,,max
+science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run,GPT-6.2 Astra,score,,,,,68.44,68.44,max
+science & engineering,Vals Science Index v1 (Vals),"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,4.76,,max
+science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run,GPT-6.1 Sol,score,,,,,59.63,59.63,max
+science & engineering,Vals Science Index v1 (Vals),"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,1.36,,max
+science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run,GPT-6.2 Sol,score,,,,,57.76,57.76,max
+science & engineering,Vals Science Index v1 (Vals),"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,1.12,,max
+science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run,Fable 5.2,score,,,63.74,,,63.74,high
+science & engineering,Vals Science Index v1 (Vals),"US$ per test, log scale",Fable 5.2,cost_usd,,,8.79,,,,high
+science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run,Opus 5.5,score,,,,,58.65,58.65,max
+science & engineering,Vals Science Index v1 (Vals),"US$ per test, log scale",Opus 5.5,cost_usd,,,,,8.71,,max
+science & engineering,Vals Science Index v1 (Vals),% · BioMystery/MysteryMechanism/TB-Science composite · Vals AI; not OpenAI’s run,Sonnet 5.5,score,,,,,59.12,59.12,max
+science & engineering,Vals Science Index v1 (Vals),"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,8.5,,max
+science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI,Gemini 4 Neon,score,,,,45.05,,45.05,xhigh
+science & engineering,MysteryMechanism v1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,6.63,,,xhigh
+science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI,GPT-6 Astra,score,,,,,53.15,53.15,max
+science & engineering,MysteryMechanism v1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,1.56,,max
+science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI,GPT-6.2 Astra,score,,,,,53.15,53.15,max
+science & engineering,MysteryMechanism v1,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,1.72,,max
+science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI,GPT-6.1 Sol,score,,,,,46.4,46.4,max
+science & engineering,MysteryMechanism v1,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,0.285,,max
+science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI,GPT-6.2 Sol,score,,,,,36.94,36.94,max
+science & engineering,MysteryMechanism v1,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,0.487,,max
+science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI,Fable 5.2,score,,,51.8,,,51.8,high
+science & engineering,MysteryMechanism v1,"US$ per test, log scale",Fable 5.2,cost_usd,,,1.55,,,,high
+science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI,Opus 5.5,score,,,,,49.55,49.55,max
+science & engineering,MysteryMechanism v1,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,4.06,,max
+science & engineering,MysteryMechanism v1,% mechanistic chemistry inference · Vals AI,Sonnet 5.5,score,,,,,49.1,49.1,max
+science & engineering,MysteryMechanism v1,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,2.98,,max
+science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2,Gemini 4 Neon,score,,,,80.0,,80.0,xhigh
+science & engineering,BioMysteryBench v1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,4.41,,,xhigh
+science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2,GPT-6 Astra,score,,,,,79.26,79.26,max
+science & engineering,BioMysteryBench v1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,1.72,,max
+science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2,GPT-6.2 Astra,score,,,,,80.74,80.74,max
+science & engineering,BioMysteryBench v1,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,1.49,,max
+science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2,GPT-6.1 Sol,score,,,,,79.63,79.63,max
+science & engineering,BioMysteryBench v1,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,0.372,,max
+science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2,GPT-6.2 Sol,score,,,,,77.78,77.78,max
+science & engineering,BioMysteryBench v1,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,0.338,,max
+science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2,Fable 5.2,score,,,83.7,,,83.7,high
+science & engineering,BioMysteryBench v1,"US$ per test, log scale",Fable 5.2,cost_usd,,,1.68,,,,high
+science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2,Opus 5.5,score,,,,,79.26,79.26,max
+science & engineering,BioMysteryBench v1,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,2.95,,max
+science & engineering,BioMysteryBench v1,% computational biology task pass · Vals AI · Terminus 2,Sonnet 5.5,score,,,,,81.11,81.11,max
+science & engineering,BioMysteryBench v1,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,2.95,,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries,Gemini 4 Neon,score,,,,62.86,,62.86,xhigh
+science & engineering,Terminal-Bench Science 0.1 (Vals),"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,13.7,,,xhigh
+science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries,GPT-6 Astra,score,,,,,62.86,62.86,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,20.8,,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries,GPT-6.2 Astra,score,,,,,71.43,71.43,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,11.1,,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries,GPT-6.1 Sol,score,,,,,52.86,52.86,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,3.44,,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries,GPT-6.2 Sol,score,,,,,58.57,58.57,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,2.53,,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries,Fable 5.2,score,,,55.71,,,55.71,high
+science & engineering,Terminal-Bench Science 0.1 (Vals),"US$ per test, log scale",Fable 5.2,cost_usd,,,23.1,,,,high
+science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries,Opus 5.5,score,,,,,47.14,47.14,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),"US$ per test, log scale",Opus 5.5,cost_usd,,,,,19.1,,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),% single-run task pass · Vals AI Mini-SWE-agent; infrastructure retries,Sonnet 5.5,score,,,,,47.14,47.14,max
+science & engineering,Terminal-Bench Science 0.1 (Vals),"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,19.6,,max
+science & engineering,Terminal-Bench Science 0.1 (public board),% average resolution · public provider agents · 70 tasks × 3 trials,GPT-6 Astra,score,,,,,68.1,68.1,max
+science & engineering,Terminal-Bench Science 0.1 (public board),"US$ per task, log scale",GPT-6 Astra,cost_usd,,,,,23.8,,max
+science & engineering,Terminal-Bench Science 0.1 (public board),% average resolution · public provider agents · 70 tasks × 3 trials,Opus 5.5,score,,,,,63.33,63.33,max
+science & engineering,Terminal-Bench Science 0.1 (public board),"US$ per task, log scale",Opus 5.5,cost_usd,,,,,23.2,,max
+science & engineering,Terminal-Bench Science 0.1 (Google Neon),% average reward · Google mini-swe-agent vision · five attempts/task,Gemini 4 Neon,score,,,,70.5,,70.5,xhigh
 science & engineering,GPQA Diamond (OpenAI),"% · no tools · OpenAI system card, effort not stated",GPT-6 Astra,score,,,,,,96.0,not stated
 science & engineering,GPQA Diamond (OpenAI),"% · no tools · OpenAI system card, effort not stated",GPT-6.2 Astra,score,,,,,,97.0,not stated
 science & engineering,GPQA Diamond (OpenAI),"% · no tools · OpenAI system card, effort not stated",GPT-6.2 Sol,score,,,,,,96.0,not stated
@@ -455,12 +912,184 @@ machine-learning research,PostTrainBench Lite,"% performance gap closed · OpenA
 machine-learning research,MLE-Bench Revised,"mean reference percentile · OpenAI system card, effort not stated",GPT-6 Astra,score,,,,,,93.8,not stated
 machine-learning research,MLE-Bench Revised,"mean reference percentile · OpenAI system card, effort not stated",GPT-6.2 Astra,score,,,,,,96.06,not stated
 machine-learning research,MLE-Bench Revised,"mean reference percentile · OpenAI system card, effort not stated",GPT-6.2 Sol,score,,,,,,91.38,not stated
-professional work,MKA,% weighted rubric score · multimodal knowledge-work agent · AA’s own run for all models,GPT-6 Astra,score,,,,,50.2,50.2,max
-professional work,MKA,% weighted rubric score · multimodal knowledge-work agent · AA’s own run for all models,GPT-6.1 Sol,score,,,,,47.7,47.7,max
-professional work,MKA,% weighted rubric score · multimodal knowledge-work agent · AA’s own run for all models,Fable 5.2,score,,,,,56.6,56.6,max
-professional work,MKA,% weighted rubric score · multimodal knowledge-work agent · AA’s own run for all models,Opus 5.5,score,,,,,53.0,53.0,max
-professional work,MKA,% weighted rubric score · multimodal knowledge-work agent · AA’s own run for all models,Sonnet 5.5,score,,,,,52.0,52.0,max
-professional work,MKA,% weighted rubric score · multimodal knowledge-work agent · AA’s own run for all models,Gemini 4 Carbon,score,,,54.3,,,54.3,high
+professional work,DAYJOB: Finance,"% task pass, 100% rubric threshold · Surge · 80 tasks × 5 trials",Gemini 4 Neon,score,,,50.5,,,50.5,high
+professional work,DAYJOB: Finance,"% task pass, 100% rubric threshold · Surge · 80 tasks × 5 trials",GPT-6.2 Astra,score,,,,,45.8,45.8,max
+professional work,DAYJOB: Finance,"% task pass, 100% rubric threshold · Surge · 80 tasks × 5 trials",Fable 5.2,score,,,,,43.7,43.7,max
+professional work,DAYJOB: Finance,"% task pass, 100% rubric threshold · Surge · 80 tasks × 5 trials",Opus 5.5,score,,,,,42.5,42.5,max
+professional work,DAYJOB: Finance,"% task pass, 100% rubric threshold · Surge · 80 tasks × 5 trials",Sonnet 5.5,score,,,,,40.5,40.5,max
+professional work,DAYJOB: Finance,"% task pass, 100% rubric threshold · Surge · 80 tasks × 5 trials",Gemini 4 Hydrogen,score,,,,38.5,,38.5,xhigh
+professional work,DAYJOB: Finance,"% task pass, 100% rubric threshold · Surge · 80 tasks × 5 trials",GPT-6 Astra,score,,,,,37.3,37.3,max
+professional work,DAYJOB: Finance,"% task pass, 100% rubric threshold · Surge · 80 tasks × 5 trials",GPT-6.1 Sol,score,,,,,33.5,33.5,max
+professional work,DAYJOB: Finance,"% task pass, 100% rubric threshold · Surge · 80 tasks × 5 trials",GPT-6.2 Sol,score,,,,,32.8,32.8,max
+professional work,DAYJOB: Finance,"% task pass, 100% rubric threshold · Surge · 80 tasks × 5 trials",Gemini 4 Carbon,score,,,23.8,,,23.8,high
+professional work,DAYJOB: Law (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 71 tasks × 5 trials",GPT-6.2 Astra,score,,,,,41.4,41.4,max
+professional work,DAYJOB: Law (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 71 tasks × 5 trials",GPT-6 Astra,score,,,,,36.6,36.6,max
+professional work,DAYJOB: Law (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 71 tasks × 5 trials",GPT-6.2 Sol,score,,,,,32.7,32.7,max
+professional work,DAYJOB: Law (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 71 tasks × 5 trials",GPT-6.1 Sol,score,,,,,31.6,31.6,max
+professional work,DAYJOB: Law (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 71 tasks × 5 trials",Sonnet 5.5,score,,,,,26.8,26.8,max
+professional work,DAYJOB: Law (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 71 tasks × 5 trials",Fable 5.2,score,,,,,26.5,26.5,max
+professional work,DAYJOB: Law (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 71 tasks × 5 trials",Gemini 4 Neon,score,,,26.2,,,26.2,high
+professional work,DAYJOB: Law (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 71 tasks × 5 trials",Opus 5.5,score,,,,,23.7,23.7,max
+professional work,DAYJOB: Law (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 71 tasks × 5 trials",Gemini 4 Carbon,score,,,13.8,,,13.8,high
+professional work,DAYJOB: Law (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 71 tasks × 5 trials",Gemini 4 Hydrogen,score,,,,9.7,,9.7,xhigh
+professional work,DAYJOB: Tax (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 50 tasks × 5 trials",Fable 5.2,score,,,,,15.6,15.6,max
+professional work,DAYJOB: Tax (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 50 tasks × 5 trials",Gemini 4 Neon,score,,,12.8,,,12.8,high
+professional work,DAYJOB: Tax (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 50 tasks × 5 trials",Sonnet 5.5,score,,,,,10.8,10.8,max
+professional work,DAYJOB: Tax (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 50 tasks × 5 trials",Opus 5.5,score,,,,,9.2,9.2,max
+professional work,DAYJOB: Tax (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 50 tasks × 5 trials",GPT-6.2 Astra,score,,,,,9.2,9.2,max
+professional work,DAYJOB: Tax (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 50 tasks × 5 trials",GPT-6 Astra,score,,,,,4.8,4.8,max
+professional work,DAYJOB: Tax (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 50 tasks × 5 trials",Gemini 4 Carbon,score,,,4.8,,,4.8,high
+professional work,DAYJOB: Tax (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 50 tasks × 5 trials",GPT-6.2 Sol,score,,,,,4.8,4.8,max
+professional work,DAYJOB: Tax (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 50 tasks × 5 trials",GPT-6.1 Sol,score,,,,,4.0,4.0,max
+professional work,DAYJOB: Tax (95% threshold),"% pass@1, ≥95% rubric threshold · Surge · 50 tasks × 5 trials",Gemini 4 Hydrogen,score,,,,3.6,,3.6,xhigh
+professional work,EnterpriseBench: CoreCraft Agents,% all-rubric task success · Surge · provider tools,Opus 5.5,score,,,,,74.4,74.4,max
+professional work,EnterpriseBench: CoreCraft Agents,% all-rubric task success · Surge · provider tools,Sonnet 5.5,score,,,,,70.8,70.8,max
+professional work,EnterpriseBench: CoreCraft Agents,% all-rubric task success · Surge · provider tools,GPT-6.1 Sol,score,,,,,50.3,50.3,max
+professional work,EnterpriseBench: CoreCraft Agents,% all-rubric task success · Surge · provider tools,GPT-6 Astra,score,,,,,42.6,42.6,max
+professional work,GDP.pdf v1.1 (agentic),% all-rubric task pass · Surge v1.1 agentic; not AA’s run,Gemini 4 Carbon,score,,,56.4,,,56.4,high
+professional work,GDP.pdf v1.1 (agentic),% all-rubric task pass · Surge v1.1 agentic; not AA’s run,Gemini 4 Hydrogen,score,,,,54.2,,54.2,xhigh
+professional work,GDP.pdf v1.1 (agentic),% all-rubric task pass · Surge v1.1 agentic; not AA’s run,Gemini 4 Neon,score,,,53.4,,,53.4,high
+professional work,GDP.pdf v1.1 (agentic),% all-rubric task pass · Surge v1.1 agentic; not AA’s run,Fable 5.2,score,,,,,51.8,51.8,max
+professional work,GDP.pdf v1.1 (agentic),% all-rubric task pass · Surge v1.1 agentic; not AA’s run,GPT-6.1 Sol,score,,,,,51.6,51.6,max
+professional work,GDP.pdf v1.1 (agentic),% all-rubric task pass · Surge v1.1 agentic; not AA’s run,Sonnet 5.5,score,,,,,51.2,51.2,max
+professional work,GDP.pdf v1.1 (agentic),% all-rubric task pass · Surge v1.1 agentic; not AA’s run,GPT-6 Astra,score,,,,,50.4,50.4,max
+professional work,GDP.pdf v1.1 (agentic),% all-rubric task pass · Surge v1.1 agentic; not AA’s run,GPT-6.2 Astra,score,,,,,49.2,49.2,max
+professional work,GDP.pdf v1.1 (agentic),% all-rubric task pass · Surge v1.1 agentic; not AA’s run,Opus 5.5,score,,,,,48.8,48.8,max
+professional work,GDP.pdf v1.1 (agentic),% all-rubric task pass · Surge v1.1 agentic; not AA’s run,GPT-6.2 Sol,score,,,,,48.8,48.8,max
+professional work,GDP.xlsx,% published score · Surge · 70 tasks × 5 trials; headline threshold unspecified,Gemini 4 Neon,score,,,43.1,,,43.1,high
+professional work,GDP.xlsx,% published score · Surge · 70 tasks × 5 trials; headline threshold unspecified,Gemini 4 Hydrogen,score,,,,40.9,,40.9,xhigh
+professional work,GDP.xlsx,% published score · Surge · 70 tasks × 5 trials; headline threshold unspecified,Gemini 4 Carbon,score,,,38.9,,,38.9,high
+professional work,GDP.xlsx,% published score · Surge · 70 tasks × 5 trials; headline threshold unspecified,Fable 5.2,score,,,,,32.9,32.9,max
+professional work,GDP.xlsx,% published score · Surge · 70 tasks × 5 trials; headline threshold unspecified,Opus 5.5,score,,,,,30.3,30.3,max
+professional work,GDP.xlsx,% published score · Surge · 70 tasks × 5 trials; headline threshold unspecified,GPT-6.2 Astra,score,,,,,29.7,29.7,max
+professional work,GDP.xlsx,% published score · Surge · 70 tasks × 5 trials; headline threshold unspecified,Sonnet 5.5,score,,,,,29.1,29.1,max
+professional work,GDP.xlsx,% published score · Surge · 70 tasks × 5 trials; headline threshold unspecified,GPT-6 Astra,score,,,,,22.9,22.9,max
+professional work,GDP.xlsx,% published score · Surge · 70 tasks × 5 trials; headline threshold unspecified,GPT-6.2 Sol,score,,,,,22.3,22.3,max
+professional work,GDP.xlsx,% published score · Surge · 70 tasks × 5 trials; headline threshold unspecified,GPT-6.1 Sol,score,,,,,22.0,22.0,max
+professional work,HANDBOOK.md v1.1 Agents,% task success · Surge v1.1 revised grading · 65 tasks × 5 trials,Opus 5.5,score,,,,,52.3,52.3,max
+professional work,HANDBOOK.md v1.1 Agents,% task success · Surge v1.1 revised grading · 65 tasks × 5 trials,Fable 5.2,score,,,,,52.3,52.3,max
+professional work,HANDBOOK.md v1.1 Agents,% task success · Surge v1.1 revised grading · 65 tasks × 5 trials,Gemini 4 Neon,score,,,52.3,,,52.3,high
+professional work,HANDBOOK.md v1.1 Agents,% task success · Surge v1.1 revised grading · 65 tasks × 5 trials,Gemini 4 Carbon,score,,,49.8,,,49.8,high
+professional work,HANDBOOK.md v1.1 Agents,% task success · Surge v1.1 revised grading · 65 tasks × 5 trials,Sonnet 5.5,score,,,,,47.7,47.7,max
+professional work,HANDBOOK.md v1.1 Agents,% task success · Surge v1.1 revised grading · 65 tasks × 5 trials,GPT-6.2 Astra,score,,,,,45.8,45.8,max
+professional work,HANDBOOK.md v1.1 Agents,% task success · Surge v1.1 revised grading · 65 tasks × 5 trials,Gemini 4 Hydrogen,score,,,,44.6,,44.6,xhigh
+professional work,HANDBOOK.md v1.1 Agents,% task success · Surge v1.1 revised grading · 65 tasks × 5 trials,GPT-6.2 Sol,score,,,,,34.5,34.5,max
+professional work,HANDBOOK.md v1.1 Agents,% task success · Surge v1.1 revised grading · 65 tasks × 5 trials,GPT-6 Astra,score,,,,,31.4,31.4,max
+professional work,HANDBOOK.md v1.1 Agents,% task success · Surge v1.1 revised grading · 65 tasks × 5 trials,GPT-6.1 Sol,score,,,,,28.6,28.6,max
+professional work,EMB v1.1,% financial modeling spreadsheet score · Vals AI,Gemini 4 Neon,score,,,,76.46,,76.46,xhigh
+professional work,EMB v1.1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,3.82,,,xhigh
+professional work,EMB v1.1,% financial modeling spreadsheet score · Vals AI,GPT-6 Astra,score,,,,,72.68,72.68,max
+professional work,EMB v1.1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,5.83,,max
+professional work,EMB v1.1,% financial modeling spreadsheet score · Vals AI,GPT-6.2 Astra,score,,,,,76.03,76.03,max
+professional work,EMB v1.1,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,2.8,,max
+professional work,EMB v1.1,% financial modeling spreadsheet score · Vals AI,GPT-6.1 Sol,score,,,,,71.09,71.09,max
+professional work,EMB v1.1,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,1.14,,max
+professional work,EMB v1.1,% financial modeling spreadsheet score · Vals AI,GPT-6.2 Sol,score,,,,,74.29,74.29,max
+professional work,EMB v1.1,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,0.841,,max
+professional work,EMB v1.1,% financial modeling spreadsheet score · Vals AI,Fable 5.2,score,,,77.38,,,77.38,high
+professional work,EMB v1.1,"US$ per test, log scale",Fable 5.2,cost_usd,,,6.67,,,,high
+professional work,EMB v1.1,% financial modeling spreadsheet score · Vals AI,Opus 5.5,score,,,,,75.84,75.84,max
+professional work,EMB v1.1,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,9.33,,max
+professional work,EMB v1.1,% financial modeling spreadsheet score · Vals AI,Sonnet 5.5,score,,,,,75.9,75.9,max
+professional work,EMB v1.1,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,6.53,,max
+professional work,EMB v1.1,% financial modeling spreadsheet score · Vals AI,Gemini 4 Carbon,score,,,76.47,,,76.47,high
+professional work,EMB v1.1,"US$ per test, log scale",Gemini 4 Carbon,cost_usd,,,5.76,,,,high
+professional work,EMB v1.1,% financial modeling spreadsheet score · Vals AI,Gemini 4 Hydrogen,score,,,,75.8,,75.8,xhigh
+professional work,EMB v1.1,"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,3.17,,,xhigh
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,Gemini 4 Neon,score,,,,68.56,,68.56,xhigh
+professional work,Finance Agent v2.1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,5.85,,,xhigh
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,GPT-6 Astra,score,,,,,60.43,60.43,max
+professional work,Finance Agent v2.1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,7.82,,max
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,GPT-6.2 Astra,score,,,,,60.75,60.75,max
+professional work,Finance Agent v2.1,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,7.98,,max
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,GPT-6.1 Sol,score,,,,,61.82,61.82,max
+professional work,Finance Agent v2.1,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,1.63,,max
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,GPT-6.2 Sol,score,,,,,58.91,58.91,max
+professional work,Finance Agent v2.1,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,2.06,,max
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,Fable 5.2,score,,,69.47,,,69.47,high
+professional work,Finance Agent v2.1,"US$ per test, log scale",Fable 5.2,cost_usd,,,4.83,,,,high
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,Opus 5.5,score,,,,,67.85,67.85,max
+professional work,Finance Agent v2.1,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,8.91,,max
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,Sonnet 5.5,score,,,,,67.28,67.28,max
+professional work,Finance Agent v2.1,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,6.95,,max
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,Gemini 4 Carbon,score,,,67.16,,,67.16,high
+professional work,Finance Agent v2.1,"US$ per test, log scale",Gemini 4 Carbon,cost_usd,,,7.29,,,,high
+professional work,Finance Agent v2.1,% financial research accuracy · Vals AI,Gemini 4 Hydrogen,score,,,,65.12,,65.12,xhigh
+professional work,Finance Agent v2.1,"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,4.36,,,xhigh
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,Gemini 4 Neon,score,,,,56.25,,56.25,xhigh
+professional work,Legal Research Bench v1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,7.37,,,xhigh
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,GPT-6 Astra,score,,,,,39.42,39.42,max
+professional work,Legal Research Bench v1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,10.6,,max
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,GPT-6.2 Astra,score,,,,,42.79,42.79,max
+professional work,Legal Research Bench v1,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,12.8,,max
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,GPT-6.1 Sol,score,,,,,38.46,38.46,max
+professional work,Legal Research Bench v1,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,3.38,,max
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,GPT-6.2 Sol,score,,,,,37.02,37.02,max
+professional work,Legal Research Bench v1,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,3.77,,max
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,Fable 5.2,score,,,46.15,,,46.15,high
+professional work,Legal Research Bench v1,"US$ per test, log scale",Fable 5.2,cost_usd,,,3.96,,,,high
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,Opus 5.5,score,,,,,50.48,50.48,max
+professional work,Legal Research Bench v1,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,23.6,,max
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,Sonnet 5.5,score,,,,,48.08,48.08,max
+professional work,Legal Research Bench v1,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,13.7,,max
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,Gemini 4 Carbon,score,,,55.77,,,55.77,high
+professional work,Legal Research Bench v1,"US$ per test, log scale",Gemini 4 Carbon,cost_usd,,,8.74,,,,high
+professional work,Legal Research Bench v1,% legal-research task pass · Vals AI,Gemini 4 Hydrogen,score,,,,53.85,,53.85,xhigh
+professional work,Legal Research Bench v1,"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,6.27,,,xhigh
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,Gemini 4 Neon,score,,,,54.89,,54.89,xhigh
+professional work,Tax Agent Bench v1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,4.95,,,xhigh
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,GPT-6 Astra,score,,,,,20.72,20.72,max
+professional work,Tax Agent Bench v1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,5.8,,max
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,GPT-6.2 Astra,score,,,,,21.84,21.84,max
+professional work,Tax Agent Bench v1,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,7.9,,max
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,GPT-6.1 Sol,score,,,,,21.75,21.75,max
+professional work,Tax Agent Bench v1,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,1.32,,max
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,GPT-6.2 Sol,score,,,,,24.84,24.84,max
+professional work,Tax Agent Bench v1,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,2.4,,max
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,Fable 5.2,score,,,32.09,,,32.09,high
+professional work,Tax Agent Bench v1,"US$ per test, log scale",Fable 5.2,cost_usd,,,3.31,,,,high
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,Opus 5.5,score,,,,,44.54,44.54,max
+professional work,Tax Agent Bench v1,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,14.4,,max
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,Sonnet 5.5,score,,,,,41.96,41.96,max
+professional work,Tax Agent Bench v1,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,8.73,,max
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,Gemini 4 Carbon,score,,,51.79,,,51.79,high
+professional work,Tax Agent Bench v1,"US$ per test, log scale",Gemini 4 Carbon,cost_usd,,,6.34,,,,high
+professional work,Tax Agent Bench v1,% tax research accuracy · Vals AI,Gemini 4 Hydrogen,score,,,,52.31,,52.31,xhigh
+professional work,Tax Agent Bench v1,"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,3.87,,,xhigh
+professional work,HLAB-Vals v1.1,% all-rubric task pass · Vals AI; not Harvey LAB-AA,Gemini 4 Neon,score,,,,19.58,,19.58,xhigh
+professional work,HLAB-Vals v1.1,"US$ per test, log scale",Gemini 4 Neon,cost_usd,,,,5.97,,,xhigh
+professional work,HLAB-Vals v1.1,% all-rubric task pass · Vals AI; not Harvey LAB-AA,GPT-6 Astra,score,,,,,7.08,7.08,max
+professional work,HLAB-Vals v1.1,"US$ per test, log scale",GPT-6 Astra,cost_usd,,,,,25.5,,max
+professional work,HLAB-Vals v1.1,% all-rubric task pass · Vals AI; not Harvey LAB-AA,GPT-6.2 Astra,score,,,,,16.25,16.25,max
+professional work,HLAB-Vals v1.1,"US$ per test, log scale",GPT-6.2 Astra,cost_usd,,,,,7.33,,max
+professional work,HLAB-Vals v1.1,% all-rubric task pass · Vals AI; not Harvey LAB-AA,GPT-6.1 Sol,score,,,,,6.25,6.25,max
+professional work,HLAB-Vals v1.1,"US$ per test, log scale",GPT-6.1 Sol,cost_usd,,,,,3.54,,max
+professional work,HLAB-Vals v1.1,% all-rubric task pass · Vals AI; not Harvey LAB-AA,GPT-6.2 Sol,score,,,,,12.08,12.08,max
+professional work,HLAB-Vals v1.1,"US$ per test, log scale",GPT-6.2 Sol,cost_usd,,,,,2.25,,max
+professional work,HLAB-Vals v1.1,% all-rubric task pass · Vals AI; not Harvey LAB-AA,Fable 5.2,score,,,5.0,,,5.0,high
+professional work,HLAB-Vals v1.1,"US$ per test, log scale",Fable 5.2,cost_usd,,,19.4,,,,high
+professional work,HLAB-Vals v1.1,% all-rubric task pass · Vals AI; not Harvey LAB-AA,Opus 5.5,score,,,,,9.17,9.17,max
+professional work,HLAB-Vals v1.1,"US$ per test, log scale",Opus 5.5,cost_usd,,,,,21.8,,max
+professional work,HLAB-Vals v1.1,% all-rubric task pass · Vals AI; not Harvey LAB-AA,Sonnet 5.5,score,,,,,10.42,10.42,max
+professional work,HLAB-Vals v1.1,"US$ per test, log scale",Sonnet 5.5,cost_usd,,,,,17.7,,max
+professional work,HLAB-Vals v1.1,% all-rubric task pass · Vals AI; not Harvey LAB-AA,Gemini 4 Carbon,score,,,17.5,,,17.5,high
+professional work,HLAB-Vals v1.1,"US$ per test, log scale",Gemini 4 Carbon,cost_usd,,,6.52,,,,high
+professional work,HLAB-Vals v1.1,% all-rubric task pass · Vals AI; not Harvey LAB-AA,Gemini 4 Hydrogen,score,,,,11.25,,11.25,xhigh
+professional work,HLAB-Vals v1.1,"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,3.28,,,xhigh
+professional work,AutomationBench 1.0.6 (nonstandard efforts),% strict task pass · Zapier · exact effort labels; grouped under Not stated filter,GPT-6 Astra,score,,,,,,25.27,none
+professional work,AutomationBench 1.0.6 (nonstandard efforts),"US$ per task, log scale",GPT-6 Astra,cost_usd,,,,,,1.28,none
+professional work,AutomationBench 1.0.6 (nonstandard efforts),% strict task pass · Zapier · exact effort labels; grouped under Not stated filter,Sonnet 5.5,score,,,,,,18.57,between tools
+professional work,AutomationBench 1.0.6 (nonstandard efforts),"US$ per task, log scale",Sonnet 5.5,cost_usd,,,,,,0.3,between tools
+health,DAYJOB: Healthcare,"% task pass, 100% rubric threshold · Surge · 50 tasks × 5 trials",Opus 5.5,score,,,,,48.3,48.3,max
+health,DAYJOB: Healthcare,"% task pass, 100% rubric threshold · Surge · 50 tasks × 5 trials",Gemini 4 Neon,score,,,47.2,,,47.2,high
+health,DAYJOB: Healthcare,"% task pass, 100% rubric threshold · Surge · 50 tasks × 5 trials",Fable 5.2,score,,,,,45.0,45.0,max
+health,DAYJOB: Healthcare,"% task pass, 100% rubric threshold · Surge · 50 tasks × 5 trials",Gemini 4 Carbon,score,,,35.2,,,35.2,high
+health,DAYJOB: Healthcare,"% task pass, 100% rubric threshold · Surge · 50 tasks × 5 trials",GPT-6.2 Astra,score,,,,,34.4,34.4,max
+health,DAYJOB: Healthcare,"% task pass, 100% rubric threshold · Surge · 50 tasks × 5 trials",Sonnet 5.5,score,,,,,34.0,34.0,max
+health,DAYJOB: Healthcare,"% task pass, 100% rubric threshold · Surge · 50 tasks × 5 trials",GPT-6 Astra,score,,,,,28.4,28.4,max
+health,DAYJOB: Healthcare,"% task pass, 100% rubric threshold · Surge · 50 tasks × 5 trials",GPT-6.1 Sol,score,,,,,25.2,25.2,max
+health,DAYJOB: Healthcare,"% task pass, 100% rubric threshold · Surge · 50 tasks × 5 trials",Gemini 4 Hydrogen,score,,,,24.0,,24.0,xhigh
+health,DAYJOB: Healthcare,"% task pass, 100% rubric threshold · Surge · 50 tasks × 5 trials",GPT-6.2 Sol,score,,,,,17.2,17.2,max
 health,HealthBench Professional (OpenAI),"length-adjusted score · OpenAI system card, effort not stated",GPT-6 Astra,score,,,,,,64.7,not stated
 health,HealthBench Professional (OpenAI),"length-adjusted score · OpenAI system card, effort not stated",GPT-6.2 Astra,score,,,,,,66.3,not stated
 health,HealthBench Professional (OpenAI),"length-adjusted score · OpenAI system card, effort not stated",GPT-6.1 Sol,score,,,,,,64.2,not stated
@@ -469,6 +1098,20 @@ health,MentalHealthBench,"% overall rubric score · OpenAI system card, max effo
 health,MentalHealthBench,"% overall rubric score · OpenAI system card, max effort",GPT-6.2 Astra,score,,,,,53.3,53.3,max
 health,MentalHealthBench,"% overall rubric score · OpenAI system card, max effort",GPT-6.1 Sol,score,,,,,57.9,57.9,max
 health,MentalHealthBench,"% overall rubric score · OpenAI system card, max effort",GPT-6.2 Sol,score,,,,,50.9,50.9,max
+multimodal tasks,Chartography v1.1 (agentic),% correct · Surge v1.1 agentic harness; not Google’s no-tools run,GPT-6.2 Astra,score,,,,,90.7,90.7,max
+multimodal tasks,Chartography v1.1 (agentic),% correct · Surge v1.1 agentic harness; not Google’s no-tools run,Opus 5.5,score,,,,,89.6,89.6,max
+multimodal tasks,Chartography v1.1 (agentic),% correct · Surge v1.1 agentic harness; not Google’s no-tools run,GPT-6 Astra,score,,,,,88.6,88.6,max
+multimodal tasks,Chartography v1.1 (agentic),% correct · Surge v1.1 agentic harness; not Google’s no-tools run,GPT-6.2 Sol,score,,,,,87.7,87.7,max
+multimodal tasks,Chartography v1.1 (agentic),% correct · Surge v1.1 agentic harness; not Google’s no-tools run,Gemini 4 Hydrogen,score,,,,87.2,,87.2,xhigh
+multimodal tasks,Chartography v1.1 (agentic),% correct · Surge v1.1 agentic harness; not Google’s no-tools run,Gemini 4 Neon,score,,,86.6,,,86.6,high
+multimodal tasks,Chartography v1.1 (agentic),% correct · Surge v1.1 agentic harness; not Google’s no-tools run,Gemini 4 Carbon,score,,,85.5,,,85.5,high
+multimodal tasks,Chartography v1.1 (agentic),% correct · Surge v1.1 agentic harness; not Google’s no-tools run,Fable 5.2,score,,,,,80.8,80.8,max
+multimodal tasks,"Chartography (no tools, Google)",% · no tools · Google Neon/Sol runs; Opus system card,Gemini 4 Neon,score,,,,73.5,,73.5,xhigh
+multimodal tasks,"Chartography (no tools, Google)",% · no tools · Google Neon/Sol runs; Opus system card,Opus 5.5,score,,,,,,66.3,not stated
+multimodal tasks,"Chartography (no tools, Google)",% · no tools · Google Neon/Sol runs; Opus system card,GPT-6.2 Sol,score,,,,,,75.1,not stated
+multimodal tasks,LVBench (Google),% · vision-only · Google runs · unequal frame budgets,Gemini 4 Neon,score,,,,89,,89,xhigh
+multimodal tasks,LVBench (Google),% · vision-only · Google runs · unequal frame budgets,Opus 5.5,score,,,,,,83.7,not stated
+multimodal tasks,LVBench (Google),% · vision-only · Google runs · unequal frame budgets,GPT-6.2 Sol,score,,,,,,87.6,not stated
 multimodal tasks,VIALS-AA,% correct in all three runs · scientific images · Artificial Analysis,GPT-6 Astra,score,,,,,62.7,62.7,max
 multimodal tasks,VIALS-AA,% correct in all three runs · scientific images · Artificial Analysis,GPT-6.1 Sol,score,,,,,59.0,59.0,max
 multimodal tasks,VIALS-AA,% correct in all three runs · scientific images · Artificial Analysis,Fable 5.2,score,,,,,67.1,67.1,max

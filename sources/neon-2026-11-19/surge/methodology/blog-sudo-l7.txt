@@ -1,0 +1,193 @@
+The code works. Would you ship it?
+The strange thing about today’s coding agents is that they can be
+technically right and professionally wrong
+.
+A password manager implements every requested feature, but displays saved passwords in plaintext.
+A production database migration correctly changes the schema, but deletes records without confirmation and no way to roll back.
+A stock-alert dashboard looks finished, but never tells the user it’s simulating every price.
+The code works.
+But would you ship it?
+Coding agents have become remarkably good at writing code. What they often miss is everything around it: what could go wrong, what the user forgot to ask for, and what another engineer would need to know before saying LGTM.
+That's where engineering judgment comes in.
+A junior engineer is often handed a well-defined problem, and asked for a patch. They follow tickets, write code, and check whether tests pass.
+A staff engineer is handed something fuzzier:
+make this faster; migrate this safely; figure out what we should do.
+They notice what tickets forget to mention, anticipate consequences, and know when passing tests isn’t the end of the story.
+That distinction is what we built sudo L7 to measure.
+Introducing sudo L7
+sudo L7 is our benchmark for staff-level software engineering:
+writing code, but also the professional judgment and behavior around it
+.
+It contains 60 tasks authored by professional software engineers. Tasks are primarily grounded in private production repositories from real companies, alongside open-source projects. One repository, for example, comes from a money-management app and contains roughly 250,000 lines of code.
+The requests are things engineers actually get:
+“Make this faster.”
+“Migrate these API tokens to secure hashes.”
+“Can we safely cache this?”
+“We have a security audit coming up. Fix our password protection.”
+Agents have to explore the system, decide what matters, choose an approach, and verify the dangerous cases.
+Most coding benchmarks measure the inner loop of software engineering:
+given a well-specified problem, can the agent write code that passes?
+sudo L7 measures the outer loop as well:
+can the agent notice what to build, what not to build, where the risk is, and when “the tests pass” isn’t the end of the story?
+Sometimes the output is code. Sometimes it’s architectural analysis, a rollout plan, or an explanation of why the obvious implementation creates a larger problem.
+All that is software engineering too.
+Tasks span production software across backend, frontend, security, reliability, and architecture, with codebases in Python, TypeScript, JavaScript, Ruby, and other technologies.
+Unlike benchmarks built entirely on public repositories, most sudo L7 tasks come from
+private production codebases at real companies
+. These systems have years of accumulated technical debt, legacy code nobody wants to touch, historical accidents that became architectural decisions, and dependencies that break in surprising ways.
+Agents have to work within that mess, just like real engineers.
+How do frontier agents perform?
+Claude Opus 5.5 and Sonnet 5.5 lead sudo L7, each succeeding on roughly
+45% of assignments
+. GPT-6 Astra follows at approximately
+32%
+.
+Even the strongest coding agents fall short on more than half of these assignments.
+Methodology: grading more than “does it pass?”
+A passing unit test tells you whether the code does what the test expects. It doesn't tell you whether the agent chose the right architecture, overlooked a production risk, reinvented something that already existed, or accurately described what it built.
+These are precisely the things that distinguish a capable coder from a great software engineer.
+sudo L7 uses
+expert-authored rubrics across eight dimensions of software engineering behavior
+, evaluating everything from functional correctness to architectural judgment, verification, and communication.
+Consider two examples:
+An unnecessary feature.
+A fresh PM asks for a way to split charitable donations. The agent builds it successfully, but unknown to the PM, the functionality already existed. It may satisfy
+Functional Correctness
+while falling short on
+Practical Judgment
+and
+Thought Partnership
+. A stronger engineer would inspect the existing system and clarify what the user needs before adding another implementation.
+A production database migration.
+An agent writes a migration that works under normal conditions. But has it tested what happens if the migration fails halfway through? Can it be rolled back? Did it accurately explain what was verified and what remains risky? These questions exercise
+Verification
+,
+Engineering Craft
+, and
+Truthful Reporting
+.
+For each task, an expert engineer writes
+task-specific criteria and the context needed to evaluate them
+. Grader models assess the agent's work against those criteria, using unit tests, static analysis, and other executable checks as evidence where appropriate.
+Examples of what sudo L7 catches
+Two sudo L7 tasks show how frontier models can write technically correct code while missing the professional judgment an experienced engineer would bring to the same problem.
+Example #1: Astra followed the instructions without flagging the risks
+The repository:
+A fintech application that receives webhooks from services such as Stripe, Mailchimp, and Plaid.
+The request:
+When a webhook fails, log its full payload and return HTTP 200 anyway, so partners stop flooding the service with retries.
+What Astra did:
+Followed the request as written, without flagging the consequences.
+The problem:
+When a webhook fails, the sender normally retries until it succeeds. Returning HTTP 200 tells the sender the event was accepted, so it may never try again. Unless the application has safely stored the event for later processing, an important update could be permanently lost. A payment might succeed at Stripe, for example, without the customer's account ever being updated.
+There's another risk:
+webhook payloads can contain sensitive financial and customer information.
+Logging everything could expose that data to engineers and monitoring systems that shouldn't have access to it, potentially for years.
+What a staff engineer would do and sudo L7 checks:
+Push back on the proposed approach and explain both risks. Rather than simply suppressing retries, they'd propose reliably storing incoming events before acknowledging them, then retrying failed processing internally.
+They'd also flag the sensitive-data issue and recommend logging only what's necessary, with appropriate redaction and access controls.
+Here, Opus 5.5 succeeded.
+Example #2: Opus built a feature that already existed
+The repository:
+A charitable-giving app where users plan donations across different organizations.
+The request:
+Can you let people split donations across a couple of different organizations instead, as long as it still adds up to what they've pledged?
+What Opus 5.5 did:
+Built a new interface and database structure for splitting donations, then thoroughly tested it.
+267 tests passed
+, plus four browser tests.
+The problem:
+The app already supported allocating donations across multiple organizations. Opus had even encountered the relevant code.
+Perhaps the user wanted something slightly different. But rather than clarify what was missing, Opus built a second, overlapping system.
+The tests passed, but now there are two codepaths representing the exact same feature.
+What a staff engineer would do and sudo L7 checks:
+Point out the existing functionality, and clarify what the user needs before building a redundant feature.
+‍
+Both models illustrate the same problem:
+frontier agents can be excellent at implementing what they're asked to build, without recognizing when the request itself needs questioning.
+‍
+Similar correctness. Very different judgment.
+Because we classify each rubric criterion by the engineering behavior it measures, we can see differences that a single coding correctness score would hide.
+On
+Functional Correctness
+, the four leading models are nearly tied:
+GPT-6.1 Sol:
+82.4%
+Opus 5.5:
+82.1%
+GPT-6 Astra:
+81.5%
+Sonnet 5.5:
+79.6%
+But the gaps widen on broader engineering skills:
+On
+Thought Partnership
+, Opus and Sonnet score
+76.1% and 74.8%
+, compared with
+53.0% for Sol and 51.6% for Astra
+.
+On
+Communication
+, Sonnet reaches
+72.4%
+, while Sol scores
+44.1%
+.
+What does better engineering cost?
+The best-performing agents are also among the most expensive to run.
+Opus 5.5 and Sonnet 5.5 achieve nearly identical results, succeeding on 45% of assignments. But Opus costs about
+$10 per task
+, compared with
+$14 for Sonnet
+.
+GPT-6.1 Sol offers a different tradeoff: it succeeds on
+30% of assignments at just over $1 per task
+. That's close to GPT-6 Astra's 32%, at one-fifth the cost.
+Built by engineers who’ve owned production systems
+Engineering judgment is hard to synthesize.
+You need engineers who’ve operated production systems to know which shortcut is dangerous, which failure mode matters, and which implementation is technically correct but professionally irresponsible.
+Every sudo L7 task was written by a staff-level-or-above software engineer. Contributors include:
+A
+Co-Founder and former CTO of a YC unicorn
+, with deep experience in distributed systems and incident response;
+A
+Principal Software Engineer at NASA JPL
+, spanning planetary flight software and large-scale consumer systems;
+A
+Staff Software Engineer at Ramp
+with 14 years across fintech and SaaS;
+Staff engineers from
+Google, Meta, Cloudera, GitHub, and others
+.
+Every task begins with a place where a frontier model meaningfully failed. The engineers behind the benchmark have had to care about these things for real.
+Where sudo L7 fits
+Coding benchmarks have come a long way from LeetCode-style problems. But they still emphasize different parts of the engineering job.
+SWE-bench: Can you fix the issue?
+SWE-bench asks whether an agent can fix a real GitHub issue without breaking existing behavior. A typical task gives it a concrete bug or feature request and checks whether the patch passes the relevant tests.
+sudo L7 asks what happens after the patch is correct:
+If an agent fixes a Terraform typo, does it notice that deploying it could replace a load balancer?
+Terminal-Bench: Can you complete the technical task?
+Terminal-Bench asks whether an agent can complete a concrete technical task in a terminal. One task, for example, specifies that the agent should train a FastText classifier under explicit size and accuracy constraints.
+sudo L7 leaves more of that judgment open:
+Is FastText the right choice in the first place? What approach fits the system, and what tradeoffs matter?
+DeepSWE: Can you implement the requested behavior?
+DeepSWE asks whether an agent can implement new behavior in a repository, with hidden verifiers checking whether it works.
+sudo L7 asks whether the working implementation is good engineering:
+Did the agent choose the right design, notice the production edge cases, and verify the failure modes that mattered?
+FrontierCode: Would a maintainer merge the PR?
+FrontierCode is the closest relative. It asks whether a maintainer would merge the PR, using maintainer-authored rubrics for correctness, tests, scope, style, and code quality.
+sudo L7 widens the responsibility beyond the PR:
+Architecture, production risk, assumption-checking, verification strategy, and handoff all count. Sometimes the right output is code; sometimes it's an architectural analysis, a rollout plan, or a recommendation not to make the requested change.
+sudo L7 starts where “the code works” stops being enough.
+Ready for more responsibility?
+Generating code is becoming cheap.
+But the next generation of coding agents will also need to understand unfamiliar systems, choose architectures, notice the failure mode that wasn’t in the ticket, know when to push back, verify what matters, and tell the truth about what is ready to ship.
+An L3 is handed a well-defined problem and asked for a pull request.
+An L7 is handed responsibility.
+sudo L7 measures whether coding agents are ready for more of it.
+To learn more or request access to the benchmark set, reach out to
+benchmarks@surgehq.ai
+or explore the
+sudo L7 leaderboard
+.

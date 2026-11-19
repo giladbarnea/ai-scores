@@ -18,7 +18,8 @@
   await settle();
   const plot = document.querySelector('.plot[data-metric="aa-intelligence-index"]');
   const markers = [...plot.querySelectorAll(".marker")].filter(visible);
-  assert(markers.length === 9, `High-only must show nine AA Index points, got ${markers.length}`);
+  assert(markers.length === 10, `High-only must show ten AA Index points, got ${markers.length}`);
+  assert(markers.some(marker => marker.classList.contains("m-gemini-4-neon")), "Neon's real high point must be filterable");
   assert(markers.every(marker => marker.dataset.level === "high"), "A deselected level still has a visible point");
   const label = plot.querySelector(".filtered-labels .end.m-gpt-6-2-astra text");
   assert(label?.textContent === "60.1", `Astra's high score must replace its max label, got ${label?.textContent}`);
@@ -42,18 +43,18 @@
   const costPlot = document.querySelector('.plot[data-metric="aa-intelligence-index"]');
   const costMarkers = [...costPlot.querySelectorAll(".marker")].filter(visible);
   const links = () => [...costPlot.querySelectorAll(".dominance-link")];
-  assert(costMarkers.length === 9 && links().length === 6,
-    `High-only cost view must show nine points and one link for each of six beaten points, got ${costMarkers.length} / ${links().length}`);
+  assert(costMarkers.length === 10 && links().length === 7,
+    `High-only cost view must show ten points and one link for each of seven beaten points, got ${costMarkers.length} / ${links().length}`);
   const unbeaten = new Set(["gpt-6-2-sol", "gpt-6-2-astra", "fable-5-2"]);
-  assert(new Set(links().map(link => link.dataset.loserModel)).size === 6 && links().every(link =>
+  assert(new Set(links().map(link => link.dataset.loserModel)).size === 7 && links().every(link =>
     unbeaten.has(link.dataset.winnerModel) && !unbeaten.has(link.dataset.loserModel)
     && link.dataset.winnerLevel === "high" && link.dataset.loserLevel === "high"),
     "Only Sol 6.2, Astra 6.2 and Fable high are unbeaten. Each arrow must end at one of them");
   document.querySelector('label[for="show-gpt-6-2-sol"]').click();
   await settle();
   const remaining = [...costPlot.querySelectorAll(".marker")].filter(visible);
-  assert(remaining.length === 8 && links().length === 4,
-    "Hiding Sol 6.2 must leave only four beaten points");
+  assert(remaining.length === 9 && links().length === 5,
+    "Hiding Sol 6.2 must leave only five beaten points");
   assert(links().every(link => link.dataset.winnerModel !== "gpt-6-2-sol" && link.dataset.loserModel !== "gemini-4-hydrogen"),
     "A hidden model must not beat Hydrogen high");
   document.querySelector('label[for="show-gpt-6-2-sol"]').click();
@@ -74,8 +75,8 @@
   assert([...maxPlot.querySelectorAll(".marker")].filter(visible).length === 7,
     "Max-only must not invent max scores for the Gemini models");
   const sparse = document.querySelector('.plot[data-metric="deepswe-v1-1"]');
-  assert([...sparse.querySelectorAll(".marker")].filter(visible).length === 3,
-    "Max-only must keep Sonnet's single DeepSWE point and the two GPT max points");
+  assert([...sparse.querySelectorAll(".marker")].filter(visible).length === 4,
+    "Max-only must keep Sonnet and MAI's single DeepSWE points and the two GPT max points");
 
   document.querySelector("#levels-none").click();
   document.querySelector('label[for="level-high"]').click();
@@ -91,14 +92,14 @@
     zoomSource.dispatchEvent(new PointerEvent(type, { ...coordinates, bubbles: true, pointerType: "mouse", isPrimary: true, button: 0 }));
   }
   const zoom = document.querySelector("#zoom");
-  assert(zoom.open && zoom.querySelectorAll("circle").length === 9, "Dragging over the chart must zoom only the nine selected high points");
+  assert(zoom.open && zoom.querySelectorAll("circle").length === 10, "Dragging over the chart must zoom only the ten selected high points");
   assert(zoom.querySelector(".zoom-range").textContent.startsWith("high to high"), "Zoom must not restore deselected thinking levels");
   zoom.querySelector("button").click();
   assert(!zoom.open, "The zoom must still close normally");
   document.querySelector("#levels-all").click();
   await settle();
   const reset = document.querySelector('.plot[data-metric="aa-intelligence-index"]');
-  assert([...reset.querySelectorAll(".marker")].filter(visible).length === 42, "All must restore every published AA Index point");
+  assert([...reset.querySelectorAll(".marker")].filter(visible).length === 46, "All must restore every published AA Index point");
   const defaults = new URL(location.href).searchParams;
   assert(!defaults.has("models") && !defaults.has("levels") && !defaults.has("axis"), "The all-model, all-level effort view must keep a clean URL");
   return "Thinking-level filter checks passed: effort, Cost dominance, model combinations, sparse/unknown results, empty state, reset and zoom";

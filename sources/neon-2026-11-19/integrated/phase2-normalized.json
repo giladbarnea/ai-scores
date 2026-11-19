@@ -1,0 +1,3383 @@
+[
+  {
+    "chart": "Chartography v1.1 (agentic)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 90.7,
+    "cost_usd": null
+  },
+  {
+    "chart": "Chartography v1.1 (agentic)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 89.6,
+    "cost_usd": null
+  },
+  {
+    "chart": "Chartography v1.1 (agentic)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 88.6,
+    "cost_usd": null
+  },
+  {
+    "chart": "Chartography v1.1 (agentic)",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 87.7,
+    "cost_usd": null
+  },
+  {
+    "chart": "Chartography v1.1 (agentic)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 87.2,
+    "cost_usd": null
+  },
+  {
+    "chart": "Chartography v1.1 (agentic)",
+    "model": "Gemini 4 Neon",
+    "effort": "high",
+    "score": 86.6,
+    "cost_usd": null
+  },
+  {
+    "chart": "Chartography v1.1 (agentic)",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 85.5,
+    "cost_usd": null
+  },
+  {
+    "chart": "Chartography v1.1 (agentic)",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 80.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "ComplexConstraints v1.1 (agentic)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 73.7,
+    "cost_usd": null
+  },
+  {
+    "chart": "ComplexConstraints v1.1 (agentic)",
+    "model": "Gemini 4 Neon",
+    "effort": "high",
+    "score": 72.9,
+    "cost_usd": null
+  },
+  {
+    "chart": "ComplexConstraints v1.1 (agentic)",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 70.9,
+    "cost_usd": null
+  },
+  {
+    "chart": "ComplexConstraints v1.1 (agentic)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 70.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "ComplexConstraints v1.1 (agentic)",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 70.1,
+    "cost_usd": null
+  },
+  {
+    "chart": "ComplexConstraints v1.1 (agentic)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 69.6,
+    "cost_usd": null
+  },
+  {
+    "chart": "ComplexConstraints v1.1 (agentic)",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 69.5,
+    "cost_usd": null
+  },
+  {
+    "chart": "ComplexConstraints v1.1 (agentic)",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 67.2,
+    "cost_usd": null
+  },
+  {
+    "chart": "ComplexConstraints v1.1 (agentic)",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 64.5,
+    "cost_usd": null
+  },
+  {
+    "chart": "ComplexConstraints v1.1 (agentic)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 64.4,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Finance",
+    "model": "Gemini 4 Neon",
+    "effort": "high",
+    "score": 50.5,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Finance",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 45.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Finance",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 43.7,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Finance",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 42.5,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Finance",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 40.5,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Finance",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 38.5,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Finance",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 37.3,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Finance",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 33.5,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Finance",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 32.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Finance",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 23.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Healthcare",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 48.3,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Healthcare",
+    "model": "Gemini 4 Neon",
+    "effort": "high",
+    "score": 47.2,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Healthcare",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 45.0,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Healthcare",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 35.2,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Healthcare",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 34.4,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Healthcare",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 34.0,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Healthcare",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 28.4,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Healthcare",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 25.2,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Healthcare",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 24.0,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Healthcare",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 17.2,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Law (95% threshold)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 41.4,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Law (95% threshold)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 36.6,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Law (95% threshold)",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 32.7,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Law (95% threshold)",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 31.6,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Law (95% threshold)",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 26.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Law (95% threshold)",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 26.5,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Law (95% threshold)",
+    "model": "Gemini 4 Neon",
+    "effort": "high",
+    "score": 26.2,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Law (95% threshold)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 23.7,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Law (95% threshold)",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 13.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Law (95% threshold)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 9.7,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Tax (95% threshold)",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 15.6,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Tax (95% threshold)",
+    "model": "Gemini 4 Neon",
+    "effort": "high",
+    "score": 12.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Tax (95% threshold)",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 10.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Tax (95% threshold)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 9.2,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Tax (95% threshold)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 9.2,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Tax (95% threshold)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 4.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Tax (95% threshold)",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 4.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Tax (95% threshold)",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 4.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Tax (95% threshold)",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 4.0,
+    "cost_usd": null
+  },
+  {
+    "chart": "DAYJOB: Tax (95% threshold)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 3.6,
+    "cost_usd": null
+  },
+  {
+    "chart": "EnterpriseBench: CoreCraft Agents",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 74.4,
+    "cost_usd": null
+  },
+  {
+    "chart": "EnterpriseBench: CoreCraft Agents",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 70.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "EnterpriseBench: CoreCraft Agents",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 50.3,
+    "cost_usd": null
+  },
+  {
+    "chart": "EnterpriseBench: CoreCraft Agents",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 42.6,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.pdf v1.1 (agentic)",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 56.4,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.pdf v1.1 (agentic)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 54.2,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.pdf v1.1 (agentic)",
+    "model": "Gemini 4 Neon",
+    "effort": "high",
+    "score": 53.4,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.pdf v1.1 (agentic)",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 51.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.pdf v1.1 (agentic)",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 51.6,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.pdf v1.1 (agentic)",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 51.2,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.pdf v1.1 (agentic)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 50.4,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.pdf v1.1 (agentic)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 49.2,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.pdf v1.1 (agentic)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 48.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.pdf v1.1 (agentic)",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 48.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.xlsx",
+    "model": "Gemini 4 Neon",
+    "effort": "high",
+    "score": 43.1,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.xlsx",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 40.9,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.xlsx",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 38.9,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.xlsx",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 32.9,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.xlsx",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 30.3,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.xlsx",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 29.7,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.xlsx",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 29.1,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.xlsx",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 22.9,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.xlsx",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 22.3,
+    "cost_usd": null
+  },
+  {
+    "chart": "GDP.xlsx",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 22.0,
+    "cost_usd": null
+  },
+  {
+    "chart": "HANDBOOK.md v1.1 Agents",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 52.3,
+    "cost_usd": null
+  },
+  {
+    "chart": "HANDBOOK.md v1.1 Agents",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 52.3,
+    "cost_usd": null
+  },
+  {
+    "chart": "HANDBOOK.md v1.1 Agents",
+    "model": "Gemini 4 Neon",
+    "effort": "high",
+    "score": 52.3,
+    "cost_usd": null
+  },
+  {
+    "chart": "HANDBOOK.md v1.1 Agents",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 49.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "HANDBOOK.md v1.1 Agents",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 47.7,
+    "cost_usd": null
+  },
+  {
+    "chart": "HANDBOOK.md v1.1 Agents",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 45.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "HANDBOOK.md v1.1 Agents",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 44.6,
+    "cost_usd": null
+  },
+  {
+    "chart": "HANDBOOK.md v1.1 Agents",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 34.5,
+    "cost_usd": null
+  },
+  {
+    "chart": "HANDBOOK.md v1.1 Agents",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 31.4,
+    "cost_usd": null
+  },
+  {
+    "chart": "HANDBOOK.md v1.1 Agents",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 28.6,
+    "cost_usd": null
+  },
+  {
+    "chart": "Riemann-bench v1.1",
+    "model": "Gemini 4 Neon",
+    "effort": "high",
+    "score": 84.0,
+    "cost_usd": null
+  },
+  {
+    "chart": "Riemann-bench v1.1",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 83.2,
+    "cost_usd": null
+  },
+  {
+    "chart": "Riemann-bench v1.1",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 81.6,
+    "cost_usd": null
+  },
+  {
+    "chart": "Riemann-bench v1.1",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 80.0,
+    "cost_usd": null
+  },
+  {
+    "chart": "Riemann-bench v1.1",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 80.0,
+    "cost_usd": null
+  },
+  {
+    "chart": "Riemann-bench v1.1",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 80.0,
+    "cost_usd": null
+  },
+  {
+    "chart": "Riemann-bench v1.1",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 79.2,
+    "cost_usd": null
+  },
+  {
+    "chart": "Riemann-bench v1.1",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 76.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "Riemann-bench v1.1",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 76.0,
+    "cost_usd": null
+  },
+  {
+    "chart": "sudo L7",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 52.2,
+    "cost_usd": null
+  },
+  {
+    "chart": "sudo L7",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 50.6,
+    "cost_usd": null
+  },
+  {
+    "chart": "sudo L7",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 46.1,
+    "cost_usd": null
+  },
+  {
+    "chart": "sudo L7",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 38.3,
+    "cost_usd": null
+  },
+  {
+    "chart": "sudo L7",
+    "model": "Gemini 4 Neon",
+    "effort": "high",
+    "score": 38.3,
+    "cost_usd": null
+  },
+  {
+    "chart": "sudo L7",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 36.1,
+    "cost_usd": null
+  },
+  {
+    "chart": "sudo L7",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 33.9,
+    "cost_usd": null
+  },
+  {
+    "chart": "sudo L7",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 31.7,
+    "cost_usd": null
+  },
+  {
+    "chart": "sudo L7",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 31.1,
+    "cost_usd": null
+  },
+  {
+    "chart": "sudo L7",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 30.6,
+    "cost_usd": null
+  },
+  {
+    "chart": "Vals Index (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "low",
+    "score": 57.7,
+    "cost_usd": 3.9958
+  },
+  {
+    "chart": "Vals Index (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "high",
+    "score": 62.4,
+    "cost_usd": 8.6347
+  },
+  {
+    "chart": "Vals Index (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 65.2,
+    "cost_usd": 22.1665
+  },
+  {
+    "chart": "Vals Index (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "low",
+    "score": 55.9,
+    "cost_usd": 4.2576
+  },
+  {
+    "chart": "Vals Index (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "high",
+    "score": 68.1,
+    "cost_usd": 10.7634
+  },
+  {
+    "chart": "Vals Index (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 69.6,
+    "cost_usd": 26.4926
+  },
+  {
+    "chart": "Vals Index (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "low",
+    "score": 60.9,
+    "cost_usd": 2.8132
+  },
+  {
+    "chart": "Vals Index (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "medium",
+    "score": 63.9,
+    "cost_usd": 4.3225
+  },
+  {
+    "chart": "Vals Index (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "high",
+    "score": 65.8,
+    "cost_usd": 5.8115
+  },
+  {
+    "chart": "Vals Index (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "xhigh",
+    "score": 67.3,
+    "cost_usd": 7.0032
+  },
+  {
+    "chart": "Vals Index (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 67.7,
+    "cost_usd": 11.1401
+  },
+  {
+    "chart": "Vals Index (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 71.0,
+    "cost_usd": 20.195
+  },
+  {
+    "chart": "Vals Finance Index v1",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 68.32,
+    "cost_usd": 4.875306
+  },
+  {
+    "chart": "Vals Finance Index v1",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 55.64,
+    "cost_usd": 6.482276
+  },
+  {
+    "chart": "Vals Finance Index v1",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 57.31,
+    "cost_usd": 6.225386
+  },
+  {
+    "chart": "Vals Finance Index v1",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 55.81,
+    "cost_usd": 1.364448
+  },
+  {
+    "chart": "Vals Finance Index v1",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 56.66,
+    "cost_usd": 1.768236
+  },
+  {
+    "chart": "Vals Finance Index v1",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 63.58,
+    "cost_usd": 4.938442
+  },
+  {
+    "chart": "Vals Finance Index v1",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 65.34,
+    "cost_usd": 10.879322
+  },
+  {
+    "chart": "Vals Finance Index v1",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 64.53,
+    "cost_usd": 7.402424
+  },
+  {
+    "chart": "Vals Finance Index v1",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 67.05,
+    "cost_usd": 6.462098
+  },
+  {
+    "chart": "Vals Finance Index v1",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 66.14,
+    "cost_usd": 3.799925
+  },
+  {
+    "chart": "Vals Legal Index v1",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 78.36,
+    "cost_usd": 6.095992
+  },
+  {
+    "chart": "Vals Legal Index v1",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 68.39,
+    "cost_usd": 13.944579
+  },
+  {
+    "chart": "Vals Legal Index v1",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 69.68,
+    "cost_usd": 9.353236
+  },
+  {
+    "chart": "Vals Legal Index v1",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 68.72,
+    "cost_usd": 2.748155
+  },
+  {
+    "chart": "Vals Legal Index v1",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 66.68,
+    "cost_usd": 2.804642
+  },
+  {
+    "chart": "Vals Legal Index v1",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 69.18,
+    "cost_usd": 8.877409
+  },
+  {
+    "chart": "Vals Legal Index v1",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 72.37,
+    "cost_usd": 19.94159
+  },
+  {
+    "chart": "Vals Legal Index v1",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 68.02,
+    "cost_usd": 13.368966
+  },
+  {
+    "chart": "Vals Legal Index v1",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 75.93,
+    "cost_usd": 7.199786
+  },
+  {
+    "chart": "Vals Legal Index v1",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 73.63,
+    "cost_usd": 4.47377
+  },
+  {
+    "chart": "Vals Science Index v1 (Vals)",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 62.63,
+    "cost_usd": 8.259574
+  },
+  {
+    "chart": "Vals Science Index v1 (Vals)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 65.09,
+    "cost_usd": 8.027277
+  },
+  {
+    "chart": "Vals Science Index v1 (Vals)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 68.44,
+    "cost_usd": 4.763591
+  },
+  {
+    "chart": "Vals Science Index v1 (Vals)",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 59.63,
+    "cost_usd": 1.364659
+  },
+  {
+    "chart": "Vals Science Index v1 (Vals)",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 57.76,
+    "cost_usd": 1.119045
+  },
+  {
+    "chart": "Vals Science Index v1 (Vals)",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 63.74,
+    "cost_usd": 8.790492
+  },
+  {
+    "chart": "Vals Science Index v1 (Vals)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 58.65,
+    "cost_usd": 8.710319
+  },
+  {
+    "chart": "Vals Science Index v1 (Vals)",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 59.12,
+    "cost_usd": 8.499606
+  },
+  {
+    "chart": "EMB v1.1",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 76.46,
+    "cost_usd": 3.823228
+  },
+  {
+    "chart": "EMB v1.1",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 72.68,
+    "cost_usd": 5.827063
+  },
+  {
+    "chart": "EMB v1.1",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 76.03,
+    "cost_usd": 2.801461
+  },
+  {
+    "chart": "EMB v1.1",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 71.09,
+    "cost_usd": 1.143199
+  },
+  {
+    "chart": "EMB v1.1",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 74.29,
+    "cost_usd": 0.840823
+  },
+  {
+    "chart": "EMB v1.1",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 77.38,
+    "cost_usd": 6.672375
+  },
+  {
+    "chart": "EMB v1.1",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 75.84,
+    "cost_usd": 9.330415
+  },
+  {
+    "chart": "EMB v1.1",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 75.9,
+    "cost_usd": 6.526758
+  },
+  {
+    "chart": "EMB v1.1",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 76.47,
+    "cost_usd": 5.755811
+  },
+  {
+    "chart": "EMB v1.1",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 75.8,
+    "cost_usd": 3.170206
+  },
+  {
+    "chart": "EMB v1.1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "low",
+    "score": 75.6,
+    "cost_usd": 0.7889
+  },
+  {
+    "chart": "EMB v1.1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "high",
+    "score": 75.2,
+    "cost_usd": 2.5753
+  },
+  {
+    "chart": "EMB v1.1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 76.2,
+    "cost_usd": 4.7977
+  },
+  {
+    "chart": "EMB v1.1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "low",
+    "score": 75.3,
+    "cost_usd": 0.5253
+  },
+  {
+    "chart": "EMB v1.1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "high",
+    "score": 77.3,
+    "cost_usd": 1.565
+  },
+  {
+    "chart": "EMB v1.1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 78.6,
+    "cost_usd": 6.8041
+  },
+  {
+    "chart": "EMB v1.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "low",
+    "score": 77.5,
+    "cost_usd": 0.4637
+  },
+  {
+    "chart": "EMB v1.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "medium",
+    "score": 78.4,
+    "cost_usd": 0.6401
+  },
+  {
+    "chart": "EMB v1.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "high",
+    "score": 78.1,
+    "cost_usd": 1.2155
+  },
+  {
+    "chart": "EMB v1.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "xhigh",
+    "score": 79.4,
+    "cost_usd": 1.8949
+  },
+  {
+    "chart": "EMB v1.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 79.8,
+    "cost_usd": 2.4905
+  },
+  {
+    "chart": "EMB v1.1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "low",
+    "score": 77.1,
+    "cost_usd": 2.2369
+  },
+  {
+    "chart": "EMB v1.1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 79.3,
+    "cost_usd": 6.4366
+  },
+  {
+    "chart": "EMB v1.1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "xhigh",
+    "score": 79.6,
+    "cost_usd": 12.3167
+  },
+  {
+    "chart": "EMB v1.1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 79.3,
+    "cost_usd": 25.2123
+  },
+  {
+    "chart": "Finance Agent v2.1",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 68.56,
+    "cost_usd": 5.854933
+  },
+  {
+    "chart": "Finance Agent v2.1",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 60.43,
+    "cost_usd": 7.823464
+  },
+  {
+    "chart": "Finance Agent v2.1",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 60.75,
+    "cost_usd": 7.976553
+  },
+  {
+    "chart": "Finance Agent v2.1",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 61.82,
+    "cost_usd": 1.626543
+  },
+  {
+    "chart": "Finance Agent v2.1",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 58.91,
+    "cost_usd": 2.062252
+  },
+  {
+    "chart": "Finance Agent v2.1",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 69.47,
+    "cost_usd": 4.833915
+  },
+  {
+    "chart": "Finance Agent v2.1",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 67.85,
+    "cost_usd": 8.908721
+  },
+  {
+    "chart": "Finance Agent v2.1",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 67.28,
+    "cost_usd": 6.950246
+  },
+  {
+    "chart": "Finance Agent v2.1",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 67.16,
+    "cost_usd": 7.290456
+  },
+  {
+    "chart": "Finance Agent v2.1",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 65.12,
+    "cost_usd": 4.358646
+  },
+  {
+    "chart": "Finance Agent v2.1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "low",
+    "score": 54.9,
+    "cost_usd": 3.774
+  },
+  {
+    "chart": "Finance Agent v2.1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "high",
+    "score": 57.3,
+    "cost_usd": 5.6301
+  },
+  {
+    "chart": "Finance Agent v2.1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 57.6,
+    "cost_usd": 7.9706
+  },
+  {
+    "chart": "Finance Agent v2.1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "low",
+    "score": 45.9,
+    "cost_usd": 0.8546
+  },
+  {
+    "chart": "Finance Agent v2.1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "high",
+    "score": 60.8,
+    "cost_usd": 1.9315
+  },
+  {
+    "chart": "Finance Agent v2.1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 61.8,
+    "cost_usd": 9.0082
+  },
+  {
+    "chart": "Finance Agent v2.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "low",
+    "score": 55.0,
+    "cost_usd": 1.8949
+  },
+  {
+    "chart": "Finance Agent v2.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "medium",
+    "score": 57.0,
+    "cost_usd": 2.625
+  },
+  {
+    "chart": "Finance Agent v2.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "high",
+    "score": 56.0,
+    "cost_usd": 4.0797
+  },
+  {
+    "chart": "Finance Agent v2.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "xhigh",
+    "score": 55.1,
+    "cost_usd": 5.1643
+  },
+  {
+    "chart": "Finance Agent v2.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 56.3,
+    "cost_usd": 7.8141
+  },
+  {
+    "chart": "Finance Agent v2.1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "low",
+    "score": 62.1,
+    "cost_usd": 3.1938
+  },
+  {
+    "chart": "Finance Agent v2.1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 63.7,
+    "cost_usd": 4.9927
+  },
+  {
+    "chart": "Finance Agent v2.1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "xhigh",
+    "score": 64.0,
+    "cost_usd": 7.2166
+  },
+  {
+    "chart": "Finance Agent v2.1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 63.6,
+    "cost_usd": 18.5152
+  },
+  {
+    "chart": "Legal Research Bench v1",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 56.25,
+    "cost_usd": 7.366111
+  },
+  {
+    "chart": "Legal Research Bench v1",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 39.42,
+    "cost_usd": 10.577143
+  },
+  {
+    "chart": "Legal Research Bench v1",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 42.79,
+    "cost_usd": 12.836241
+  },
+  {
+    "chart": "Legal Research Bench v1",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 38.46,
+    "cost_usd": 3.384561
+  },
+  {
+    "chart": "Legal Research Bench v1",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 37.02,
+    "cost_usd": 3.766098
+  },
+  {
+    "chart": "Legal Research Bench v1",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 46.15,
+    "cost_usd": 3.956441
+  },
+  {
+    "chart": "Legal Research Bench v1",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 50.48,
+    "cost_usd": 23.613691
+  },
+  {
+    "chart": "Legal Research Bench v1",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 48.08,
+    "cost_usd": 13.663179
+  },
+  {
+    "chart": "Legal Research Bench v1",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 55.77,
+    "cost_usd": 8.743524
+  },
+  {
+    "chart": "Legal Research Bench v1",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 53.85,
+    "cost_usd": 6.268559
+  },
+  {
+    "chart": "Legal Research Bench v1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "low",
+    "score": 36.5,
+    "cost_usd": 1.5854
+  },
+  {
+    "chart": "Legal Research Bench v1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "high",
+    "score": 38.5,
+    "cost_usd": 5.1945
+  },
+  {
+    "chart": "Legal Research Bench v1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 49.0,
+    "cost_usd": 11.2728
+  },
+  {
+    "chart": "Legal Research Bench v1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "low",
+    "score": 27.9,
+    "cost_usd": 0.107
+  },
+  {
+    "chart": "Legal Research Bench v1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "high",
+    "score": 48.1,
+    "cost_usd": 0.5246
+  },
+  {
+    "chart": "Legal Research Bench v1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 55.8,
+    "cost_usd": 22.8317
+  },
+  {
+    "chart": "Legal Research Bench v1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "low",
+    "score": 28.8,
+    "cost_usd": 0.3606
+  },
+  {
+    "chart": "Legal Research Bench v1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "medium",
+    "score": 37.5,
+    "cost_usd": 1.2028
+  },
+  {
+    "chart": "Legal Research Bench v1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "high",
+    "score": 36.5,
+    "cost_usd": 4.2321
+  },
+  {
+    "chart": "Legal Research Bench v1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "xhigh",
+    "score": 46.2,
+    "cost_usd": 6.6147
+  },
+  {
+    "chart": "Legal Research Bench v1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 47.1,
+    "cost_usd": 12.5194
+  },
+  {
+    "chart": "Legal Research Bench v1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "low",
+    "score": 44.2,
+    "cost_usd": 0.591
+  },
+  {
+    "chart": "Legal Research Bench v1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 51.0,
+    "cost_usd": 3.7882
+  },
+  {
+    "chart": "Legal Research Bench v1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "xhigh",
+    "score": 50.0,
+    "cost_usd": 9.3144
+  },
+  {
+    "chart": "MysteryMechanism v1",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 45.05,
+    "cost_usd": 6.630049
+  },
+  {
+    "chart": "MysteryMechanism v1",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 53.15,
+    "cost_usd": 1.559704
+  },
+  {
+    "chart": "MysteryMechanism v1",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 53.15,
+    "cost_usd": 1.720342
+  },
+  {
+    "chart": "MysteryMechanism v1",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 46.4,
+    "cost_usd": 0.284881
+  },
+  {
+    "chart": "MysteryMechanism v1",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 36.94,
+    "cost_usd": 0.486648
+  },
+  {
+    "chart": "MysteryMechanism v1",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 51.8,
+    "cost_usd": 1.552812
+  },
+  {
+    "chart": "MysteryMechanism v1",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 49.55,
+    "cost_usd": 4.061695
+  },
+  {
+    "chart": "MysteryMechanism v1",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 49.1,
+    "cost_usd": 2.984657
+  },
+  {
+    "chart": "Tax Agent Bench v1",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 54.89,
+    "cost_usd": 4.947756
+  },
+  {
+    "chart": "Tax Agent Bench v1",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 20.72,
+    "cost_usd": 5.7963
+  },
+  {
+    "chart": "Tax Agent Bench v1",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 21.84,
+    "cost_usd": 7.898144
+  },
+  {
+    "chart": "Tax Agent Bench v1",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 21.75,
+    "cost_usd": 1.323601
+  },
+  {
+    "chart": "Tax Agent Bench v1",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 24.84,
+    "cost_usd": 2.401632
+  },
+  {
+    "chart": "Tax Agent Bench v1",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 32.09,
+    "cost_usd": 3.309035
+  },
+  {
+    "chart": "Tax Agent Bench v1",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 44.54,
+    "cost_usd": 14.39883
+  },
+  {
+    "chart": "Tax Agent Bench v1",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 41.96,
+    "cost_usd": 8.730268
+  },
+  {
+    "chart": "Tax Agent Bench v1",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 51.79,
+    "cost_usd": 6.340026
+  },
+  {
+    "chart": "Tax Agent Bench v1",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 52.31,
+    "cost_usd": 3.870924
+  },
+  {
+    "chart": "Tax Agent Bench v1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "low",
+    "score": 20.8,
+    "cost_usd": 1.2088
+  },
+  {
+    "chart": "Tax Agent Bench v1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "high",
+    "score": 27.1,
+    "cost_usd": 2.8215
+  },
+  {
+    "chart": "Tax Agent Bench v1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 26.0,
+    "cost_usd": 5.5485
+  },
+  {
+    "chart": "Tax Agent Bench v1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "low",
+    "score": 20.9,
+    "cost_usd": 0.0891
+  },
+  {
+    "chart": "Tax Agent Bench v1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "high",
+    "score": 31.2,
+    "cost_usd": 0.9961
+  },
+  {
+    "chart": "Tax Agent Bench v1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 43.7,
+    "cost_usd": 14.5758
+  },
+  {
+    "chart": "Tax Agent Bench v1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "low",
+    "score": 13.1,
+    "cost_usd": 0.5338
+  },
+  {
+    "chart": "Tax Agent Bench v1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "medium",
+    "score": 21.1,
+    "cost_usd": 1.0428
+  },
+  {
+    "chart": "Tax Agent Bench v1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "high",
+    "score": 24.3,
+    "cost_usd": 2.628
+  },
+  {
+    "chart": "Tax Agent Bench v1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "xhigh",
+    "score": 26.1,
+    "cost_usd": 3.9054
+  },
+  {
+    "chart": "Tax Agent Bench v1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 25.2,
+    "cost_usd": 8.0274
+  },
+  {
+    "chart": "Tax Agent Bench v1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "low",
+    "score": 26.8,
+    "cost_usd": 1.0476
+  },
+  {
+    "chart": "Tax Agent Bench v1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 35.4,
+    "cost_usd": 3.4024
+  },
+  {
+    "chart": "Tax Agent Bench v1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "xhigh",
+    "score": 40.6,
+    "cost_usd": 6.753
+  },
+  {
+    "chart": "Tax Agent Bench v1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 39.6,
+    "cost_usd": 21.1089
+  },
+  {
+    "chart": "Vibe Code Bench v1.1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "low",
+    "score": 83.5,
+    "cost_usd": 8.5469
+  },
+  {
+    "chart": "Vibe Code Bench v1.1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "high",
+    "score": 85.5,
+    "cost_usd": 16.7734
+  },
+  {
+    "chart": "Vibe Code Bench v1.1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 91.1,
+    "cost_usd": 33.986
+  },
+  {
+    "chart": "Vibe Code Bench v1.1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "low",
+    "score": 85.6,
+    "cost_usd": 2.3601
+  },
+  {
+    "chart": "Vibe Code Bench v1.1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "high",
+    "score": 92.3,
+    "cost_usd": 9.1402
+  },
+  {
+    "chart": "Vibe Code Bench v1.1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 91.2,
+    "cost_usd": 36.4185
+  },
+  {
+    "chart": "Vibe Code Bench v1.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "low",
+    "score": 79.6,
+    "cost_usd": 1.2979
+  },
+  {
+    "chart": "Vibe Code Bench v1.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "medium",
+    "score": 81.7,
+    "cost_usd": 3.2162
+  },
+  {
+    "chart": "Vibe Code Bench v1.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "high",
+    "score": 91.4,
+    "cost_usd": 4.898
+  },
+  {
+    "chart": "Vibe Code Bench v1.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "xhigh",
+    "score": 93.8,
+    "cost_usd": 5.8324
+  },
+  {
+    "chart": "Vibe Code Bench v1.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 93.6,
+    "cost_usd": 7.7254
+  },
+  {
+    "chart": "Vibe Code Bench v1.1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "low",
+    "score": 93.9,
+    "cost_usd": 6.8574
+  },
+  {
+    "chart": "Vibe Code Bench v1.1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 94.9,
+    "cost_usd": 21.3374
+  },
+  {
+    "chart": "BioMysteryBench v1",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 80.0,
+    "cost_usd": 4.40725
+  },
+  {
+    "chart": "BioMysteryBench v1",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 79.26,
+    "cost_usd": 1.719326
+  },
+  {
+    "chart": "BioMysteryBench v1",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 80.74,
+    "cost_usd": 1.488087
+  },
+  {
+    "chart": "BioMysteryBench v1",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 79.63,
+    "cost_usd": 0.372147
+  },
+  {
+    "chart": "BioMysteryBench v1",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 77.78,
+    "cost_usd": 0.338256
+  },
+  {
+    "chart": "BioMysteryBench v1",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 83.7,
+    "cost_usd": 1.681583
+  },
+  {
+    "chart": "BioMysteryBench v1",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 79.26,
+    "cost_usd": 2.947297
+  },
+  {
+    "chart": "BioMysteryBench v1",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 81.11,
+    "cost_usd": 2.945242
+  },
+  {
+    "chart": "HLAB-Vals v1.1",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 19.58,
+    "cost_usd": 5.97411
+  },
+  {
+    "chart": "HLAB-Vals v1.1",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 7.08,
+    "cost_usd": 25.460295
+  },
+  {
+    "chart": "HLAB-Vals v1.1",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 16.25,
+    "cost_usd": 7.325324
+  },
+  {
+    "chart": "HLAB-Vals v1.1",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 6.25,
+    "cost_usd": 3.536302
+  },
+  {
+    "chart": "HLAB-Vals v1.1",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 12.08,
+    "cost_usd": 2.246196
+  },
+  {
+    "chart": "HLAB-Vals v1.1",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 5.0,
+    "cost_usd": 19.366751
+  },
+  {
+    "chart": "HLAB-Vals v1.1",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 9.17,
+    "cost_usd": 21.812248
+  },
+  {
+    "chart": "HLAB-Vals v1.1",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 10.42,
+    "cost_usd": 17.713451
+  },
+  {
+    "chart": "HLAB-Vals v1.1",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 17.5,
+    "cost_usd": 6.515809
+  },
+  {
+    "chart": "HLAB-Vals v1.1",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 11.25,
+    "cost_usd": 3.281826
+  },
+  {
+    "chart": "HLAB-Vals v1.1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "low",
+    "score": 1.7,
+    "cost_usd": 4.1366
+  },
+  {
+    "chart": "HLAB-Vals v1.1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "high",
+    "score": 5.0,
+    "cost_usd": 11.5851
+  },
+  {
+    "chart": "HLAB-Vals v1.1 (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 5.0,
+    "cost_usd": 23.7968
+  },
+  {
+    "chart": "HLAB-Vals v1.1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "low",
+    "score": 5.0,
+    "cost_usd": 4.0312
+  },
+  {
+    "chart": "HLAB-Vals v1.1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "high",
+    "score": 7.5,
+    "cost_usd": 8.1316
+  },
+  {
+    "chart": "HLAB-Vals v1.1 (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 7.5,
+    "cost_usd": 22.2211
+  },
+  {
+    "chart": "HLAB-Vals v1.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "low",
+    "score": 0.8,
+    "cost_usd": 1.1701
+  },
+  {
+    "chart": "HLAB-Vals v1.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "medium",
+    "score": 10.0,
+    "cost_usd": 2.3378
+  },
+  {
+    "chart": "HLAB-Vals v1.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "high",
+    "score": 10.8,
+    "cost_usd": 3.9056
+  },
+  {
+    "chart": "HLAB-Vals v1.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "xhigh",
+    "score": 16.7,
+    "cost_usd": 4.7685
+  },
+  {
+    "chart": "HLAB-Vals v1.1 (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 12.5,
+    "cost_usd": 7.3127
+  },
+  {
+    "chart": "HLAB-Vals v1.1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "low",
+    "score": 4.2,
+    "cost_usd": 11.0831
+  },
+  {
+    "chart": "HLAB-Vals v1.1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 4.2,
+    "cost_usd": 19.5529
+  },
+  {
+    "chart": "HLAB-Vals v1.1 (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 0.0,
+    "cost_usd": 44.9239
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals)",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 61.62,
+    "cost_usd": 6.421364
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 59.6,
+    "cost_usd": 9.584259
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 63.13,
+    "cost_usd": 4.690668
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals)",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 55.05,
+    "cost_usd": 1.72496
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals)",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 60.61,
+    "cost_usd": 1.127386
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals)",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 65.15,
+    "cost_usd": 14.564414
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 65.15,
+    "cost_usd": 12.042479
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals)",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 64.14,
+    "cost_usd": 10.752753
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals)",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 63.13,
+    "cost_usd": 7.452059
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 54.04,
+    "cost_usd": 7.562172
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals) (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "low",
+    "score": 44.4,
+    "cost_usd": 7.4889
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals) (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "high",
+    "score": 58.6,
+    "cost_usd": 5.8733
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals) (Vals reasoning study)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 56.6,
+    "cost_usd": 8.9756
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals) (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "low",
+    "score": 40.4,
+    "cost_usd": 2.5888
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals) (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "high",
+    "score": 67.7,
+    "cost_usd": 4.6958
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals) (Vals reasoning study)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 68.7,
+    "cost_usd": 12.5954
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals) (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "low",
+    "score": 49.5,
+    "cost_usd": 1.476
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals) (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "medium",
+    "score": 54.5,
+    "cost_usd": 1.3469
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals) (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "high",
+    "score": 61.6,
+    "cost_usd": 1.9835
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals) (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "xhigh",
+    "score": 64.6,
+    "cost_usd": 2.331
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals) (Vals reasoning study)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 61.6,
+    "cost_usd": 3.7165
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals) (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "low",
+    "score": 64.6,
+    "cost_usd": 5.1695
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals) (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 71.7,
+    "cost_usd": 13.637
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals) (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "xhigh",
+    "score": 66.7,
+    "cost_usd": 19.1157
+  },
+  {
+    "chart": "Terminal-Bench 4.0 (Vals) (Vals reasoning study)",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 59.6,
+    "cost_usd": 29.4992
+  },
+  {
+    "chart": "Terminal-Bench Science 0.1 (Vals)",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 62.86,
+    "cost_usd": 13.741423
+  },
+  {
+    "chart": "Terminal-Bench Science 0.1 (Vals)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 62.86,
+    "cost_usd": 20.802802
+  },
+  {
+    "chart": "Terminal-Bench Science 0.1 (Vals)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 71.43,
+    "cost_usd": 11.082343
+  },
+  {
+    "chart": "Terminal-Bench Science 0.1 (Vals)",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 52.86,
+    "cost_usd": 3.436948
+  },
+  {
+    "chart": "Terminal-Bench Science 0.1 (Vals)",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 58.57,
+    "cost_usd": 2.53223
+  },
+  {
+    "chart": "Terminal-Bench Science 0.1 (Vals)",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 55.71,
+    "cost_usd": 23.13708
+  },
+  {
+    "chart": "Terminal-Bench Science 0.1 (Vals)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 47.14,
+    "cost_usd": 19.121966
+  },
+  {
+    "chart": "Terminal-Bench Science 0.1 (Vals)",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 47.14,
+    "cost_usd": 19.568918
+  },
+  {
+    "chart": "Terminal-Bench 4.1 (provider agents)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 65.76,
+    "cost_usd": 14.298939393939392
+  },
+  {
+    "chart": "Terminal-Bench 4.1 (provider agents)",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 65.76,
+    "cost_usd": 49.9780606060606
+  },
+  {
+    "chart": "Terminal-Bench 4.1 (provider agents)",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 64.55,
+    "cost_usd": 4.115909090909091
+  },
+  {
+    "chart": "Terminal-Bench 4.1 (provider agents)",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 63.94,
+    "cost_usd": 22.223151515151518
+  },
+  {
+    "chart": "Terminal-Bench 4.1 (provider agents)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 62.12,
+    "cost_usd": 4.270121212121213
+  },
+  {
+    "chart": "Terminal-Bench 4.1 (provider agents)",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 61.52,
+    "cost_usd": 1.0580606060606061
+  },
+  {
+    "chart": "Terminal-Bench 4.1 (provider agents)",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 60.91,
+    "cost_usd": 1.921939393939394
+  },
+  {
+    "chart": "Terminal-Bench 4.1 (provider agents)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 60.3,
+    "cost_usd": 9.900545454545455
+  },
+  {
+    "chart": "Terminal-Bench 4.1 (provider agents)",
+    "model": "GPT-6 Astra",
+    "effort": "high",
+    "score": 60.0,
+    "cost_usd": 6.8770303030303035
+  },
+  {
+    "chart": "Terminal-Bench 4.1 (provider agents)",
+    "model": "GPT-6 Astra",
+    "effort": "xhigh",
+    "score": 59.7,
+    "cost_usd": 7.122757575757577
+  },
+  {
+    "chart": "Terminal-Bench 4.1 (provider agents)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "high",
+    "score": 56.36,
+    "cost_usd": 2.3764848484848486
+  },
+  {
+    "chart": "Terminal-Bench 4.1 (provider agents)",
+    "model": "GPT-6 Astra",
+    "effort": "medium",
+    "score": 55.15,
+    "cost_usd": 5.802424242424243
+  },
+  {
+    "chart": "Terminal-Bench 4.1 (provider agents)",
+    "model": "GPT-6 Astra",
+    "effort": "low",
+    "score": 50.91,
+    "cost_usd": 4.719090909090909
+  },
+  {
+    "chart": "Terminal-Bench 4.1 (provider agents)",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 65.2,
+    "cost_usd": null
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Fable 5.2",
+    "effort": "low",
+    "score": 35.26,
+    "cost_usd": 2.623
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Fable 5.2",
+    "effort": "medium",
+    "score": 38.78,
+    "cost_usd": 3.103
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 46.24,
+    "cost_usd": 8.402
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Fable 5.2",
+    "effort": "xhigh",
+    "score": 50.18,
+    "cost_usd": 17.734
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 48.23,
+    "cost_usd": 55.868
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6 Astra",
+    "effort": "low",
+    "score": 31.11,
+    "cost_usd": 2.437
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6 Astra",
+    "effort": "medium",
+    "score": 37.29,
+    "cost_usd": 3.493
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6 Astra",
+    "effort": "high",
+    "score": 38.83,
+    "cost_usd": 4.277
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6 Astra",
+    "effort": "xhigh",
+    "score": 41.69,
+    "cost_usd": 4.539
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 44.02,
+    "cost_usd": 6.676
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6.1 Sol",
+    "effort": "low",
+    "score": 25.74,
+    "cost_usd": 0.341
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6.1 Sol",
+    "effort": "medium",
+    "score": 30.27,
+    "cost_usd": 0.492
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6.1 Sol",
+    "effort": "high",
+    "score": 35.09,
+    "cost_usd": 0.647
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6.1 Sol",
+    "effort": "xhigh",
+    "score": 33.03,
+    "cost_usd": 0.695
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6.1 Sol",
+    "effort": "max",
+    "score": 39.65,
+    "cost_usd": 1.029
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6.2 Astra",
+    "effort": "low",
+    "score": 38.07,
+    "cost_usd": 1.415
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6.2 Astra",
+    "effort": "medium",
+    "score": 42.2,
+    "cost_usd": 2.469
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6.2 Astra",
+    "effort": "high",
+    "score": 43.56,
+    "cost_usd": 3.952
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6.2 Astra",
+    "effort": "xhigh",
+    "score": 44.12,
+    "cost_usd": 4.289
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 44.19,
+    "cost_usd": 5.966
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6.2 Sol",
+    "effort": "low",
+    "score": 33.14,
+    "cost_usd": 0.402
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6.2 Sol",
+    "effort": "medium",
+    "score": 38.29,
+    "cost_usd": 0.685
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6.2 Sol",
+    "effort": "high",
+    "score": 39.72,
+    "cost_usd": 0.876
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6.2 Sol",
+    "effort": "xhigh",
+    "score": 39.78,
+    "cost_usd": 0.98
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 43.76,
+    "cost_usd": 1.287
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Gemini 4 Carbon",
+    "effort": "low",
+    "score": 31.53,
+    "cost_usd": 7.723
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Gemini 4 Carbon",
+    "effort": "medium",
+    "score": 40.9,
+    "cost_usd": 4.486
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 42.62,
+    "cost_usd": 5.057
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "low",
+    "score": 10.52,
+    "cost_usd": 0.353
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "medium",
+    "score": 28.21,
+    "cost_usd": 0.901
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "high",
+    "score": 38.23,
+    "cost_usd": 2.404
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 38.87,
+    "cost_usd": 4.953
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Gemini 4 Neon",
+    "effort": "low",
+    "score": 27.41,
+    "cost_usd": 0.959
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Gemini 4 Neon",
+    "effort": "medium",
+    "score": 38.16,
+    "cost_usd": 2.174
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Gemini 4 Neon",
+    "effort": "high",
+    "score": 46.24,
+    "cost_usd": 4.382
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 44.83,
+    "cost_usd": 7.666
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Opus 5.5",
+    "effort": "low",
+    "score": 14.85,
+    "cost_usd": 0.746
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Opus 5.5",
+    "effort": "medium",
+    "score": 31.43,
+    "cost_usd": 1.699
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Opus 5.5",
+    "effort": "high",
+    "score": 36.27,
+    "cost_usd": 2.423
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Opus 5.5",
+    "effort": "xhigh",
+    "score": 44.72,
+    "cost_usd": 5.184
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 47.34,
+    "cost_usd": 12.821
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Sonnet 5.5",
+    "effort": "low",
+    "score": 9.66,
+    "cost_usd": 0.369
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Sonnet 5.5",
+    "effort": "medium",
+    "score": 14.96,
+    "cost_usd": 0.482
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Sonnet 5.5",
+    "effort": "high",
+    "score": 22.95,
+    "cost_usd": 1.066
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Sonnet 5.5",
+    "effort": "xhigh",
+    "score": 36.5,
+    "cost_usd": 3.315
+  },
+  {
+    "chart": "FrontierCode 2.0 (Cognition)",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 42.24,
+    "cost_usd": 19.941
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 56.32,
+    "cost_usd": 1.69
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Gemini 4 Neon",
+    "effort": "high",
+    "score": 54.34,
+    "cost_usd": 0.88
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 53.88,
+    "cost_usd": 2.12
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Gemini 4 Neon",
+    "effort": "medium",
+    "score": 53.27,
+    "cost_usd": 0.58
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Gemini 4 Carbon",
+    "effort": "medium",
+    "score": 52.97,
+    "cost_usd": 1.65
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 52.36,
+    "cost_usd": 0.83
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 51.45,
+    "cost_usd": 4.64
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "high",
+    "score": 51.14,
+    "cost_usd": 0.82
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Gemini 4 Neon",
+    "effort": "low",
+    "score": 49.62,
+    "cost_usd": 0.4
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "GPT-6.2 Astra",
+    "effort": "high",
+    "score": 47.95,
+    "cost_usd": 0.67
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Fable 5.2",
+    "effort": "xhigh",
+    "score": 47.95,
+    "cost_usd": 2.29
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "GPT-6.2 Astra",
+    "effort": "xhigh",
+    "score": 47.18,
+    "cost_usd": 0.7
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "medium",
+    "score": 46.73,
+    "cost_usd": 0.41
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Sonnet 5.5",
+    "effort": "max",
+    "score": 44.75,
+    "cost_usd": 1.14
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 44.29,
+    "cost_usd": 1.69
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "GPT-6.2 Astra",
+    "effort": "medium",
+    "score": 43.84,
+    "cost_usd": 0.55
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 42.47,
+    "cost_usd": 1.44
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 41.4,
+    "cost_usd": 1.73
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "GPT-6.2 Sol",
+    "effort": "high",
+    "score": 41.25,
+    "cost_usd": 0.21
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 41.1,
+    "cost_usd": 0.27
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "GPT-6.2 Sol",
+    "effort": "xhigh",
+    "score": 40.64,
+    "cost_usd": 0.23
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "GPT-6.2 Sol",
+    "effort": "medium",
+    "score": 40.18,
+    "cost_usd": 0.18
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Fable 5.2",
+    "effort": "medium",
+    "score": 40.18,
+    "cost_usd": 1.35
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Fable 5.2",
+    "effort": "low",
+    "score": 39.73,
+    "cost_usd": 1.3
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "GPT-6 Astra",
+    "effort": "xhigh",
+    "score": 38.96,
+    "cost_usd": 1.5
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "GPT-6.2 Astra",
+    "effort": "low",
+    "score": 37.14,
+    "cost_usd": 0.44
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "GPT-6 Astra",
+    "effort": "high",
+    "score": 37.14,
+    "cost_usd": 1.44
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Sonnet 5.5",
+    "effort": "xhigh",
+    "score": 36.83,
+    "cost_usd": 0.48
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Opus 5.5",
+    "effort": "xhigh",
+    "score": 35.77,
+    "cost_usd": 0.89
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "GPT-6 Astra",
+    "effort": "medium",
+    "score": 34.09,
+    "cost_usd": 1.27
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Opus 5.5",
+    "effort": "high",
+    "score": 33.03,
+    "cost_usd": 0.71
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Gemini 4 Carbon",
+    "effort": "low",
+    "score": 31.51,
+    "cost_usd": 1.02
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "GPT-6.2 Sol",
+    "effort": "low",
+    "score": 31.2,
+    "cost_usd": 0.13
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "low",
+    "score": 30.59,
+    "cost_usd": 0.18
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "GPT-6 Astra",
+    "effort": "low",
+    "score": 30.29,
+    "cost_usd": 1.08
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Opus 5.5",
+    "effort": "medium",
+    "score": 29.53,
+    "cost_usd": 0.65
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Sonnet 5.5",
+    "effort": "high",
+    "score": 29.38,
+    "cost_usd": 0.36
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Opus 5.5",
+    "effort": "low",
+    "score": 24.2,
+    "cost_usd": 0.51
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Sonnet 5.5",
+    "effort": "medium",
+    "score": 23.29,
+    "cost_usd": 0.31
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (Zapier)",
+    "model": "Sonnet 5.5",
+    "effort": "low",
+    "score": 18.26,
+    "cost_usd": 0.28
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "GPT-6.2 Astra",
+    "effort": "xhigh",
+    "score": 78.33,
+    "cost_usd": 3.049262295081967
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "GPT-6.2 Astra",
+    "effort": "max",
+    "score": 77.61,
+    "cost_usd": 4.6817213114754095
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 77.41,
+    "cost_usd": 4.599508196721311
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "GPT-6.2 Astra",
+    "effort": "high",
+    "score": 75.96,
+    "cost_usd": 2.1727049180327866
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 73.14,
+    "cost_usd": 8.992295081967212
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "GPT-6.2 Sol",
+    "effort": "max",
+    "score": 73.04,
+    "cost_usd": 1.389016393442623
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "Fable 5.2",
+    "effort": "max",
+    "score": 72.79,
+    "cost_usd": 60.050353982300884
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "GPT-6.2 Sol",
+    "effort": "xhigh",
+    "score": 72.48,
+    "cost_usd": 0.9124590163934425
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "GPT-6.2 Astra",
+    "effort": "medium",
+    "score": 72.06,
+    "cost_usd": 1.1428688524590165
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "GPT-6.2 Sol",
+    "effort": "high",
+    "score": 72.04,
+    "cost_usd": 0.7328688524590163
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "GPT-6 Astra",
+    "effort": "xhigh",
+    "score": 71.68,
+    "cost_usd": 7.563524590163935
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 71.6,
+    "cost_usd": 17.568934426229507
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "xhigh",
+    "score": 71.4,
+    "cost_usd": 4.302377049180328
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "GPT-6 Astra",
+    "effort": "medium",
+    "score": 71.16,
+    "cost_usd": 6.208114754098361
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "GPT-6 Astra",
+    "effort": "high",
+    "score": 71.04,
+    "cost_usd": 6.872786885245902
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "GPT-6.2 Sol",
+    "effort": "medium",
+    "score": 70.26,
+    "cost_usd": 0.6090163934426229
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "high",
+    "score": 68.89,
+    "cost_usd": 1.9671311475409836
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "GPT-6 Astra",
+    "effort": "low",
+    "score": 67.87,
+    "cost_usd": 5.397540983606557
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "GPT-6.2 Sol",
+    "effort": "low",
+    "score": 66.65,
+    "cost_usd": 0.2855737704918033
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "GPT-6.2 Astra",
+    "effort": "low",
+    "score": 65.77,
+    "cost_usd": 0.5209836065573771
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "medium",
+    "score": 63.75,
+    "cost_usd": 0.8372950819672131
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "low",
+    "score": 51.68,
+    "cost_usd": 0.3628688524590164
+  },
+  {
+    "chart": "Agents' Last Exam v1.1 (public + Google)",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 75.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "Terminal-Bench Science 0.1 (public board)",
+    "model": "GPT-6 Astra",
+    "effort": "max",
+    "score": 68.1,
+    "cost_usd": 23.797434195238093
+  },
+  {
+    "chart": "Terminal-Bench Science 0.1 (public board)",
+    "model": "Opus 5.5",
+    "effort": "max",
+    "score": 63.33,
+    "cost_usd": 23.21075080857143
+  },
+  {
+    "chart": "CWE-bench v2 (250 tasks)",
+    "model": "Fable 5.2",
+    "effort": "high",
+    "score": 75.0,
+    "cost_usd": 7.85
+  },
+  {
+    "chart": "CWE-bench v2 (250 tasks)",
+    "model": "Gemini 4 Neon",
+    "effort": "high",
+    "score": 70.7,
+    "cost_usd": 6.52
+  },
+  {
+    "chart": "CWE-bench v2 (250 tasks)",
+    "model": "Gemini 4 Hydrogen",
+    "effort": "high",
+    "score": 68.1,
+    "cost_usd": 2.63
+  },
+  {
+    "chart": "CWE-bench v2 (250 tasks)",
+    "model": "Gemini 4 Carbon",
+    "effort": "high",
+    "score": 67.3,
+    "cost_usd": 4.27
+  },
+  {
+    "chart": "CWE-bench v2 (250 tasks)",
+    "model": "Opus 5.5",
+    "effort": "high",
+    "score": 67.1,
+    "cost_usd": 1.85
+  },
+  {
+    "chart": "CWE-bench v2 (250 tasks)",
+    "model": "GPT-6.2 Astra",
+    "effort": "high",
+    "score": 66.8,
+    "cost_usd": 4.32
+  },
+  {
+    "chart": "CWE-bench v2 (250 tasks)",
+    "model": "GPT-6.2 Sol",
+    "effort": "high",
+    "score": 66.0,
+    "cost_usd": 0.81
+  },
+  {
+    "chart": "CWE-bench v2 (250 tasks)",
+    "model": "GPT-6 Astra",
+    "effort": "high",
+    "score": 64.2,
+    "cost_usd": 3.87
+  },
+  {
+    "chart": "CWE-bench v2 (250 tasks)",
+    "model": "Sonnet 5.5",
+    "effort": "high",
+    "score": 61.4,
+    "cost_usd": 0.58
+  },
+  {
+    "chart": "SEC-bench Pro 260505 (183 tasks)",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 90.5,
+    "cost_usd": null
+  },
+  {
+    "chart": "SEC-bench Pro 260505 (183 tasks)",
+    "model": "GPT-6.2 Sol",
+    "effort": "not stated",
+    "score": 88.34,
+    "cost_usd": null
+  },
+  {
+    "chart": "SEC-bench Pro 260505 (183 tasks)",
+    "model": "Gemini 4 Carbon",
+    "effort": "not stated",
+    "score": 88.2,
+    "cost_usd": null
+  },
+  {
+    "chart": "SEC-bench Pro 260505 (183 tasks)",
+    "model": "GPT-6.2 Astra",
+    "effort": "not stated",
+    "score": 86.75,
+    "cost_usd": null
+  },
+  {
+    "chart": "SEC-bench Pro 260505 (183 tasks)",
+    "model": "GPT-6 Astra",
+    "effort": "not stated",
+    "score": 85.4,
+    "cost_usd": null
+  },
+  {
+    "chart": "SEC-bench Pro 260505 (183 tasks)",
+    "model": "GPT-6.1 Sol",
+    "effort": "not stated",
+    "score": 78.8,
+    "cost_usd": null
+  },
+  {
+    "chart": "WebExploitBench v1.2 (277 vulnerabilities)",
+    "model": "Gemini 4 Neon",
+    "effort": "not stated",
+    "score": 51.26,
+    "cost_usd": null
+  },
+  {
+    "chart": "WebExploitBench v1.2 (277 vulnerabilities)",
+    "model": "Gemini 4 Carbon",
+    "effort": "not stated",
+    "score": 44.65,
+    "cost_usd": null
+  },
+  {
+    "chart": "WebExploitBench v1.2 (277 vulnerabilities)",
+    "model": "GPT-6 Astra",
+    "effort": "not stated",
+    "score": 38.99,
+    "cost_usd": null
+  },
+  {
+    "chart": "WebExploitBench v1.2 (277 vulnerabilities)",
+    "model": "Opus 5.5",
+    "effort": "not stated",
+    "score": 37.06,
+    "cost_usd": null
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (nonstandard efforts)",
+    "model": "GPT-6 Astra",
+    "effort": "none",
+    "score": 25.27,
+    "cost_usd": 1.28
+  },
+  {
+    "chart": "AutomationBench 1.0.6 (nonstandard efforts)",
+    "model": "Sonnet 5.5",
+    "effort": "between tools",
+    "score": 18.57,
+    "cost_usd": 0.3
+  },
+  {
+    "chart": "Terminal-Bench Science 0.1 (Google Neon)",
+    "model": "Gemini 4 Neon",
+    "effort": "xhigh",
+    "score": 70.5,
+    "cost_usd": null
+  }
+]

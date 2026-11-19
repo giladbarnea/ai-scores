@@ -1,0 +1,67 @@
+Retrieved 2026-11-19. The supplied Google DeepMind post is unrelated to MAI Code 2: it announces Gemini 4 Neon. No MAI or Microsoft mention was found in the 155 conversation entries collected across five TweetDetail pages (173 total entries included 18 unrelated injected ads). I downloaded 17 thread media files and seven media files from quoted/linked posts, visually inspected all photos, sampled all videos/GIFs into contact sheets, and read/rendered the complete six-page methodology PDF. Browser session mai-x-post-20261119 and its task-owned tab are closed. No repository files were edited.
+
+OFFICIAL DATA
+Post: https://x.com/GoogleDeepMind/status/2123167884411077030
+Image: https://pbs.twimg.com/media/HXb_xtqWIAAVtPL.png?name=orig
+Methodology: https://deepmind.google/models/evals-methodology/gemini-4-neon
+
+Each row lists Gemini 4 Neon | Claude Opus 5.5 | GPT-6.2 Sol. All are percentages except the AA index. A dash is missing, never zero.
+AA Index v5.0.1: 61 | 59 | 57
+Vals Index v2.2: 70.9 | 70.1 | 66.1
+CursorBench 4.1: 65.4 | 58.1 | —
+Terminal-Bench 4.1 cheating-adjusted accuracy: 65.2 | 65.8 | 61.5
+FrontierCode 2.0 main score: 46.2 | 47.3 | 43.8
+SWE-sweep provider harness, subtask-weighted reward: 39.0 | 10.1 | 8.3
+SWE-sweep mini-swe-agent vision harness, subtask-weighted reward: 12.8 | 3.6 | 11.6
+AutomationBench: 56.3 | 42.5 | 41.3
+Agents' Last Exam v1.1, averaged rubric score: 75.8 | 71.6 | 73.0
+RiemannBench: 84.0 | 80.0 | 80.0
+Terminal-Bench-Science 0.1, average reward: 70.5 | 63.3 | 68.0
+HLE-Diamond: 71.3 | 67.9 | 64.0
+MKA, Climb WSR: 56.5 | 53.0 | 52.7
+Chartography: 73.5 | 66.3 | 75.1
+LVBench: 89.0 | 83.7 | 87.6
+GraphWalks, 256k–1M BFS F1: 95.2 | 66.8 | 80.1
+CWE-Bench v2, programmatic pass@1: 70.7 | 67.1 | 66.0
+SEC-bench Pro: 90.5 | — | 88.3
+WebExploitBench v1.2: 51.3 | 37.1 | —
+
+Effort: the official follow-up explicitly says Neon AA=61 is xhigh, rank #3: https://x.com/GoogleDeepMind/status/2123167889976905966 . The methodology says Gemini uses highest thinking unless noted; FrontierCode Neon is explicitly high. For Opus and Sol it says maximum available reasoning, but best-available published reasoning when max is unavailable. This does NOT establish a precise effort for each competitor row: preserve that limitation. No per-task costs appear in the official table.
+
+Runner/harness provenance by row is machine-readable in official-table-scores.json (54 observations). Key distinctions: both SWE-sweep rows were self-computed by Google; provider harnesses are Antigravity-CLI 1.5.9 / Claude Code / Codex respectively, with subagent fan-out in Antigravity. Mini-SWE row is mini-swe-agent vision for all three. LVBench, GraphWalks, and Sol Chartography are also Google-run competitor measurements, not provider self-reports. LVBench is vision-only without tools, 600 frames for Opus vs 500 for Sol vs 1 FPS low-resolution Gemini. GraphWalks is 200 problems. Neon TB4.1 is Artificial Analysis using Antigravity 1.5.9; competitors come from public leaderboard. Neon ALE is Antigravity 1.4.8, 122 tasks, five hours; Opus from public board and Sol from system card. The full PDF and extracted links identify all other runners.
+
+OTHER SCORES IN THE REPLY TREE
+1. https://x.com/NotoriousPyro/status/2123215800547025032/photo/1 reproduces an Artificial Analysis v5.0.1 bar chart: Fable 5.2 max 65; GPT-6.2 Astra max 62; Opus 5.5 max 59; GPT-6.2 Sol max 57; Sonnet 5.5 max 55; Hydrogen xhigh 54. It also shows Neon xhigh 61. Do not treat the GPT-6.1 Terra bar as GPT-6.1 Sol.
+2. https://x.com/vishalsingh2972/status/2123172808054521990/photo/1 gives a prior-AA-leaderboard reproduction with decimal scores: Fable 5.2 64.6; GPT-6.2 Astra 62.1; Carbon 60.0; Opus 5.5 59.1; GPT-6.2 Sol 57.3; GPT-6 Astra 56.9; Sonnet 5.5 54.5; Hydrogen 53.9; Neon 61.0 (Google-reported xhigh). Efforts for competitors are not shown here. These are secondary reproductions, not independent measurements; saved in secondary-aa-scores.json.
+3. https://x.com/AncestorStoic/status/2123172386581172543/photo/1 is a user-assembled Gemini comparison with many Carbon/Hydrogen scores; everything relevant is transcribed in secondary-gemini-comparison.json. It explicitly mixes AA v5.0/v5.0.1 and CWE-bench v1/v2. Do not flatten versions. Primary provenance is only named in its footer, not tied per cell, so verify before importing. Carbon/Hydrogen pricing there is $2/$10 per million tokens through Nov 30, rising to $4/$20 Dec 1 for Carbon, versus Hydrogen $1.50/$7.50. The Vishal second photo also lists Opus $4/$20, Sonnet $2/$10, Fable $8/$40, Sol6.2 $2/$10, Astra6.2 $8/$40, Neon $3/$15. No row links token rates to benchmark task cost.
+4. The important new primary benchmark link is Lech Mazur's own reply/quoted post: https://x.com/LechMazur/status/2123201474758922668 -> https://x.com/LechMazur/status/2123201406152659147 . Its two images show Extended NYT Connections (940 puzzles, quadratic-v1), not original Connections or simple groups accuracy. Runner: Lech Mazur; one attempt per puzzle; up to four trick words; score = mean((exact groups/4)^2)*100. Full source snapshot: nyt-README.md, from https://github.com/lechmazur/nyt-connections/ . Full and newest-100 are distinct datasets.
+
+NYT full 940 | newest 100 (percent):
+Carbon high: 99.3 | 99.6
+Neon high: 99.1 | 99.6
+GPT-6 Astra max: 98.4 | 97.9
+GPT-6 Astra xhigh: 98.1 | 98.7
+GPT-6 Astra high: 97.73 | 97.81
+GPT-6.2 Astra high: 98.23 | 98.25
+GPT-6.1 Sol max: 97.8 | 98.7
+GPT-6.1 Sol high: 95.49 | 95.63
+GPT-6.2 Sol high: 94.12 | 92.94
+Fable 5.2 high: 97.3 | 96.9
+Opus 5.5 high: 88.5 | 90.6
+Opus 5.5 medium: 87.8 | 83.4
+Sonnet 5.5 high: 80.5 | 79.1
+
+NYT cost/puzzle (estimated from recorded token counts at standard list prices, not billed; failed requests excluded): GPT-6 Astra high $0.02807; GPT-6.2 Astra high $0.01462; GPT-6.1 Sol high $0.00686; GPT-6.2 Sol high $0.00507; Neon high $0.0708; Carbon high $0.0939. Other cost points are drawn on a log scatter but not numerically labeled; I did not invent exact values. nyt-connections-scores.json contains the 26 subset-specific observations and these costs.
+
+Remaining media are memes, privacy-policy screenshots, periodic-table demo screenshots, and 3D/video demos without numerical benchmark evidence. The SPAC89 demo is actually described by its author as Hydrogen, not a scored Neon-vs-Opus comparison. No MAI Code 2 scores occur in any inspected material.
+
+COLLECTION LIMITATIONS
+The provided TweetDetail collector exhausted its bottom pagination after five pages; the collected 155 conversation entries are not proof that all 264 UI-counted replies (including hidden/nested/deleted/unavailable replies) were available. One optional linked demo's standalone thread request hit HTTP429, but its focal text and full video metadata were already present in the parent quote; the video was downloaded and inspected. No score extraction depends on that failed request.
+
+FILES
+thread-media.json: collected posts, full Note text, media URLs, quote objects
+media-manifest.json and downloaded-media.json: thread media and exact download URLs
+linked-media-manifest.json and downloaded-linked-media.json: quoted/linked post media
+methodology.pdf, methodology.txt, methodology-page-1.png through -6.png, methodology-links.json
+official-table-scores.json; secondary-aa-scores.json; secondary-gemini-comparison.json; nyt-connections-scores.json
+All original media and contact sheets are kept under /tmp/mai-code-2/x-post/ (158 MB total).

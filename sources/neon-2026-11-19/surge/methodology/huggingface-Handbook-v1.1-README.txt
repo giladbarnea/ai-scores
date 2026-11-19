@@ -1,0 +1,89 @@
+---
+license: apache-2.0
+pretty_name: Handbook v1.1
+language:
+- en
+size_categories:
+- n<1K
+tags:
+- benchmark
+- evaluation
+- agents
+- instruction-following
+- long-context
+---
+
+# HANDBOOK.md v1.1
+
+HANDBOOK.md is a benchmark from [Surge AI](https://surgehq.ai/) for long-context agentic instruction following, modeled on how enterprise employees follow company handbooks in their day-to-day work. Each task is a unique environment with company tools and MCP servers, spanning five enterprise domains: Finance, Medical Billing, Insurance, Logistics, and HR.
+
+**This repository contains 2 sample tasks from the full 65-task benchmark.** To evaluate your models on the full set, contact [benchmarks@surgehq.ai](mailto:benchmarks@surgehq.ai).
+
+## Links
+
+- Leaderboard: [HANDBOOK.md](https://surgehq.ai/benchmarks/handbook)
+
+## What it tests
+
+The prompts reflect jobs enterprise workers perform every day. Each task drops an agent into a live company environment where it must cross-reference an extensive, multi-section handbook against a cluttered inbox, a multi-channel Slack workspace, Jira queues, and a stack of spreadsheets and PDFs, working out both what to do and what the handbook forbids.
+
+## Why it's hard
+
+The policies were written by experts adapting real industry guidelines and are designed to resist memorization. There are 10 base handbooks, and every task modifies its base into a distinct document by changing specific rules and thresholds.
+
+Because no two tasks share the same policy, models cannot pattern-match their way through the benchmark. They must read the instructions, hold them across a long multi-tool job, and apply them.
+
+## Overview of full set
+
+The figures below describe the **full benchmark**, not just the two public samples.
+
+| Measure | HANDBOOK.md v1.1 |
+| --- | --- |
+| Tasks in the full benchmark | 65 |
+| Public sample tasks in this repository | 2 |
+| Enterprise domains | 5 |
+| Base handbooks | 10 |
+| Attempts per task (published configuration) | 5 |
+| Agent phase timeout | 60 minutes |
+| Agent turn limit | 1,000 |
+| Container resources | 2 CPUs, 4 GB RAM |
+| Autograder | GPT-5.6 Sol, high reasoning effort |
+| Task format | Harbor |
+
+## Task format
+
+Tasks use [Harbor format](https://www.harborframework.com/). Each task directory contains `instruction.md`, `task.toml`, `environment/`, and `tests/`. Each task's `environment/Dockerfile` builds a self-contained image with mock services, the seeded workspace and service state, and pinned document and spreadsheet tools.
+
+The agent works only through the task's MCP tools: mail, Slack, calendar, Jira, Shopify, and handbook file and code-execution tools. It has no local terminal or file editor. During task execution, network access is restricted to explicitly allowed model API hosts; browsing and package downloads are blocked.
+
+## Running the benchmark
+
+Tasks run with the [Harbor](https://www.harborframework.com/docs) CLI and the Surge agent harness, which runs models through the [OpenHands SDK](https://github.com/OpenHands/software-agent-sdk):
+
+```bash
+uv run harbor run \
+  -p "<path/to/sample-task>" \
+  -a harbor_agents:HarborInstalledAgent \
+  -m "<litellm-model>" \
+  --allow-agent-host "$LLM_HOST" \
+  -k 1 \
+  --ve REWARDKIT_MODEL=openai/gpt-5.6-sol \
+  --ve 'OPENCODE_CONFIG_CONTENT={"provider":{"openai":{"models":{"gpt-5.6-sol":{"options":{"reasoningEffort":"high"}}}}}}' \
+  --ve OPENAI_API_KEY="$OPENAI_API_KEY"
+```
+
+Replace the task path and model placeholders, and set `LLM_HOST` to your model endpoint's hostname. For comparisons with published results, use the full benchmark with five attempts per task (`-k 5`).
+
+## Evaluation
+
+An agentic LLM judge compares the initial and final workspace and service state; it does not see the agent's trajectory. Each task's criteria are binary and graded independently under a stated tolerance policy.
+
+The two public samples illustrate the task format and workflow. Results on these samples alone do not constitute a score on the full benchmark.
+
+## Intended use
+
+HANDBOOK.md is for held-out evaluation. Please keep the tasks, handbooks, supporting files, rubrics, and derived materials out of training, fine-tuning, reinforcement learning, and distillation datasets, and do not use them for training-time checkpoint selection.
+
+For access to the full 65-task benchmark, evaluation inquiries, or benchmarks in your own domain, contact [benchmarks@surgehq.ai](mailto:benchmarks@surgehq.ai).
+
+Built by Surge AI.

@@ -1,0 +1,72 @@
+---
+license: apache-2.0
+pretty_name: GDP.xlsx
+language:
+  - en
+tags:
+  - benchmark
+  - spreadsheets
+  - agents
+  - professional-reasoning
+---
+
+# GDP.xlsx
+
+GDP.xlsx is a benchmark from [Surge AI](https://surgehq.ai/) that evaluates whether AI agents can interpret spreadsheets and answer questions with the judgment expected of a domain professional.
+
+The full benchmark contains **70 tasks across 13 professional domains**, packaged as **Harbor environments**. This repository provides **3 sample tasks**.
+
+## What it tests
+
+Professional spreadsheet work rarely arrives as a fully specified procedure. A colleague asks a short question, assumes familiarity with the material, and expects an accurate, useful answer.
+
+GDP.xlsx follows that pattern. Each task pairs a realistic workplace request with a spreadsheet or CSV file. Agents must understand the request, identify the relevant information, and reason through the material to produce an appropriate response.
+
+The benchmark covers work across finance, healthcare, manufacturing, scientific research, and other professional domains. Tasks assess spreadsheet understanding, quantitative reasoning, and the ability to apply domain context.
+
+## Why it’s hard
+
+A brief request can require exploring a substantial workbook. The benchmark’s Excel files collectively contain **393 worksheets**, and its supporting files contain **more than 2.1 million populated cells and CSV fields**. Individual workbooks contain as many as **60 worksheets**, while the largest by populated-cell count contains more than **321,000 cells**.
+
+A spreadsheet also contains more than a collection of values. Its structure, conventions, and surrounding context can affect what those values mean and how they should be used.
+
+Successful agents must reconcile information, apply the relevant constraints, and recognize when the available evidence does not support a confident answer.
+
+## Benchmark overview
+
+The following statistics describe the full benchmark.
+
+| Measure | GDP.xlsx |
+|---|---|
+| Full benchmark | 70 tasks |
+| Professional domains | 13 |
+| Public release | 3 sample tasks |
+| Supporting materials | 58 Excel files and 12 CSV files |
+| Worksheets across Excel files | 393 |
+| Median worksheets per Excel file | 4 |
+| Maximum worksheets in one workbook | 60 |
+| Populated cells and CSV fields across all inputs | More than 2.1 million |
+| Task packaging | Harbor environments |
+| Evaluation | Task-specific rubrics |
+
+Excel statistics include both modern XLSX and legacy XLS files. Populated-cell and field counts include headers, notes, and data, excluding empty cells.
+
+## Task environments
+
+Each task is packaged as a Harbor environment containing the workplace request, supporting input file, and evaluation components.
+
+Agents work in isolated containers with tools for inspecting and analyzing spreadsheets. The environment gives agents access to the source material so they can explore the workbook and perform the analysis required by the request.
+
+## Evaluation
+
+Responses are evaluated against task-specific rubrics that assess the accuracy, completeness, and appropriateness of the answer.
+
+The public samples illustrate the task format and the nature of the work. The full benchmark and detailed evaluation protocol are available to interested evaluation partners.
+
+## Intended use
+
+GDP.xlsx is intended for held-out evaluation. Please exclude its tasks, supporting materials, rubrics, and derivatives from training, fine-tuning, reinforcement learning, and distillation datasets. Do not use it to select checkpoints during training. This dataset includes a benchmark canary for provenance tracking.
+
+This Hugging Face repository contains **3 sample tasks**. To evaluate your models on the **full 70-task benchmark**, contact [benchmarks@surgehq.ai](mailto:benchmarks@surgehq.ai).
+
+Built by the Surge AI team. For evaluation inquiries or benchmarks in your own domain, contact [benchmarks@surgehq.ai](mailto:benchmarks@surgehq.ai).

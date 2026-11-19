@@ -1,0 +1,298 @@
+{
+  "retrieved": "2026-11-19",
+  "sources": [
+    {
+      "file": "leaderboards/antidote.html.gz",
+      "url": "https://surgehq.ai/benchmarks/antidote",
+      "retrieved": "2026-11-19",
+      "selection": "Main .lead-rank-table HTML fragment, before client-side tag/rank decoration; all original models retained. More benchmarks cards and site navigation excluded.",
+      "encoding": "UTF-8, gzip; HTML parsed and serialized by BeautifulSoup without changing field contents",
+      "page_sha256": "e1d2417550da142470e375bb2716f31d3f57c4989a88af4ce4f717f52cfadad8",
+      "selected_sha256": "3635f56aad9611013eda7264dfd3e254283dd5a1bc9b60c40a8fc0697f602560",
+      "original_bytes": 602608,
+      "selected_bytes": 110972
+    },
+    {
+      "file": "leaderboards/hemingway-bench.html.gz",
+      "url": "https://surgehq.ai/benchmarks/hemingway-bench",
+      "retrieved": "2026-11-19",
+      "selection": "Main .lead-rank-table HTML fragment, before client-side tag/rank decoration; all original models retained. More benchmarks cards and site navigation excluded.",
+      "encoding": "UTF-8, gzip; HTML parsed and serialized by BeautifulSoup without changing field contents",
+      "page_sha256": "0c90a2167de8f1bf908faf68da7b2ee7d4fbecc657befda757ed716402e11db8",
+      "selected_sha256": "189a04f36d948a866380031cead882e69808e521a07a0ff7de6d8fd820916219",
+      "original_bytes": 602729,
+      "selected_bytes": 111485
+    },
+    {
+      "file": "leaderboards/chartography.html.gz",
+      "url": "https://surgehq.ai/benchmarks/chartography",
+      "retrieved": "2026-11-19",
+      "selection": "Main .lead-rank-table HTML fragment, before client-side tag/rank decoration; all original models retained. More benchmarks cards and site navigation excluded.",
+      "encoding": "UTF-8, gzip; HTML parsed and serialized by BeautifulSoup without changing field contents",
+      "page_sha256": "409e6ef2cfa5dc8db7e0cce4e9ac711a95e829690a5355f8981e2ffc22a2d790",
+      "selected_sha256": "79a6a38cd358c6a35c13b08aab2c3f0cc694153dfed8087cfca1fdb6b5f9b085",
+      "original_bytes": 562382,
+      "selected_bytes": 66159
+    },
+    {
+      "file": "leaderboards/chartography-version.js",
+      "url": "https://surgehq.ai/benchmarks/chartography",
+      "retrieved": "2026-11-19",
+      "selection": "Original inline script that appends the visible version badge and changelog."
+    },
+    {
+      "file": "leaderboards/complex-constraints.html.gz",
+      "url": "https://surgehq.ai/benchmarks/complex-constraints",
+      "retrieved": "2026-11-19",
+      "selection": "Main .lead-rank-table HTML fragment, before client-side tag/rank decoration; all original models retained. More benchmarks cards and site navigation excluded.",
+      "encoding": "UTF-8, gzip; HTML parsed and serialized by BeautifulSoup without changing field contents",
+      "page_sha256": "9031e2e928d13e1cce551e2433cf50324de5b9098b227e1ac81278805660bcfc",
+      "selected_sha256": "5fd15490d939a615f2c1d5209274f3fd1fd10da10a1f212e5d2d7f0fad06824e",
+      "original_bytes": 536132,
+      "selected_bytes": 40694
+    },
+    {
+      "file": "leaderboards/complex-constraints-version.js",
+      "url": "https://surgehq.ai/benchmarks/complex-constraints",
+      "retrieved": "2026-11-19",
+      "selection": "Original inline script that appends the visible version badge and changelog."
+    },
+    {
+      "file": "leaderboards/dayjob-finance.html.gz",
+      "url": "https://surgehq.ai/benchmarks/dayjob-finance",
+      "retrieved": "2026-11-19",
+      "selection": "Main .lead-rank-table HTML fragment, before client-side tag/rank decoration; all original models retained. More benchmarks cards and site navigation excluded.",
+      "encoding": "UTF-8, gzip; HTML parsed and serialized by BeautifulSoup without changing field contents",
+      "page_sha256": "78ff006e3eb74bcfad83c6923969ac40f4f65c0d4cd51aafec2f99965c7e41af",
+      "selected_sha256": "409a9fc2986139671c1fef126d2fff77526f4dd1d3055fe6566313002ac56834",
+      "original_bytes": 589973,
+      "selected_bytes": 79422
+    },
+    {
+      "file": "leaderboards/dayjob-healthcare.html.gz",
+      "url": "https://surgehq.ai/benchmarks/dayjob-healthcare",
+      "retrieved": "2026-11-19",
+      "selection": "Main .lead-rank-table HTML fragment, before client-side tag/rank decoration; all original models retained. More benchmarks cards and site navigation excluded.",
+      "encoding": "UTF-8, gzip; HTML parsed and serialized by BeautifulSoup without changing field contents",
+      "page_sha256": "0bdc0afcd4e9f094728e5abe9a60602884fecc1bc9ac61e82ee0c8a18911d00f",
+      "selected_sha256": "4e8c62fc79294896ab45483897b5829f1ab7ce3d6005e4d91515645d631ed250",
+      "original_bytes": 580081,
+      "selected_bytes": 79360
+    },
+    {
+      "file": "leaderboards/dayjob-law.html.gz",
+      "url": "https://surgehq.ai/benchmarks/dayjob-law",
+      "retrieved": "2026-11-19",
+      "selection": "Main .lead-rank-table HTML fragment, before client-side tag/rank decoration; all original models retained. More benchmarks cards and site navigation excluded.",
+      "encoding": "UTF-8, gzip; HTML parsed and serialized by BeautifulSoup without changing field contents",
+      "page_sha256": "43868322963491fade02fc021a4fec685c5efa565b323d4a127086ffc9cc2e90",
+      "selected_sha256": "d26d962e1c49be415edb9811f72e435f4c2f3b41e687b56b942130fff28f146e",
+      "original_bytes": 726536,
+      "selected_bytes": 39528
+    },
+    {
+      "file": "leaderboards/dayjob-tax.html.gz",
+      "url": "https://surgehq.ai/benchmarks/dayjob-tax",
+      "retrieved": "2026-11-19",
+      "selection": "Main .lead-rank-table HTML fragment, before client-side tag/rank decoration; all original models retained. More benchmarks cards and site navigation excluded.",
+      "encoding": "UTF-8, gzip; HTML parsed and serialized by BeautifulSoup without changing field contents",
+      "page_sha256": "53bbdb2d6fef54a2370199b2a86256b737e6605c6b4f045874b560e5e932d4d4",
+      "selected_sha256": "11f829448460e8d8900e2d9b511531b9f086af530d2e706275dd51906063edc9",
+      "original_bytes": 727120,
+      "selected_bytes": 41083
+    },
+    {
+      "file": "leaderboards/enterprisebench-corecraft.html.gz",
+      "url": "https://surgehq.ai/benchmarks/enterprisebench-corecraft",
+      "retrieved": "2026-11-19",
+      "selection": "Main .lead-rank-table HTML fragment, before client-side tag/rank decoration; all original models retained. More benchmarks cards and site navigation excluded.",
+      "encoding": "UTF-8, gzip; HTML parsed and serialized by BeautifulSoup without changing field contents",
+      "page_sha256": "2fd5c2ea6bc44bd5a86aabe72299d6a100a6c1c17bdbedd63072f2c8652286d7",
+      "selected_sha256": "be7ee8434084e28b810afcceb8e7defc90b0565a0118f10d64b2745d062d8ca8",
+      "original_bytes": 580806,
+      "selected_bytes": 88752
+    },
+    {
+      "file": "leaderboards/gdp-pdf.html.gz",
+      "url": "https://surgehq.ai/benchmarks/gdp-pdf",
+      "retrieved": "2026-11-19",
+      "selection": "Main .lead-rank-table HTML fragment, before client-side tag/rank decoration; all original models retained. More benchmarks cards and site navigation excluded.",
+      "encoding": "UTF-8, gzip; HTML parsed and serialized by BeautifulSoup without changing field contents",
+      "page_sha256": "f0062ae0bfae77d73c4d59476768b270013a5dddf3dce0c37416c8930ab1f8e9",
+      "selected_sha256": "0b25be7a221bbaa26e68212122e4e4d004b8725da13c67b43301342ed294c57a",
+      "original_bytes": 537097,
+      "selected_bytes": 42113
+    },
+    {
+      "file": "leaderboards/gdp-pdf-version.js",
+      "url": "https://surgehq.ai/benchmarks/gdp-pdf",
+      "retrieved": "2026-11-19",
+      "selection": "Original inline script that appends the visible version badge and changelog."
+    },
+    {
+      "file": "leaderboards/gdp-xlsx.html.gz",
+      "url": "https://surgehq.ai/benchmarks/gdp-xlsx",
+      "retrieved": "2026-11-19",
+      "selection": "Main .lead-rank-table HTML fragment, before client-side tag/rank decoration; all original models retained. More benchmarks cards and site navigation excluded.",
+      "encoding": "UTF-8, gzip; HTML parsed and serialized by BeautifulSoup without changing field contents",
+      "page_sha256": "acd65fca23d2e72de63788d3ab96324b16a9b37671c63ae53e663212fc335566",
+      "selected_sha256": "d4910edfa5236958fbd0eff481ebf9a9b5500d4d3083ea75a2a18ab117e6a0dc",
+      "original_bytes": 558723,
+      "selected_bytes": 56245
+    },
+    {
+      "file": "leaderboards/handbook.html.gz",
+      "url": "https://surgehq.ai/benchmarks/handbook",
+      "retrieved": "2026-11-19",
+      "selection": "Main .lead-rank-table HTML fragment, before client-side tag/rank decoration; all original models retained. More benchmarks cards and site navigation excluded.",
+      "encoding": "UTF-8, gzip; HTML parsed and serialized by BeautifulSoup without changing field contents",
+      "page_sha256": "4c382422d2bb608c2bbf46eade13a541758f7334168dd949b57e7c6435793699",
+      "selected_sha256": "069699c327320d797567e26f5c5a6e0a914eb8e413fb57800e029ced8c21d50b",
+      "original_bytes": 537585,
+      "selected_bytes": 42421
+    },
+    {
+      "file": "leaderboards/handbook-version.js",
+      "url": "https://surgehq.ai/benchmarks/handbook",
+      "retrieved": "2026-11-19",
+      "selection": "Original inline script that appends the visible version badge and changelog."
+    },
+    {
+      "file": "leaderboards/riemann-bench.html.gz",
+      "url": "https://surgehq.ai/benchmarks/riemann-bench",
+      "retrieved": "2026-11-19",
+      "selection": "Main .lead-rank-table HTML fragment, before client-side tag/rank decoration; all original models retained. More benchmarks cards and site navigation excluded.",
+      "encoding": "UTF-8, gzip; HTML parsed and serialized by BeautifulSoup without changing field contents",
+      "page_sha256": "5879493ee86c45ef530b445730edec4cbad6c76ebae51e1599de9be826b66a65",
+      "selected_sha256": "cc5cecbe3b0d1246a554d07a76d1efb7924f4f019454b26aff8a5045094bb97c",
+      "original_bytes": 539686,
+      "selected_bytes": 45163
+    },
+    {
+      "file": "leaderboards/riemann-bench-version.js",
+      "url": "https://surgehq.ai/benchmarks/riemann-bench",
+      "retrieved": "2026-11-19",
+      "selection": "Original inline script that appends the visible version badge and changelog."
+    },
+    {
+      "file": "leaderboards/sudo-l7.html.gz",
+      "url": "https://surgehq.ai/benchmarks/sudo-l7",
+      "retrieved": "2026-11-19",
+      "selection": "Main .lead-rank-table HTML fragment, before client-side tag/rank decoration; all original models retained. More benchmarks cards and site navigation excluded.",
+      "encoding": "UTF-8, gzip; HTML parsed and serialized by BeautifulSoup without changing field contents",
+      "page_sha256": "cca9b50a63f97c20d521bf54293396f1713ff49daef8c03204101d9a464136c7",
+      "selected_sha256": "f43156ee1159d625576b405b07a55c6eee2c5401dab558452621a60f3004bc0b",
+      "original_bytes": 539056,
+      "selected_bytes": 39192
+    },
+    {
+      "file": "methodology/huggingface-Chartography-harbor-README.txt",
+      "url": "https://huggingface.co/datasets/surgeai/Chartography-harbor/raw/main/README.md",
+      "retrieved": "2026-11-19",
+      "selection": "Complete original README snapshot; .txt extension preserves verbatim upstream content."
+    },
+    {
+      "file": "methodology/huggingface-ComplexConstraints-v1.1-README.txt",
+      "url": "https://huggingface.co/datasets/surgeai/ComplexConstraints-v1.1/raw/main/README.md",
+      "retrieved": "2026-11-19",
+      "selection": "Complete original README snapshot; .txt extension preserves verbatim upstream content."
+    },
+    {
+      "file": "methodology/huggingface-DAYJOB-finance-README.txt",
+      "url": "https://huggingface.co/datasets/surgeai/DAYJOB-finance/raw/main/README.md",
+      "retrieved": "2026-11-19",
+      "selection": "Complete original README snapshot; .txt extension preserves verbatim upstream content."
+    },
+    {
+      "file": "methodology/huggingface-DAYJOB-healthcare-README.txt",
+      "url": "https://huggingface.co/datasets/surgeai/DAYJOB-healthcare/raw/main/README.md",
+      "retrieved": "2026-11-19",
+      "selection": "Complete original README snapshot; .txt extension preserves verbatim upstream content."
+    },
+    {
+      "file": "methodology/huggingface-DAYJOB-law-README.txt",
+      "url": "https://huggingface.co/datasets/surgeai/DAYJOB-law/raw/main/README.md",
+      "retrieved": "2026-11-19",
+      "selection": "Complete original README snapshot; .txt extension preserves verbatim upstream content."
+    },
+    {
+      "file": "methodology/huggingface-DAYJOB-tax-README.txt",
+      "url": "https://huggingface.co/datasets/surgeai/DAYJOB-tax/raw/main/README.md",
+      "retrieved": "2026-11-19",
+      "selection": "Complete original README snapshot; .txt extension preserves verbatim upstream content."
+    },
+    {
+      "file": "methodology/huggingface-GDP.xlsx-README.txt",
+      "url": "https://huggingface.co/datasets/surgeai/GDP.xlsx/raw/main/README.md",
+      "retrieved": "2026-11-19",
+      "selection": "Complete original README snapshot; .txt extension preserves verbatim upstream content."
+    },
+    {
+      "file": "methodology/huggingface-Handbook-v1.1-README.txt",
+      "url": "https://huggingface.co/datasets/surgeai/Handbook-v1.1/raw/main/README.md",
+      "retrieved": "2026-11-19",
+      "selection": "Complete original README snapshot; .txt extension preserves verbatim upstream content."
+    },
+    {
+      "file": "methodology/github-chartography-README.txt",
+      "url": "https://raw.githubusercontent.com/surge-ai/chartography/main/README.md",
+      "retrieved": "2026-11-19",
+      "selection": "Complete original README snapshot; .txt extension preserves verbatim upstream content."
+    },
+    {
+      "file": "methodology/github-complex-constraints-README.txt",
+      "url": "https://raw.githubusercontent.com/surge-ai/complex-constraints/main/README.md",
+      "retrieved": "2026-11-19",
+      "selection": "Complete original README snapshot; .txt extension preserves verbatim upstream content."
+    },
+    {
+      "file": "methodology/github-dayjob-README.txt",
+      "url": "https://raw.githubusercontent.com/surge-ai/dayjob/main/README.md",
+      "retrieved": "2026-11-19",
+      "selection": "Complete original README snapshot; .txt extension preserves verbatim upstream content."
+    },
+    {
+      "file": "methodology/github-gdp-pdf-README.txt",
+      "url": "https://raw.githubusercontent.com/surge-ai/gdp-pdf/main/README.md",
+      "retrieved": "2026-11-19",
+      "selection": "Complete original README snapshot; .txt extension preserves verbatim upstream content."
+    },
+    {
+      "file": "methodology/github-gdp-xlsx-README.txt",
+      "url": "https://raw.githubusercontent.com/surge-ai/gdp-xlsx/main/README.md",
+      "retrieved": "2026-11-19",
+      "selection": "Complete original README snapshot; .txt extension preserves verbatim upstream content."
+    },
+    {
+      "file": "methodology/github-handbook-README.txt",
+      "url": "https://raw.githubusercontent.com/surge-ai/handbook/main/README.md",
+      "retrieved": "2026-11-19",
+      "selection": "Complete original README snapshot; .txt extension preserves verbatim upstream content."
+    },
+    {
+      "file": "methodology/blog-riemann-bench.txt",
+      "url": "https://surgehq.ai/blog/riemann-bench-a-benchmark-for-moonshot-mathematics",
+      "retrieved": "2026-11-19",
+      "selection": "Complete main article text; omits navigation, related articles and figures. Current scores come from leaderboards, not historical blog figures."
+    },
+    {
+      "file": "methodology/blog-sudo-l7.txt",
+      "url": "https://surgehq.ai/blog/sudo-l7",
+      "retrieved": "2026-11-19",
+      "selection": "Complete main article text; omits navigation, related articles and figures. Current scores come from leaderboards, not historical blog figures."
+    },
+    {
+      "file": "methodology/corecraft-paper.txt",
+      "url": "https://arxiv.org/html/2602.16179v5",
+      "retrieved": "2026-11-19",
+      "selection": "Readable paper HTML text; establishes strict all-rubric task success, not a current denominator."
+    }
+  ],
+  "exclusions": [
+    "No screenshots or full-page HTML bundles: boards and historical article figures were visually checked during the audit; primary main-board HTML and version scripts are retained instead.",
+    "No repeated More benchmarks cards; they duplicate score payloads and may be hidden or stale.",
+    "No costs inferred from raster axes, old blog prose or stale Chartography cost/token scatter. Every normalized cost is null.",
+    "No substitution of earlier model versions, missing efforts, missing models or raw mean-criteria rewards for published headline scores.",
+    "Historical article scores remain excluded from normalized current scores. The current versioned HF cards override stale unversioned GitHub harness descriptions."
+  ]
+}

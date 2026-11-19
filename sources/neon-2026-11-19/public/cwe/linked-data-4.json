@@ -1,0 +1,131 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "CWE-bench v2 leaderboard",
+  "description": "20 models ranked by pass@1 over all 250 tasks (public and held-out), four rollouts per task at high reasoning.",
+  "url": "https://cwe-bench.com/#leaderboard",
+  "itemListOrder": "https://schema.org/ItemListOrderDescending",
+  "numberOfItems": 20,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Claude Fable 5.2",
+      "description": "pass@1 75.0%, pass@4 82.8% over 250 tasks; public set 78.5%, held-out set 72.7%. Average cost $7.85 per rollout, run in Claude Code."
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Gemini 4 Neon",
+      "description": "pass@1 70.7%, pass@4 76.4% over 250 tasks; public set 74.8%, held-out set 68.0%. Average cost $6.52 per rollout, run in Antigravity."
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Gemini 4 Hydrogen",
+      "description": "pass@1 68.1%, pass@4 78.0% over 250 tasks; public set 69.5%, held-out set 67.2%. Average cost $2.63 per rollout, run in Antigravity."
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Gemini 4 Carbon",
+      "description": "pass@1 67.3%, pass@4 76.4% over 250 tasks; public set 70.5%, held-out set 65.2%. Average cost $4.27 per rollout, run in Antigravity."
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "Claude Opus 5.5",
+      "description": "pass@1 67.1%, pass@4 79.2% over 250 tasks; public set 67.3%, held-out set 67.0%. Average cost $1.85 per rollout, run in Claude Code."
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "GPT-6.2 Astra",
+      "description": "pass@1 66.8%, pass@4 72.0% over 250 tasks; public set 67.0%, held-out set 66.7%. Average cost $4.32 per rollout, run in Codex."
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "Muse Wonder",
+      "description": "pass@1 66.1%, pass@4 78.8% over 250 tasks; public set 64.8%, held-out set 67.0%. Average cost $2.73 per rollout, run in opencode."
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "name": "GPT-6.2 Sol",
+      "description": "pass@1 66.0%, pass@4 74.0% over 250 tasks; public set 66.5%, held-out set 65.7%. Average cost $0.81 per rollout, run in Codex."
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "name": "Gemini 4 Argon",
+      "description": "pass@1 65.0%, pass@4 77.2% over 250 tasks; public set 67.8%, held-out set 63.2%. Average cost $3.70 per rollout, run in Antigravity."
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "name": "GPT-6 Astra",
+      "description": "pass@1 64.2%, pass@4 72.8% over 250 tasks; public set 63.8%, held-out set 64.5%. Average cost $3.87 per rollout, run in Codex."
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "name": "Hy4",
+      "description": "pass@1 64.1%, pass@4 78.4% over 250 tasks; public set 63.8%, held-out set 64.3%. Average cost $1.35 per rollout, run in Claude Code."
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "name": "Claude Sonnet 5.5",
+      "description": "pass@1 61.4%, pass@4 74.8% over 250 tasks; public set 61.2%, held-out set 61.5%. Average cost $0.58 per rollout, run in Claude Code."
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "name": "GPT-6.1 Terra",
+      "description": "pass@1 60.0%, pass@4 69.2% over 250 tasks; public set 65.0%, held-out set 56.7%. Average cost $0.44 per rollout, run in Codex."
+    },
+    {
+      "@type": "ListItem",
+      "position": 14,
+      "name": "DeepSeek-V4.1-Flash (1017)",
+      "description": "pass@1 57.6%, pass@4 73.6% over 250 tasks; public set 57.0%, held-out set 58.0%. Average cost $0.04 per rollout, run in opencode."
+    },
+    {
+      "@type": "ListItem",
+      "position": 15,
+      "name": "Grok 4.7",
+      "description": "pass@1 54.7%, pass@4 71.2% over 250 tasks; public set 55.5%, held-out set 54.2%. Average cost $2.97 per rollout, run in opencode."
+    },
+    {
+      "@type": "ListItem",
+      "position": 16,
+      "name": "Hy4 Preview",
+      "description": "pass@1 47.3%, pass@4 64.4% over 250 tasks; public set 52.0%, held-out set 44.2%. Average cost $0.43 per rollout, run in opencode."
+    },
+    {
+      "@type": "ListItem",
+      "position": 17,
+      "name": "Mistral Large 4",
+      "description": "pass@1 45.6%, pass@4 60.4% over 250 tasks; public set 46.3%, held-out set 45.2%. Average cost $0.37 per rollout, run in opencode."
+    },
+    {
+      "@type": "ListItem",
+      "position": 18,
+      "name": "Qwen3.8-Max (0902)",
+      "description": "pass@1 45.4%, pass@4 64.8% over 250 tasks; public set 45.0%, held-out set 45.7%. Average cost $2.06 per rollout, run in opencode."
+    },
+    {
+      "@type": "ListItem",
+      "position": 19,
+      "name": "Kimi K3.1 Pro",
+      "description": "pass@1 45.3%, pass@4 64.0% over 250 tasks; public set 41.5%, held-out set 47.8%. Average cost $0.96 per rollout, run in opencode."
+    },
+    {
+      "@type": "ListItem",
+      "position": 20,
+      "name": "GLM-5.3",
+      "description": "pass@1 42.0%, pass@4 63.6% over 250 tasks; public set 44.0%, held-out set 40.7%. Average cost $0.58 per rollout, run in opencode."
+    }
+  ]
+}

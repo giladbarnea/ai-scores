@@ -1,0 +1,28 @@
+How we designed Riemann-bench
+How did we create Riemann-bench?
+Leading Mathematical Experts.
+We collaborated with Ivy League mathematics professors, graduate students, and PhD IMO Medalists to gather 25 problems they encountered in their own research. They often took the authors weeks to solve independently.
+100% Private and Uncontaminated.
+To ensure a fully unbiased evaluation for all frontier labs, the dataset is kept strictly private.
+No Token Limits.
+Existing benchmarks often force models into rigid, automated evaluation loops. (For instance, FrontierMath relies on an iterative framework where models write Python code, have execution results appended to their prompt, and hit a strict 1M token limit.). All models were limited to 1 hour timeout limits to prevent endless loops, but were given free reign to access web search + coding tools.
+Beyond the IMO.
+While IMO problems are incredibly clever, they’re fundamentally designed to be solved by high schoolers in a few hours using known elementary tools. Riemann-bench operates in a different universe of PhD-level research. Authors routinely noted that their own graduate students and colleagues would struggle to solve these independently.
+Double-Blind, From-Scratch Verification.
+Every problem in Riemann-bench was subjected to a strict double-blind protocol. Two independent domain experts had to solve the problem from scratch.
+Riemann-bench results
+Even equipped with advanced tools,
+all frontier models currently score below 45%.
+A sample Riemann-bench problem
+Let's look at an example from the benchmark.
+The Problem:
+Expected Difficulty:
+40-50 hours for an expert in this field.
+The next frontier
+GSM8K went from unsolvable to saturated in just a few years – GPT-3 couldn't break a 20% success rate, and now top models barely drop a point. We expect Riemann-bench to follow a similar trajectory, but the implications of crossing this new finish line will be far more profound.
+We asked the expert mathematicians who contributed to Riemann-bench why they dedicate so much of their time to training AI. Their answers were deeply human: they believe that building smarter, collaborative AI is the only way they'll see their life's work – the deepest, unproven conjectures of their fields – resolved in their lifetime.
+We believe solving Riemann-bench will bring us one stop closer to achieving fully autonomous AI research. But we also hope it will bring us one step closer towards cracking the Riemann hypothesis, ushering in a new era of Fields Medal-winning discoveries, and helping humanity understand the nature of the universe.
+Check out the full Riemann-bench benchmark
+here
+.
+Note: We previously published a version of this blogpost with lower scores. We updated our pipeline to give models unlimited time on each problem (the previous timeout was 1 hour) and tested the models during periods with more stable performance to arrive at the current numbers.

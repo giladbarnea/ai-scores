@@ -1,0 +1,1304 @@
+{
+  "retrieved": "2026-11-19",
+  "models": [
+    "Gemini 4 Neon",
+    "GPT-6 Astra",
+    "GPT-6.2 Astra",
+    "GPT-6.1 Sol",
+    "GPT-6.2 Sol",
+    "Fable 5.2",
+    "Opus 5.5",
+    "Sonnet 5.5",
+    "Gemini 4 Carbon",
+    "Gemini 4 Hydrogen"
+  ],
+  "cost_note": "No exact currently attributable cost found for any requested model. All cost fields are null; retain scores as single-effort points.",
+  "verification": "All 14 current leaderboards downloaded and visually checked. Scores extracted from main leaderboard only, not repeated More benchmarks cards. Missing means absent, not zero.",
+  "charts": {
+    "antidote": {
+      "name": "Antidote: Everyday Edition",
+      "unit": "Elo",
+      "scoring": "Domain-expert paired human preferences; Elo with confidence intervals.",
+      "tasks": null,
+      "attempts_per_task": null,
+      "harness": "Human expert evaluation of model responses",
+      "caveats": [
+        "None of the ten requested models appears. Do not substitute Fable 5 or Fable 5.1 for Fable 5.2."
+      ],
+      "version": "not explicitly versioned",
+      "source_url": "https://surgehq.ai/benchmarks/antidote",
+      "methodology_urls": [
+        "https://surgehq.ai/blog/introducing-antidote"
+      ],
+      "retrieved": "2026-11-19",
+      "changelog": null,
+      "scores": [],
+      "missing_models": [
+        "Gemini 4 Neon",
+        "GPT-6 Astra",
+        "GPT-6.2 Astra",
+        "GPT-6.1 Sol",
+        "GPT-6.2 Sol",
+        "Fable 5.2",
+        "Opus 5.5",
+        "Sonnet 5.5",
+        "Gemini 4 Carbon",
+        "Gemini 4 Hydrogen"
+      ],
+      "raw_html": "leaderboards/antidote.html.gz",
+      "visually_checked": true
+    },
+    "hemingway-bench": {
+      "name": "Hemingway-bench",
+      "unit": "Elo",
+      "scoring": "Professional writers judge creative, business and everyday writing; paired preferences aggregated into Elo.",
+      "tasks": null,
+      "attempts_per_task": null,
+      "harness": "Human expert evaluation of model responses",
+      "caveats": [
+        "None of the ten requested models appears. Do not substitute earlier Claude versions."
+      ],
+      "version": "not explicitly versioned",
+      "source_url": "https://surgehq.ai/benchmarks/hemingway-bench",
+      "methodology_urls": [
+        "https://surgehq.ai/blog/hemingway-bench-ai-writing-leaderboard"
+      ],
+      "retrieved": "2026-11-19",
+      "changelog": null,
+      "scores": [],
+      "missing_models": [
+        "Gemini 4 Neon",
+        "GPT-6 Astra",
+        "GPT-6.2 Astra",
+        "GPT-6.1 Sol",
+        "GPT-6.2 Sol",
+        "Fable 5.2",
+        "Opus 5.5",
+        "Sonnet 5.5",
+        "Gemini 4 Carbon",
+        "Gemini 4 Hydrogen"
+      ],
+      "raw_html": "leaderboards/hemingway-bench.html.gz",
+      "visually_checked": true
+    },
+    "chartography": {
+      "name": "Chartography v1.1 (agentic)",
+      "unit": "%",
+      "scoring": "Golden-answer correctness with expert-defined acceptable numerical ranges; headline leaderboard score.",
+      "tasks": 100,
+      "attempts_per_task": null,
+      "harness": "Harbor agentic environment with chart image, vision-capable model; exact agent not specified in current dataset card.",
+      "caveats": [
+        "v1.1 changelog: Updated to use agentic harness.",
+        "Google Neon 73.5 without tools and Surge Neon 86.6 High with agentic harness are different evaluation settings; do not merge.",
+        "GitHub README still documents old no-tools Inspect AI harness with 10 attempts and Gemini 3.5 Flash judge; static scatter describes 20 trials. Neither establishes current v1.1 trial count or cost.",
+        "Cost/token scatter embeds old pre-v1.1 results and none of the ten requested models."
+      ],
+      "version": "v1.1",
+      "source_url": "https://surgehq.ai/benchmarks/chartography",
+      "methodology_urls": [
+        "https://surgehq.ai/blog/chartography",
+        "https://arxiv.org/abs/2608.10677",
+        "https://huggingface.co/datasets/surgeai/Chartography-harbor",
+        "https://github.com/surge-ai/chartography"
+      ],
+      "retrieved": "2026-11-19",
+      "changelog": "CHANGELOG\nv1.1 Updated to use agentic harness.",
+      "scores": [
+        {
+          "model": "GPT-6.2 Astra",
+          "effort": "Max",
+          "score": 90.7,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Astra (Max reasoning)"
+        },
+        {
+          "model": "Opus 5.5",
+          "effort": "Adaptive/Max",
+          "score": 89.6,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Opus 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "effort": "Max",
+          "score": 88.6,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6 Astra (Max reasoning)"
+        },
+        {
+          "model": "GPT-6.2 Sol",
+          "effort": "Max",
+          "score": 87.7,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Sol (Max reasoning)"
+        },
+        {
+          "model": "Gemini 4 Hydrogen",
+          "effort": "xHigh",
+          "score": 87.2,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Hydrogen (xHigh reasoning)"
+        },
+        {
+          "model": "Gemini 4 Neon",
+          "effort": "High",
+          "score": 86.6,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Neon (High reasoning)"
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "effort": "High",
+          "score": 85.5,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Carbon (High reasoning)"
+        },
+        {
+          "model": "Fable 5.2",
+          "effort": "Adaptive/Max",
+          "score": 80.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Fable 5.2 (Adaptive/Max)"
+        }
+      ],
+      "missing_models": [
+        "GPT-6.1 Sol",
+        "Sonnet 5.5"
+      ],
+      "raw_html": "leaderboards/chartography.html.gz",
+      "visually_checked": true
+    },
+    "complex-constraints": {
+      "name": "ComplexConstraints v1.1 (agentic)",
+      "unit": "%",
+      "scoring": "Full Pass %: every rubric criterion satisfied; Gemini 3.8 Flash judge grades final response against criteria, not prompt. Errored trials excluded.",
+      "tasks": 75,
+      "attempts_per_task": 10,
+      "harness": "Harbor + Surge OpenHands SDK harness; terminal, file editor and task tracker; text-only; 200 turns, 60 minutes; network limited to model API.",
+      "caveats": [
+        "v1.1 changelog: Updated subset of rubrics on 10 tasks to admit more correct responses.",
+        "Current v1.1 dataset card explicitly uses agentic tools; GitHub README still describes old single-completion no-tools Inspect harness. Prefer versioned current card.",
+        "v1.1 card reports 1,558 criteria; older blog/README reports 1,559."
+      ],
+      "version": "v1.1",
+      "source_url": "https://surgehq.ai/benchmarks/complex-constraints",
+      "methodology_urls": [
+        "https://surgehq.ai/blog/complexconstraints-a-benchmark-for-entangled-instruction-following",
+        "https://arxiv.org/abs/2606.09118",
+        "https://huggingface.co/datasets/surgeai/ComplexConstraints-v1.1",
+        "https://github.com/surge-ai/complex-constraints"
+      ],
+      "retrieved": "2026-11-19",
+      "changelog": "CHANGELOG\nv1.1 Updated subset of rubrics on 10 tasks to admit more correct responses.",
+      "scores": [
+        {
+          "model": "Gemini 4 Hydrogen",
+          "effort": "xHigh",
+          "score": 73.7,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Hydrogen (xHigh reasoning)"
+        },
+        {
+          "model": "Gemini 4 Neon",
+          "effort": "High",
+          "score": 72.9,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Neon (High reasoning)"
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "effort": "High",
+          "score": 70.9,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Carbon (High reasoning)"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "effort": "Max",
+          "score": 70.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6 Astra (Max reasoning)"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "effort": "Max",
+          "score": 70.1,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.1 Sol (Max reasoning)"
+        },
+        {
+          "model": "GPT-6.2 Astra",
+          "effort": "Max",
+          "score": 69.6,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Astra (Max reasoning)"
+        },
+        {
+          "model": "GPT-6.2 Sol",
+          "effort": "Max",
+          "score": 69.5,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Sol (Max reasoning)"
+        },
+        {
+          "model": "Sonnet 5.5",
+          "effort": "Adaptive/Max",
+          "score": 67.2,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Sonnet 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "Fable 5.2",
+          "effort": "Adaptive/Max",
+          "score": 64.5,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Fable 5.2 (Adaptive/Max)"
+        },
+        {
+          "model": "Opus 5.5",
+          "effort": "Adaptive/Max",
+          "score": 64.4,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Opus 5.5 (Adaptive/Max)"
+        }
+      ],
+      "missing_models": [],
+      "raw_html": "leaderboards/complex-constraints.html.gz",
+      "visually_checked": true
+    },
+    "dayjob-finance": {
+      "name": "DAYJOB: Finance",
+      "unit": "%",
+      "scoring": "Task pass rate at 100% rubric satisfaction (current dataset card), mean over attempts.",
+      "tasks": 80,
+      "attempts_per_task": 5,
+      "harness": "Harbor + Surge OpenHands SDK; local document and spreadsheet tools; API-only network. Claude Opus 4.8 agentic OpenCode judge.",
+      "caveats": [
+        "Unversioned current leaderboard; original blog has older scores.",
+        "Cross-domain harness README describes mean rubric reward rather than thresholded headline pass rate; threshold sourced from domain dataset card."
+      ],
+      "version": "not explicitly versioned",
+      "source_url": "https://surgehq.ai/benchmarks/dayjob-finance",
+      "methodology_urls": [
+        "https://surgehq.ai/blog/dayjob",
+        "https://arxiv.org/abs/2610.01306",
+        "https://huggingface.co/datasets/surgeai/DAYJOB-finance",
+        "https://github.com/surge-ai/dayjob"
+      ],
+      "retrieved": "2026-11-19",
+      "changelog": null,
+      "scores": [
+        {
+          "model": "Gemini 4 Neon",
+          "effort": "High",
+          "score": 50.5,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Neon (High reasoning)"
+        },
+        {
+          "model": "GPT-6.2 Astra",
+          "effort": "Max",
+          "score": 45.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Astra (Max reasoning)"
+        },
+        {
+          "model": "Fable 5.2",
+          "effort": "Adaptive/Max",
+          "score": 43.7,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Fable 5.2 (Adaptive/Max)"
+        },
+        {
+          "model": "Opus 5.5",
+          "effort": "Adaptive/Max",
+          "score": 42.5,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Opus 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "Sonnet 5.5",
+          "effort": "Adaptive/Max",
+          "score": 40.5,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Sonnet 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "Gemini 4 Hydrogen",
+          "effort": "xHigh",
+          "score": 38.5,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Hydrogen (xHigh reasoning)"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "effort": "Max",
+          "score": 37.3,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6 Astra (Max reasoning)"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "effort": "Max",
+          "score": 33.5,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.1 Sol (Max reasoning)"
+        },
+        {
+          "model": "GPT-6.2 Sol",
+          "effort": "Max",
+          "score": 32.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Sol (Max reasoning)"
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "effort": "High",
+          "score": 23.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Carbon (High reasoning)"
+        }
+      ],
+      "missing_models": [],
+      "raw_html": "leaderboards/dayjob-finance.html.gz",
+      "visually_checked": true
+    },
+    "dayjob-healthcare": {
+      "name": "DAYJOB: Healthcare",
+      "unit": "%",
+      "scoring": "Task pass rate at 100% rubric satisfaction (current dataset card), mean over attempts.",
+      "tasks": 50,
+      "attempts_per_task": 5,
+      "harness": "Harbor + Surge OpenHands SDK; local document and spreadsheet tools; API-only network. Claude Opus 4.8 agentic OpenCode judge.",
+      "caveats": [
+        "Unversioned current leaderboard; original blog has older scores.",
+        "Cross-domain harness README describes mean rubric reward rather than thresholded headline pass rate; threshold sourced from domain dataset card."
+      ],
+      "version": "not explicitly versioned",
+      "source_url": "https://surgehq.ai/benchmarks/dayjob-healthcare",
+      "methodology_urls": [
+        "https://surgehq.ai/blog/dayjob",
+        "https://arxiv.org/abs/2610.01306",
+        "https://huggingface.co/datasets/surgeai/DAYJOB-healthcare",
+        "https://github.com/surge-ai/dayjob"
+      ],
+      "retrieved": "2026-11-19",
+      "changelog": null,
+      "scores": [
+        {
+          "model": "Opus 5.5",
+          "effort": "Adaptive/Max",
+          "score": 48.3,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Opus 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "Gemini 4 Neon",
+          "effort": "High",
+          "score": 47.2,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Neon (High reasoning)"
+        },
+        {
+          "model": "Fable 5.2",
+          "effort": "Adaptive/Max",
+          "score": 45.0,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Fable 5.2 (Adaptive/Max)"
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "effort": "High",
+          "score": 35.2,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Carbon (High reasoning)"
+        },
+        {
+          "model": "GPT-6.2 Astra",
+          "effort": "Max",
+          "score": 34.4,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Astra (Max reasoning)"
+        },
+        {
+          "model": "Sonnet 5.5",
+          "effort": "Adaptive/Max",
+          "score": 34.0,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Sonnet 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "effort": "Max",
+          "score": 28.4,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6 Astra (Max reasoning)"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "effort": "Max",
+          "score": 25.2,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.1 Sol (Max reasoning)"
+        },
+        {
+          "model": "Gemini 4 Hydrogen",
+          "effort": "xHigh",
+          "score": 24.0,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Hydrogen (xHigh reasoning)"
+        },
+        {
+          "model": "GPT-6.2 Sol",
+          "effort": "Max",
+          "score": 17.2,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Sol (Max reasoning)"
+        }
+      ],
+      "missing_models": [],
+      "raw_html": "leaderboards/dayjob-healthcare.html.gz",
+      "visually_checked": true
+    },
+    "dayjob-law": {
+      "name": "DAYJOB: Law (95% threshold)",
+      "unit": "%",
+      "scoring": "pass@1: attempt passes when at least 95% of rubric criteria satisfied.",
+      "tasks": 71,
+      "attempts_per_task": 5,
+      "harness": "Harbor + Surge OpenHands SDK; local document and spreadsheet tools; API-only network. Claude Opus 4.8 agentic OpenCode judge.",
+      "caveats": [
+        "Do not equate 95%-threshold law pass rates with 100%-threshold Finance/Healthcare.",
+        "Cross-domain harness README reports mean rubric reward; domain blog/card explicitly establishes headline pass@1 at 95%."
+      ],
+      "version": "not explicitly versioned",
+      "source_url": "https://surgehq.ai/benchmarks/dayjob-law",
+      "methodology_urls": [
+        "https://surgehq.ai/blog/dayjob-law",
+        "https://huggingface.co/datasets/surgeai/DAYJOB-law",
+        "https://github.com/surge-ai/dayjob"
+      ],
+      "retrieved": "2026-11-19",
+      "changelog": null,
+      "scores": [
+        {
+          "model": "GPT-6.2 Astra",
+          "effort": "Max",
+          "score": 41.4,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Astra (Max reasoning)"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "effort": "Max",
+          "score": 36.6,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6 Astra (Max reasoning)"
+        },
+        {
+          "model": "GPT-6.2 Sol",
+          "effort": "Max",
+          "score": 32.7,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Sol (Max reasoning)"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "effort": "Max",
+          "score": 31.6,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.1 Sol (Max reasoning)"
+        },
+        {
+          "model": "Sonnet 5.5",
+          "effort": "Adaptive/Max",
+          "score": 26.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Sonnet 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "Fable 5.2",
+          "effort": "Adaptive/Max",
+          "score": 26.5,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Fable 5.2 (Adaptive/Max)"
+        },
+        {
+          "model": "Gemini 4 Neon",
+          "effort": "High",
+          "score": 26.2,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Neon (High reasoning)"
+        },
+        {
+          "model": "Opus 5.5",
+          "effort": "Adaptive/Max",
+          "score": 23.7,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Opus 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "effort": "High",
+          "score": 13.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Carbon (High reasoning)"
+        },
+        {
+          "model": "Gemini 4 Hydrogen",
+          "effort": "xHigh",
+          "score": 9.7,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Hydrogen (xHigh reasoning)"
+        }
+      ],
+      "missing_models": [],
+      "raw_html": "leaderboards/dayjob-law.html.gz",
+      "visually_checked": true
+    },
+    "dayjob-tax": {
+      "name": "DAYJOB: Tax (95% threshold)",
+      "unit": "%",
+      "scoring": "pass@1: attempt passes when at least 95% of rubric criteria satisfied.",
+      "tasks": 50,
+      "attempts_per_task": 5,
+      "harness": "Harbor + Surge OpenHands SDK; local document and spreadsheet tools; API-only network. Claude Opus 4.8 agentic OpenCode judge.",
+      "caveats": [
+        "Do not equate 95%-threshold tax pass rates with 100%-threshold Finance/Healthcare.",
+        "Blog cost plot is a raster graphic without exact printed per-model costs; do not infer exact costs from pixel positions."
+      ],
+      "version": "not explicitly versioned",
+      "source_url": "https://surgehq.ai/benchmarks/dayjob-tax",
+      "methodology_urls": [
+        "https://surgehq.ai/blog/dayjob-tax",
+        "https://huggingface.co/datasets/surgeai/DAYJOB-tax"
+      ],
+      "retrieved": "2026-11-19",
+      "changelog": null,
+      "scores": [
+        {
+          "model": "Fable 5.2",
+          "effort": "Adaptive/Max",
+          "score": 15.6,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Fable 5.2 (Adaptive/Max)"
+        },
+        {
+          "model": "Gemini 4 Neon",
+          "effort": "High",
+          "score": 12.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Neon (High reasoning)"
+        },
+        {
+          "model": "Sonnet 5.5",
+          "effort": "Adaptive/Max",
+          "score": 10.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Sonnet 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "Opus 5.5",
+          "effort": "Adaptive/Max",
+          "score": 9.2,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Opus 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "GPT-6.2 Astra",
+          "effort": "Max",
+          "score": 9.2,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Astra (Max reasoning)"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "effort": "Max",
+          "score": 4.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6 Astra (Max reasoning)"
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "effort": "High",
+          "score": 4.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Carbon (High reasoning)"
+        },
+        {
+          "model": "GPT-6.2 Sol",
+          "effort": "Max",
+          "score": 4.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Sol (Max reasoning)"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "effort": "Max",
+          "score": 4.0,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.1 Sol (Max reasoning)"
+        },
+        {
+          "model": "Gemini 4 Hydrogen",
+          "effort": "xHigh",
+          "score": 3.6,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Hydrogen (xHigh reasoning)"
+        }
+      ],
+      "missing_models": [],
+      "raw_html": "leaderboards/dayjob-tax.html.gz",
+      "visually_checked": true
+    },
+    "enterprisebench-corecraft": {
+      "name": "EnterpriseBench: CoreCraft Agents",
+      "unit": "%",
+      "scoring": "Task success rate requiring every expert-authored rubric criterion to be satisfied (confirmed in CoreCraft arXiv v5 paper).",
+      "tasks": null,
+      "attempts_per_task": null,
+      "harness": "Lightweight Vercel AI SDK loop, MCP schema and role/company-policy system prompt; up to 1,000 tool steps.",
+      "caveats": [
+        "Only four requested models appear. No Neon, Fable 5.2, GPT-6.2 Astra, GPT-6.2 Sol, Carbon or Hydrogen result.",
+        "Harness described in original release blog; exact current configuration not restated on current board."
+      ],
+      "version": "not explicitly versioned",
+      "source_url": "https://surgehq.ai/benchmarks/enterprisebench-corecraft",
+      "methodology_urls": [
+        "https://surgehq.ai/blog/enterprisebench-corecraft",
+        "https://arxiv.org/abs/2602.16179"
+      ],
+      "retrieved": "2026-11-19",
+      "changelog": null,
+      "scores": [
+        {
+          "model": "Opus 5.5",
+          "effort": "Adaptive/Max",
+          "score": 74.4,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Opus 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "Sonnet 5.5",
+          "effort": "Adaptive/Max",
+          "score": 70.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Sonnet 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "effort": "Max",
+          "score": 50.3,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.1 Sol (Max reasoning)"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "effort": "Max",
+          "score": 42.6,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6 Astra (Max reasoning)"
+        }
+      ],
+      "missing_models": [
+        "Gemini 4 Neon",
+        "GPT-6.2 Astra",
+        "GPT-6.2 Sol",
+        "Fable 5.2",
+        "Gemini 4 Carbon",
+        "Gemini 4 Hydrogen"
+      ],
+      "raw_html": "leaderboards/enterprisebench-corecraft.html.gz",
+      "visually_checked": true
+    },
+    "gdp-pdf": {
+      "name": "GDP.pdf v1.1 (agentic)",
+      "unit": "%",
+      "scoring": "Headline task pass rate, all rubric criteria satisfied; older no-tools harness distinguishes this from mean criteria pass rate.",
+      "tasks": 100,
+      "attempts_per_task": null,
+      "harness": "Harbor agentic harness per current page changelog; exact current agent/judge not published on current page.",
+      "caveats": [
+        "v1.1 changelog: Converted to Harbor format to run with agentic harness and updated ambiguous rubrics.",
+        "GitHub README documents older no-tools Inspect AI protocol, five runs and Gemini 3.5 Flash judge; do not assume those details apply to v1.1."
+      ],
+      "version": "v1.1",
+      "source_url": "https://surgehq.ai/benchmarks/gdp-pdf",
+      "methodology_urls": [
+        "https://surgehq.ai/blog/gdp-pdf-can-100b-ai-models-master-the-documents-that-run-the-world",
+        "https://arxiv.org/abs/2607.11192",
+        "https://github.com/surge-ai/gdp-pdf"
+      ],
+      "retrieved": "2026-11-19",
+      "changelog": "CHANGELOG\nv1.1 Converted to Harbor format to run with agentic harness and updated ambiguous rubrics.",
+      "scores": [
+        {
+          "model": "Gemini 4 Carbon",
+          "effort": "High",
+          "score": 56.4,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Carbon (High reasoning)"
+        },
+        {
+          "model": "Gemini 4 Hydrogen",
+          "effort": "xHigh",
+          "score": 54.2,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Hydrogen (xHigh reasoning)"
+        },
+        {
+          "model": "Gemini 4 Neon",
+          "effort": "High",
+          "score": 53.4,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Neon (High reasoning)"
+        },
+        {
+          "model": "Fable 5.2",
+          "effort": "Adaptive/Max",
+          "score": 51.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Fable 5.2 (Adaptive/Max)"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "effort": "Max",
+          "score": 51.6,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.1 Sol (Max reasoning)"
+        },
+        {
+          "model": "Sonnet 5.5",
+          "effort": "Adaptive/Max",
+          "score": 51.2,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Sonnet 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "effort": "Max",
+          "score": 50.4,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6 Astra (Max reasoning)"
+        },
+        {
+          "model": "GPT-6.2 Astra",
+          "effort": "Max",
+          "score": 49.2,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Astra (Max reasoning)"
+        },
+        {
+          "model": "Opus 5.5",
+          "effort": "Adaptive/Max",
+          "score": 48.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Opus 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "GPT-6.2 Sol",
+          "effort": "Max",
+          "score": 48.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Sol (Max reasoning)"
+        }
+      ],
+      "missing_models": [],
+      "raw_html": "leaderboards/gdp-pdf.html.gz",
+      "visually_checked": true
+    },
+    "gdp-xlsx": {
+      "name": "GDP.xlsx",
+      "unit": "%",
+      "scoring": "Published headline score against must-have rubric criteria. Exact headline threshold not stated in current card/blog; harness returns mean per-criterion reward, which must not be assumed identical to headline pass rate.",
+      "tasks": 70,
+      "attempts_per_task": 5,
+      "harness": "Harbor + Surge OpenHands SDK; Linux tools include openpyxl/pandas/LibreOffice. Gemini 3.8 Flash agentic OpenCode judge; only final response text credited. 200 turns, 60-minute agent timeout.",
+      "caveats": [
+        "Unversioned current leaderboard.",
+        "Dataset card gives 13 domains, older blog 12; both specify 70 tasks.",
+        "README specifies raw mean rubric reward; headline threshold is not explicit. Preserve label as published score rather than inventing scoring equivalence."
+      ],
+      "version": "not explicitly versioned",
+      "source_url": "https://surgehq.ai/benchmarks/gdp-xlsx",
+      "methodology_urls": [
+        "https://surgehq.ai/blog/gdp-xlsx",
+        "https://huggingface.co/datasets/surgeai/GDP.xlsx",
+        "https://github.com/surge-ai/gdp-xlsx"
+      ],
+      "retrieved": "2026-11-19",
+      "changelog": null,
+      "scores": [
+        {
+          "model": "Gemini 4 Neon",
+          "effort": "High",
+          "score": 43.1,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Neon (High reasoning)"
+        },
+        {
+          "model": "Gemini 4 Hydrogen",
+          "effort": "xHigh",
+          "score": 40.9,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Hydrogen (xHigh reasoning)"
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "effort": "High",
+          "score": 38.9,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Carbon (High reasoning)"
+        },
+        {
+          "model": "Fable 5.2",
+          "effort": "Adaptive/Max",
+          "score": 32.9,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Fable 5.2 (Adaptive/Max)"
+        },
+        {
+          "model": "Opus 5.5",
+          "effort": "Adaptive/Max",
+          "score": 30.3,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Opus 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "GPT-6.2 Astra",
+          "effort": "Max",
+          "score": 29.7,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Astra (Max reasoning)"
+        },
+        {
+          "model": "Sonnet 5.5",
+          "effort": "Adaptive/Max",
+          "score": 29.1,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Sonnet 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "effort": "Max",
+          "score": 22.9,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6 Astra (Max reasoning)"
+        },
+        {
+          "model": "GPT-6.2 Sol",
+          "effort": "Max",
+          "score": 22.3,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Sol (Max reasoning)"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "effort": "Max",
+          "score": 22.0,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.1 Sol (Max reasoning)"
+        }
+      ],
+      "missing_models": [],
+      "raw_html": "leaderboards/gdp-xlsx.html.gz",
+      "visually_checked": true
+    },
+    "handbook": {
+      "name": "HANDBOOK.md v1.1 Agents",
+      "unit": "%",
+      "scoring": "Headline task success rate after v1.1 rubric/judging cleanup; binary criteria judged by comparing initial/final workspace and service state, not trajectory.",
+      "tasks": 65,
+      "attempts_per_task": 5,
+      "harness": "Harbor + Surge OpenHands SDK, MCP tools only (mail/Slack/calendar/Jira/Shopify and file/code execution); no local terminal/editor; 1,000 turns, 60 minutes; GPT-5.6 Sol high judge.",
+      "caveats": [
+        "v1.1 changelog: Cleaned up rubrics and judging protocol and recalculated scores.",
+        "Current versioned dataset card says five attempts and agentic GPT-5.6 Sol high judge; old GitHub README/blog says four attempts and deterministic rubrics. Prefer current v1.1 card.",
+        "Original blog distinguishes strict all-criteria pass@1 from N-1; current board does not explicitly restate pass threshold. Do not substitute N-1 results."
+      ],
+      "version": "v1.1",
+      "source_url": "https://surgehq.ai/benchmarks/handbook",
+      "methodology_urls": [
+        "https://surgehq.ai/blog/handbook-md",
+        "https://arxiv.org/abs/2607.25398",
+        "https://huggingface.co/datasets/surgeai/Handbook-v1.1",
+        "https://github.com/surge-ai/handbook"
+      ],
+      "retrieved": "2026-11-19",
+      "changelog": "CHANGELOG\nv1.1 Cleaned up rubrics and judging protocol and recalculated scores",
+      "scores": [
+        {
+          "model": "Opus 5.5",
+          "effort": "Adaptive/Max",
+          "score": 52.3,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Opus 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "Fable 5.2",
+          "effort": "Adaptive/Max",
+          "score": 52.3,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Fable 5.2 (Adaptive/Max)"
+        },
+        {
+          "model": "Gemini 4 Neon",
+          "effort": "High",
+          "score": 52.3,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Neon (High reasoning)"
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "effort": "High",
+          "score": 49.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Carbon (High reasoning)"
+        },
+        {
+          "model": "Sonnet 5.5",
+          "effort": "Adaptive/Max",
+          "score": 47.7,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Sonnet 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "GPT-6.2 Astra",
+          "effort": "Max",
+          "score": 45.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Astra (Max reasoning)"
+        },
+        {
+          "model": "Gemini 4 Hydrogen",
+          "effort": "xHigh",
+          "score": 44.6,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Hydrogen (xHigh reasoning)"
+        },
+        {
+          "model": "GPT-6.2 Sol",
+          "effort": "Max",
+          "score": 34.5,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Sol (Max reasoning)"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "effort": "Max",
+          "score": 31.4,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6 Astra (Max reasoning)"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "effort": "Max",
+          "score": 28.6,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.1 Sol (Max reasoning)"
+        }
+      ],
+      "missing_models": [],
+      "raw_html": "leaderboards/handbook.html.gz",
+      "visually_checked": true
+    },
+    "riemann-bench": {
+      "name": "Riemann-bench v1.1",
+      "unit": "%",
+      "scoring": "pass@1 correctness on closed-form research-math answers, with programmatic verification and no partial credit; problems independently solved and verified by two experts.",
+      "tasks": 25,
+      "attempts_per_task": null,
+      "harness": "Web search and coding tools permitted; no token limit; later blog note removes prior 1-hour timeout.",
+      "caveats": [
+        "v1.1 changelog: Updated answer keys for 4 problems after resolving ambiguities in original prompts.",
+        "Old body says 1-hour timeout; later correction explicitly says unlimited time. Preserve historical settings separately.",
+        "Hydrogen has no published result; do not invent one or derive current trial count from score granularity.",
+        "June arXiv v3 paper documents 100 independent attempts per problem for much earlier models; current v1.1 page does not restate attempt count, so it remains null."
+      ],
+      "version": "v1.1",
+      "source_url": "https://surgehq.ai/benchmarks/riemann-bench",
+      "methodology_urls": [
+        "https://surgehq.ai/blog/riemann-bench-a-benchmark-for-moonshot-mathematics",
+        "https://arxiv.org/abs/2604.06802"
+      ],
+      "retrieved": "2026-11-19",
+      "changelog": "CHANGELOG\nv1.1 Updated answer keys for 4 problems after resolving some ambiguities in original prompts",
+      "scores": [
+        {
+          "model": "Gemini 4 Neon",
+          "effort": "High",
+          "score": 84.0,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Neon (High reasoning)"
+        },
+        {
+          "model": "Fable 5.2",
+          "effort": "Adaptive/Max",
+          "score": 83.2,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Fable 5.2 (Adaptive/Max)"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "effort": "Max",
+          "score": 81.6,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6 Astra (Max reasoning)"
+        },
+        {
+          "model": "GPT-6.2 Sol",
+          "effort": "Max",
+          "score": 80.0,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Sol (Max reasoning)"
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "effort": "High",
+          "score": 80.0,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Carbon (High reasoning)"
+        },
+        {
+          "model": "Opus 5.5",
+          "effort": "Adaptive/Max",
+          "score": 80.0,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Opus 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "effort": "Max",
+          "score": 79.2,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.1 Sol (Max reasoning)"
+        },
+        {
+          "model": "Sonnet 5.5",
+          "effort": "Adaptive/Max",
+          "score": 76.8,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Sonnet 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "GPT-6.2 Astra",
+          "effort": "Max",
+          "score": 76.0,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Astra (Max reasoning)"
+        }
+      ],
+      "missing_models": [
+        "Gemini 4 Hydrogen"
+      ],
+      "raw_html": "leaderboards/riemann-bench.html.gz",
+      "visually_checked": true
+    },
+    "sudo-l7": {
+      "name": "sudo L7",
+      "unit": "%",
+      "scoring": "Task success against expert-written rubrics spanning eight engineering-behavior dimensions; grader models use executable checks as evidence. Exact pass threshold not stated in release blog.",
+      "tasks": 60,
+      "attempts_per_task": null,
+      "harness": "Coding agent operating on private production and some public repositories; current leaderboard does not name harness.",
+      "caveats": [
+        "Unversioned current leaderboard; old blog prose and cost plot describe different scores.",
+        "Blog approximate historical costs (Opus ~$10, Sonnet ~$14, Sol just over $1) must not be paired with current scores."
+      ],
+      "version": "not explicitly versioned",
+      "source_url": "https://surgehq.ai/benchmarks/sudo-l7",
+      "methodology_urls": [
+        "https://surgehq.ai/blog/sudo-l7"
+      ],
+      "retrieved": "2026-11-19",
+      "changelog": null,
+      "scores": [
+        {
+          "model": "Fable 5.2",
+          "effort": "Adaptive/Max",
+          "score": 52.2,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Fable 5.2 (Adaptive/Max)"
+        },
+        {
+          "model": "Sonnet 5.5",
+          "effort": "Adaptive/Max",
+          "score": 50.6,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Sonnet 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "Opus 5.5",
+          "effort": "Adaptive/Max",
+          "score": 46.1,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Claude Opus 5.5 (Adaptive/Max)"
+        },
+        {
+          "model": "GPT-6.2 Astra",
+          "effort": "Max",
+          "score": 38.3,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Astra (Max reasoning)"
+        },
+        {
+          "model": "Gemini 4 Neon",
+          "effort": "High",
+          "score": 38.3,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Neon (High reasoning)"
+        },
+        {
+          "model": "GPT-6.2 Sol",
+          "effort": "Max",
+          "score": 36.1,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.2 Sol (Max reasoning)"
+        },
+        {
+          "model": "GPT-6.1 Sol",
+          "effort": "Max",
+          "score": 33.9,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6.1 Sol (Max reasoning)"
+        },
+        {
+          "model": "Gemini 4 Hydrogen",
+          "effort": "xHigh",
+          "score": 31.7,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Hydrogen (xHigh reasoning)"
+        },
+        {
+          "model": "GPT-6 Astra",
+          "effort": "Max",
+          "score": 31.1,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "GPT 6 Astra (Max reasoning)"
+        },
+        {
+          "model": "Gemini 4 Carbon",
+          "effort": "High",
+          "score": 30.6,
+          "cost": null,
+          "cost_unit": "USD/trial",
+          "source_label": "Gemini 4 Carbon (High reasoning)"
+        }
+      ],
+      "missing_models": [],
+      "raw_html": "leaderboards/sudo-l7.html.gz",
+      "visually_checked": true
+    }
+  }
+}

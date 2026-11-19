@@ -1,0 +1,106 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "CWE-bench",
+  "alternateName": "CWE Bench",
+  "url": "https://cwe-bench.com/",
+  "description": "CWE-bench is a defensive cybersecurity benchmark. It measures whether coding agents can find and fix real vulnerabilities in real codebases. v2 has 250 audit-and-patch tasks across 185 distinct CWEs: a public set of 100 tasks (91 CWEs) that anyone can run, and a held-out set of 150 tasks that remains closed. Each task is graded by a deterministic verifier on whether the exploit is closed and legitimate behaviour still works.",
+  "creator": {
+    "@type": "Organization",
+    "name": "Collinear AI",
+    "url": "https://collinear.ai",
+    "sameAs": [
+      "https://x.com/collinearAI",
+      "https://www.linkedin.com/company/collinearai/"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Collinear AI",
+    "url": "https://collinear.ai"
+  },
+  "citation": {
+    "@type": "ScholarlyArticle",
+    "name": "CWE-bench: Refocusing Agentic Security from Exploitation to Defense",
+    "url": "https://arxiv.org/abs/2610.17020",
+    "datePublished": "2026-10-12",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Gonzalo Gonzalez-Pumariega"
+      },
+      {
+        "@type": "Person",
+        "name": "Ajay Jagannath"
+      },
+      {
+        "@type": "Person",
+        "name": "Adit Jain"
+      },
+      {
+        "@type": "Person",
+        "name": "Guram Gogia"
+      },
+      {
+        "@type": "Person",
+        "name": "Soumyadeep Bakshi"
+      },
+      {
+        "@type": "Person",
+        "name": "Nazneen Rajani"
+      }
+    ]
+  },
+  "subjectOf": [
+    {
+      "@type": "BlogPosting",
+      "headline": "CWE-bench v1: Defense Is the Harder Test",
+      "url": "https://blog.collinear.ai/p/cwe-bench-v1",
+      "datePublished": "2026-09-28",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Collinear AI",
+        "url": "https://collinear.ai"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "CWE-bench: Measuring Coding Agent Capabilities on Every Class of Known Vulnerability",
+      "url": "https://blog.collinear.ai/p/cwe-bench",
+      "datePublished": "2026-09-02",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Collinear AI",
+        "url": "https://collinear.ai"
+      }
+    }
+  ],
+  "version": "v2 (2026-11-02)",
+  "datePublished": "2026-08-04",
+  "dateModified": "2026-11-18",
+  "isAccessibleForFree": true,
+  "distribution": {
+    "@type": "DataDownload",
+    "name": "CWE-bench public set (100 tasks)",
+    "contentUrl": "https://huggingface.co/datasets/collinear-ai/cwe-bench",
+    "encodingFormat": "Harbor task directories"
+  },
+  "license": "https://www.apache.org/licenses/LICENSE-2.0",
+  "measurementTechnique": "Automated audit-and-patch task graded by a deterministic programmatic verifier: the exploit must no longer work and legitimate behaviour must still hold, with no partial credit.",
+  "variableMeasured": {
+    "@type": "PropertyValue",
+    "name": "pass@1",
+    "description": "Share of tasks a model solves on the first attempt under the deterministic programmatic verifier, averaged over four rollouts per task."
+  },
+  "keywords": [
+    "cybersecurity benchmark",
+    "CWE",
+    "vulnerability detection",
+    "audit-and-patch",
+    "coding agents",
+    "LLM evaluation",
+    "defensive security",
+    "public benchmark",
+    "held-out evaluation"
+  ]
+}

@@ -63,6 +63,8 @@ class ChartCoverageTests(unittest.TestCase):
         model_names = {model["slug"]: model["name"] for model in data["models"]}
         metrics = {metric["name"]: metric for metric in data["metrics"].values()}
         for name, scores in snapshot["scores"].items():
+            if name == "CursorBench 4.0":
+                continue
             actual = {model_names[slug]: values for slug, values in metrics[name]["scores"].items()}
             for model, values in scores.items():
                 if model not in model_names.values():
@@ -100,14 +102,57 @@ class ChartCoverageTests(unittest.TestCase):
                                                    "Science & engineering", "Machine-learning research",
                                                    "Professional work", "Health", "Multimodal tasks"])
         placed = [name for names in charts_by_section.values() for name in names]
-        self.assertEqual(len(placed), 50, "Every chart must appear")
-        self.assertEqual(len(set(placed)), 50, "No chart may appear twice")
+        self.assertEqual(sorted(placed), sorted(metric.name for metric in [*charts.CURVES, *charts.REPORTED]),
+                         "Every declared chart must appear exactly once")
+        self.assertGreater(len(placed), 50, "New benchmarks must not be limited to the historical chart count")
         for heading, name in [("Aggregates", "Vals Index"), ("Intelligence & knowledge", "ARC-AGI-2"),
                               ("Professional work", "AutomationBench 1.0.6"), ("Professional work", "MKA"),
                               ("Science & engineering", "SciCode"), ("Health", "MentalHealthBench"),
                               ("Coding & security", "ExploitBench \u2013 Internal Port (June\u2013August 2026)"),
                               ("Machine-learning research", "MLE-Bench Revised"), ("Multimodal tasks", "AA-3D")]:
             self.assertIn(name, charts_by_section[heading], f"{name} belongs under {heading}")
+
+    def test_neon_preserves_real_aa_efforts_and_costs(self) -> None:
+        metric = next(metric for metric in charts.CURVES if metric.name == "AA Intelligence Index")
+        self.assertEqual(metric.scores[charts.GEMINI_4_NEON], [44.1, 54.9, 59.6, 61.4, None])
+        self.assertEqual(metric.costs[charts.GEMINI_4_NEON], [830.0, 1870.0, 3690.0, 7790.0, None])
+        self.assertEqual(len(charts.cost_points(metric, charts.GEMINI_4_NEON)), 4)
+
+    def test_cursor_41_replaces_40_without_relabeling_old_scores(self) -> None:
+        metric = next(metric for metric in charts.CURVES if metric.name == "CursorBench 4.1")
+        self.assertEqual(metric.scores[charts.GEMINI_4_NEON], [45.5, 57.7, 63.7, 65.4, None])
+        self.assertEqual(metric.costs[charts.GEMINI_4_NEON], [1.26, 3.07, 6.54, 10.67, None])
+        self.assertEqual(metric.scores[charts.CLAUDE_OPUS_5_5][-1], 58.1)
+        self.assertNotIn("CursorBench 4.0", [metric.name for metric in charts.CURVES])
+        historical = json.loads((Path(__file__).parent / "sources/gpt62.json").read_text())
+        self.assertEqual(historical["scores"]["CursorBench 4.0"]["Opus 5.5"][-1], 57.8)
+
+    def test_mai_code_2_has_only_the_approved_deepswe_point(self) -> None:
+        points = [(metric.name, metric.scores[charts.MAI_CODE_2]) for metric in charts.CURVES
+                  if charts.MAI_CODE_2 in metric.scores]
+        self.assertEqual(points, [("DeepSWE v1.1", [None, None, None, None, 73.2])])
+        self.assertFalse(any(charts.MAI_CODE_2 in metric.scores for metric in charts.REPORTED))
+        metric = next(metric for metric in charts.CURVES if metric.name == "DeepSWE v1.1")
+        self.assertEqual(metric.costs[charts.MAI_CODE_2], [None, None, None, None, 0.618])
+        self.assertIn("Copilot CLI 1.0.102", metric.unit_and_source)
+
+    def test_distinct_google_runs_do_not_borrow_costs(self) -> None:
+        metric = next(metric for metric in charts.REPORTED if metric.name == "LVBench (Google)")
+        self.assertEqual(metric.scores[charts.GEMINI_4_NEON], (89.0, "xhigh"))
+        self.assertIsNone(metric.costs)
+        self.assertIn("vision-only", metric.unit_and_source)
+
+    def test_nonstandard_reported_effort_keeps_its_price_and_filter(self) -> None:
+        metric = next(metric for metric in charts.REPORTED if metric.name == "AutomationBench 1.0.6 (nonstandard efforts)")
+        self.assertEqual(metric.scores[charts.GPT_6_ASTRA], (25.27, "none"))
+        rendered = charts.bar_panel_html(metric)
+        self.assertIn('data-level="not-stated"', rendered)
+        self.assertIn("between tools", rendered)
+        self.assertIn("none", rendered)
+        self.assertIn("$1.28", rendered)
+        self.assertNotIn("cost-point", rendered, "Nonstandard efforts retain labeled bars, not an invented effort curve")
+        self.assertEqual(charts.filter_level("none"), "not-stated")
+        self.assertEqual(charts.filter_level("highest/high mixed"), "max")
 
     def test_a_chart_left_out_of_every_section_fails_the_build(self) -> None:
         with self.assertRaisesRegex(ValueError, "Missing: .*AA Intelligence Index"):

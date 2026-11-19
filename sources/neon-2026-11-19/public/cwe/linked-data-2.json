@@ -1,0 +1,86 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is CWE-bench?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CWE-bench is a defensive cybersecurity benchmark from Collinear AI. It gives a coding agent a checkout of a real open-source repository and one instruction, audit the code and fix what you find. v2 has a public set of 100 tasks across 91 CWEs that anyone can run, and a held-out set of 150 tasks; together they cover 185 distinct CWEs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How well do AI coding agents do at finding and fixing vulnerabilities?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not well yet. Across v2\u2019s 250 tasks the best model solves 75.0% at pass@1, and 13 tasks are unsolved by every model tested: 3 public, 10 held-out. Even the leader fails 43 tasks on every attempt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are agents graded on CWE-bench?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "By a deterministic programmatic verifier: the exploit must no longer work and legitimate behaviour must still hold, with no partial credit. Panels of LLM judges were used while building the set to review and correct the verifiers, but every score on this page is the programmatic one, so anyone can reproduce it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why not OWASP categories, as in v1?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The OWASP Top 10 was a good fit for v1\u2019s 73 CWEs, but many of v2\u2019s 185 sit at its edges or outside it. v2 groups them into ten weakness classes of our own, in the spirit of OWASP. They are not an official taxonomy; each CWE\u2019s class is shown in the CWE map on this page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is a task assigned to a weakness class?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "By its most specific CWE (a MITRE Base or Variant entry) and the security property its tests check, never by a broad parent. Where two classes meet, the task goes with the mechanism being exploited, and error-handling and logic bugs go to K10. We checked the rule against MITRE\u2019s full catalog (CWE 5.0): every software-security weakness in it fits one of the ten classes. Hardware-design, code-quality, documentation and performance CWEs are out of scope, because a security test cannot meaningfully fail them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I download and run the evaluation set?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The public set, yes: its 100 tasks, the grader and the harness are on Hugging Face. The held-out set is not released, so it can keep tracking progress on tasks no model has seen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I think a task is wrong. What should I do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tell us. Every task passed seven checks and a review by hand, but open-sourcing the set is how we find what those missed. Write to cyber@collinear.ai with the task name and what you saw."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I submit a model for evaluation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Run the public set yourself, or ask Collinear to run your model on both sets; we report deterministic pass@1 and pass@4 on each."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I license the separate training corpus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The 4,000+ task training corpus of real audit-and-patch tasks is available for teams building defensive-security capability, and evaluation tasks never appear in training deliveries."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Collinear AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Collinear AI builds hard, verifiable RL environments and training data for frontier AI labs, spanning coding, computer use, and enterprise tool use. CWE-bench is its defensive-security benchmark. Learn more at collinear.ai."
+      }
+    }
+  ]
+}
