@@ -1,0 +1,1856 @@
+{
+  "tracks": {
+    "qna": [
+      "Codebase QnA",
+      124
+    ],
+    "tw": [
+      "Test Writing",
+      90
+    ],
+    "rf": [
+      "Refactoring",
+      70
+    ]
+  },
+  "providers": {
+    "anthropic": {
+      "label": "Anthropic",
+      "color": "#E27553"
+    },
+    "google": {
+      "label": "Google",
+      "color": "#598DD2"
+    },
+    "openai": {
+      "label": "OpenAI",
+      "color": "#65C2B9"
+    },
+    "meta": {
+      "label": "Meta",
+      "color": "#6FCBEF"
+    },
+    "alibaba": {
+      "label": "Alibaba",
+      "color": "#E072AF"
+    },
+    "xai": {
+      "label": "xAI",
+      "color": "#817EAD"
+    },
+    "deepseek": {
+      "label": "DeepSeek",
+      "color": "#E39CAB"
+    },
+    "tm": {
+      "label": "Thinking Machines",
+      "color": "#9ACD32"
+    },
+    "moonshot": {
+      "label": "Moonshot AI",
+      "color": "#A37CAD"
+    },
+    "zai": {
+      "label": "Z.ai",
+      "color": "#D1B745"
+    },
+    "mistral": {
+      "label": "Mistral",
+      "color": "#FF6F00"
+    },
+    "minimax": {
+      "label": "MiniMax",
+      "color": "#8D86E8"
+    },
+    "reflection": {
+      "label": "Reflection AI",
+      "color": "#C9A27E"
+    },
+    "nvidia": {
+      "label": "NVIDIA",
+      "color": "#76B900"
+    }
+  },
+  "models": [
+    {
+      "name": "Fable 5.2",
+      "slug": "fable-5-2",
+      "provider": "anthropic",
+      "agent": "Claude Code",
+      "effort": "max",
+      "cost_usd": 4382.6,
+      "cost_estimated": false,
+      "cost_qualifier": "harness-reported",
+      "cost_track": {
+        "qna": 1458.44,
+        "tw": 1515.37,
+        "rf": 1408.79
+      },
+      "new": true,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 77.8,
+        "ci": 8.8,
+        "ci_lo": 8.8,
+        "rank": 4,
+        "pos": 3,
+        "x": 77.7778,
+        "ci2": 8.76,
+        "ci2_lo": 8.76
+      },
+      "qna": {
+        "score": 83.9,
+        "ci": 6.6,
+        "ci_lo": 6.6,
+        "rank": 1,
+        "pos": 0,
+        "x": 83.871,
+        "ci2": 6.56,
+        "ci2_lo": 6.56
+      },
+      "rf": {
+        "score": 80.0,
+        "ci": 9.6,
+        "ci_lo": 9.6,
+        "rank": 1,
+        "pos": 0,
+        "x": 80.0,
+        "ci2": 9.61,
+        "ci2_lo": 9.61
+      },
+      "overall": {
+        "score": 80.5,
+        "ci": 4.8,
+        "ci_lo": 4.8,
+        "rank": 1,
+        "pos": 0,
+        "x": 80.5496,
+        "ci2": 4.8,
+        "ci2_lo": 4.8
+      }
+    },
+    {
+      "name": "Opus 5.5",
+      "slug": "opus-5-5",
+      "provider": "anthropic",
+      "agent": "Claude Code",
+      "effort": "max",
+      "cost_usd": 1298.86,
+      "cost_estimated": false,
+      "cost_qualifier": "harness-reported",
+      "cost_track": {
+        "qna": 598.34,
+        "tw": 356.93,
+        "rf": 343.59
+      },
+      "new": false,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 77.8,
+        "ci": 8.8,
+        "ci_lo": 8.8,
+        "rank": 3,
+        "pos": 2,
+        "x": 77.7778,
+        "ci2": 8.76,
+        "ci2_lo": 8.76
+      },
+      "qna": {
+        "score": 77.4,
+        "ci": 7.5,
+        "ci_lo": 7.5,
+        "rank": 4,
+        "pos": 3,
+        "x": 77.4194,
+        "ci2": 7.46,
+        "ci2_lo": 7.46
+      },
+      "rf": {
+        "score": 77.1,
+        "ci": 10.1,
+        "ci_lo": 10.1,
+        "rank": 2,
+        "pos": 1,
+        "x": 77.1429,
+        "ci2": 10.08,
+        "ci2_lo": 10.08
+      },
+      "overall": {
+        "score": 77.4,
+        "ci": 5.0,
+        "ci_lo": 5.0,
+        "rank": 2,
+        "pos": 1,
+        "x": 77.4467,
+        "ci2": 5.05,
+        "ci2_lo": 5.05
+      }
+    },
+    {
+      "name": "Fable 5.1",
+      "slug": "fable-5-1",
+      "provider": "anthropic",
+      "agent": "Claude Code",
+      "effort": "max",
+      "cost_usd": 1843.65,
+      "cost_estimated": false,
+      "cost_qualifier": "harness-reported",
+      "cost_track": {
+        "qna": 822.97,
+        "tw": 499.78,
+        "rf": 520.89
+      },
+      "new": false,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 78.9,
+        "ci": 8.6,
+        "ci_lo": 8.6,
+        "rank": 1,
+        "pos": 0,
+        "x": 78.8889,
+        "ci2": 8.6,
+        "ci2_lo": 8.6
+      },
+      "qna": {
+        "score": 79.0,
+        "ci": 7.3,
+        "ci_lo": 7.3,
+        "rank": 3,
+        "pos": 2,
+        "x": 79.0323,
+        "ci2": 7.27,
+        "ci2_lo": 7.27
+      },
+      "rf": {
+        "score": 71.4,
+        "ci": 10.8,
+        "ci_lo": 10.8,
+        "rank": 4,
+        "pos": 3,
+        "x": 71.4286,
+        "ci2": 10.85,
+        "ci2_lo": 10.85
+      },
+      "overall": {
+        "score": 76.4,
+        "ci": 5.2,
+        "ci_lo": 5.2,
+        "rank": 3,
+        "pos": 2,
+        "x": 76.4499,
+        "ci2": 5.16,
+        "ci2_lo": 5.16
+      }
+    },
+    {
+      "name": "Gemini 4 Carbon",
+      "slug": "gemini-4-carbon",
+      "provider": "google",
+      "agent": "Antigravity CLI",
+      "effort": "high",
+      "cost_usd": 949.11,
+      "cost_estimated": false,
+      "cost_qualifier": "harness-reported",
+      "cost_track": {
+        "qna": 380.36,
+        "tw": 242.08,
+        "rf": 326.67
+      },
+      "new": true,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 76.7,
+        "ci": 8.9,
+        "ci_lo": 8.9,
+        "rank": 5,
+        "pos": 4,
+        "x": 76.6667,
+        "ci2": 8.91,
+        "ci2_lo": 8.91
+      },
+      "qna": {
+        "score": 73.4,
+        "ci": 7.9,
+        "ci_lo": 7.9,
+        "rank": 9,
+        "pos": 8,
+        "x": 73.3871,
+        "ci2": 7.89,
+        "ci2_lo": 7.89
+      },
+      "rf": {
+        "score": 64.3,
+        "ci": 11.5,
+        "ci_lo": 11.5,
+        "rank": 6,
+        "pos": 5,
+        "x": 64.2857,
+        "ci2": 11.51,
+        "ci2_lo": 11.51
+      },
+      "overall": {
+        "score": 71.4,
+        "ci": 5.5,
+        "ci_lo": 5.5,
+        "rank": 4,
+        "pos": 3,
+        "x": 71.4465,
+        "ci2": 5.46,
+        "ci2_lo": 5.46
+      }
+    },
+    {
+      "name": "Gemini 4 Argon",
+      "slug": "gemini-4-argon",
+      "provider": "google",
+      "agent": "Antigravity CLI",
+      "effort": "high",
+      "cost_usd": 520.86,
+      "cost_estimated": false,
+      "cost_qualifier": "harness-reported",
+      "cost_track": {
+        "qna": 212.7,
+        "tw": 119.28,
+        "rf": 188.88
+      },
+      "new": false,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 77.8,
+        "ci": 8.8,
+        "ci_lo": 8.8,
+        "rank": 2,
+        "pos": 1,
+        "x": 77.7778,
+        "ci2": 8.76,
+        "ci2_lo": 8.76
+      },
+      "qna": {
+        "score": 65.3,
+        "ci": 8.5,
+        "ci_lo": 8.5,
+        "rank": 17,
+        "pos": 16,
+        "x": 65.3226,
+        "ci2": 8.49,
+        "ci2_lo": 8.49
+      },
+      "rf": {
+        "score": 67.1,
+        "ci": 11.3,
+        "ci_lo": 11.3,
+        "rank": 5,
+        "pos": 4,
+        "x": 67.1429,
+        "ci2": 11.28,
+        "ci2_lo": 11.28
+      },
+      "overall": {
+        "score": 70.1,
+        "ci": 5.5,
+        "ci_lo": 5.5,
+        "rank": 5,
+        "pos": 4,
+        "x": 70.0811,
+        "ci2": 5.48,
+        "ci2_lo": 5.48
+      }
+    },
+    {
+      "name": "GPT-6 Astra",
+      "slug": "gpt-6-astra",
+      "provider": "openai",
+      "agent": "Codex CLI",
+      "effort": "max",
+      "cost_usd": 1023.6,
+      "cost_estimated": false,
+      "cost_qualifier": "harness-reported",
+      "cost_track": {
+        "qna": 566.31,
+        "tw": 243.73,
+        "rf": 213.57
+      },
+      "new": false,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 66.7,
+        "ci": 9.9,
+        "ci_lo": 9.9,
+        "rank": 9,
+        "pos": 8,
+        "x": 66.6667,
+        "ci2": 9.93,
+        "ci2_lo": 9.93
+      },
+      "qna": {
+        "score": 70.2,
+        "ci": 8.2,
+        "ci_lo": 8.2,
+        "rank": 14,
+        "pos": 13,
+        "x": 70.1613,
+        "ci2": 8.17,
+        "ci2_lo": 8.17
+      },
+      "rf": {
+        "score": 71.4,
+        "ci": 10.8,
+        "ci_lo": 10.8,
+        "rank": 3,
+        "pos": 2,
+        "x": 71.4286,
+        "ci2": 10.85,
+        "ci2_lo": 10.85
+      },
+      "overall": {
+        "score": 69.4,
+        "ci": 5.6,
+        "ci_lo": 5.6,
+        "rank": 6,
+        "pos": 5,
+        "x": 69.4188,
+        "ci2": 5.55,
+        "ci2_lo": 5.55
+      }
+    },
+    {
+      "name": "Sonnet 5.5",
+      "slug": "sonnet-5-5",
+      "provider": "anthropic",
+      "agent": "Claude Code",
+      "effort": "max",
+      "cost_usd": 992.45,
+      "cost_estimated": false,
+      "cost_qualifier": "harness-reported",
+      "cost_track": {
+        "qna": 433.4,
+        "tw": 285.66,
+        "rf": 273.39
+      },
+      "new": false,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 67.8,
+        "ci": 9.8,
+        "ci_lo": 9.8,
+        "rank": 7,
+        "pos": 6,
+        "x": 67.7778,
+        "ci2": 9.84,
+        "ci2_lo": 9.84
+      },
+      "qna": {
+        "score": 74.2,
+        "ci": 7.8,
+        "ci_lo": 7.8,
+        "rank": 6,
+        "pos": 5,
+        "x": 74.1935,
+        "ci2": 7.81,
+        "ci2_lo": 7.81
+      },
+      "rf": {
+        "score": 62.9,
+        "ci": 11.6,
+        "ci_lo": 11.6,
+        "rank": 7,
+        "pos": 6,
+        "x": 62.8571,
+        "ci2": 11.6,
+        "ci2_lo": 11.6
+      },
+      "overall": {
+        "score": 68.3,
+        "ci": 5.6,
+        "ci_lo": 5.6,
+        "rank": 7,
+        "pos": 6,
+        "x": 68.2762,
+        "ci2": 5.64,
+        "ci2_lo": 5.64
+      }
+    },
+    {
+      "name": "GPT-6.1 Sol",
+      "slug": "gpt-6-1-sol",
+      "provider": "openai",
+      "agent": "Codex CLI",
+      "effort": "max",
+      "cost_usd": 168.5,
+      "cost_estimated": false,
+      "cost_qualifier": "harness-reported",
+      "cost_track": {
+        "qna": 92.64,
+        "tw": 41.83,
+        "rf": 34.04
+      },
+      "new": false,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 66.7,
+        "ci": 9.9,
+        "ci_lo": 9.9,
+        "rank": 8,
+        "pos": 7,
+        "x": 66.6667,
+        "ci2": 9.93,
+        "ci2_lo": 9.93
+      },
+      "qna": {
+        "score": 71.0,
+        "ci": 8.1,
+        "ci_lo": 8.1,
+        "rank": 11,
+        "pos": 10,
+        "x": 70.9677,
+        "ci2": 8.1,
+        "ci2_lo": 8.1
+      },
+      "rf": {
+        "score": 60.0,
+        "ci": 11.8,
+        "ci_lo": 11.8,
+        "rank": 8,
+        "pos": 7,
+        "x": 60.0,
+        "ci2": 11.77,
+        "ci2_lo": 11.77
+      },
+      "overall": {
+        "score": 65.9,
+        "ci": 5.7,
+        "ci_lo": 5.7,
+        "rank": 8,
+        "pos": 7,
+        "x": 65.8781,
+        "ci2": 5.74,
+        "ci2_lo": 5.74
+      }
+    },
+    {
+      "name": "Muse Wonder 1.0",
+      "slug": "muse-wonder-1-0",
+      "provider": "meta",
+      "agent": "Muse Code",
+      "effort": "max",
+      "cost_usd": 658.67,
+      "cost_estimated": true,
+      "cost_qualifier": "token usage \u00d7 LiteLLM list prices",
+      "cost_track": {
+        "qna": 269.19,
+        "tw": 153.01,
+        "rf": 236.48
+      },
+      "new": false,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 61.1,
+        "ci": 10.3,
+        "ci_lo": 10.3,
+        "rank": 17,
+        "pos": 16,
+        "x": 61.1111,
+        "ci2": 10.27,
+        "ci2_lo": 10.27
+      },
+      "qna": {
+        "score": 73.4,
+        "ci": 7.9,
+        "ci_lo": 7.9,
+        "rank": 8,
+        "pos": 7,
+        "x": 73.3871,
+        "ci2": 7.89,
+        "ci2_lo": 7.89
+      },
+      "rf": {
+        "score": 60.0,
+        "ci": 11.8,
+        "ci_lo": 11.8,
+        "rank": 9,
+        "pos": 8,
+        "x": 60.0,
+        "ci2": 11.77,
+        "ci2_lo": 11.77
+      },
+      "overall": {
+        "score": 64.8,
+        "ci": 5.8,
+        "ci_lo": 5.8,
+        "rank": 9,
+        "pos": 8,
+        "x": 64.8327,
+        "ci2": 5.77,
+        "ci2_lo": 5.77
+      }
+    },
+    {
+      "name": "Qwen 3.8 Max",
+      "slug": "qwen-3-8-max",
+      "provider": "alibaba",
+      "agent": "mini-swe-agent",
+      "effort": "max",
+      "cost_usd": 583.9,
+      "cost_estimated": true,
+      "cost_qualifier": "",
+      "cost_track": {
+        "qna": 270.22,
+        "tw": 148.0,
+        "rf": 165.74
+      },
+      "cost_source": "alibabacloud.com + fireworks.ai list price, 2026-11-12",
+      "new": true,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 58.9,
+        "ci": 10.4,
+        "ci_lo": 10.4,
+        "rank": 19,
+        "pos": 18,
+        "x": 58.8889,
+        "ci2": 10.36,
+        "ci2_lo": 10.36
+      },
+      "qna": {
+        "score": 81.5,
+        "ci": 6.9,
+        "ci_lo": 6.9,
+        "rank": 2,
+        "pos": 1,
+        "x": 81.4516,
+        "ci2": 6.94,
+        "ci2_lo": 6.94
+      },
+      "rf": {
+        "score": 52.9,
+        "ci": 12.0,
+        "ci_lo": 12.0,
+        "rank": 18,
+        "pos": 17,
+        "x": 52.8571,
+        "ci2": 11.99,
+        "ci2_lo": 11.99
+      },
+      "overall": {
+        "score": 64.4,
+        "ci": 5.7,
+        "ci_lo": 5.7,
+        "rank": 10,
+        "pos": 9,
+        "x": 64.3992,
+        "ci2": 5.71,
+        "ci2_lo": 5.71
+      }
+    },
+    {
+      "name": "Grok 4.7",
+      "slug": "grok-4-7",
+      "provider": "xai",
+      "agent": "Grok Build",
+      "effort": "xhigh",
+      "cost_usd": 641.97,
+      "cost_estimated": false,
+      "cost_qualifier": "harness-reported; 1 task estimated where usage was missing",
+      "cost_track": {
+        "qna": 345.46,
+        "tw": 116.37,
+        "rf": 180.14
+      },
+      "new": false,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 64.4,
+        "ci": 10.1,
+        "ci_lo": 10.1,
+        "rank": 11,
+        "pos": 10,
+        "x": 64.4444,
+        "ci2": 10.08,
+        "ci2_lo": 10.08
+      },
+      "qna": {
+        "score": 73.4,
+        "ci": 7.9,
+        "ci_lo": 7.9,
+        "rank": 7,
+        "pos": 6,
+        "x": 73.3871,
+        "ci2": 7.89,
+        "ci2_lo": 7.89
+      },
+      "rf": {
+        "score": 48.6,
+        "ci": 12.0,
+        "ci_lo": 12.0,
+        "rank": 22,
+        "pos": 21,
+        "x": 48.5714,
+        "ci2": 12.0,
+        "ci2_lo": 12.0
+      },
+      "overall": {
+        "score": 62.1,
+        "ci": 5.8,
+        "ci_lo": 5.8,
+        "rank": 11,
+        "pos": 10,
+        "x": 62.1343,
+        "ci2": 5.79,
+        "ci2_lo": 5.79
+      }
+    },
+    {
+      "name": "DeepSeek V4.1 Flash",
+      "slug": "deepseek-v4-1-flash",
+      "provider": "deepseek",
+      "agent": "DeepSeek Harness",
+      "effort": "max",
+      "cost_usd": 52.11,
+      "cost_estimated": true,
+      "cost_qualifier": "token usage \u00d7 LiteLLM list prices",
+      "cost_track": {
+        "qna": 24.52,
+        "tw": 11.59,
+        "rf": 16.0
+      },
+      "new": false,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 61.1,
+        "ci": 10.3,
+        "ci_lo": 10.3,
+        "rank": 16,
+        "pos": 15,
+        "x": 61.1111,
+        "ci2": 10.27,
+        "ci2_lo": 10.27
+      },
+      "qna": {
+        "score": 71.0,
+        "ci": 8.1,
+        "ci_lo": 8.1,
+        "rank": 10,
+        "pos": 9,
+        "x": 70.9677,
+        "ci2": 8.1,
+        "ci2_lo": 8.1
+      },
+      "rf": {
+        "score": 54.3,
+        "ci": 12.0,
+        "ci_lo": 12.0,
+        "rank": 13,
+        "pos": 12,
+        "x": 54.2857,
+        "ci2": 11.96,
+        "ci2_lo": 11.96
+      },
+      "overall": {
+        "score": 62.1,
+        "ci": 5.8,
+        "ci_lo": 5.8,
+        "rank": 12,
+        "pos": 11,
+        "x": 62.1215,
+        "ci2": 5.85,
+        "ci2_lo": 5.85
+      }
+    },
+    {
+      "name": "Inkling 2 Small",
+      "slug": "inkling-2-small",
+      "provider": "tm",
+      "agent": "mini-swe-agent",
+      "effort": "0.99",
+      "cost_usd": 130.95,
+      "cost_estimated": true,
+      "cost_qualifier": "mean of 3 runs",
+      "cost_track": {
+        "qna": 51.4,
+        "tw": 22.77,
+        "rf": 56.79
+      },
+      "cost_source": "tinker-docs.thinkingmachines.ai list price, 2026-11-12",
+      "new": false,
+      "hidden_in_charts": false,
+      "harness_note": "pass@1 averaged over 3 runs",
+      "tw": {
+        "score": 58.1,
+        "ci": 10.4,
+        "ci_lo": 10.4,
+        "rank": 20,
+        "pos": 19,
+        "x": 58.1481,
+        "ci2": 10.39,
+        "ci2_lo": 10.39
+      },
+      "qna": {
+        "score": 74.2,
+        "ci": 7.8,
+        "ci_lo": 7.8,
+        "rank": 5,
+        "pos": 4,
+        "x": 74.1935,
+        "ci2": 7.81,
+        "ci2_lo": 7.81
+      },
+      "rf": {
+        "score": 53.3,
+        "ci": 12.0,
+        "ci_lo": 12.0,
+        "rank": 16,
+        "pos": 15,
+        "x": 53.3333,
+        "ci2": 11.98,
+        "ci2_lo": 11.98
+      },
+      "overall": {
+        "score": 61.9,
+        "ci": 5.8,
+        "ci_lo": 5.8,
+        "rank": 13,
+        "pos": 12,
+        "x": 61.8917,
+        "ci2": 5.83,
+        "ci2_lo": 5.83
+      }
+    },
+    {
+      "name": "Kimi K3.1 Pro",
+      "slug": "kimi-k3-1-pro",
+      "provider": "moonshot",
+      "agent": "Kimi Code",
+      "effort": "max",
+      "cost_usd": 370.68,
+      "cost_estimated": true,
+      "cost_qualifier": "",
+      "cost_track": {
+        "qna": 193.1,
+        "tw": 56.06,
+        "rf": 121.54
+      },
+      "cost_source": "platform.kimi.ai list price, 2026-11-12",
+      "new": true,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 58.9,
+        "ci": 10.4,
+        "ci_lo": 10.4,
+        "rank": 18,
+        "pos": 17,
+        "x": 58.8889,
+        "ci2": 10.36,
+        "ci2_lo": 10.36
+      },
+      "qna": {
+        "score": 70.2,
+        "ci": 8.2,
+        "ci_lo": 8.2,
+        "rank": 12,
+        "pos": 11,
+        "x": 70.1613,
+        "ci2": 8.17,
+        "ci2_lo": 8.17
+      },
+      "rf": {
+        "score": 54.3,
+        "ci": 12.0,
+        "ci_lo": 12.0,
+        "rank": 14,
+        "pos": 13,
+        "x": 54.2857,
+        "ci2": 11.96,
+        "ci2_lo": 11.96
+      },
+      "overall": {
+        "score": 61.1,
+        "ci": 5.9,
+        "ci_lo": 5.9,
+        "rank": 14,
+        "pos": 13,
+        "x": 61.112,
+        "ci2": 5.88,
+        "ci2_lo": 5.88
+      }
+    },
+    {
+      "name": "Kimi K3",
+      "slug": "kimi-k3",
+      "provider": "moonshot",
+      "agent": "Kimi Code",
+      "effort": "max",
+      "cost_usd": 562.82,
+      "cost_estimated": false,
+      "cost_qualifier": "harness-reported; 77 tasks estimated where usage was missing",
+      "cost_track": {
+        "qna": 192.24,
+        "tw": 116.67,
+        "rf": 253.91
+      },
+      "new": false,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 63.3,
+        "ci": 10.1,
+        "ci_lo": 10.1,
+        "rank": 14,
+        "pos": 13,
+        "x": 63.3333,
+        "ci2": 10.15,
+        "ci2_lo": 10.15
+      },
+      "qna": {
+        "score": 65.3,
+        "ci": 8.5,
+        "ci_lo": 8.5,
+        "rank": 18,
+        "pos": 17,
+        "x": 65.3226,
+        "ci2": 8.49,
+        "ci2_lo": 8.49
+      },
+      "rf": {
+        "score": 54.3,
+        "ci": 12.0,
+        "ci_lo": 12.0,
+        "rank": 15,
+        "pos": 14,
+        "x": 54.2857,
+        "ci2": 11.96,
+        "ci2_lo": 11.96
+      },
+      "overall": {
+        "score": 61.0,
+        "ci": 5.9,
+        "ci_lo": 5.9,
+        "rank": 15,
+        "pos": 14,
+        "x": 60.9805,
+        "ci2": 5.89,
+        "ci2_lo": 5.89
+      }
+    },
+    {
+      "name": "Haiku 5.5",
+      "slug": "haiku-5-5",
+      "provider": "anthropic",
+      "agent": "Claude Code",
+      "effort": "max",
+      "cost_usd": 219.18,
+      "cost_estimated": false,
+      "cost_qualifier": "harness-reported",
+      "cost_track": {
+        "qna": 105.59,
+        "tw": 47.51,
+        "rf": 66.08
+      },
+      "new": false,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 63.3,
+        "ci": 10.1,
+        "ci_lo": 10.1,
+        "rank": 13,
+        "pos": 12,
+        "x": 63.3333,
+        "ci2": 10.15,
+        "ci2_lo": 10.15
+      },
+      "qna": {
+        "score": 62.1,
+        "ci": 8.7,
+        "ci_lo": 8.7,
+        "rank": 19,
+        "pos": 18,
+        "x": 62.0968,
+        "ci2": 8.66,
+        "ci2_lo": 8.66
+      },
+      "rf": {
+        "score": 52.9,
+        "ci": 12.0,
+        "ci_lo": 12.0,
+        "rank": 17,
+        "pos": 16,
+        "x": 52.8571,
+        "ci2": 11.99,
+        "ci2_lo": 11.99
+      },
+      "overall": {
+        "score": 59.4,
+        "ci": 5.9,
+        "ci_lo": 5.9,
+        "rank": 18,
+        "pos": 17,
+        "x": 59.4291,
+        "ci2": 5.92,
+        "ci2_lo": 5.92
+      }
+    },
+    {
+      "name": "GLM 5.3",
+      "slug": "glm-5-3",
+      "provider": "zai",
+      "agent": "mini-swe-agent",
+      "effort": "max",
+      "cost_usd": 596.03,
+      "cost_estimated": true,
+      "cost_qualifier": "",
+      "cost_track": {
+        "qna": 273.47,
+        "tw": 131.1,
+        "rf": 191.43
+      },
+      "cost_source": "docs.z.ai list price, 2026-11-12",
+      "new": true,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 55.6,
+        "ci": 10.5,
+        "ci_lo": 10.5,
+        "rank": 22,
+        "pos": 21,
+        "x": 55.5556,
+        "ci2": 10.47,
+        "ci2_lo": 10.47
+      },
+      "qna": {
+        "score": 70.2,
+        "ci": 8.2,
+        "ci_lo": 8.2,
+        "rank": 13,
+        "pos": 12,
+        "x": 70.1613,
+        "ci2": 8.17,
+        "ci2_lo": 8.17
+      },
+      "rf": {
+        "score": 48.6,
+        "ci": 12.0,
+        "ci_lo": 12.0,
+        "rank": 21,
+        "pos": 20,
+        "x": 48.5714,
+        "ci2": 12.0,
+        "ci2_lo": 12.0
+      },
+      "overall": {
+        "score": 58.1,
+        "ci": 5.9,
+        "ci_lo": 5.9,
+        "rank": 19,
+        "pos": 18,
+        "x": 58.0961,
+        "ci2": 5.9,
+        "ci2_lo": 5.9
+      }
+    },
+    {
+      "name": "GPT-6.1 Terra",
+      "slug": "gpt-6-1-terra",
+      "provider": "openai",
+      "agent": "Codex CLI",
+      "effort": "max",
+      "cost_usd": 176.16,
+      "cost_estimated": false,
+      "cost_qualifier": "harness-reported",
+      "cost_track": {
+        "qna": 87.19,
+        "tw": 30.86,
+        "rf": 58.12
+      },
+      "new": false,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 63.3,
+        "ci": 10.1,
+        "ci_lo": 10.1,
+        "rank": 12,
+        "pos": 11,
+        "x": 63.3333,
+        "ci2": 10.15,
+        "ci2_lo": 10.15
+      },
+      "qna": {
+        "score": 54.0,
+        "ci": 8.9,
+        "ci_lo": 8.9,
+        "rank": 23,
+        "pos": 22,
+        "x": 54.0323,
+        "ci2": 8.89,
+        "ci2_lo": 8.89
+      },
+      "rf": {
+        "score": 55.7,
+        "ci": 11.9,
+        "ci_lo": 11.9,
+        "rank": 10,
+        "pos": 9,
+        "x": 55.7143,
+        "ci2": 11.93,
+        "ci2_lo": 11.93
+      },
+      "overall": {
+        "score": 57.7,
+        "ci": 5.9,
+        "ci_lo": 5.9,
+        "rank": 20,
+        "pos": 19,
+        "x": 57.6933,
+        "ci2": 5.94,
+        "ci2_lo": 5.94
+      }
+    },
+    {
+      "name": "Gemini 3.8 Flash",
+      "slug": "gemini-3-8-flash",
+      "provider": "google",
+      "agent": "Antigravity CLI",
+      "effort": "high",
+      "cost_usd": 330.53,
+      "cost_estimated": false,
+      "cost_qualifier": "harness-reported",
+      "cost_track": {
+        "qna": 107.79,
+        "tw": 86.39,
+        "rf": 136.35
+      },
+      "new": false,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 71.1,
+        "ci": 9.5,
+        "ci_lo": 9.5,
+        "rank": 6,
+        "pos": 5,
+        "x": 71.1111,
+        "ci2": 9.55,
+        "ci2_lo": 9.55
+      },
+      "qna": {
+        "score": 45.2,
+        "ci": 8.9,
+        "ci_lo": 8.9,
+        "rank": 27,
+        "pos": 26,
+        "x": 45.1613,
+        "ci2": 8.88,
+        "ci2_lo": 8.88
+      },
+      "rf": {
+        "score": 55.7,
+        "ci": 11.9,
+        "ci_lo": 11.9,
+        "rank": 12,
+        "pos": 11,
+        "x": 55.7143,
+        "ci2": 11.93,
+        "ci2_lo": 11.93
+      },
+      "overall": {
+        "score": 57.3,
+        "ci": 5.8,
+        "ci_lo": 5.8,
+        "rank": 21,
+        "pos": 20,
+        "x": 57.3289,
+        "ci2": 5.83,
+        "ci2_lo": 5.83
+      }
+    },
+    {
+      "name": "Muse Ember 1.0",
+      "slug": "muse-ember-1-0",
+      "provider": "meta",
+      "agent": "Muse Code",
+      "effort": "max",
+      "cost_usd": 14.46,
+      "cost_estimated": true,
+      "cost_qualifier": "token usage \u00d7 LiteLLM list prices",
+      "cost_track": {
+        "qna": 4.99,
+        "tw": 3.26,
+        "rf": 6.21
+      },
+      "new": true,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 56.7,
+        "ci": 10.4,
+        "ci_lo": 10.4,
+        "rank": 21,
+        "pos": 20,
+        "x": 56.6667,
+        "ci2": 10.44,
+        "ci2_lo": 10.44
+      },
+      "qna": {
+        "score": 61.3,
+        "ci": 8.7,
+        "ci_lo": 8.7,
+        "rank": 20,
+        "pos": 19,
+        "x": 61.2903,
+        "ci2": 8.69,
+        "ci2_lo": 8.69
+      },
+      "rf": {
+        "score": 50.0,
+        "ci": 12.0,
+        "ci_lo": 12.0,
+        "rank": 20,
+        "pos": 19,
+        "x": 50.0,
+        "ci2": 12.01,
+        "ci2_lo": 12.01
+      },
+      "overall": {
+        "score": 56.0,
+        "ci": 6.0,
+        "ci_lo": 6.0,
+        "rank": 22,
+        "pos": 21,
+        "x": 55.9857,
+        "ci2": 5.98,
+        "ci2_lo": 5.98
+      }
+    },
+    {
+      "name": "GLM 5.3 Flash",
+      "slug": "glm-5-3-flash",
+      "provider": "zai",
+      "agent": "mini-swe-agent",
+      "effort": "max",
+      "cost_usd": 47.4,
+      "cost_estimated": true,
+      "cost_qualifier": "",
+      "cost_track": {
+        "qna": 19.7,
+        "tw": 9.18,
+        "rf": 18.52
+      },
+      "cost_source": "docs.z.ai list price, 2026-11-12",
+      "new": true,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 53.3,
+        "ci": 10.5,
+        "ci_lo": 10.5,
+        "rank": 24,
+        "pos": 23,
+        "x": 53.3333,
+        "ci2": 10.51,
+        "ci2_lo": 10.51
+      },
+      "qna": {
+        "score": 66.9,
+        "ci": 8.4,
+        "ci_lo": 8.4,
+        "rank": 16,
+        "pos": 15,
+        "x": 66.9355,
+        "ci2": 8.4,
+        "ci2_lo": 8.4
+      },
+      "rf": {
+        "score": 45.7,
+        "ci": 12.0,
+        "ci_lo": 12.0,
+        "rank": 24,
+        "pos": 23,
+        "x": 45.7143,
+        "ci2": 11.96,
+        "ci2_lo": 11.96
+      },
+      "overall": {
+        "score": 55.3,
+        "ci": 5.9,
+        "ci_lo": 5.9,
+        "rank": 23,
+        "pos": 22,
+        "x": 55.3277,
+        "ci2": 5.94,
+        "ci2_lo": 5.94
+      }
+    },
+    {
+      "name": "GPT-6 Luna",
+      "slug": "gpt-6-luna",
+      "provider": "openai",
+      "agent": "Codex CLI",
+      "effort": "max",
+      "cost_usd": 17.27,
+      "cost_estimated": false,
+      "cost_qualifier": "harness-reported",
+      "cost_track": {
+        "qna": 9.89,
+        "tw": 3.01,
+        "rf": 4.37
+      },
+      "new": false,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 54.4,
+        "ci": 10.5,
+        "ci_lo": 10.5,
+        "rank": 23,
+        "pos": 22,
+        "x": 54.4444,
+        "ci2": 10.49,
+        "ci2_lo": 10.49
+      },
+      "qna": {
+        "score": 50.8,
+        "ci": 8.9,
+        "ci_lo": 8.9,
+        "rank": 24,
+        "pos": 23,
+        "x": 50.8065,
+        "ci2": 8.92,
+        "ci2_lo": 8.92
+      },
+      "rf": {
+        "score": 47.1,
+        "ci": 12.0,
+        "ci_lo": 12.0,
+        "rank": 23,
+        "pos": 22,
+        "x": 47.1429,
+        "ci2": 11.99,
+        "ci2_lo": 11.99
+      },
+      "overall": {
+        "score": 50.8,
+        "ci": 6.0,
+        "ci_lo": 6.0,
+        "rank": 24,
+        "pos": 23,
+        "x": 50.7979,
+        "ci2": 6.02,
+        "ci2_lo": 6.02
+      }
+    },
+    {
+      "name": "Mistral Large 4",
+      "slug": "mistral-large-4",
+      "provider": "mistral",
+      "agent": "Mistral Vibe",
+      "effort": "high",
+      "cost_usd": 847.17,
+      "cost_estimated": false,
+      "cost_qualifier": "harness-reported; 20 tasks estimated where usage was missing",
+      "cost_track": {
+        "qna": 382.92,
+        "tw": 228.56,
+        "rf": 235.69
+      },
+      "new": true,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 40.0,
+        "ci": 10.3,
+        "ci_lo": 10.3,
+        "rank": 27,
+        "pos": 26,
+        "x": 40.0,
+        "ci2": 10.32,
+        "ci2_lo": 10.32
+      },
+      "qna": {
+        "score": 61.3,
+        "ci": 8.7,
+        "ci_lo": 8.7,
+        "rank": 22,
+        "pos": 21,
+        "x": 61.2903,
+        "ci2": 8.69,
+        "ci2_lo": 8.69
+      },
+      "rf": {
+        "score": 34.3,
+        "ci": 11.4,
+        "ci_lo": 11.4,
+        "rank": 27,
+        "pos": 26,
+        "x": 34.2857,
+        "ci2": 11.4,
+        "ci2_lo": 11.4
+      },
+      "overall": {
+        "score": 45.2,
+        "ci": 5.8,
+        "ci_lo": 5.8,
+        "rank": 25,
+        "pos": 24,
+        "x": 45.192,
+        "ci2": 5.83,
+        "ci2_lo": 5.83
+      }
+    },
+    {
+      "name": "Muse Spark Open",
+      "slug": "muse-spark-open",
+      "provider": "meta",
+      "agent": "Muse Code",
+      "effort": "xhigh",
+      "cost_usd": 543.7,
+      "cost_estimated": true,
+      "cost_qualifier": "token usage \u00d7 LiteLLM list prices (cache rate assumed)",
+      "cost_track": {
+        "qna": 116.63,
+        "tw": 115.32,
+        "rf": 311.75
+      },
+      "new": false,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 41.1,
+        "ci": 10.4,
+        "ci_lo": 10.4,
+        "rank": 25,
+        "pos": 24,
+        "x": 41.1111,
+        "ci2": 10.36,
+        "ci2_lo": 10.36
+      },
+      "qna": {
+        "score": 50.0,
+        "ci": 8.9,
+        "ci_lo": 8.9,
+        "rank": 25,
+        "pos": 24,
+        "x": 50.0,
+        "ci2": 8.92,
+        "ci2_lo": 8.92
+      },
+      "rf": {
+        "score": 35.7,
+        "ci": 11.5,
+        "ci_lo": 11.5,
+        "rank": 26,
+        "pos": 25,
+        "x": 35.7143,
+        "ci2": 11.51,
+        "ci2_lo": 11.51
+      },
+      "overall": {
+        "score": 42.3,
+        "ci": 5.9,
+        "ci_lo": 5.9,
+        "rank": 26,
+        "pos": 25,
+        "x": 42.2751,
+        "ci2": 5.9,
+        "ci2_lo": 5.9
+      }
+    },
+    {
+      "name": "MiniMax M3",
+      "slug": "minimax-m3",
+      "provider": "minimax",
+      "agent": "mini-swe-agent",
+      "effort": "max",
+      "cost_usd": 256.24,
+      "cost_estimated": true,
+      "cost_qualifier": "",
+      "cost_track": {
+        "qna": 92.53,
+        "tw": 58.2,
+        "rf": 105.5
+      },
+      "cost_source": "platform.minimax.io list price, 2026-11-12",
+      "new": true,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 40.0,
+        "ci": 10.3,
+        "ci_lo": 10.3,
+        "rank": 26,
+        "pos": 25,
+        "x": 40.0,
+        "ci2": 10.32,
+        "ci2_lo": 10.32
+      },
+      "qna": {
+        "score": 49.2,
+        "ci": 8.9,
+        "ci_lo": 8.9,
+        "rank": 26,
+        "pos": 25,
+        "x": 49.1935,
+        "ci2": 8.92,
+        "ci2_lo": 8.92
+      },
+      "rf": {
+        "score": 28.6,
+        "ci": 10.8,
+        "ci_lo": 10.8,
+        "rank": 28,
+        "pos": 27,
+        "x": 28.5714,
+        "ci2": 10.85,
+        "ci2_lo": 10.85
+      },
+      "overall": {
+        "score": 39.3,
+        "ci": 5.8,
+        "ci_lo": 5.8,
+        "rank": 27,
+        "pos": 26,
+        "x": 39.255,
+        "ci2": 5.75,
+        "ci2_lo": 5.75
+      }
+    },
+    {
+      "name": "Beam 1.0",
+      "slug": "beam-1-0",
+      "provider": "reflection",
+      "agent": "OpenCode",
+      "effort": "max",
+      "cost_usd": 40.13,
+      "cost_estimated": true,
+      "cost_qualifier": "OpenRouter median list-price equivalent",
+      "cost_track": {
+        "qna": 16.69,
+        "tw": 8.63,
+        "rf": 14.83
+      },
+      "cost_source": "openrouter.ai list price, 2026-11-12",
+      "new": true,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 35.6,
+        "ci": 10.1,
+        "ci_lo": 10.1,
+        "rank": 28,
+        "pos": 27,
+        "x": 35.5556,
+        "ci2": 10.08,
+        "ci2_lo": 10.08
+      },
+      "qna": {
+        "score": 31.5,
+        "ci": 8.3,
+        "ci_lo": 8.3,
+        "rank": 28,
+        "pos": 27,
+        "x": 31.4516,
+        "ci2": 8.29,
+        "ci2_lo": 8.29
+      },
+      "rf": {
+        "score": 37.1,
+        "ci": 11.6,
+        "ci_lo": 11.6,
+        "rank": 25,
+        "pos": 24,
+        "x": 37.1429,
+        "ci2": 11.6,
+        "ci2_lo": 11.6
+      },
+      "overall": {
+        "score": 34.7,
+        "ci": 5.8,
+        "ci_lo": 5.8,
+        "rank": 28,
+        "pos": 27,
+        "x": 34.7167,
+        "ci2": 5.76,
+        "ci2_lo": 5.76
+      }
+    },
+    {
+      "name": "Nemotron 3.5 Super VL",
+      "slug": "nemotron-3-5-super-vl",
+      "provider": "nvidia",
+      "agent": "mini-swe-agent",
+      "effort": "high",
+      "cost_usd": 20.69,
+      "cost_estimated": true,
+      "cost_qualifier": "cache share assumed, range $19.69\u2013$23.17",
+      "cost_track": {
+        "qna": 6.87,
+        "tw": 5.76,
+        "rf": 8.06
+      },
+      "cost_source": "openrouter.ai list price, 2026-11-12",
+      "new": true,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 27.8,
+        "ci": 9.4,
+        "ci_lo": 9.4,
+        "rank": 29,
+        "pos": 28,
+        "x": 27.7778,
+        "ci2": 9.43,
+        "ci2_lo": 9.43
+      },
+      "qna": {
+        "score": 26.6,
+        "ci": 7.9,
+        "ci_lo": 7.9,
+        "rank": 29,
+        "pos": 28,
+        "x": 26.6129,
+        "ci2": 7.89,
+        "ci2_lo": 7.89
+      },
+      "rf": {
+        "score": 20.0,
+        "ci": 9.6,
+        "ci_lo": 9.6,
+        "rank": 29,
+        "pos": 28,
+        "x": 20.0,
+        "ci2": 9.61,
+        "ci2_lo": 9.61
+      },
+      "overall": {
+        "score": 24.8,
+        "ci": 5.2,
+        "ci_lo": 5.2,
+        "rank": 29,
+        "pos": 28,
+        "x": 24.7969,
+        "ci2": 5.15,
+        "ci2_lo": 5.15
+      }
+    },
+    {
+      "name": "Nemotron 3 Ultra",
+      "slug": "nemotron-3-ultra",
+      "provider": "nvidia",
+      "agent": "mini-swe-agent",
+      "effort": "max",
+      "cost_usd": 222.4,
+      "cost_estimated": true,
+      "cost_qualifier": "",
+      "cost_track": {
+        "qna": 61.01,
+        "tw": 79.79,
+        "rf": 81.57
+      },
+      "cost_source": "fireworks.ai list price, 2026-11-12",
+      "new": true,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 26.7,
+        "ci": 9.3,
+        "ci_lo": 9.3,
+        "rank": 30,
+        "pos": 29,
+        "x": 26.6667,
+        "ci2": 9.31,
+        "ci2_lo": 9.31
+      },
+      "qna": {
+        "score": 21.8,
+        "ci": 7.4,
+        "ci_lo": 7.4,
+        "rank": 30,
+        "pos": 29,
+        "x": 21.7742,
+        "ci2": 7.37,
+        "ci2_lo": 7.37
+      },
+      "rf": {
+        "score": 15.7,
+        "ci": 8.7,
+        "ci_lo": 8.7,
+        "rank": 30,
+        "pos": 29,
+        "x": 15.7143,
+        "ci2": 8.74,
+        "ci2_lo": 8.74
+      },
+      "overall": {
+        "score": 21.4,
+        "ci": 4.9,
+        "ci_lo": 4.9,
+        "rank": 30,
+        "pos": 29,
+        "x": 21.385,
+        "ci2": 4.87,
+        "ci2_lo": 4.87
+      }
+    },
+    {
+      "name": "gpt-oss-120b",
+      "slug": "gpt-oss-120b",
+      "provider": "openai",
+      "agent": "mini-swe-agent",
+      "effort": "high",
+      "cost_usd": 24.33,
+      "cost_estimated": true,
+      "cost_qualifier": "",
+      "cost_track": {
+        "qna": 5.93,
+        "tw": 7.26,
+        "rf": 11.14
+      },
+      "cost_source": "fireworks.ai list price, 2026-11-12",
+      "new": true,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 14.4,
+        "ci": 7.4,
+        "ci_lo": 7.4,
+        "rank": 31,
+        "pos": 30,
+        "x": 14.4444,
+        "ci2": 7.4,
+        "ci2_lo": 7.4
+      },
+      "qna": {
+        "score": 10.5,
+        "ci": 5.5,
+        "ci_lo": 5.5,
+        "rank": 31,
+        "pos": 30,
+        "x": 10.4839,
+        "ci2": 5.47,
+        "ci2_lo": 5.47
+      },
+      "rf": {
+        "score": 1.4,
+        "ci": 2.8,
+        "ci_lo": 1.4,
+        "rank": 31,
+        "pos": 30,
+        "x": 1.4286,
+        "ci2": 2.85,
+        "ci2_lo": 1.43
+      },
+      "overall": {
+        "score": 8.8,
+        "ci": 3.2,
+        "ci_lo": 3.2,
+        "rank": 31,
+        "pos": 30,
+        "x": 8.7856,
+        "ci2": 3.18,
+        "ci2_lo": 3.18
+      }
+    },
+    {
+      "name": "GPT-6.2 Sol",
+      "slug": "gpt-6-2-sol",
+      "provider": "openai",
+      "agent": "Codex CLI",
+      "effort": "max",
+      "cost_usd": 194.83,
+      "cost_estimated": true,
+      "cost_qualifier": "token usage \u00d7 OpenAI list prices",
+      "cost_track": {
+        "qna": 96.26,
+        "tw": 48.66,
+        "rf": 49.91
+      },
+      "cost_source": "github.com list price, 2026-11-18",
+      "new": true,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 64.4,
+        "ci": 10.1,
+        "ci_lo": 10.1,
+        "rank": 10,
+        "pos": 9,
+        "x": 64.4444,
+        "ci2": 10.08,
+        "ci2_lo": 10.08
+      },
+      "qna": {
+        "score": 61.3,
+        "ci": 8.7,
+        "ci_lo": 8.7,
+        "rank": 21,
+        "pos": 20,
+        "x": 61.2903,
+        "ci2": 8.69,
+        "ci2_lo": 8.69
+      },
+      "rf": {
+        "score": 55.7,
+        "ci": 11.9,
+        "ci_lo": 11.9,
+        "rank": 11,
+        "pos": 10,
+        "x": 55.7143,
+        "ci2": 11.93,
+        "ci2_lo": 11.93
+      },
+      "overall": {
+        "score": 60.5,
+        "ci": 5.9,
+        "ci_lo": 5.9,
+        "rank": 16,
+        "pos": 15,
+        "x": 60.483,
+        "ci2": 5.9,
+        "ci2_lo": 5.9
+      }
+    },
+    {
+      "name": "GPT-6.2 Astra",
+      "slug": "gpt-6-2-astra",
+      "provider": "openai",
+      "agent": "Codex CLI",
+      "effort": "max",
+      "cost_usd": 855.29,
+      "cost_estimated": true,
+      "cost_qualifier": "token usage \u00d7 OpenAI list prices",
+      "cost_track": {
+        "qna": 405.9,
+        "tw": 209.16,
+        "rf": 240.23
+      },
+      "cost_source": "github.com list price, 2026-11-18",
+      "new": true,
+      "hidden_in_charts": false,
+      "tw": {
+        "score": 62.2,
+        "ci": 10.2,
+        "ci_lo": 10.2,
+        "rank": 15,
+        "pos": 14,
+        "x": 62.2222,
+        "ci2": 10.21,
+        "ci2_lo": 10.21
+      },
+      "qna": {
+        "score": 67.7,
+        "ci": 8.3,
+        "ci_lo": 8.3,
+        "rank": 15,
+        "pos": 14,
+        "x": 67.7419,
+        "ci2": 8.34,
+        "ci2_lo": 8.34
+      },
+      "rf": {
+        "score": 51.4,
+        "ci": 12.0,
+        "ci_lo": 12.0,
+        "rank": 19,
+        "pos": 18,
+        "x": 51.4286,
+        "ci2": 12.0,
+        "ci2_lo": 12.0
+      },
+      "overall": {
+        "score": 60.5,
+        "ci": 5.9,
+        "ci_lo": 5.9,
+        "rank": 17,
+        "pos": 16,
+        "x": 60.4642,
+        "ci2": 5.88,
+        "ci2_lo": 5.88
+      }
+    }
+  ]
+}

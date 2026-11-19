@@ -750,6 +750,22 @@ coding & security,Vibe Code Bench v1.1,"% · Vals AI, OpenHands harness for all 
 coding & security,Vibe Code Bench v1.1,"US$ per test, log scale",Gemini 4 Hydrogen,cost_usd,,,,4.55,,,xhigh
 coding & security,SWE-Bench Pro,% resolved · each lab’s own run on its own agent harness,Opus 5.5,score,,,,,89.9,89.9,max
 coding & security,SWE-Bench Pro,% resolved · each lab’s own run on its own agent harness,Sonnet 5.5,score,,,,,81.3,81.3,max
+coding & security,SWE Atlas v1.1,"% · Scale AI · codebase Q&A, test writing, refactoring · each maker's coding agent · GPT-6.2 costs are Scale's estimates",Fable 5.2,score,,,,,80.5,80.5,max
+coding & security,SWE Atlas v1.1,"US$ per task, log scale",Fable 5.2,cost_usd,,,,,,15.4,max
+coding & security,SWE Atlas v1.1,"% · Scale AI · codebase Q&A, test writing, refactoring · each maker's coding agent · GPT-6.2 costs are Scale's estimates",Opus 5.5,score,,,,,77.4,77.4,max
+coding & security,SWE Atlas v1.1,"US$ per task, log scale",Opus 5.5,cost_usd,,,,,,4.57,max
+coding & security,SWE Atlas v1.1,"% · Scale AI · codebase Q&A, test writing, refactoring · each maker's coding agent · GPT-6.2 costs are Scale's estimates",Gemini 4 Carbon,score,,,71.4,,,71.4,high
+coding & security,SWE Atlas v1.1,"US$ per task, log scale",Gemini 4 Carbon,cost_usd,,,,,,3.34,high
+coding & security,SWE Atlas v1.1,"% · Scale AI · codebase Q&A, test writing, refactoring · each maker's coding agent · GPT-6.2 costs are Scale's estimates",GPT-6 Astra,score,,,,,69.4,69.4,max
+coding & security,SWE Atlas v1.1,"US$ per task, log scale",GPT-6 Astra,cost_usd,,,,,,3.6,max
+coding & security,SWE Atlas v1.1,"% · Scale AI · codebase Q&A, test writing, refactoring · each maker's coding agent · GPT-6.2 costs are Scale's estimates",Sonnet 5.5,score,,,,,68.3,68.3,max
+coding & security,SWE Atlas v1.1,"US$ per task, log scale",Sonnet 5.5,cost_usd,,,,,,3.49,max
+coding & security,SWE Atlas v1.1,"% · Scale AI · codebase Q&A, test writing, refactoring · each maker's coding agent · GPT-6.2 costs are Scale's estimates",GPT-6.1 Sol,score,,,,,65.9,65.9,max
+coding & security,SWE Atlas v1.1,"US$ per task, log scale",GPT-6.1 Sol,cost_usd,,,,,,0.593,max
+coding & security,SWE Atlas v1.1,"% · Scale AI · codebase Q&A, test writing, refactoring · each maker's coding agent · GPT-6.2 costs are Scale's estimates",GPT-6.2 Sol,score,,,,,60.5,60.5,max
+coding & security,SWE Atlas v1.1,"US$ per task, log scale",GPT-6.2 Sol,cost_usd,,,,,,0.686,max
+coding & security,SWE Atlas v1.1,"% · Scale AI · codebase Q&A, test writing, refactoring · each maker's coding agent · GPT-6.2 costs are Scale's estimates",GPT-6.2 Astra,score,,,,,60.5,60.5,max
+coding & security,SWE Atlas v1.1,"US$ per task, log scale",GPT-6.2 Astra,cost_usd,,,,,,3.01,max
 coding & security,SWE-sweep (provider harness),% subtask-weighted reward · Google runs · provider-specific agents/subagents,Gemini 4 Neon,score,,,,39,,39,xhigh
 coding & security,SWE-sweep (provider harness),% subtask-weighted reward · Google runs · provider-specific agents/subagents,Opus 5.5,score,,,,,,10.1,not stated
 coding & security,SWE-sweep (provider harness),% subtask-weighted reward · Google runs · provider-specific agents/subagents,GPT-6.2 Sol,score,,,,,,8.3,not stated

@@ -1,0 +1,9 @@
+model,version,harness,effort,overall_percent,qna_percent,test_writing_percent,refactoring_percent,cost_full_284_task_run_usd,derived_mean_task_cost_usd,cost_estimated,source_url
+Fable 5.2,SWE Atlas v1.1,Claude Code,max,80.5496,83.871,77.7778,80.0,4382.6,15.431690140845072,False,https://labs.scale.com/embeds/swe-atlas-index.html
+Opus 5.5,SWE Atlas v1.1,Claude Code,max,77.4467,77.4194,77.7778,77.1429,1298.86,4.573450704225352,False,https://labs.scale.com/embeds/swe-atlas-index.html
+Gemini 4 Carbon,SWE Atlas v1.1,Antigravity CLI,high,71.4465,73.3871,76.6667,64.2857,949.11,3.34193661971831,False,https://labs.scale.com/embeds/swe-atlas-index.html
+GPT-6 Astra,SWE Atlas v1.1,Codex CLI,max,69.4188,70.1613,66.6667,71.4286,1023.6,3.604225352112676,False,https://labs.scale.com/embeds/swe-atlas-index.html
+Sonnet 5.5,SWE Atlas v1.1,Claude Code,max,68.2762,74.1935,67.7778,62.8571,992.45,3.494542253521127,False,https://labs.scale.com/embeds/swe-atlas-index.html
+GPT-6.1 Sol,SWE Atlas v1.1,Codex CLI,max,65.8781,70.9677,66.6667,60.0,168.5,0.5933098591549296,False,https://labs.scale.com/embeds/swe-atlas-index.html
+GPT-6.2 Sol,SWE Atlas v1.1,Codex CLI,max,60.483,61.2903,64.4444,55.7143,194.83,0.6860211267605634,True,https://labs.scale.com/embeds/swe-atlas-index.html
+GPT-6.2 Astra,SWE Atlas v1.1,Codex CLI,max,60.4642,67.7419,62.2222,51.4286,855.29,3.0115845070422536,True,https://labs.scale.com/embeds/swe-atlas-index.html

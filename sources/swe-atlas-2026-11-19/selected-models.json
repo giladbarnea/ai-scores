@@ -1,0 +1,460 @@
+[
+  {
+    "name": "Fable 5.2",
+    "slug": "fable-5-2",
+    "provider": "anthropic",
+    "agent": "Claude Code",
+    "effort": "max",
+    "cost_usd": 4382.6,
+    "cost_estimated": false,
+    "cost_qualifier": "harness-reported",
+    "cost_track": {
+      "qna": 1458.44,
+      "tw": 1515.37,
+      "rf": 1408.79
+    },
+    "new": true,
+    "hidden_in_charts": false,
+    "tw": {
+      "score": 77.8,
+      "ci": 8.8,
+      "ci_lo": 8.8,
+      "rank": 4,
+      "pos": 3,
+      "x": 77.7778,
+      "ci2": 8.76,
+      "ci2_lo": 8.76
+    },
+    "qna": {
+      "score": 83.9,
+      "ci": 6.6,
+      "ci_lo": 6.6,
+      "rank": 1,
+      "pos": 0,
+      "x": 83.871,
+      "ci2": 6.56,
+      "ci2_lo": 6.56
+    },
+    "rf": {
+      "score": 80.0,
+      "ci": 9.6,
+      "ci_lo": 9.6,
+      "rank": 1,
+      "pos": 0,
+      "x": 80.0,
+      "ci2": 9.61,
+      "ci2_lo": 9.61
+    },
+    "overall": {
+      "score": 80.5,
+      "ci": 4.8,
+      "ci_lo": 4.8,
+      "rank": 1,
+      "pos": 0,
+      "x": 80.5496,
+      "ci2": 4.8,
+      "ci2_lo": 4.8
+    }
+  },
+  {
+    "name": "Opus 5.5",
+    "slug": "opus-5-5",
+    "provider": "anthropic",
+    "agent": "Claude Code",
+    "effort": "max",
+    "cost_usd": 1298.86,
+    "cost_estimated": false,
+    "cost_qualifier": "harness-reported",
+    "cost_track": {
+      "qna": 598.34,
+      "tw": 356.93,
+      "rf": 343.59
+    },
+    "new": false,
+    "hidden_in_charts": false,
+    "tw": {
+      "score": 77.8,
+      "ci": 8.8,
+      "ci_lo": 8.8,
+      "rank": 3,
+      "pos": 2,
+      "x": 77.7778,
+      "ci2": 8.76,
+      "ci2_lo": 8.76
+    },
+    "qna": {
+      "score": 77.4,
+      "ci": 7.5,
+      "ci_lo": 7.5,
+      "rank": 4,
+      "pos": 3,
+      "x": 77.4194,
+      "ci2": 7.46,
+      "ci2_lo": 7.46
+    },
+    "rf": {
+      "score": 77.1,
+      "ci": 10.1,
+      "ci_lo": 10.1,
+      "rank": 2,
+      "pos": 1,
+      "x": 77.1429,
+      "ci2": 10.08,
+      "ci2_lo": 10.08
+    },
+    "overall": {
+      "score": 77.4,
+      "ci": 5.0,
+      "ci_lo": 5.0,
+      "rank": 2,
+      "pos": 1,
+      "x": 77.4467,
+      "ci2": 5.05,
+      "ci2_lo": 5.05
+    }
+  },
+  {
+    "name": "Gemini 4 Carbon",
+    "slug": "gemini-4-carbon",
+    "provider": "google",
+    "agent": "Antigravity CLI",
+    "effort": "high",
+    "cost_usd": 949.11,
+    "cost_estimated": false,
+    "cost_qualifier": "harness-reported",
+    "cost_track": {
+      "qna": 380.36,
+      "tw": 242.08,
+      "rf": 326.67
+    },
+    "new": true,
+    "hidden_in_charts": false,
+    "tw": {
+      "score": 76.7,
+      "ci": 8.9,
+      "ci_lo": 8.9,
+      "rank": 5,
+      "pos": 4,
+      "x": 76.6667,
+      "ci2": 8.91,
+      "ci2_lo": 8.91
+    },
+    "qna": {
+      "score": 73.4,
+      "ci": 7.9,
+      "ci_lo": 7.9,
+      "rank": 9,
+      "pos": 8,
+      "x": 73.3871,
+      "ci2": 7.89,
+      "ci2_lo": 7.89
+    },
+    "rf": {
+      "score": 64.3,
+      "ci": 11.5,
+      "ci_lo": 11.5,
+      "rank": 6,
+      "pos": 5,
+      "x": 64.2857,
+      "ci2": 11.51,
+      "ci2_lo": 11.51
+    },
+    "overall": {
+      "score": 71.4,
+      "ci": 5.5,
+      "ci_lo": 5.5,
+      "rank": 4,
+      "pos": 3,
+      "x": 71.4465,
+      "ci2": 5.46,
+      "ci2_lo": 5.46
+    }
+  },
+  {
+    "name": "GPT-6 Astra",
+    "slug": "gpt-6-astra",
+    "provider": "openai",
+    "agent": "Codex CLI",
+    "effort": "max",
+    "cost_usd": 1023.6,
+    "cost_estimated": false,
+    "cost_qualifier": "harness-reported",
+    "cost_track": {
+      "qna": 566.31,
+      "tw": 243.73,
+      "rf": 213.57
+    },
+    "new": false,
+    "hidden_in_charts": false,
+    "tw": {
+      "score": 66.7,
+      "ci": 9.9,
+      "ci_lo": 9.9,
+      "rank": 9,
+      "pos": 8,
+      "x": 66.6667,
+      "ci2": 9.93,
+      "ci2_lo": 9.93
+    },
+    "qna": {
+      "score": 70.2,
+      "ci": 8.2,
+      "ci_lo": 8.2,
+      "rank": 14,
+      "pos": 13,
+      "x": 70.1613,
+      "ci2": 8.17,
+      "ci2_lo": 8.17
+    },
+    "rf": {
+      "score": 71.4,
+      "ci": 10.8,
+      "ci_lo": 10.8,
+      "rank": 3,
+      "pos": 2,
+      "x": 71.4286,
+      "ci2": 10.85,
+      "ci2_lo": 10.85
+    },
+    "overall": {
+      "score": 69.4,
+      "ci": 5.6,
+      "ci_lo": 5.6,
+      "rank": 6,
+      "pos": 5,
+      "x": 69.4188,
+      "ci2": 5.55,
+      "ci2_lo": 5.55
+    }
+  },
+  {
+    "name": "Sonnet 5.5",
+    "slug": "sonnet-5-5",
+    "provider": "anthropic",
+    "agent": "Claude Code",
+    "effort": "max",
+    "cost_usd": 992.45,
+    "cost_estimated": false,
+    "cost_qualifier": "harness-reported",
+    "cost_track": {
+      "qna": 433.4,
+      "tw": 285.66,
+      "rf": 273.39
+    },
+    "new": false,
+    "hidden_in_charts": false,
+    "tw": {
+      "score": 67.8,
+      "ci": 9.8,
+      "ci_lo": 9.8,
+      "rank": 7,
+      "pos": 6,
+      "x": 67.7778,
+      "ci2": 9.84,
+      "ci2_lo": 9.84
+    },
+    "qna": {
+      "score": 74.2,
+      "ci": 7.8,
+      "ci_lo": 7.8,
+      "rank": 6,
+      "pos": 5,
+      "x": 74.1935,
+      "ci2": 7.81,
+      "ci2_lo": 7.81
+    },
+    "rf": {
+      "score": 62.9,
+      "ci": 11.6,
+      "ci_lo": 11.6,
+      "rank": 7,
+      "pos": 6,
+      "x": 62.8571,
+      "ci2": 11.6,
+      "ci2_lo": 11.6
+    },
+    "overall": {
+      "score": 68.3,
+      "ci": 5.6,
+      "ci_lo": 5.6,
+      "rank": 7,
+      "pos": 6,
+      "x": 68.2762,
+      "ci2": 5.64,
+      "ci2_lo": 5.64
+    }
+  },
+  {
+    "name": "GPT-6.1 Sol",
+    "slug": "gpt-6-1-sol",
+    "provider": "openai",
+    "agent": "Codex CLI",
+    "effort": "max",
+    "cost_usd": 168.5,
+    "cost_estimated": false,
+    "cost_qualifier": "harness-reported",
+    "cost_track": {
+      "qna": 92.64,
+      "tw": 41.83,
+      "rf": 34.04
+    },
+    "new": false,
+    "hidden_in_charts": false,
+    "tw": {
+      "score": 66.7,
+      "ci": 9.9,
+      "ci_lo": 9.9,
+      "rank": 8,
+      "pos": 7,
+      "x": 66.6667,
+      "ci2": 9.93,
+      "ci2_lo": 9.93
+    },
+    "qna": {
+      "score": 71.0,
+      "ci": 8.1,
+      "ci_lo": 8.1,
+      "rank": 11,
+      "pos": 10,
+      "x": 70.9677,
+      "ci2": 8.1,
+      "ci2_lo": 8.1
+    },
+    "rf": {
+      "score": 60.0,
+      "ci": 11.8,
+      "ci_lo": 11.8,
+      "rank": 8,
+      "pos": 7,
+      "x": 60.0,
+      "ci2": 11.77,
+      "ci2_lo": 11.77
+    },
+    "overall": {
+      "score": 65.9,
+      "ci": 5.7,
+      "ci_lo": 5.7,
+      "rank": 8,
+      "pos": 7,
+      "x": 65.8781,
+      "ci2": 5.74,
+      "ci2_lo": 5.74
+    }
+  },
+  {
+    "name": "GPT-6.2 Sol",
+    "slug": "gpt-6-2-sol",
+    "provider": "openai",
+    "agent": "Codex CLI",
+    "effort": "max",
+    "cost_usd": 194.83,
+    "cost_estimated": true,
+    "cost_qualifier": "token usage \u00d7 OpenAI list prices",
+    "cost_track": {
+      "qna": 96.26,
+      "tw": 48.66,
+      "rf": 49.91
+    },
+    "cost_source": "github.com list price, 2026-11-18",
+    "new": true,
+    "hidden_in_charts": false,
+    "tw": {
+      "score": 64.4,
+      "ci": 10.1,
+      "ci_lo": 10.1,
+      "rank": 10,
+      "pos": 9,
+      "x": 64.4444,
+      "ci2": 10.08,
+      "ci2_lo": 10.08
+    },
+    "qna": {
+      "score": 61.3,
+      "ci": 8.7,
+      "ci_lo": 8.7,
+      "rank": 21,
+      "pos": 20,
+      "x": 61.2903,
+      "ci2": 8.69,
+      "ci2_lo": 8.69
+    },
+    "rf": {
+      "score": 55.7,
+      "ci": 11.9,
+      "ci_lo": 11.9,
+      "rank": 11,
+      "pos": 10,
+      "x": 55.7143,
+      "ci2": 11.93,
+      "ci2_lo": 11.93
+    },
+    "overall": {
+      "score": 60.5,
+      "ci": 5.9,
+      "ci_lo": 5.9,
+      "rank": 16,
+      "pos": 15,
+      "x": 60.483,
+      "ci2": 5.9,
+      "ci2_lo": 5.9
+    }
+  },
+  {
+    "name": "GPT-6.2 Astra",
+    "slug": "gpt-6-2-astra",
+    "provider": "openai",
+    "agent": "Codex CLI",
+    "effort": "max",
+    "cost_usd": 855.29,
+    "cost_estimated": true,
+    "cost_qualifier": "token usage \u00d7 OpenAI list prices",
+    "cost_track": {
+      "qna": 405.9,
+      "tw": 209.16,
+      "rf": 240.23
+    },
+    "cost_source": "github.com list price, 2026-11-18",
+    "new": true,
+    "hidden_in_charts": false,
+    "tw": {
+      "score": 62.2,
+      "ci": 10.2,
+      "ci_lo": 10.2,
+      "rank": 15,
+      "pos": 14,
+      "x": 62.2222,
+      "ci2": 10.21,
+      "ci2_lo": 10.21
+    },
+    "qna": {
+      "score": 67.7,
+      "ci": 8.3,
+      "ci_lo": 8.3,
+      "rank": 15,
+      "pos": 14,
+      "x": 67.7419,
+      "ci2": 8.34,
+      "ci2_lo": 8.34
+    },
+    "rf": {
+      "score": 51.4,
+      "ci": 12.0,
+      "ci_lo": 12.0,
+      "rank": 19,
+      "pos": 18,
+      "x": 51.4286,
+      "ci2": 12.0,
+      "ci2_lo": 12.0
+    },
+    "overall": {
+      "score": 60.5,
+      "ci": 5.9,
+      "ci_lo": 5.9,
+      "rank": 17,
+      "pos": 16,
+      "x": 60.4642,
+      "ci2": 5.88,
+      "ci2_lo": 5.88
+    }
+  }
+]
