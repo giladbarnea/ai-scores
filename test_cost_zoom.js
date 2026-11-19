@@ -22,6 +22,9 @@
   drag({ clientX: box.left + 3, clientY: box.top + 3 }, { clientX: box.right - 3, clientY: box.bottom - 3 });
   const zoom = document.getElementById("zoom");
   assert(zoom.open, "Dragging in Cost mode must open the zoom, just as effort mode does");
+  const closeArea = zoom.querySelector("button").getBoundingClientRect();
+  assert(closeArea.width >= 44 && closeArea.height >= 44,
+    `The zoom Close button needs a 44×44 touch area, got ${closeArea.width}×${closeArea.height}`);
   assert(zoom.querySelectorAll("circle").length === 4, "Cost zoom must keep only the two selected models at high and max");
   const circle = (model, level) => [...zoom.querySelectorAll("circle")].find(node => node.querySelector("title")?.textContent.startsWith(`${model} ${level}:`));
   const solHigh = circle("GPT-6.2 Sol", "high");

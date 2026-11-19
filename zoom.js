@@ -651,13 +651,42 @@
 
   versionDialog.addEventListener("click", event => { if (event.target === versionDialog) versionDialog.close(); });
 
+  function fitBars(plot, models) {
+    const svg = plot.querySelector("svg.chart");
+    const rows = [...svg.querySelectorAll(".bar")].reverse();
+    const selected = rows.filter(row => models.some(model => row.classList.contains(`m-${model.slug}`))
+      && levelIsShown(row.dataset.level));
+    const rowHeight = Number(plot.dataset.rowHeight);
+    const removed = (rows.length - selected.length) * rowHeight;
+    svg.viewBox.baseVal.height = Number(plot.dataset.fullHeight) - removed;
+    selected.forEach((row, index) => {
+      const modelClass = [...row.classList].find(name => name.startsWith("m-"));
+      const offset = (index - rows.indexOf(row)) * rowHeight;
+      svg.querySelectorAll(`.${modelClass}`).forEach(node => node.setAttribute("transform", `translate(0 ${offset})`));
+    });
+    const bounds = svg.querySelector("clipPath rect");
+    const top = bounds.y.baseVal.value;
+    const height = bounds.height.baseVal.value;
+    const bottom = top + height;
+    const scale = (height - removed) / height;
+    const axis = svg.querySelector(".bar-axis");
+    axis.setAttribute("transform", `translate(0 ${-removed})`);
+    axis.querySelectorAll("path[clip-path]").forEach(line => line.setAttribute("transform",
+      `translate(0 ${bottom}) scale(1 ${scale}) translate(0 ${-bottom})`));
+    svg.querySelector(".bar-baseline").setAttribute("transform",
+      `translate(0 ${top}) scale(1 ${scale}) translate(0 ${-top})`);
+  }
+
   function applyFilters() {
     const models = data.models.filter(model => document.getElementById(`show-${model.slug}`).checked);
     updateVersions(models);
     const partial = data.levels.some(level => !levelIsShown(level));
     for (const { plot } of entries.filter(entry => entry.plot.isConnected && !entry.plot.closest(".panel").hidden)) {
+      if (plot.dataset.rowHeight) {
+        fitBars(plot, models);
+        continue;
+      }
       const metric = data.metrics[plot.dataset.metric];
-      if (!metric) continue;
       const allPoints = plotPoints(plot, metric);
       const points = allPoints.filter(point => models.includes(point.model) && levelIsShown(data.levels[point.level]));
       const fitted = fitScoreAxis(plot, metric, allPoints, points);

@@ -35,20 +35,19 @@ OUTPUT_DIRECTORY = Path(__file__).parent / "docs"  # GitHub Pages serves this fo
 
 @dataclass(frozen=True)
 class Color:
-    """A themeable color: the SVG is drawn in the light value, then each light value becomes var(--variable)."""
+    """A chart color replaced by its CSS variable in the generated SVG."""
     variable: str
-    light: str
-    dark: str
+    value: str
 
 
-SURFACE = Color("surface", "#fcfcfb", "#1a1a19")
-PAGE = Color("page", "#f9f9f7", "#0d0d0d")
-TEXT_PRIMARY = Color("ink-1", "#0b0b0b", "#ffffff")
-TEXT_SECONDARY = Color("ink-2", "#52514e", "#c3c2b7")
-TEXT_MUTED = Color("ink-3", "#898781", "#898781")
-GRIDLINE = Color("grid", "#e1e0d9", "#2c2c2a")
-BASELINE = Color("baseline", "#c3c2b7", "#383835")
-BORDER = Color("border", "rgba(11,11,11,0.10)", "rgba(255,255,255,0.10)")
+SURFACE = Color("surface", "#1a1a19")
+PAGE = Color("page", "#0d0d0d")
+TEXT_PRIMARY = Color("ink-1", "#ffffff")
+TEXT_SECONDARY = Color("ink-2", "#c3c2b7")
+TEXT_MUTED = Color("ink-3", "#898781")
+GRIDLINE = Color("grid", "#2c2c2a")
+BASELINE = Color("baseline", "#383835")
+BORDER = Color("border", "rgba(255,255,255,0.10)")
 
 EFFORT_LEVELS = ["low", "medium", "high", "xhigh", "max"]
 
@@ -71,17 +70,17 @@ class Model:
         return slugify(self.name)
 
 
-GPT_6_ASTRA = Model("GPT-6 Astra", Color("series-2", "#eb6834", "#d95926"))
-GPT_6_2_ASTRA = Model("GPT-6.2 Astra", Color("series-8", "#bd3535", "#f07770"))
-CLAUDE_FABLE_5_2 = Model("Fable 5.2", Color("series-4", "#eda100", "#c98500"))
-CLAUDE_OPUS_5_5 = Model("Opus 5.5", Color("series-5", "#e87ba4", "#d55181"))
-GPT_6_1_SOL = Model("GPT-6.1 Sol", Color("series-6", "#008300", "#008300"))
-GPT_6_2_SOL = Model("GPT-6.2 Sol", Color("series-9", "#75940c", "#a5c93d"))
-CLAUDE_SONNET_5_5 = Model("Sonnet 5.5", Color("series-7", "#4a3aa7", "#9085e9"))
-GEMINI_4_CARBON = Model("Gemini 4 Carbon", Color("series-1", "#0e9384", "#2bb5a4"))
-GEMINI_4_HYDROGEN = Model("Gemini 4 Hydrogen", Color("series-10", "#725c41", "#ba9d79"))
-GEMINI_4_NEON = Model("Gemini 4 Neon", Color("series-11", "#0875d1", "#6db7fa"))
-MAI_CODE_2 = Model("MAI Code 2", Color("series-12", "#bd3ec2", "#dc8ae0"))
+GPT_6_ASTRA = Model("GPT-6 Astra", Color("series-2", "#d95926"))
+GPT_6_2_ASTRA = Model("GPT-6.2 Astra", Color("series-8", "#f07770"))
+CLAUDE_FABLE_5_2 = Model("Fable 5.2", Color("series-4", "#c98500"))
+CLAUDE_OPUS_5_5 = Model("Opus 5.5", Color("series-5", "#d55181"))
+GPT_6_1_SOL = Model("GPT-6.1 Sol", Color("series-6", "#008300"))
+GPT_6_2_SOL = Model("GPT-6.2 Sol", Color("series-9", "#a5c93d"))
+CLAUDE_SONNET_5_5 = Model("Sonnet 5.5", Color("series-7", "#9085e9"))
+GEMINI_4_CARBON = Model("Gemini 4 Carbon", Color("series-1", "#2bb5a4"))
+GEMINI_4_HYDROGEN = Model("Gemini 4 Hydrogen", Color("series-10", "#ba9d79"))
+GEMINI_4_NEON = Model("Gemini 4 Neon", Color("series-11", "#6db7fa"))
+MAI_CODE_2 = Model("MAI Code 2", Color("series-12", "#dc8ae0"))
 MODELS = [GEMINI_4_NEON, MAI_CODE_2, GPT_6_ASTRA, GPT_6_2_ASTRA, GPT_6_1_SOL, GPT_6_2_SOL, CLAUDE_FABLE_5_2, CLAUDE_OPUS_5_5, CLAUDE_SONNET_5_5, GEMINI_4_CARBON, GEMINI_4_HYDROGEN]
 COLORS = [SURFACE, PAGE, TEXT_PRIMARY, TEXT_SECONDARY, TEXT_MUTED, GRIDLINE, BASELINE, BORDER,
           *(model.color for model in MODELS)]
@@ -603,10 +602,6 @@ class ReportedMetric:
     @property
     def models(self) -> list[Model]:
         return [model for model in MODELS if model in self.scores]
-
-    @property
-    def missing(self) -> list[Model]:
-        return [model for model in MODELS if model not in self.scores]
 
     @property
     def costs(self) -> dict[Model, Scores] | None:
@@ -1878,9 +1873,9 @@ def configure_fonts() -> None:
         "font.family": "Helvetica Neue",
         "font.size": 9,
         "svg.fonttype": "none",
-        "axes.edgecolor": BASELINE.light,
-        "xtick.color": TEXT_MUTED.light,
-        "ytick.color": TEXT_MUTED.light,
+        "axes.edgecolor": BASELINE.value,
+        "xtick.color": TEXT_MUTED.value,
+        "ytick.color": TEXT_MUTED.value,
         "figure.facecolor": "none",
         "axes.facecolor": "none",
         "savefig.facecolor": "none",
@@ -2028,10 +2023,10 @@ PLACEMENT_ORDERS: dict[tuple[str, bool], list[Placement]] = {
     ("start", False): [LEFT, BELOW_LEFT, BELOW, ABOVE_LEFT, ABOVE, BELOW_RIGHT, ABOVE_RIGHT, RIGHT],
 }
 
-LABEL_HALO = {"boxstyle": "round,pad=0.12", "facecolor": SURFACE.light, "edgecolor": "none"}
-POINT_LABEL_STYLE = {"fontsize": LABEL_FONT_SIZE, "fontweight": "medium", "color": TEXT_PRIMARY.light, "zorder": 5,
+LABEL_HALO = {"boxstyle": "round,pad=0.12", "facecolor": SURFACE.value, "edgecolor": "none"}
+POINT_LABEL_STYLE = {"fontsize": LABEL_FONT_SIZE, "fontweight": "medium", "color": TEXT_PRIMARY.value, "zorder": 5,
                      "bbox": LABEL_HALO}
-DIM_LABEL_STYLE = {"fontsize": NAME_FONT_SIZE, "family": NAME_FONT_FAMILY, "color": TEXT_MUTED.light, "zorder": 5,
+DIM_LABEL_STYLE = {"fontsize": NAME_FONT_SIZE, "family": NAME_FONT_FAMILY, "color": TEXT_MUTED.value, "zorder": 5,
                    "bbox": LABEL_HALO}
 
 LabelPart = tuple[str, dict[str, object]]
@@ -2091,7 +2086,7 @@ def annotate_parts(axes: Axes, point: tuple[float, float], parts: list[LabelPart
     renderer = axes.figure.canvas.get_renderer()
     dx, dy, horizontal, vertical = placement
     (first_text, first_style), *others = parts
-    leader = {"arrowprops": {"arrowstyle": "-", "color": BASELINE.light, "linewidth": 0.6, "shrinkA": 1, "shrinkB": 4}} \
+    leader = {"arrowprops": {"arrowstyle": "-", "color": BASELINE.value, "linewidth": 0.6, "shrinkA": 1, "shrinkB": 4}} \
         if math.hypot(dx, dy) > LEADER_MIN_DISTANCE_POINTS else {}
     annotations = [axes.annotate(first_text, point, xytext=(dx, dy), textcoords="offset points",
                                  ha=horizontal, va=vertical, gid=gid, **first_style, **leader)]
@@ -2165,7 +2160,7 @@ def draw_meetings(axes: Axes, metric: Metric) -> None:
     for meeting in cross_level_meetings(metric):
         (first, first_index), (second, second_index) = meeting
         height = min(metric.scores[first][first_index], metric.scores[second][second_index])
-        axes.plot([first_index, second_index], [height, height], color=TEXT_MUTED.light, linewidth=0.9,
+        axes.plot([first_index, second_index], [height, height], color=TEXT_MUTED.value, linewidth=0.9,
                   linestyle=(0, (2.5, 2.5)), alpha=0.8, zorder=2.5, gid=element_id(MEETING_LINE, first, second))
         for model, index in meeting:
             if index in labeled_levels(metric.scores[model]):
@@ -2190,28 +2185,28 @@ def draw_end_labels(axes: Axes, metric: Metric) -> None:
     label_ys = [from_display((0, label_height))[1] for label_height in label_heights]
     for (model, index, score), label_y in zip(ends, label_ys):
         if abs(label_y - score) > 1e-9:
-            axes.plot([index + 0.1, label_x - 0.06], [score, label_y], color=BASELINE.light, linewidth=0.6,
+            axes.plot([index + 0.1, label_x - 0.06], [score, label_y], color=BASELINE.value, linewidth=0.6,
                       solid_capstyle="round", zorder=2, gid=element_id("leader", model))
-        axes.text(label_x, label_y, metric.label(score), color=TEXT_PRIMARY.light, fontsize=LABEL_FONT_SIZE,
+        axes.text(label_x, label_y, metric.label(score), color=TEXT_PRIMARY.value, fontsize=LABEL_FONT_SIZE,
                   fontweight="medium", va="center", ha="left", gid=element_id("end", model))
     renderer = axes.figure.canvas.get_renderer()
     widest_end = max(text.get_window_extent(renderer).x1 for text in axes.texts)
     name_x = from_display((widest_end + NAME_GAP_POINTS * axes.figure.dpi / 72, 0))[0]
     for (model, _, _), label_y in zip(ends, label_ys):
-        axes.text(name_x, label_y, model.name, color=TEXT_MUTED.light, fontsize=NAME_FONT_SIZE, family=NAME_FONT_FAMILY,
+        axes.text(name_x, label_y, model.name, color=TEXT_MUTED.value, fontsize=NAME_FONT_SIZE, family=NAME_FONT_FAMILY,
                   va="center", ha="left", gid=element_id("name", model))
 
 
 def draw_series(axes: Axes, metric: Metric, model: Model, points: list[tuple[int, float, float]]) -> None:
     """Draw one model's line and markers through (level, x, score) points, hollow where AA estimated the score."""
-    axes.plot([x for _, x, _ in points], [score for _, _, score in points], color=model.color.light,
+    axes.plot([x for _, x, _ in points], [score for _, _, score in points], color=model.color.value,
               linewidth=LINE_WIDTH, solid_joinstyle="round", solid_capstyle="round", zorder=3,
               gid=element_id("series", model))
     for index, x, score in points:
         is_estimated = (model, EFFORT_LEVELS[index]) in metric.estimated
         axes.plot(x, score, marker="o", markersize=MARKER_SIZE, linestyle="none",
-                  markerfacecolor=SURFACE.light if is_estimated else model.color.light,
-                  markeredgecolor=model.color.light if is_estimated else SURFACE.light,
+                  markerfacecolor=SURFACE.value if is_estimated else model.color.value,
+                  markeredgecolor=model.color.value if is_estimated else SURFACE.value,
                   markeredgewidth=MARKER_RING, zorder=4,
                   gid=at_level(element_id("marker", model), EFFORT_LEVELS[index]))
 
@@ -2220,11 +2215,11 @@ def style_axes(axes: Axes, metric: Metric) -> None:
     axes.set_ylim(*metric.y_range)
     axes.yaxis.set_gid("score-axis__ticks")
     axes.yaxis.set_major_locator(matplotlib.ticker.MultipleLocator(metric.tick_step))
-    axes.grid(axis="y", color=GRIDLINE.light, linewidth=0.7)
+    axes.grid(axis="y", color=GRIDLINE.value, linewidth=0.7)
     axes.set_axisbelow(True)
     for side in ("top", "right", "left"):
         axes.spines[side].set_visible(False)
-    axes.spines["bottom"].set_color(BASELINE.light)
+    axes.spines["bottom"].set_color(BASELINE.value)
     axes.spines["bottom"].set_linewidth(0.8)
     axes.tick_params(axis="both", which="both", length=0, labelsize=9, pad=5)
 
@@ -2278,8 +2273,8 @@ def draw_cost_panel(axes: Axes, metric: Metric) -> None:
     axes.xaxis.set_major_locator(matplotlib.ticker.LogLocator(base=10, subs=tick_multiples))
     axes.xaxis.set_minor_locator(matplotlib.ticker.NullLocator())
     axes.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda value, _: cost_label(value)))
-    axes.grid(axis="x", color=GRIDLINE.light, linewidth=0.7)
-    axes.set_xlabel(metric.cost_unit, fontsize=8.5, color=TEXT_MUTED.light, labelpad=6)
+    axes.grid(axis="x", color=GRIDLINE.value, linewidth=0.7)
+    axes.set_xlabel(metric.cost_unit, fontsize=8.5, color=TEXT_MUTED.value, labelpad=6)
     axes.figure.canvas.draw()
     for model in models:
         index, cost, score = cost_points(metric, model)[-1]
@@ -2292,7 +2287,7 @@ def draw_cost_panel(axes: Axes, metric: Metric) -> None:
 def inline_svg(svg: str) -> str:
     """Make matplotlib's SVG fit inline in the page: no fixed size, theme colors as CSS variables, gids as CSS classes.
 
-    >>> inline_svg('<?xml?>\\n<svg width="9pt" height="9pt" viewBox="0 0 9 9"><g id="end__gpt-6-sol" style="fill: #0b0b0b"/></svg>')
+    >>> inline_svg('<?xml?>\\n<svg width="9pt" height="9pt" viewBox="0 0 9 9"><g id="end__gpt-6-sol" style="fill: #ffffff"/></svg>')
     '<svg class="chart" viewBox="0 0 9 9"><g class="end m-gpt-6-sol" style="fill: var(--ink-1)"/></svg>'
     """
     svg = svg[svg.index("<svg"):]
@@ -2300,7 +2295,7 @@ def inline_svg(svg: str) -> str:
     svg = re.sub(r"<metadata>.*?</metadata>|<style[^>]*>.*?</style>", "", svg, flags=re.DOTALL)
     svg = re.sub(r' width="[\d.]+pt" height="[\d.]+pt"', ' class="chart"', svg, count=1)
     for color in COLORS:
-        svg = svg.replace(color.light, f"var(--{color.variable})")
+        svg = svg.replace(color.value, f"var(--{color.variable})")
     svg = re.sub(r'__level-([a-z-]+)"', r'" data-level="\1"', svg)
     return re.sub(r'id="([a-z-]+)((?:__[a-z0-9-]+)+)"',
                   lambda match: 'class="' + " ".join([match[1], *(f"m-{slug}" for slug in match[2].split("__")[1:])]) + '"',
@@ -2394,7 +2389,7 @@ def panel_html(metric: Metric) -> str:
 
 BAR_ROW_HEIGHT = 0.42
 BAR_THICKNESS = 0.56  # of a row
-BAR_AXES_LEFT = 0.95  # holds the model names
+BAR_AXES_LEFT = 1.35  # holds the model names
 BAR_AXES_BOTTOM = 0.32
 
 
@@ -2403,20 +2398,22 @@ def draw_bars(axes: Axes, metric: ReportedMetric) -> None:
     rows = list(reversed(metric.models))
     for row, model in enumerate(rows):
         score, effort = metric.scores[model]
-        axes.barh(row, score, height=BAR_THICKNESS, color=model.color.light, zorder=3,
+        axes.barh(row, score, height=BAR_THICKNESS, color=model.color.value, zorder=3,
                   gid=at_level(element_id("bar", model), effort))
         axes.annotate(model.name, (0, row), xytext=(-8, 0), textcoords="offset points", ha="right", va="center",
-                      fontsize=LABEL_FONT_SIZE, color=TEXT_PRIMARY.light, annotation_clip=False,
+                      fontsize=LABEL_FONT_SIZE, color=TEXT_PRIMARY.value, annotation_clip=False,
                       gid=at_level(element_id("name", model), effort))
     axes.set_xlim(0, metric.x_max)
     axes.set_ylim(-0.6, len(rows) - 0.4)
     axes.set_yticks([])
+    axes.xaxis.set_gid("bar-axis__ticks")
+    axes.spines["left"].set_gid("bar-baseline__line")
     axes.xaxis.set_major_locator(matplotlib.ticker.MultipleLocator(metric.tick_step))
-    axes.grid(axis="x", color=GRIDLINE.light, linewidth=0.7)
+    axes.grid(axis="x", color=GRIDLINE.value, linewidth=0.7)
     axes.set_axisbelow(True)
     for side in ("top", "right", "bottom"):
         axes.spines[side].set_visible(False)
-    axes.spines["left"].set_color(BASELINE.light)
+    axes.spines["left"].set_color(BASELINE.value)
     axes.tick_params(axis="both", length=0, labelsize=9, pad=5)
     axes.figure.canvas.draw()
     for row, model in enumerate(rows):
@@ -2435,11 +2432,13 @@ def bar_plot_html(metric: ReportedMetric, layout: Layout) -> str:
     axes = figure.add_axes((BAR_AXES_LEFT / width, BAR_AXES_BOTTOM / height,
                             1 - (BAR_AXES_LEFT + AXES_RIGHT) / width, 1 - (AXES_TOP + BAR_AXES_BOTTOM) / height))
     draw_bars(axes, metric)
+    row_height = axes.transData.transform((0, 1))[1] - axes.transData.transform((0, 0))[1]
     svg = io.StringIO()
     figure.savefig(svg, format="svg", metadata={"Date": None})
     plt.close(figure)
     modes = "effort" if metric.costs else "effort cost"
-    return layout_html(f'<div class="plot {layout.name} {modes}">{inline_svg(svg.getvalue())}</div>', layout)
+    return layout_html(f'<div class="plot {layout.name} {modes}" data-row-height="{row_height:.6f}" '
+                       f'data-full-height="{height * 72:.6f}">{inline_svg(svg.getvalue())}</div>', layout)
 
 
 def reported_cost_metric(metric: ReportedMetric) -> Metric:
@@ -2455,13 +2454,11 @@ def reported_cost_metric(metric: ReportedMetric) -> Metric:
 
 
 def bar_panel_html(metric: ReportedMetric) -> str:
-    missing = ", ".join(model.name for model in metric.missing)
-    missing_note = f'<p class="missing">No reported score: {html.escape(missing)}</p>' if missing else ""
     plots = "".join(bar_plot_html(metric, layout) for layout in LAYOUTS)
     if metric.costs:
         plots += "".join(plot_html(reported_cost_metric(metric), layout, "cost") for layout in LAYOUTS)
     return (f'<figure class="panel" data-chart="{slugify(metric.name)}"><figcaption><h3>{html.escape(metric.name)}</h3>'
-            f'<p>{html.escape(metric.unit_and_source)}</p>{missing_note}</figcaption>'
+            f'<p>{html.escape(metric.unit_and_source)}</p></figcaption>'
             f'{plots}</figure>')
 
 
@@ -2546,8 +2543,7 @@ PAGE_TEMPLATE = Template("""<!doctype html>
 body:has(#x-effort:checked) .plot.phone.effort, body:has(#x-cost:checked) .plot.phone.cost { display: block; }
 </style></noscript>
 <style>
-:root { color-scheme: light; $light }
-@media (prefers-color-scheme: dark) { :root { color-scheme: dark; $dark } }
+:root { color-scheme: dark; $colors }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--page); color: var(--ink-1);
   font: 15px/1.45 "Helvetica Neue", system-ui, -apple-system, sans-serif; -webkit-text-size-adjust: 100%; }
@@ -2635,14 +2631,13 @@ body.zoomable:has(#filters-open:checked) .filter-panel { transition: grid-templa
   background: none; color: var(--ink-1); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; }
 .version-list button:hover { background: color-mix(in srgb, var(--ink-1) 5%, transparent); }
 .version-list button span:last-child { font-size: 12px; color: var(--ink-3); }
-.missing { color: var(--ink-3); }
 .no-cost { display: none; }
 body:has(#x-cost:checked) .no-cost { display: block; }
 .cost-row { display: none; color: var(--ink-3); }
 body:has(#x-cost:checked) .cost-row { display: table-row; }
 .toggle { position: absolute; opacity: 0; pointer-events: none; }
 h2 { margin: 32px 0 12px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
-.grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.grid { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: start; }
 @media (min-width: 960px) { .grid { grid-template-columns: 1fr 1fr; } }
 .panel { margin: 0; padding: 16px 16px 8px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
 figcaption h3 { margin: 0; font-size: 16px; }
@@ -2714,7 +2709,8 @@ tr.first > * { border-top: 1px solid var(--grid); }
 .zoom-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
 .zoom-head h3 { margin: 0; font-size: 22px; }
 .zoom-head p { margin: 2px 0 0; color: var(--ink-3); }
-.zoom-head button { font: 28px/1 system-ui, sans-serif; color: var(--ink-2); background: none; border: 0; cursor: pointer; padding: 0 4px; }
+.zoom-head button { font: 28px/1 system-ui, sans-serif; color: var(--ink-2); background: none; border: 0; cursor: pointer;
+  width: 44px; height: 44px; padding: 0; }
 .zoom-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 12px 0 4px; font-weight: 500; }
 .zoom-legend span { display: inline-flex; align-items: center; gap: 8px; }
 .zoom-legend span::before { content: ""; width: 18px; height: 3px; border-radius: 2px; background: var(--series); }
@@ -2804,8 +2800,7 @@ def page_html() -> str:
     return PAGE_TEMPLATE.substitute(
         title=TITLE,
         tagline=html.escape(TAGLINE),
-        light=" ".join(f"--{color.variable}: {color.light};" for color in COLORS),
-        dark=" ".join(f"--{color.variable}: {color.dark};" for color in COLORS),
+        colors=" ".join(f"--{color.variable}: {color.value};" for color in COLORS),
         toggles=toggle_css(),
         layouts=layout_css(),
         controls=controls_html(),
