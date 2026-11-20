@@ -2862,7 +2862,6 @@ $layouts
 @media (hover: none) { .zoomable .cost-point.dominated:not(.dominance-hover) .tip { display: none; } }
 .zoomable .plot[data-mode="cost"] .series { opacity: .35; }
 .cost-marker { transform-box: view-box; transition: transform 160ms ease; }
-.cost-marker:not(.dominated) { filter: saturate(1.25) brightness(1.15); }
 .cost-marker.highlighted { transform: scale(1.3); }
 .dominance-link { opacity: .12; stroke: var(--ink-3); stroke-width: 1.2; fill: none; pointer-events: none; }
 .dominance-link.highlighted { opacity: 1; }

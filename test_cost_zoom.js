@@ -66,11 +66,11 @@
   }));
   pointer(dominated, "pointerover", "mouse");
   assert(getComputedStyle(arrow).opacity === "1" && zoom.querySelectorAll(".cost-marker.highlighted").length === 2,
-    "Hovering a zoomed grey point must strengthen its arrow and both endpoints");
+    "Hovering a zoomed beaten point must strengthen its arrow and both endpoints");
   pointer(dominated, "pointerout", "mouse");
   pointer(dominated, "pointerdown", "touch");
   pointer(dominated, "pointerup", "touch");
-  assert(getComputedStyle(arrow).opacity === "1", "Tapping a zoomed grey point must pin its comparison");
+  assert(getComputedStyle(arrow).opacity === "1", "Tapping a zoomed beaten point must pin its comparison");
   pointer(zoom.querySelector(".zoom-head"), "pointerdown", "touch");
   assert(getComputedStyle(arrow).opacity === "0.12", "Tapping elsewhere in the zoom must restore faint arrows");
   zoom.querySelector("button").click();

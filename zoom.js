@@ -621,7 +621,7 @@
     for (const point of points) {
       dominanceInteractions.delete(point.target ?? point.marker);
       const dominated = beaten.includes(point);
-      const color = dominated ? "var(--ink-3)" : `var(--${point.model.color})`;
+      const color = `var(--${point.model.color})`;
       point.marker.classList.add("cost-marker");
       point.marker.classList.remove("highlighted");
       point.marker.classList.toggle("dominated", dominated);

@@ -36,7 +36,7 @@
     "Point targets must receive input at the marker center instead of a nearby arrow");
   const markers = ["max", "high"].map(level => arc.querySelector(`.marker.m-${sol}[data-level="${level}"]`));
   const [loser, winner] = markers.map(marker => getComputedStyle(marker.querySelector("use")));
-  assert(loser.fill === "rgb(137, 135, 129)" && winner.fill !== loser.fill, "Only the beaten setting should turn grey");
+  assert(loser.fill === winner.fill && loser.fill !== "rgb(137, 135, 129)", "Beaten settings keep their model color; only the faint arrow marks them");
   assert(loser.stroke === "none" && winner.stroke === "none", "Neither endpoint should gain a ring");
   const bounds = () => markers.map(marker => marker.getBoundingClientRect());
   const before = bounds();
@@ -52,7 +52,7 @@
     await Promise.all(markers.flatMap(marker => marker.getAnimations().map(animation => animation.finished)));
   };
   pointer(target, "pointerover");
-  assert(single(link()), "Hovering a grey point must strengthen exactly its own arrow");
+  assert(single(link()), "Hovering a beaten point must strengthen exactly its own arrow");
   await animationsFinish();
   for (const [index, after] of bounds().entries()) {
     const prior = before[index];
@@ -88,7 +88,7 @@
   assert(faint(), "Touching down must not highlight before a tap completes");
   pointer(target, "pointerup", "touch");
   assert(single(link()) && getComputedStyle(arc.querySelector(".dominance-hover .tip")).display !== "none",
-    "A grey-point tap must pin one arrow and its tooltip");
+    "A beaten-point tap must pin one arrow and its tooltip");
   pointer(otherHit, "pointerdown", "touch");
   pointer(otherHit, "pointerup", "touch");
   assert(single(otherLink), "An arrow tap must replace the pinned comparison");

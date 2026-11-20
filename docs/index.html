@@ -149,7 +149,6 @@ figcaption p { margin: 2px 0 0; font-size: 13px; color: var(--ink-3); }
 @media (hover: none) { .zoomable .cost-point.dominated:not(.dominance-hover) .tip { display: none; } }
 .zoomable .plot[data-mode="cost"] .series { opacity: .35; }
 .cost-marker { transform-box: view-box; transition: transform 160ms ease; }
-.cost-marker:not(.dominated) { filter: saturate(1.25) brightness(1.15); }
 .cost-marker.highlighted { transform: scale(1.3); }
 .dominance-link { opacity: .12; stroke: var(--ink-3); stroke-width: 1.2; fill: none; pointer-events: none; }
 .dominance-link.highlighted { opacity: 1; }
@@ -653007,7 +653006,7 @@ z
     for (const point of points) {
       dominanceInteractions.delete(point.target ?? point.marker);
       const dominated = beaten.includes(point);
-      const color = dominated ? "var(--ink-3)" : `var(--${point.model.color})`;
+      const color = `var(--${point.model.color})`;
       point.marker.classList.add("cost-marker");
       point.marker.classList.remove("highlighted");
       point.marker.classList.toggle("dominated", dominated);
