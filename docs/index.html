@@ -137,7 +137,7 @@ figcaption p { margin: 2px 0 0; font-size: 13px; color: var(--ink-3); }
 .tip .row::before { content: ""; width: 12px; height: 2.5px; border-radius: 2px; background: var(--series); flex: none; }
 .tip b { min-width: 3.2em; color: var(--ink-1); font-variant-numeric: tabular-nums; }
 .tip i { color: var(--ink-3); }
-.cost-point { position: absolute; width: 24px; height: 24px; margin: -12px 0 0 -12px; border-radius: 50%; }
+.cost-point { position: absolute; z-index: 6; width: 24px; height: 24px; margin: -12px 0 0 -12px; border-radius: 50%; }
 .cost-point:not(:hover, .dominance-hover) .tip { display: none; }
 .cost-point .tip { top: -8px; }
 .cost-point .tip-right { left: calc(100% + 4px); }
@@ -145,14 +145,13 @@ figcaption p { margin: 2px 0 0; font-size: 13px; color: var(--ink-3); }
 .zoomable .cost-point .tip { position: fixed; inset: 0 auto auto 0; min-width: 0; width: min(300px, calc(100vw - 24px)); white-space: normal; }
 .tip .cost { color: var(--ink-3); }
 .tip .beaten { margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--border); }
-.cost-point:is(:hover, .dominance-hover) { z-index: 4; }
+@media (hover: none) { .zoomable .cost-point.dominated:not(.dominance-hover) .tip { display: none; } }
 .zoomable .plot[data-mode="cost"] .series { opacity: .35; }
 .cost-marker { transform-box: view-box; transition: transform 160ms ease; }
 .cost-marker:not(.dominated) { filter: saturate(1.25) brightness(1.15); }
 .cost-marker.highlighted { transform: scale(1.3); }
-.dominance-link { opacity: .7; stroke: var(--ink-3); stroke-width: 1.2; fill: none; pointer-events: none; }
+.dominance-link { opacity: .12; stroke: var(--ink-3); stroke-width: 1.2; fill: none; pointer-events: none; }
 .dominance-link.highlighted { opacity: 1; }
-/* Link hit targets must sit above the point tooltips, even when the endpoints are close together. */
 .dominance-hit-layer { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none; }
 .dominance-hit { stroke: transparent; stroke-width: 12; fill: none; pointer-events: stroke; }
 @media (prefers-reduced-motion: reduce) { .cost-marker { transition: none; } }
@@ -603861,17 +603860,73 @@ z
     if (target) positionCostTip(target, event);
   });
 
+  const dominanceInteractions = new WeakMap();
+  let activeDominance = null;
+  let dominancePress = null;
+
+  function clearDominance() {
+    activeDominance?.(false);
+    activeDominance = null;
+  }
+
+  function showDominance(highlight, event) {
+    clearDominance();
+    highlight(true, event);
+    activeDominance = highlight;
+  }
+
+  function dominanceAt(target) {
+    return dominanceInteractions.get(target.closest(".cost-point, .dominance-hit, .cost-marker"));
+  }
+
+  document.addEventListener("pointerover", event => {
+    if (event.pointerType !== "mouse") return;
+    const highlight = dominanceAt(event.target);
+    if (highlight && highlight !== activeDominance) showDominance(highlight, event);
+  });
+
+  document.addEventListener("pointerout", event => {
+    if (event.pointerType !== "mouse") return;
+    const next = event.relatedTarget instanceof Element ? dominanceAt(event.relatedTarget) : null;
+    if (next !== activeDominance) clearDominance();
+  });
+
+  document.addEventListener("pointerdown", event => {
+    const highlight = dominanceAt(event.target);
+    if (highlight !== activeDominance) clearDominance();
+    dominancePress = highlight ? { highlight, x: event.clientX, y: event.clientY, time: performance.now() } : null;
+  });
+
+  document.addEventListener("pointermove", event => {
+    if (dominancePress && Math.hypot(event.clientX - dominancePress.x, event.clientY - dominancePress.y) > LONG_PRESS_TOLERANCE_PIXELS) {
+      dominancePress = null;
+    }
+  });
+
+  document.addEventListener("pointerup", event => {
+    const pressed = dominancePress;
+    dominancePress = null;
+    if (!pressed || event.pointerType === "mouse" || performance.now() - pressed.time >= LONG_PRESS_MILLISECONDS) return;
+    showDominance(pressed.highlight, event);
+  });
+
+  document.addEventListener("pointercancel", () => { dominancePress = null; });
+  window.addEventListener("scroll", clearDominance, { passive: true });
+
   function drawDominance(svg, metric, points, arrowId) {
+    clearDominance();
     svg.querySelector(".dominance-links")?.remove();
     svg.parentElement.querySelector(":scope > .dominance-hit-layer")?.remove();
     const unbeaten = points.filter(point => !points.some(other => beats(other, point)));
     const beaten = points.filter(point => !unbeaten.includes(point));
     for (const point of points) {
+      dominanceInteractions.delete(point.target ?? point.marker);
       const dominated = beaten.includes(point);
       const color = dominated ? "var(--ink-3)" : `var(--${point.model.color})`;
       point.marker.classList.add("cost-marker");
       point.marker.classList.remove("highlighted");
       point.marker.classList.toggle("dominated", dominated);
+      point.target?.classList.toggle("dominated", dominated);
       point.marker.style.transformOrigin = `${point.x}px ${point.y}px`;
       point.symbol.style.fill = point.estimated ? "var(--surface)" : color;
       point.symbol.style.stroke = point.estimated ? color : "none";
@@ -603918,8 +603973,8 @@ z
         loser.target.classList.toggle("dominance-hover", active);
         if (active) positionCostTip(loser.target, event, [loser.marker, winner.marker]);
       };
-      hit.addEventListener("pointerenter", event => highlight(true, event));
-      hit.addEventListener("pointerleave", event => highlight(false, event));
+      dominanceInteractions.set(hit, highlight);
+      dominanceInteractions.set(loser.target ?? loser.marker, highlight);
     }
   }
 

@@ -17,6 +17,8 @@
   const link = () => arc.querySelector(`.dominance-link${max}`);
   const directsTo = level => link()?.dataset.winnerModel === sol && link()?.dataset.winnerLevel === level;
   assert(arc.querySelectorAll(".dominance-link").length === 8, "ARC must have one grey arrow for each of eight beaten points");
+  assert([...arc.querySelectorAll(".dominance-link")].every(arrow => getComputedStyle(arrow).opacity === "0.12"),
+    "Unselected comparisons must stay faint at 12% opacity");
   assert(directsTo("high"), "ARC Sol max must point straight to high, not to the nearer but beaten xhigh");
   document.querySelector('label[for="level-high"]').click();
   await settle();
@@ -25,21 +27,32 @@
   await settle();
 
   arc.scrollIntoView({ block: "center" });
+  await settle();
   const hit = arc.querySelector(`.dominance-hit${max}`);
   const middle = hit.getPointAtLength(hit.getTotalLength() / 2).matrixTransform(hit.getScreenCTM());
-  assert(document.elementFromPoint(middle.x, middle.y) === hit, "The visible arrow must receive pointer input over the point targets");
+  const target = arc.querySelector(`.cost-point.m-${sol}[data-level="max"]`);
+  const targetBox = target.getBoundingClientRect();
+  assert(document.elementFromPoint(targetBox.x + targetBox.width / 2, targetBox.y + targetBox.height / 2).closest(".cost-point"),
+    "Point targets must receive input at the marker center instead of a nearby arrow");
   const markers = ["max", "high"].map(level => arc.querySelector(`.marker.m-${sol}[data-level="${level}"]`));
   const [loser, winner] = markers.map(marker => getComputedStyle(marker.querySelector("use")));
   assert(loser.fill === "rgb(137, 135, 129)" && winner.fill !== loser.fill, "Only the beaten setting should turn grey");
   assert(loser.stroke === "none" && winner.stroke === "none", "Neither endpoint should gain a ring");
   const bounds = () => markers.map(marker => marker.getBoundingClientRect());
   const before = bounds();
-  const pointer = type => hit.dispatchEvent(new PointerEvent(type, { pointerType: "mouse", clientX: middle.x, clientY: middle.y }));
+  const pointer = (node, type, pointerType = "mouse", offset = 0) => node.dispatchEvent(new PointerEvent(type, {
+    pointerType, clientX: middle.x + offset, clientY: middle.y, bubbles: true, relatedTarget: document.body,
+  }));
+  const faint = () => [...arc.querySelectorAll(".dominance-link")].every(arrow => getComputedStyle(arrow).opacity === "0.12");
+  const single = arrow => document.querySelectorAll(".dominance-link.highlighted").length === 1
+    && getComputedStyle(arrow).opacity === "1"
+    && [...arc.querySelectorAll(".dominance-link:not(.highlighted)")].every(other => getComputedStyle(other).opacity === "0.12");
   const animationsFinish = async () => {
     getComputedStyle(markers[0]).transform;
     await Promise.all(markers.flatMap(marker => marker.getAnimations().map(animation => animation.finished)));
   };
-  pointer("pointerenter");
+  pointer(target, "pointerover");
+  assert(single(link()), "Hovering a grey point must strengthen exactly its own arrow");
   await animationsFinish();
   for (const [index, after] of bounds().entries()) {
     const prior = before[index];
@@ -54,8 +67,50 @@
   assert(tipBox.width > 0 && tipBox.left >= 0 && tipBox.right <= innerWidth, "The tooltip must stay within the viewport");
   assert(bounds().every(box => box.bottom <= tipBox.top || box.top >= tipBox.bottom
     || box.right <= tipBox.left || box.left >= tipBox.right), "The tooltip must not hide either highlighted point");
-  pointer("pointerleave");
+  pointer(target, "pointerout");
   await animationsFinish();
-  assert(bounds().every((box, index) => Math.abs(box.width - before[index].width) < .5), "Leaving the arrow must restore both sizes");
-  return "Dominance checks passed: direct links, filter changes, grey points, centered hover and bounded tooltip";
+  assert(faint() && bounds().every((box, index) => Math.abs(box.width - before[index].width) < .5),
+    "Leaving the comparison must restore faint arrows and both marker sizes");
+
+  pointer(hit, "pointerover");
+  assert(single(link()), "Hovering an arrow must strengthen only that comparison");
+  const otherHit = arc.querySelector('.dominance-hit[data-loser-model="opus-5-5"][data-loser-level="low"]');
+  const otherLink = arc.querySelector('.dominance-link[data-loser-model="opus-5-5"][data-loser-level="low"]');
+  const arrowMiddle = otherHit.getPointAtLength(otherHit.getTotalLength() / 2).matrixTransform(otherHit.getScreenCTM());
+  assert(document.elementFromPoint(arrowMiddle.x, arrowMiddle.y) === otherHit,
+    "A long arrow must remain reachable away from the point targets");
+  pointer(otherHit, "pointerover");
+  assert(single(otherLink) && !link().classList.contains("highlighted"), "Moving to another comparison must replace, not accumulate, highlights");
+  pointer(otherHit, "pointerout");
+
+  pointer(target, "pointerover", "touch");
+  pointer(target, "pointerdown", "touch");
+  assert(faint(), "Touching down must not highlight before a tap completes");
+  pointer(target, "pointerup", "touch");
+  assert(single(link()) && getComputedStyle(arc.querySelector(".dominance-hover .tip")).display !== "none",
+    "A grey-point tap must pin one arrow and its tooltip");
+  pointer(otherHit, "pointerdown", "touch");
+  pointer(otherHit, "pointerup", "touch");
+  assert(single(otherLink), "An arrow tap must replace the pinned comparison");
+  pointer(document.body, "pointerdown", "touch");
+  pointer(document.body, "pointerup", "touch");
+  assert(faint() && !arc.querySelector(".dominance-hover"), "Tapping elsewhere must dismiss the pinned comparison");
+
+  pointer(target, "pointerdown", "touch");
+  pointer(target, "pointermove", "touch", 20);
+  pointer(target, "pointerup", "touch");
+  assert(faint(), "A scrolling gesture must not become a tap even if it ends at its starting position");
+  pointer(target, "pointerdown", "touch");
+  pointer(target, "pointercancel", "touch");
+  pointer(target, "pointerup", "touch");
+  assert(faint(), "A cancelled touch must not pin a comparison");
+
+  pointer(target, "pointerdown", "touch");
+  pointer(target, "pointerup", "touch");
+  document.querySelector('label[for="level-high"]').click();
+  await settle();
+  assert(faint() && !arc.querySelector(".dominance-hover"), "Changing filters must clear pinned comparisons before rerouting them");
+  document.querySelector('label[for="level-high"]').click();
+  await settle();
+  return "Dominance checks passed: faint defaults, single point/arrow hover and taps, dismissal, gesture cancellation, filters and bounded tooltip";
 })();

@@ -55,5 +55,24 @@
   }
   assert(zoom.open && zoom.querySelectorAll("circle").length === 4, "Press-and-hold touch zoom must work in Cost mode too");
   zoom.querySelector("button").click();
-  return "Cost zoom checks passed: mouse/touch, filtered models/levels, logarithmic prices, cost units and single-point selection";
+  document.querySelector('label[for="level-medium"]').click();
+  await settle();
+  drag({ clientX: box.left + 3, clientY: box.top + 3 }, { clientX: box.right - 3, clientY: box.bottom - 3 });
+  const arrow = zoom.querySelector(".dominance-link");
+  const dominated = circle("GPT-6.2 Astra", "medium");
+  assert(arrow && getComputedStyle(arrow).opacity === "0.12", "Zoomed comparisons must use the same faint default");
+  const pointer = (node, type, pointerType) => node.dispatchEvent(new PointerEvent(type, {
+    bubbles: true, pointerType, clientX: box.left + 20, clientY: box.top + 20, relatedTarget: document.body,
+  }));
+  pointer(dominated, "pointerover", "mouse");
+  assert(getComputedStyle(arrow).opacity === "1" && zoom.querySelectorAll(".cost-marker.highlighted").length === 2,
+    "Hovering a zoomed grey point must strengthen its arrow and both endpoints");
+  pointer(dominated, "pointerout", "mouse");
+  pointer(dominated, "pointerdown", "touch");
+  pointer(dominated, "pointerup", "touch");
+  assert(getComputedStyle(arrow).opacity === "1", "Tapping a zoomed grey point must pin its comparison");
+  pointer(zoom.querySelector(".zoom-head"), "pointerdown", "touch");
+  assert(getComputedStyle(arrow).opacity === "0.12", "Tapping elsewhere in the zoom must restore faint arrows");
+  zoom.querySelector("button").click();
+  return "Cost zoom checks passed: mouse/touch, filters, log prices, units, single-point selection and faint interactive comparisons";
 })();

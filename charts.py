@@ -2855,7 +2855,7 @@ $layouts
 .tip .row::before { content: ""; width: 12px; height: 2.5px; border-radius: 2px; background: var(--series); flex: none; }
 .tip b { min-width: 3.2em; color: var(--ink-1); font-variant-numeric: tabular-nums; }
 .tip i { color: var(--ink-3); }
-.cost-point { position: absolute; width: 24px; height: 24px; margin: -12px 0 0 -12px; border-radius: 50%; }
+.cost-point { position: absolute; z-index: 6; width: 24px; height: 24px; margin: -12px 0 0 -12px; border-radius: 50%; }
 .cost-point:not(:hover, .dominance-hover) .tip { display: none; }
 .cost-point .tip { top: -8px; }
 .cost-point .tip-right { left: calc(100% + 4px); }
@@ -2863,14 +2863,13 @@ $layouts
 .zoomable .cost-point .tip { position: fixed; inset: 0 auto auto 0; min-width: 0; width: min(300px, calc(100vw - 24px)); white-space: normal; }
 .tip .cost { color: var(--ink-3); }
 .tip .beaten { margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--border); }
-.cost-point:is(:hover, .dominance-hover) { z-index: 4; }
+@media (hover: none) { .zoomable .cost-point.dominated:not(.dominance-hover) .tip { display: none; } }
 .zoomable .plot[data-mode="cost"] .series { opacity: .35; }
 .cost-marker { transform-box: view-box; transition: transform 160ms ease; }
 .cost-marker:not(.dominated) { filter: saturate(1.25) brightness(1.15); }
 .cost-marker.highlighted { transform: scale(1.3); }
-.dominance-link { opacity: .7; stroke: var(--ink-3); stroke-width: 1.2; fill: none; pointer-events: none; }
+.dominance-link { opacity: .12; stroke: var(--ink-3); stroke-width: 1.2; fill: none; pointer-events: none; }
 .dominance-link.highlighted { opacity: 1; }
-/* Link hit targets must sit above the point tooltips, even when the endpoints are close together. */
 .dominance-hit-layer { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none; }
 .dominance-hit { stroke: transparent; stroke-width: 12; fill: none; pointer-events: stroke; }
 @media (prefers-reduced-motion: reduce) { .cost-marker { transition: none; } }
