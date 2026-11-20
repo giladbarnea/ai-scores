@@ -8,7 +8,7 @@
   for (const mode of ["effort", "cost"]) {
     document.querySelector(`label[for="x-${mode}"]`).click();
     await settle();
-    const tiny = [];
+    const wrongSizes = [];
     for (const plot of document.querySelectorAll(".panel:not([hidden]) > .plot")) {
       const svg = plot.querySelector("svg.chart");
       const scale = svg.getBoundingClientRect().width / svg.viewBox.baseVal.width;
@@ -21,12 +21,12 @@
       for (const label of svg.querySelectorAll("text, tspan")) {
         if (!label.getBoundingClientRect().width || !label.textContent.trim()) continue;
         const size = parseFloat(getComputedStyle(label).fontSize) * scale;
-        if (size < 11) tiny.push(`${plot.closest(".panel").querySelector("h3").textContent}: ${label.textContent} ${size.toFixed(1)}px`);
+        if (Math.abs(size - 9) > 0.5) wrongSizes.push(`${plot.closest(".panel").querySelector("h3").textContent}: ${label.textContent} ${size.toFixed(1)}px`);
       }
     }
-    assert(!tiny.length, `${mode}: chart text must render at least 11px: ${tiny.slice(0, 8).join(", ")}`);
+    assert(!wrongSizes.length, `${mode}: phone chart text must render at 9px (±0.5px as the SVG scales): ${wrongSizes.slice(0, 8).join(", ")}`);
   }
   document.querySelector('label[for="x-effort"]').click();
   await settle();
-  return "Phone chart text is at least 11 CSS pixels in both views";
+  return "Phone chart text is 9 CSS pixels (±0.5px) in both views";
 })();

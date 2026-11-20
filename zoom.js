@@ -454,43 +454,62 @@
   function filteredLabels(plot, metric, points) {
     const svg = plot.querySelector("svg");
     const group = element(svg, "g", { class: "filtered-labels" });
-    const ends = data.models.map(model => points.filter(point => point.model === model).at(-1)).filter(Boolean);
     const costMode = plot.dataset.mode === "cost";
+    const ends = data.models.map(model => points.filter(point => point.model === model)
+      .sort((first, second) => costMode ? first.cost - second.cost : first.level - second.level).at(-1)).filter(Boolean);
+    if (costMode) return filteredCostLabels(svg, group, metric, ends);
     const scoreTemplate = svg.querySelector(".end text");
-    const nameTemplate = svg.querySelector(costMode ? '.end text[style*="Menlo"]' : ".name text");
+    const nameTemplate = svg.querySelector(".name text");
     const labelX = Number(scoreTemplate.getAttribute("x"));
     ends.sort((first, second) => first.y - second.y);
-    const heights = spread(ends.map(point => point.y), costMode ? 24 : data.endLabelGap);
+    const heights = spread(ends.map(point => point.y), data.endLabelGap);
     const bounds = svg.querySelector("clipPath rect");
     const top = Number(bounds.getAttribute("y")) + 6;
-    const bottom = costMode ? svg.viewBox.baseVal.height - 18
-      : Number(bounds.getAttribute("y")) + Number(bounds.getAttribute("height")) - 6;
+    const bottom = Number(bounds.getAttribute("y")) + Number(bounds.getAttribute("height")) - 6;
     const offset = Math.max(top - heights[0], Math.min(0, bottom - heights.at(-1)));
     ends.forEach((point, index) => {
-      const height = heights[index] + offset;
-      element(group, "path", { class: `leader m-${point.model.slug}`, "data-level": data.levels[point.level],
-        d: `M${point.x},${point.y} L${labelX - 4},${height}` },
-        { stroke: costMode ? "var(--ink-3)" : "var(--baseline)", strokeWidth: costMode ? "0.8" : "0.6", fill: "none" });
-      if (costMode) {
-        const label = element(group, "text", { x: labelX, y: height, "dominant-baseline": "middle",
-          "data-level": data.levels[point.level], style: scoreTemplate.getAttribute("style") });
-        label.textContent = point.score.toFixed(metric.decimals);
-        const nameX = nameTemplate.getAttribute("x");
-        element(label, "tspan", { x: nameX, y: height, style: nameTemplate.getAttribute("style") }).textContent = point.model.name;
-        element(label, "tspan", { x: nameX, dy: "11", style: nameTemplate.getAttribute("style") }).textContent = data.levels[point.level];
-        return;
-      }
+      element(group, "path", { d: `M${point.x + 5},${point.y} L${labelX - 4},${heights[index] + offset}` },
+        { stroke: "var(--baseline)", strokeWidth: "0.6", fill: "none" });
       for (const [role, template, value] of [["end", scoreTemplate, point.score.toFixed(metric.decimals)],
                                            ["name", nameTemplate, point.model.name]]) {
         const parent = element(group, "g", { class: `${role} m-${point.model.slug}`, "data-level": data.levels[point.level] });
         const label = template.cloneNode(true);
-        label.setAttribute("y", height);
+        label.setAttribute("y", heights[index] + offset);
         label.setAttribute("dominant-baseline", "middle");
         label.textContent = value;
         parent.append(label);
       }
     });
-    if (!costMode) filteredMeeting(group, metric, points, ends);
+    filteredMeeting(group, metric, points, ends);
+  }
+
+  function filteredCostLabels(svg, group, metric, ends) {
+    const bounds = svg.querySelector("clipPath rect");
+    const left = Number(bounds.getAttribute("x")) + 4;
+    const right = left + Number(bounds.getAttribute("width")) - 8;
+    ends.sort((first, second) => first.y - second.y);
+    const heights = spread(ends.map(point => point.y - 8), data.endLabelGap);
+    const top = Number(bounds.getAttribute("y")) + 8;
+    const bottom = top + Number(bounds.getAttribute("height")) - 16;
+    const offset = Math.max(top - heights[0], Math.min(0, bottom - heights.at(-1)));
+    ends.forEach((point, index) => {
+      const label = element(group, "text", { x: point.x + 7, y: heights[index] + offset, "dominant-baseline": "middle",
+        "data-level": data.levels[point.level] },
+        { fontSize: "9.5px", fontWeight: "500", fill: "var(--ink-1)", stroke: "var(--surface)",
+          strokeWidth: "3px", paintOrder: "stroke", strokeLinejoin: "round" });
+      label.textContent = point.score.toFixed(metric.decimals);
+      element(label, "tspan", { dx: "5" }, { fontFamily: "Menlo, monospace", fontSize: "9px", fontWeight: "400",
+        fill: "var(--ink-3)" }).textContent = point.model.name;
+      const box = label.getBBox();
+      const x = clamp(point.x + 7, left, right - box.width);
+      label.setAttribute("x", x);
+      const nearX = clamp(point.x, x, x + box.width);
+      const nearY = clamp(point.y, box.y, box.y + box.height);
+      if (Math.hypot(nearX - point.x, nearY - point.y) <= 12) return;
+      const leader = element(group, "path", { d: `M${point.x},${point.y} L${nearX},${nearY}` },
+        { stroke: "var(--baseline)", strokeWidth: ".6", fill: "none" });
+      label.before(leader);
+    });
   }
 
   function filteredMeeting(group, metric, points, ends) {

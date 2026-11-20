@@ -1983,7 +1983,7 @@ class Layout:
 
 
 LAYOUTS = [
-    Layout("phone", 0, (3.6, 3.9)),
+    Layout("phone", 0, (4.55, 3.9)),
     Layout("desktop", 700, (5.0, 4.6)),
     Layout("wide", 1600, (7.0, 4.8)),
     Layout("wider", 2100, (9.5, 5.0)),
@@ -1995,7 +1995,7 @@ AXES_RIGHT = 1.45
 AXES_TOP = 0.22
 AXES_BOTTOM = 0.32
 COST_AXIS_LABEL_HEIGHT = 0.35  # the cost charts name their x-axis unit
-COST_AXES_RIGHT = 1.8
+COST_AXES_RIGHT = 0.1  # cost labels sit beside their points inside the plot
 X_LIMITS = (-0.85, len(EFFORT_LEVELS) - 1 + 0.9)
 
 
@@ -2195,7 +2195,7 @@ def text_box(text: Text, renderer: RendererBase) -> Bbox:
 
 def label_is_clear(axes: Axes, label: Annotation, renderer: RendererBase, scene: set[str], ignored_ids: set[str],
                    own_parts: list[Annotation]) -> bool:
-    """A label is clear when it stays off the axes' sides and baseline and touches no line, marker or other label of its scene.
+    """A clear label stays inside the figure, off the axes' sides and baseline, and clear of its scene's lines, markers and labels.
 
     The scene is the set of model slugs visible together with the label. The top is open. Meeting lines,
     artists whose gid is in ignored_ids, and the label's own other parts do not count.
@@ -2207,7 +2207,7 @@ def label_is_clear(axes: Axes, label: Annotation, renderer: RendererBase, scene:
 
     box = text_box(label, renderer).padded(2)
     plot = axes.get_window_extent(renderer)
-    inside = plot.x0 <= box.x0 and box.x1 <= plot.x1 and plot.y0 <= box.y0
+    inside = plot.x0 <= box.x0 and box.x1 <= plot.x1 and plot.y0 <= box.y0 and box.y1 <= axes.figure.bbox.y1
     hits_line = any(line_hits(axes, line, box) for line in axes.lines if blocks(line))
     hits_text = any(text_box(text, renderer).overlaps(box) for text in axes.texts if blocks(text))
     return inside and not hits_line and not hits_text
@@ -2309,36 +2309,28 @@ def draw_end_labels(axes: Axes, metric: Metric) -> None:
 
     A dim model name follows each end label, in one column past the widest end label, so no one has to decode colors.
     """
-    cost_mode = axes.get_xscale() == "log"
-    points = {model: cost_points(metric, model) if cost_mode else [(index, index, score) for index, score in present_points(metric.scores[model])]
-              for model in metric.models}
-    ends = sorted(((model, *own[-1]) for model, own in points.items() if own), key=lambda end: end[3])
+    ends = sorted(((model, *present_points(metric.scores[model])[-1]) for model in metric.models), key=lambda end: end[2])
     to_display = axes.transData.transform
     from_display = axes.transData.inverted().transform
-    minimum_gap_pixels = (24 if cost_mode else END_LABEL_MIN_GAP_POINTS) * axes.figure.dpi / 72
-    label_heights = spread_label_positions([to_display((x, score))[1] for _, _, x, score in ends], minimum_gap_pixels)
+    minimum_gap_pixels = END_LABEL_MIN_GAP_POINTS * axes.figure.dpi / 72
+    label_heights = spread_label_positions([to_display((index, score))[1] for _, index, score in ends], minimum_gap_pixels)
     plot = axes.get_window_extent()
-    offset = max((18 * axes.figure.dpi / 72 if cost_mode else plot.y0 + 6 * axes.figure.dpi / 72) - label_heights[0],
+    offset = max(plot.y0 + 6 * axes.figure.dpi / 72 - label_heights[0],
                  min(0, plot.y1 - 6 * axes.figure.dpi / 72 - label_heights[-1]))
-    label_x = from_display((plot.x1 + 7 * axes.figure.dpi / 72, 0))[0] if cost_mode else max(index for _, index, _, _ in ends) + 0.32
+    label_x = max(index for _, index, _ in ends) + 0.32
     label_ys = [from_display((0, label_height + offset))[1] for label_height in label_heights]
-    for (model, index, x, score), label_y in zip(ends, label_ys):
-        axes.plot([x, label_x], [score, label_y], color=TEXT_MUTED.value if cost_mode else BASELINE.value,
-                  linewidth=0.8 if cost_mode else 0.6,
-                  solid_capstyle="round", zorder=2, gid=at_level(element_id("leader", model), EFFORT_LEVELS[index]))
+    for (model, index, score), label_y in zip(ends, label_ys):
+        if abs(label_y - score) > 1e-9:
+            axes.plot([index + 0.1, label_x - 0.06], [score, label_y], color=BASELINE.value, linewidth=0.6,
+                      solid_capstyle="round", zorder=2, gid=element_id("leader", model))
         axes.text(label_x, label_y, metric.label(score), color=TEXT_PRIMARY.value, fontsize=LABEL_FONT_SIZE,
                   fontweight="medium", va="center", ha="left", gid=element_id("end", model))
     renderer = axes.figure.canvas.get_renderer()
     widest_end = max(text.get_window_extent(renderer).x1 for text in axes.texts)
     name_x = from_display((widest_end + NAME_GAP_POINTS * axes.figure.dpi / 72, 0))[0]
-    for (model, index, _, _), label_y in zip(ends, label_ys):
-        role = "end" if cost_mode else "name"
+    for (model, _, _), label_y in zip(ends, label_ys):
         axes.text(name_x, label_y, model.name, color=TEXT_MUTED.value, fontsize=NAME_FONT_SIZE, family=NAME_FONT_FAMILY,
-                  va="center", ha="left", gid=element_id(role, model))
-        if cost_mode:
-            axes.annotate(EFFORT_LEVELS[index], (name_x, label_y), xytext=(0, -11), textcoords="offset points",
-                          va="center", ha="left", color=TEXT_MUTED.value, fontsize=NAME_FONT_SIZE,
-                          family=NAME_FONT_FAMILY, annotation_clip=False, gid=element_id(role, model))
+                  va="center", ha="left", gid=element_id("name", model))
 
 
 def draw_series(axes: Axes, metric: Metric, model: Model, points: list[tuple[int, float, float]]) -> None:
@@ -2451,7 +2443,11 @@ def draw_cost_panel(axes: Axes, metric: Metric) -> None:
     axes.grid(axis="x", color=GRIDLINE.value, linewidth=0.7)
     axes.set_xlabel(textwrap.fill(metric.cost_unit, width=30), fontsize=9, color=TEXT_MUTED.value, labelpad=6)
     axes.figure.canvas.draw()
-    draw_end_labels(axes, metric)
+    for model in models:
+        _, cost, score = max(cost_points(metric, model), key=lambda point: (point[1], point[0]))
+        parts = [value_part(metric, score), (model.name, DIM_LABEL_STYLE)]
+        place_label(axes, metric, (cost, score), parts, COST_END_PLACEMENTS, element_id("end", model), model, models,
+                    required=False)
 
 
 def inline_svg(svg: str) -> str:
@@ -2837,6 +2833,7 @@ figcaption p { margin: 2px 0 0; font-size: 13px; color: var(--ink-3); }
 @media (max-width: 699.98px) { .panel { padding: 12px 10px 6px; } }
 $layouts
 .chart { display: block; width: 100%; height: auto; overflow: visible; }
+.plot.phone :is(text, tspan) { font-size: 9px !important; }
 .meeting, .meeting-line { display: none; }
 .column { position: absolute; }
 .column::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; border-left: 1px solid var(--baseline); opacity: 0; }

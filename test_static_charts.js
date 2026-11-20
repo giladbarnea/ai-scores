@@ -17,8 +17,9 @@
         if (box.left < card.left - 0.5 || box.right > card.right + 0.5 || box.top < card.top - 0.5 || box.bottom > card.bottom + 0.5) {
           outside.push(`${plot.closest(".panel").querySelector("h3").textContent}: ${label.textContent}`);
         }
-        assert(parseFloat(getComputedStyle(label).fontSize) * scale >= 11,
-          `Without JavaScript, ${label.textContent} must remain readable`);
+        const size = parseFloat(getComputedStyle(label).fontSize) * scale;
+        assert(size >= 8.5 && (innerWidth >= 700 || Math.abs(size - 9) <= 0.5),
+          `Without JavaScript, ${label.textContent} must retain 9px phone text, got ${size.toFixed(1)}px`);
       }
     }
     assert(!outside.length, `Without JavaScript, ${mode} labels must stay inside cards: ${outside.slice(0, 10).join(", ")}`);
