@@ -188,10 +188,25 @@
     const scores = points.map(point => point.score);
     const low = Math.min(...scores);
     const high = Math.max(...scores);
-    const padding = Math.max((high - low) * 0.04, metric.tickStep * 0.15);
+    const padding = Math.max((high - low) * 0.04, Math.min(metric.tickStep * 0.15, (high - low) * 0.25), 0.5, 1.5 * 10 ** -metric.decimals);
     const ticks = scaleTicks(low - padding, high + padding, 10 ** -metric.decimals, metric.tickStep, metric.yRange);
     if (ticks.low === metric.yRange[0] && ticks.high === metric.yRange[1]) return null;
     return ticks;
+  }
+
+  function fittedCostTicks(allPoints, points, bounds) {
+    const allCosts = allPoints.map(point => point.cost);
+    const decades = Math.log10(Math.max(...allCosts) / Math.min(...allCosts));
+    const multiples = decades <= 1.5 ? [1, 2, 5] : decades <= 2.5 ? [1, 3] : [1];
+    const candidates = [];
+    for (let power = Math.floor(Math.log10(bounds[0])) - 1; power <= Math.ceil(Math.log10(bounds[1])) + 1; power += 1) {
+      candidates.push(...multiples.map(multiple => Number((multiple * 10 ** power).toPrecision(12))));
+    }
+    const costs = points.map(point => point.cost);
+    const low = Math.max(bounds[0], candidates.findLast(value => value < Math.min(...costs)));
+    const high = Math.min(bounds[1], candidates.find(value => value > Math.max(...costs)));
+    if (low === bounds[0] && high === bounds[1]) return null;
+    return { low, high, values: candidates.filter(value => value >= low && value <= high) };
   }
 
   // Spread sorted positions so neighbors sit at least minimumGap apart, each crowded group centered on its mean.
@@ -339,9 +354,10 @@
     const points = data.models.flatMap(model => [...plot.querySelectorAll(`.marker.m-${model.slug}`)].map(marker => {
       const level = data.levels.indexOf(marker.dataset.level);
       const symbol = marker.querySelector("use");
+      const originalX = Number(symbol.getAttribute("x"));
       const originalY = Number(symbol.getAttribute("y"));
       return { model, level, score: metric.scores[model.slug][level], cost: metric.costs[model.slug]?.[level], marker, symbol,
-        x: Number(symbol.getAttribute("x")), y: originalY, originalY, radius: data.markerRadius,
+        x: originalX, originalX, y: originalY, originalY, radius: data.markerRadius,
         estimated: metric.estimated.some(([slug, index]) => slug === model.slug && index === level),
         target: plot.querySelector(`.cost-point.m-${model.slug}[data-level="${data.levels[level]}"]`),
         ring: plot.querySelector(`.column[data-level="${data.levels[level]}"] .ring.m-${model.slug}`) };
@@ -350,52 +366,70 @@
     return points;
   }
 
-  function renderScoreTicks(plot, svg, ticks, position, left, right) {
-    const originalAxis = svg.querySelector(".score-axis");
-    const existing = svg.querySelector(".fitted-score-axis");
+  function renderAxisTicks(plot, svg, axis, ticks, position, start, end) {
+    const horizontal = axis === "cost";
+    const originalAxis = svg.querySelector(`.${axis}-axis`);
+    const existing = svg.querySelector(`.fitted-${axis}-axis`);
+    const limitKey = horizontal ? "xLimits" : "yLimits";
     if (!ticks) {
       if (!existing) return;
       existing.remove();
       originalAxis.style.display = "";
-      delete plot.dataset.yLimits;
+      if (!horizontal) delete plot.dataset.yLimits;
       return;
     }
     const limits = `${ticks.low},${ticks.high}`;
     const values = ticks.values.join(",");
-    if (plot.dataset.yLimits === limits && existing?.dataset.values === values) return;
+    if (plot.dataset[limitKey] === limits && existing?.dataset.values === values) return;
     existing?.remove();
-    plot.dataset.yLimits = limits;
+    plot.dataset[limitKey] = limits;
     originalAxis.style.display = "none";
-    const fittedAxis = element(svg, "g", { class: "fitted-score-axis", "data-values": values });
+    const fittedAxis = element(svg, "g", { class: `fitted-${axis}-axis`, "data-values": values });
     originalAxis.after(fittedAxis);
-    const textStyle = originalAxis.querySelector("text").getAttribute("style");
+    const template = originalAxis.querySelector("text");
+    const textStyle = template.getAttribute("style");
     for (const value of ticks.values) {
-      const tickY = position(value);
-      element(fittedAxis, "line", { x1: left, x2: right, y1: tickY, y2: tickY },
+      const offset = position(value);
+      element(fittedAxis, "line", horizontal ? { x1: offset, x2: offset, y1: start, y2: end }
+        : { x1: start, x2: end, y1: offset, y2: offset },
         { stroke: "var(--grid)", strokeWidth: ".7", strokeLinecap: "square" });
-      element(fittedAxis, "text", { x: left - 5, y: tickY, "dominant-baseline": "central", style: textStyle })
-        .textContent = value.toFixed(ticks.decimals).replace("-", "−");
+      element(fittedAxis, "text", horizontal ? { x: offset, y: template.getAttribute("y"), style: textStyle }
+        : { x: start - 5, y: offset, "dominant-baseline": "central", style: textStyle })
+        .textContent = horizontal ? formatCost(value) : value.toFixed(ticks.decimals).replace("-", "−");
     }
+    if (horizontal) fittedAxis.append(originalAxis.querySelector(".cost-unit").cloneNode(true));
   }
 
-  function fitScoreAxis(plot, metric, allPoints, points) {
+  function fitAxes(plot, metric, allPoints, points) {
     const svg = plot.querySelector("svg.chart");
     const { x, y, width, height } = svg.querySelector("clipPath rect");
     const left = x.baseVal.value;
     const top = y.baseVal.value;
+    const axesWidth = width.baseVal.value;
     const axesHeight = height.baseVal.value;
-    const ticks = points.length && points.length < allPoints.length ? fittedScoreTicks(metric, points) : null;
-    const position = score => top + (ticks.high - score) / (ticks.high - ticks.low) * axesHeight;
-    renderScoreTicks(plot, svg, ticks, position, left, left + width.baseVal.value);
+    const narrowed = points.length && points.length < allPoints.length;
+    const scoreTicks = narrowed ? fittedScoreTicks(metric, points) : null;
+    const scorePosition = score => top + (scoreTicks.high - score) / (scoreTicks.high - scoreTicks.low) * axesHeight;
+    renderAxisTicks(plot, svg, "score", scoreTicks, scorePosition, left, left + axesWidth);
+    const costMode = plot.dataset.mode === "cost";
+    plot.dataset.fullXLimits ??= plot.dataset.xLimits;
+    const costTicks = costMode && narrowed ? fittedCostTicks(allPoints, points, plot.dataset.fullXLimits.split(",").map(Number)) : null;
+    const costPosition = cost => left + Math.log10(cost / costTicks.low) / Math.log10(costTicks.high / costTicks.low) * axesWidth;
+    if (costMode) renderAxisTicks(plot, svg, "cost", costTicks, costPosition, top, top + axesHeight);
+    if (!costTicks) plot.dataset.xLimits = plot.dataset.fullXLimits;
     for (const point of points) {
-      const pointY = ticks ? position(point.score) : point.originalY;
-      if (pointY === point.y) continue;
+      const pointX = costTicks ? costPosition(point.cost) : point.originalX;
+      const pointY = scoreTicks ? scorePosition(point.score) : point.originalY;
+      if (pointX === point.x && pointY === point.y) continue;
+      point.x = pointX;
       point.y = pointY;
-      point.symbol.setAttribute("y", pointY);
-      if (point.target) point.target.style.top = `${100 * pointY / svg.viewBox.baseVal.height}%`;
-      if (point.ring) point.ring.style.top = `${100 * (pointY - top) / axesHeight}%`;
+      point.symbol.setAttribute("x", point.x);
+      point.symbol.setAttribute("y", point.y);
+      if (point.target) Object.assign(point.target.style, { left: `${100 * point.x / svg.viewBox.baseVal.width}%`,
+        top: `${100 * point.y / svg.viewBox.baseVal.height}%` });
+      if (point.ring) point.ring.style.top = `${100 * (point.y - top) / axesHeight}%`;
     }
-    return Boolean(ticks);
+    return Boolean(scoreTicks || costTicks);
   }
 
   function filteredLabels(plot, metric, points) {
@@ -430,8 +464,11 @@
     const right = left + Number(bounds.getAttribute("width")) - 8;
     ends.sort((first, second) => first.y - second.y);
     const heights = spread(ends.map(point => point.y - 8), data.endLabelGap);
+    const top = Number(bounds.getAttribute("y")) + 8;
+    const bottom = top + Number(bounds.getAttribute("height")) - 16;
+    const offset = Math.max(top - heights[0], Math.min(0, bottom - heights.at(-1)));
     ends.forEach((point, index) => {
-      const label = element(group, "text", { x: point.x + 7, y: heights[index], "dominant-baseline": "middle",
+      const label = element(group, "text", { x: point.x + 7, y: heights[index] + offset, "dominant-baseline": "middle",
         "data-level": data.levels[point.level] },
         { fontSize: "9.5px", fontWeight: "500", fill: "var(--ink-1)", stroke: "var(--surface)",
           strokeWidth: "3px", paintOrder: "stroke", strokeLinejoin: "round" });
@@ -689,8 +726,8 @@
       const metric = data.metrics[plot.dataset.metric];
       const allPoints = plotPoints(plot, metric);
       const points = allPoints.filter(point => models.includes(point.model) && levelIsShown(data.levels[point.level]));
-      const fitted = fitScoreAxis(plot, metric, allPoints, points);
-      const redrawLabels = partial || fitted;
+      const fitted = fitAxes(plot, metric, allPoints, points);
+      const redrawLabels = partial || fitted || (plot.dataset.mode === "cost" && points.length < allPoints.length);
       for (const series of plot.querySelectorAll(".series")) {
         const own = points.filter(point => series.classList.contains(`m-${point.model.slug}`));
         series.querySelector("path").setAttribute("d", own.map((point, index) => `${index ? "L" : "M"}${point.x},${point.y}`).join(" "));
@@ -702,7 +739,7 @@
       for (const start of plot.querySelectorAll(".start")) {
         const point = points.find(point => start.classList.contains(`m-${point.model.slug}`));
         start.style.display = partial ? "none" : "";
-        if (fitted && point) start.setAttribute("transform", `translate(0 ${point.y - point.originalY})`);
+        if (fitted && point) start.setAttribute("transform", `translate(${point.x - point.originalX} ${point.y - point.originalY})`);
         else start.removeAttribute("transform");
       }
       if (plot.dataset.mode === "cost") updateCostDominance(plot, metric, allPoints, points);

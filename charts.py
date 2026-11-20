@@ -2400,8 +2400,13 @@ def draw_cost_panel(axes: Axes, metric: Metric) -> None:
     costs = [cost for model in models for _, cost, _ in cost_points(metric, model)]
     decades = math.log10(max(costs) / min(costs))
     axes.set_xscale("log")
-    axes.set_xlim(min(costs) / 10 ** (0.12 * decades + 0.1), max(costs) * 10 ** (0.35 * decades + 0.2))
+    axes.xaxis.set_gid("cost-axis__ticks")
+    axes.xaxis.label.set_gid("cost-unit__label")
     tick_multiples = (1, 2, 5) if decades <= 1.5 else (1, 3) if decades <= 2.5 else (1,)
+    ticks = [multiple * 10 ** power for power in range(math.floor(math.log10(min(costs))) - 1,
+                                                     math.ceil(math.log10(max(costs))) + 2)
+             for multiple in tick_multiples]
+    axes.set_xlim(max(tick for tick in ticks if tick < min(costs)), min(tick for tick in ticks if tick > max(costs)))
     axes.xaxis.set_major_locator(matplotlib.ticker.LogLocator(base=10, subs=tick_multiples))
     axes.xaxis.set_minor_locator(matplotlib.ticker.NullLocator())
     axes.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda value, _: cost_label(value)))
@@ -2579,10 +2584,15 @@ def reported_cost_metric(metric: ReportedMetric) -> Metric:
     >>> reported_cost_metric(ReportedMetric("example", "%", {GPT_6_ASTRA: (80.0, "high")})).scores[GPT_6_ASTRA]
     [None, None, 80.0, None, None]
     """
+    scores = [score for score, _ in metric.scores.values()]
+    span = max(scores) - min(scores)
+    padding = max(span * 0.04, min(metric.tick_step * 0.15, span * 0.25), 0.5, 1.5 * 10 ** -metric.decimals)
+    ticks = matplotlib.ticker.MaxNLocator(nbins=5, steps=[1, 2, 2.5, 5, 10]).tick_values(min(scores) - padding, max(scores) + padding)
     return Metric(metric.name, metric.unit_and_source,
                   {model: [score if level == effort else None for level in EFFORT_LEVELS]
                    for model, (score, effort) in metric.scores.items()},
-                  (0, metric.x_max), metric.tick_step, decimals=metric.decimals)
+                  (max(0, float(ticks[0])), min(metric.x_max, float(ticks[-1]))), float(ticks[1] - ticks[0]),
+                  decimals=metric.decimals)
 
 
 def bar_panel_html(metric: ReportedMetric) -> str:
