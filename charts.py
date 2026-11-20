@@ -12,6 +12,7 @@ import itertools
 import json
 import math
 import re
+import textwrap
 from collections.abc import Iterator
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -1962,8 +1963,8 @@ LINE_WIDTH = 1.8
 MARKER_SIZE = 6.5
 MARKER_RING = 1.6
 LABEL_FONT_SIZE = 9.5
-END_LABEL_MIN_GAP_POINTS = 12
-NAME_FONT_SIZE = 7.5
+END_LABEL_MIN_GAP_POINTS = 14
+NAME_FONT_SIZE = 9
 NAME_FONT_FAMILY = "Menlo"  # ships with macOS and iOS, so the SVG renders the font it was measured in
 NAME_GAP_POINTS = 5
 
@@ -1982,7 +1983,7 @@ class Layout:
 
 
 LAYOUTS = [
-    Layout("phone", 0, (4.55, 3.9)),  # 3.8 plot inches plus the name column
+    Layout("phone", 0, (3.6, 3.9)),
     Layout("desktop", 700, (5.0, 4.6)),
     Layout("wide", 1600, (7.0, 4.8)),
     Layout("wider", 2100, (9.5, 5.0)),
@@ -1990,11 +1991,11 @@ LAYOUTS = [
 ]
 AXES_LEFT = 0.42
 # The right margin holds the model-name column beside the end labels, outside the plot, so names never meet plot labels.
-AXES_RIGHT = 1.15
+AXES_RIGHT = 1.45
 AXES_TOP = 0.22
 AXES_BOTTOM = 0.32
-COST_AXIS_LABEL_HEIGHT = 0.2  # the cost charts name their x-axis unit
-COST_AXES_RIGHT = 0.1  # cost charts have no name column; their end labels sit inside the plot
+COST_AXIS_LABEL_HEIGHT = 0.35  # the cost charts name their x-axis unit
+COST_AXES_RIGHT = 1.8
 X_LIMITS = (-0.85, len(EFFORT_LEVELS) - 1 + 0.9)
 
 
@@ -2308,25 +2309,36 @@ def draw_end_labels(axes: Axes, metric: Metric) -> None:
 
     A dim model name follows each end label, in one column past the widest end label, so no one has to decode colors.
     """
-    ends = sorted(((model, *present_points(metric.scores[model])[-1]) for model in metric.models), key=lambda end: end[2])
+    cost_mode = axes.get_xscale() == "log"
+    points = {model: cost_points(metric, model) if cost_mode else [(index, index, score) for index, score in present_points(metric.scores[model])]
+              for model in metric.models}
+    ends = sorted(((model, *own[-1]) for model, own in points.items() if own), key=lambda end: end[3])
     to_display = axes.transData.transform
     from_display = axes.transData.inverted().transform
-    minimum_gap_pixels = END_LABEL_MIN_GAP_POINTS * axes.figure.dpi / 72
-    label_heights = spread_label_positions([to_display((index, score))[1] for _, index, score in ends], minimum_gap_pixels)
-    label_x = len(EFFORT_LEVELS) - 1 + 0.32
-    label_ys = [from_display((0, label_height))[1] for label_height in label_heights]
-    for (model, index, score), label_y in zip(ends, label_ys):
-        if abs(label_y - score) > 1e-9:
-            axes.plot([index + 0.1, label_x - 0.06], [score, label_y], color=BASELINE.value, linewidth=0.6,
-                      solid_capstyle="round", zorder=2, gid=element_id("leader", model))
+    minimum_gap_pixels = (24 if cost_mode else END_LABEL_MIN_GAP_POINTS) * axes.figure.dpi / 72
+    label_heights = spread_label_positions([to_display((x, score))[1] for _, _, x, score in ends], minimum_gap_pixels)
+    plot = axes.get_window_extent()
+    offset = max((18 * axes.figure.dpi / 72 if cost_mode else plot.y0 + 6 * axes.figure.dpi / 72) - label_heights[0],
+                 min(0, plot.y1 - 6 * axes.figure.dpi / 72 - label_heights[-1]))
+    label_x = from_display((plot.x1 + 7 * axes.figure.dpi / 72, 0))[0] if cost_mode else max(index for _, index, _, _ in ends) + 0.32
+    label_ys = [from_display((0, label_height + offset))[1] for label_height in label_heights]
+    for (model, index, x, score), label_y in zip(ends, label_ys):
+        axes.plot([x, label_x], [score, label_y], color=TEXT_MUTED.value if cost_mode else BASELINE.value,
+                  linewidth=0.8 if cost_mode else 0.6,
+                  solid_capstyle="round", zorder=2, gid=at_level(element_id("leader", model), EFFORT_LEVELS[index]))
         axes.text(label_x, label_y, metric.label(score), color=TEXT_PRIMARY.value, fontsize=LABEL_FONT_SIZE,
                   fontweight="medium", va="center", ha="left", gid=element_id("end", model))
     renderer = axes.figure.canvas.get_renderer()
     widest_end = max(text.get_window_extent(renderer).x1 for text in axes.texts)
     name_x = from_display((widest_end + NAME_GAP_POINTS * axes.figure.dpi / 72, 0))[0]
-    for (model, _, _), label_y in zip(ends, label_ys):
+    for (model, index, _, _), label_y in zip(ends, label_ys):
+        role = "end" if cost_mode else "name"
         axes.text(name_x, label_y, model.name, color=TEXT_MUTED.value, fontsize=NAME_FONT_SIZE, family=NAME_FONT_FAMILY,
-                  va="center", ha="left", gid=element_id("name", model))
+                  va="center", ha="left", gid=element_id(role, model))
+        if cost_mode:
+            axes.annotate(EFFORT_LEVELS[index], (name_x, label_y), xytext=(0, -11), textcoords="offset points",
+                          va="center", ha="left", color=TEXT_MUTED.value, fontsize=NAME_FONT_SIZE,
+                          family=NAME_FONT_FAMILY, annotation_clip=False, gid=element_id(role, model))
 
 
 def draw_series(axes: Axes, metric: Metric, model: Model, points: list[tuple[int, float, float]]) -> None:
@@ -2343,10 +2355,28 @@ def draw_series(axes: Axes, metric: Metric, model: Model, points: list[tuple[int
                   gid=at_level(element_id("marker", model), EFFORT_LEVELS[index]))
 
 
+def score_axis(scores: list[float], bounds: tuple[float, float], tick_step: float, decimals: int) -> tuple[tuple[float, float], float]:
+    """Fit a score axis to reported values with the same padding and round steps as the browser.
+
+    >>> score_axis([55.9, 71.0], (0, 100), 20, 1)
+    ((50, 75), 5)
+    """
+    low, high = min(scores), max(scores)
+    padding = max((high - low) * 0.04, min(tick_step * 0.15, (high - low) * 0.25), 0.5, 1.5 * 10 ** -decimals)
+    raw_step = (high - low + 2 * padding) / 5
+    magnitude = 10 ** math.floor(math.log10(raw_step))
+    step = min(tick_step, max(10 ** -decimals, next(factor * magnitude for factor in (1, 2, 2.5, 5, 10)
+                                                 if factor * magnitude >= raw_step)))
+    return (max(bounds[0], math.floor((low - padding) / step) * step),
+            min(bounds[1], math.ceil((high + padding) / step) * step)), step
+
+
 def style_axes(axes: Axes, metric: Metric) -> None:
-    axes.set_ylim(*metric.y_range)
+    limits, step = score_axis([float(score) for line in axes.lines for score in line.get_ydata()],
+                              metric.y_range, metric.tick_step, metric.decimals)
+    axes.set_ylim(*limits)
     axes.yaxis.set_gid("score-axis__ticks")
-    axes.yaxis.set_major_locator(matplotlib.ticker.MultipleLocator(metric.tick_step))
+    axes.yaxis.set_major_locator(matplotlib.ticker.MultipleLocator(step))
     axes.grid(axis="y", color=GRIDLINE.value, linewidth=0.7)
     axes.set_axisbelow(True)
     for side in ("top", "right", "left"):
@@ -2360,9 +2390,13 @@ def draw_panel(axes: Axes, metric: Metric) -> None:
     for model in metric.models:
         draw_series(axes, metric, model, [(index, index, score) for index, score in present_points(metric.scores[model])])
     style_axes(axes, metric)
-    axes.set_xlim(*X_LIMITS)
-    axes.set_xticks(range(len(EFFORT_LEVELS)), EFFORT_LEVELS)
-    axes.spines["bottom"].set_bounds(-0.35, len(EFFORT_LEVELS) - 1 + 0.35)
+    levels = [index for model in metric.models for index, _ in present_points(metric.scores[model])]
+    first, last = min(levels), max(levels)
+    axes.set_xlim(first + X_LIMITS[0], last + X_LIMITS[1] - len(EFFORT_LEVELS) + 1)
+    axes.xaxis.set_gid("effort-axis__ticks")
+    axes.set_xticks(range(first, last + 1), EFFORT_LEVELS[first:last + 1])
+    axes.spines["bottom"].set_gid("effort-baseline__line")
+    axes.spines["bottom"].set_bounds(first - 0.35, last + 0.35)
     axes.figure.canvas.draw()
     draw_end_labels(axes, metric)
     draw_start_labels(axes, metric)
@@ -2409,16 +2443,15 @@ def draw_cost_panel(axes: Axes, metric: Metric) -> None:
     axes.set_xlim(max(tick for tick in ticks if tick < min(costs)), min(tick for tick in ticks if tick > max(costs)))
     axes.xaxis.set_major_locator(matplotlib.ticker.LogLocator(base=10, subs=tick_multiples))
     axes.xaxis.set_minor_locator(matplotlib.ticker.NullLocator())
-    axes.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda value, _: cost_label(value)))
+    low, high = axes.get_xlim()
+    visible_ticks = [tick for tick in ticks if low <= tick <= high]
+    labeled_ticks = {visible_ticks[round(index * (len(visible_ticks) - 1) / 2)] for index in range(3)} \
+        if axes.get_window_extent().width / axes.figure.dpi < 2 else set(visible_ticks)
+    axes.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda value, _: cost_label(value) if value in labeled_ticks else ""))
     axes.grid(axis="x", color=GRIDLINE.value, linewidth=0.7)
-    axes.set_xlabel(metric.cost_unit, fontsize=8.5, color=TEXT_MUTED.value, labelpad=6)
+    axes.set_xlabel(textwrap.fill(metric.cost_unit, width=30), fontsize=9, color=TEXT_MUTED.value, labelpad=6)
     axes.figure.canvas.draw()
-    for model in models:
-        index, cost, score = cost_points(metric, model)[-1]
-        level = "" if EFFORT_LEVELS[index] == "max" else f" · {EFFORT_LEVELS[index]}"  # most lines end at max
-        parts = [value_part(metric, score), (f"{model.name}{level}", DIM_LABEL_STYLE)]
-        place_label(axes, metric, (cost, score), parts, COST_END_PLACEMENTS, element_id("end", model), model, models,
-                    required=False)
+    draw_end_labels(axes, metric)
 
 
 def inline_svg(svg: str) -> str:
@@ -2442,8 +2475,9 @@ def inline_svg(svg: str) -> str:
 def level_column_html(axes: Axes, metric: Metric, index: int) -> str:
     """A hover column over one effort level: a crosshair, rings on its points, and a tooltip with every model's score."""
     width, height = axes.figure.bbox.size
-    left, top = axes.transData.transform((index - 0.5, metric.y_range[1]))
-    right, bottom = axes.transData.transform((index + 0.5, metric.y_range[0]))
+    low, high = axes.get_ylim()
+    left, top = axes.transData.transform((index - 0.5, high))
+    right, bottom = axes.transData.transform((index + 0.5, low))
     rows, rings = [], []
     present = [(model, metric.scores[model][index]) for model in metric.models if metric.scores[model][index] is not None]
     for model, score in sorted(present, key=lambda item: -item[1]):
@@ -2479,10 +2513,10 @@ Mode = str
 def plot_html(metric: Metric, layout: Layout, mode: Mode) -> str:
     """One layout's chart in one x-axis mode: the inline SVG plus its hover targets."""
     width, height = layout.figure_size
-    bottom = AXES_BOTTOM + (COST_AXIS_LABEL_HEIGHT if mode == "cost" else 0)
+    bottom = AXES_BOTTOM + (COST_AXIS_LABEL_HEIGHT if mode == "cost" else 0.25 if layout.name == "phone" else 0)
     right = COST_AXES_RIGHT if mode == "cost" else AXES_RIGHT
     plt.rcParams["svg.hashsalt"] = f"{metric.name} {layout.name} {mode}"  # keeps SVG ids unique across the page
-    figure = plt.figure(figsize=(width, height), dpi=72)
+    figure = plt.figure(figsize=(width, height), dpi=144)
     axes = figure.add_axes((AXES_LEFT / width, bottom / height,
                             1 - (AXES_LEFT + right) / width, 1 - (AXES_TOP + bottom) / height))
     if mode == "cost":
@@ -2491,6 +2525,9 @@ def plot_html(metric: Metric, layout: Layout, mode: Mode) -> str:
                         for index, cost, score in cost_points(metric, model))
     else:
         draw_panel(axes, metric)
+        if layout.name == "phone":
+            for index, label in enumerate(axes.get_xticklabels()):
+                label.set_y(-0.06 * (index % 2))
         hover = "".join(level_column_html(axes, metric, index) for index in range(len(EFFORT_LEVELS))
                         if any(metric.scores[model][index] is not None for model in metric.models))
     box = axes.get_position()
@@ -2527,6 +2564,7 @@ def panel_html(metric: Metric) -> str:
 BAR_ROW_HEIGHT = 0.42
 BAR_THICKNESS = 0.56  # of a row
 BAR_AXES_LEFT = 1.35  # holds the model names
+BAR_AXES_RIGHT = 1.15
 BAR_AXES_BOTTOM = 0.32
 
 
@@ -2555,9 +2593,14 @@ def draw_bars(axes: Axes, metric: ReportedMetric) -> None:
     axes.figure.canvas.draw()
     for row, model in enumerate(rows):
         score, effort = metric.scores[model]
-        effort_label = f"{effort} · {cost_label(metric.prices[model])}" if model in metric.prices else effort
-        for part in annotate_parts(axes, (score, row), [(f"{score:.{metric.decimals}f}", POINT_LABEL_STYLE), (effort_label, DIM_LABEL_STYLE)],
-                                   RIGHT, at_level(element_id("end", model), effort)):
+        effort_label = textwrap.fill(f"{effort} · {cost_label(metric.prices[model])}" if model in metric.prices else effort,
+                                     width=20, break_long_words=False, break_on_hyphens=False)
+        parts = annotate_parts(axes, (score, row), [(f"{score:.{metric.decimals}f}", POINT_LABEL_STYLE), (effort_label, DIM_LABEL_STYLE)],
+                               RIGHT, at_level(element_id("end", model), effort))
+        renderer = axes.figure.canvas.get_renderer()
+        shift = min(0, axes.figure.bbox.x1 - 4 - max(text_box(part, renderer).x1 for part in parts)) * 72 / axes.figure.dpi
+        for part in parts:
+            part.set_position((part.xyann[0] + shift, part.xyann[1]))
             part.set_annotation_clip(False)
 
 
@@ -2565,11 +2608,11 @@ def bar_plot_html(metric: ReportedMetric, layout: Layout) -> str:
     width = layout.figure_size[0]
     height = AXES_TOP + BAR_AXES_BOTTOM + BAR_ROW_HEIGHT * len(metric.models)
     plt.rcParams["svg.hashsalt"] = f"{metric.name} {layout.name}"
-    figure = plt.figure(figsize=(width, height), dpi=72)
+    figure = plt.figure(figsize=(width, height), dpi=144)
     axes = figure.add_axes((BAR_AXES_LEFT / width, BAR_AXES_BOTTOM / height,
-                            1 - (BAR_AXES_LEFT + AXES_RIGHT) / width, 1 - (AXES_TOP + BAR_AXES_BOTTOM) / height))
+                            1 - (BAR_AXES_LEFT + BAR_AXES_RIGHT) / width, 1 - (AXES_TOP + BAR_AXES_BOTTOM) / height))
     draw_bars(axes, metric)
-    row_height = axes.transData.transform((0, 1))[1] - axes.transData.transform((0, 0))[1]
+    row_height = (axes.transData.transform((0, 1))[1] - axes.transData.transform((0, 0))[1]) * 72 / figure.dpi
     svg = io.StringIO()
     figure.savefig(svg, format="svg", metadata={"Date": None})
     plt.close(figure)
@@ -2584,14 +2627,11 @@ def reported_cost_metric(metric: ReportedMetric) -> Metric:
     >>> reported_cost_metric(ReportedMetric("example", "%", {GPT_6_ASTRA: (80.0, "high")})).scores[GPT_6_ASTRA]
     [None, None, 80.0, None, None]
     """
-    scores = [score for score, _ in metric.scores.values()]
-    span = max(scores) - min(scores)
-    padding = max(span * 0.04, min(metric.tick_step * 0.15, span * 0.25), 0.5, 1.5 * 10 ** -metric.decimals)
-    ticks = matplotlib.ticker.MaxNLocator(nbins=5, steps=[1, 2, 2.5, 5, 10]).tick_values(min(scores) - padding, max(scores) + padding)
+    limits, step = score_axis([score for score, _ in metric.scores.values()], (0, metric.x_max), metric.tick_step, metric.decimals)
     return Metric(metric.name, metric.unit_and_source,
                   {model: [score if level == effort else None for level in EFFORT_LEVELS]
                    for model, (score, effort) in metric.scores.items()},
-                  (max(0, float(ticks[0])), min(metric.x_max, float(ticks[-1]))), float(ticks[1] - ticks[0]),
+                  limits, step,
                   decimals=metric.decimals)
 
 
@@ -2666,6 +2706,11 @@ def toggle_css() -> str:
     for model in MODELS:
         off = f"body:has(#show-{model.slug}:not(:checked))"
         rules.append(f"{off} .m-{model.slug} {{ display: none; }}")
+    for metric in CURVES:
+        starts = [(model, present_points(metric.scores[model])) for model in metric.models]
+        for (first, first_points), (second, second_points) in itertools.combinations(starts, 2):
+            if len(first_points) > 1 and len(second_points) > 1 and first_points[0] == second_points[0]:
+                rules.append(f'body:has(#show-{first.slug}:checked) .panel[data-chart="{slugify(metric.name)}"] .start.m-{second.slug} {{ display: none; }}')
     for pair in itertools.combinations(MODELS, 2):
         states = "".join(f":has(#show-{model.slug}:{'checked' if model in pair else 'not(:checked)'})" for model in MODELS)
         rules.append(f"body{states} :is(.meeting, .meeting-line)"
@@ -2780,7 +2825,10 @@ body:has(#x-cost:checked) .cost-row { display: table-row; }
 .toggle { position: absolute; opacity: 0; pointer-events: none; }
 h2 { margin: 32px 0 12px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
 .grid { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: start; }
-@media (min-width: 960px) { .grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 960px) {
+  .grid { display: block; columns: 2; column-gap: 16px; }
+  .grid > .panel { break-inside: avoid; margin-bottom: 16px; }
+}
 .panel { margin: 0; padding: 16px 16px 8px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
 figcaption h3 { margin: 0; font-size: 16px; }
 figcaption p { margin: 2px 0 0; font-size: 13px; color: var(--ink-3); }

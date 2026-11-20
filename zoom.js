@@ -367,7 +367,7 @@
   }
 
   function renderAxisTicks(plot, svg, axis, ticks, position, start, end) {
-    const horizontal = axis === "cost";
+    const horizontal = axis !== "score";
     const originalAxis = svg.querySelector(`.${axis}-axis`);
     const existing = svg.querySelector(`.fitted-${axis}-axis`);
     const limitKey = horizontal ? "xLimits" : "yLimits";
@@ -388,16 +388,20 @@
     originalAxis.after(fittedAxis);
     const template = originalAxis.querySelector("text");
     const textStyle = template.getAttribute("style");
+    const costLabels = axis === "cost" && Number(svg.querySelector("clipPath rect").getAttribute("width")) < 144
+      ? new Set(Array.from({ length: 3 }, (_, index) => ticks.values[Math.round(index * (ticks.values.length - 1) / 2)])) : null;
     for (const value of ticks.values) {
       const offset = position(value);
-      element(fittedAxis, "line", horizontal ? { x1: offset, x2: offset, y1: start, y2: end }
+      if (axis !== "effort") element(fittedAxis, "line", horizontal ? { x1: offset, x2: offset, y1: start, y2: end }
         : { x1: start, x2: end, y1: offset, y2: offset },
         { stroke: "var(--grid)", strokeWidth: ".7", strokeLinecap: "square" });
-      element(fittedAxis, "text", horizontal ? { x: offset, y: template.getAttribute("y"), style: textStyle }
+      const tickTemplate = axis === "effort" ? [...originalAxis.querySelectorAll("text")].find(node => node.textContent === data.levels[value]) : template;
+      element(fittedAxis, "text", horizontal ? { x: offset, y: tickTemplate.getAttribute("y"), style: textStyle }
         : { x: start - 5, y: offset, "dominant-baseline": "central", style: textStyle })
-        .textContent = horizontal ? formatCost(value) : value.toFixed(ticks.decimals).replace("-", "−");
+        .textContent = axis === "effort" ? data.levels[value] : horizontal ? (!costLabels || costLabels.has(value) ? formatCost(value) : "")
+          : value.toFixed(ticks.decimals).replace("-", "−");
     }
-    if (horizontal) fittedAxis.append(originalAxis.querySelector(".cost-unit").cloneNode(true));
+    if (axis === "cost") fittedAxis.append(originalAxis.querySelector(".cost-unit").cloneNode(true));
   }
 
   function fitAxes(plot, metric, allPoints, points) {
@@ -408,7 +412,7 @@
     const axesWidth = width.baseVal.value;
     const axesHeight = height.baseVal.value;
     const narrowed = points.length && points.length < allPoints.length;
-    const scoreTicks = narrowed ? fittedScoreTicks(metric, points) : null;
+    const scoreTicks = points.length ? fittedScoreTicks(metric, points) : null;
     const scorePosition = score => top + (scoreTicks.high - score) / (scoreTicks.high - scoreTicks.low) * axesHeight;
     renderAxisTicks(plot, svg, "score", scoreTicks, scorePosition, left, left + axesWidth);
     const costMode = plot.dataset.mode === "cost";
@@ -416,9 +420,24 @@
     const costTicks = costMode && narrowed ? fittedCostTicks(allPoints, points, plot.dataset.fullXLimits.split(",").map(Number)) : null;
     const costPosition = cost => left + Math.log10(cost / costTicks.low) / Math.log10(costTicks.high / costTicks.low) * axesWidth;
     if (costMode) renderAxisTicks(plot, svg, "cost", costTicks, costPosition, top, top + axesHeight);
-    if (!costTicks) plot.dataset.xLimits = plot.dataset.fullXLimits;
+    const levels = points.map(point => point.level);
+    const first = Math.min(...levels);
+    const last = Math.max(...levels);
+    const effortTicks = !costMode && points.length ? { low: first - 0.85, high: last + 0.9,
+      values: Array.from({ length: last - first + 1 }, (_, index) => first + index) } : null;
+    const effortPosition = level => left + (level - effortTicks.low) / (effortTicks.high - effortTicks.low) * axesWidth;
+    if (effortTicks) {
+      renderAxisTicks(plot, svg, "effort", effortTicks, effortPosition, top, top + axesHeight);
+      svg.querySelector(".effort-baseline path").setAttribute("d", `M${effortPosition(first - 0.35)},${top + axesHeight} H${effortPosition(last + 0.35)}`);
+      for (const column of plot.querySelectorAll(".column")) {
+        const level = data.levels.indexOf(column.dataset.level);
+        Object.assign(column.style, { left: `${100 * effortPosition(level - 0.5) / svg.viewBox.baseVal.width}%`,
+          width: `${100 * (effortPosition(level + 0.5) - effortPosition(level - 0.5)) / svg.viewBox.baseVal.width}%` });
+      }
+    }
+    if (!costTicks && !effortTicks) plot.dataset.xLimits = plot.dataset.fullXLimits;
     for (const point of points) {
-      const pointX = costTicks ? costPosition(point.cost) : point.originalX;
+      const pointX = costTicks ? costPosition(point.cost) : effortTicks ? effortPosition(point.level) : point.originalX;
       const pointY = scoreTicks ? scorePosition(point.score) : point.originalY;
       if (pointX === point.x && pointY === point.y) continue;
       point.x = pointX;
@@ -429,65 +448,52 @@
         top: `${100 * point.y / svg.viewBox.baseVal.height}%` });
       if (point.ring) point.ring.style.top = `${100 * (point.y - top) / axesHeight}%`;
     }
-    return Boolean(scoreTicks || costTicks);
+    return Boolean(scoreTicks || costTicks || (effortTicks && `${effortTicks.low},${effortTicks.high}` !== plot.dataset.fullXLimits));
   }
 
   function filteredLabels(plot, metric, points) {
     const svg = plot.querySelector("svg");
     const group = element(svg, "g", { class: "filtered-labels" });
     const ends = data.models.map(model => points.filter(point => point.model === model).at(-1)).filter(Boolean);
-    if (plot.dataset.mode === "cost") return filteredCostLabels(svg, group, metric, ends);
+    const costMode = plot.dataset.mode === "cost";
     const scoreTemplate = svg.querySelector(".end text");
-    const nameTemplate = svg.querySelector(".name text");
+    const nameTemplate = svg.querySelector(costMode ? '.end text[style*="Menlo"]' : ".name text");
     const labelX = Number(scoreTemplate.getAttribute("x"));
     ends.sort((first, second) => first.y - second.y);
-    const heights = spread(ends.map(point => point.y), data.endLabelGap);
+    const heights = spread(ends.map(point => point.y), costMode ? 24 : data.endLabelGap);
+    const bounds = svg.querySelector("clipPath rect");
+    const top = Number(bounds.getAttribute("y")) + 6;
+    const bottom = costMode ? svg.viewBox.baseVal.height - 18
+      : Number(bounds.getAttribute("y")) + Number(bounds.getAttribute("height")) - 6;
+    const offset = Math.max(top - heights[0], Math.min(0, bottom - heights.at(-1)));
     ends.forEach((point, index) => {
-      element(group, "path", { d: `M${point.x + 5},${point.y} L${labelX - 4},${heights[index]}` },
-        { stroke: "var(--baseline)", strokeWidth: "0.6", fill: "none" });
+      const height = heights[index] + offset;
+      element(group, "path", { class: `leader m-${point.model.slug}`, "data-level": data.levels[point.level],
+        d: `M${point.x},${point.y} L${labelX - 4},${height}` },
+        { stroke: costMode ? "var(--ink-3)" : "var(--baseline)", strokeWidth: costMode ? "0.8" : "0.6", fill: "none" });
+      if (costMode) {
+        const label = element(group, "text", { x: labelX, y: height, "dominant-baseline": "middle",
+          "data-level": data.levels[point.level], style: scoreTemplate.getAttribute("style") });
+        label.textContent = point.score.toFixed(metric.decimals);
+        const nameX = nameTemplate.getAttribute("x");
+        element(label, "tspan", { x: nameX, y: height, style: nameTemplate.getAttribute("style") }).textContent = point.model.name;
+        element(label, "tspan", { x: nameX, dy: "11", style: nameTemplate.getAttribute("style") }).textContent = data.levels[point.level];
+        return;
+      }
       for (const [role, template, value] of [["end", scoreTemplate, point.score.toFixed(metric.decimals)],
                                            ["name", nameTemplate, point.model.name]]) {
         const parent = element(group, "g", { class: `${role} m-${point.model.slug}`, "data-level": data.levels[point.level] });
         const label = template.cloneNode(true);
-        label.setAttribute("y", heights[index]);
+        label.setAttribute("y", height);
         label.setAttribute("dominant-baseline", "middle");
         label.textContent = value;
         parent.append(label);
       }
     });
-    filteredMeeting(group, metric, points);
+    if (!costMode) filteredMeeting(group, metric, points, ends);
   }
 
-  function filteredCostLabels(svg, group, metric, ends) {
-    const bounds = svg.querySelector("clipPath rect");
-    const left = Number(bounds.getAttribute("x")) + 4;
-    const right = left + Number(bounds.getAttribute("width")) - 8;
-    ends.sort((first, second) => first.y - second.y);
-    const heights = spread(ends.map(point => point.y - 8), data.endLabelGap);
-    const top = Number(bounds.getAttribute("y")) + 8;
-    const bottom = top + Number(bounds.getAttribute("height")) - 16;
-    const offset = Math.max(top - heights[0], Math.min(0, bottom - heights.at(-1)));
-    ends.forEach((point, index) => {
-      const label = element(group, "text", { x: point.x + 7, y: heights[index] + offset, "dominant-baseline": "middle",
-        "data-level": data.levels[point.level] },
-        { fontSize: "9.5px", fontWeight: "500", fill: "var(--ink-1)", stroke: "var(--surface)",
-          strokeWidth: "3px", paintOrder: "stroke", strokeLinejoin: "round" });
-      label.textContent = point.score.toFixed(metric.decimals);
-      element(label, "tspan", { dx: "5" }, { fontFamily: "Menlo, monospace", fontSize: "7.5px", fontWeight: "400",
-        fill: "var(--ink-3)" }).textContent = `${point.model.name} · ${data.levels[point.level]}`;
-      const box = label.getBBox();
-      const x = clamp(point.x + 7, left, right - box.width);
-      label.setAttribute("x", x);
-      const nearX = clamp(point.x, x, x + box.width);
-      const nearY = clamp(point.y, box.y, box.y + box.height);
-      if (Math.hypot(nearX - point.x, nearY - point.y) <= 12) return;
-      const leader = element(group, "path", { d: `M${point.x},${point.y} L${nearX},${nearY}` },
-        { stroke: "var(--baseline)", strokeWidth: ".6", fill: "none" });
-      label.before(leader);
-    });
-  }
-
-  function filteredMeeting(group, metric, points) {
+  function filteredMeeting(group, metric, points, ends) {
     const models = data.models.filter(model => document.getElementById(`show-${model.slug}`).checked);
     if (models.length !== 2) return;
     const first = points.filter(point => point.model === models[0]);
@@ -500,6 +506,9 @@
     element(group, "line", { x1: from.x, x2: to.x, y1: Math.max(from.y, to.y), y2: Math.max(from.y, to.y) },
       { stroke: "var(--ink-3)", strokeWidth: "0.9", strokeDasharray: "2.5 2.5", opacity: "0.8" });
     for (const point of [from, to]) {
+      const start = group.ownerSVGElement.querySelector(`.start.m-${point.model.slug}`);
+      if (ends.includes(point) || (point === points.find(other => other.model === point.model)
+        && start && getComputedStyle(start).display !== "none")) continue;
       element(group, "text", { x: point.x, y: point.y - 9, "text-anchor": "middle" },
         { fontSize: "9.5px", fontWeight: "500", fill: "var(--ink-1)", stroke: "var(--surface)",
           strokeWidth: "3px", paintOrder: "stroke" }).textContent = point.score.toFixed(metric.decimals);

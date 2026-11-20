@@ -39,7 +39,7 @@
   await settle();
   const hle = plot("hle-diamond");
   const crit = plot("critpt-v2");
-  assert(range(hle) === "10 to 90" && range(crit) === "20 to 90", "The unfiltered score axes must not change");
+  assert(range(hle) === "10 to 90" && range(crit) === "20 to 80", "The unfiltered score axes must fit the published scores");
   setModels(models);
   await settle();
   assert(range(hle) === "30 to 80" && range(crit) === "30 to 80",
@@ -72,6 +72,6 @@
   document.querySelector("#levels-all").click();
   document.querySelector("#models-all").click();
   await settle();
-  assert(range(hle) === "10 to 90" && range(crit) === "20 to 90", "Clearing the filters must restore the original score axes");
+  assert(range(hle) === "10 to 90" && range(crit) === "20 to 80", "Clearing the filters must restore the original score axes");
   return "Chart fit checks passed: shrink, expand, reset, both views, hover alignment and tight drag-to-zoom";
 })();
