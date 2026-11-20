@@ -2561,8 +2561,8 @@ def panel_html(metric: Metric) -> str:
             f'{"".join(plot_html(metric, layout, mode) for layout in LAYOUTS for mode in modes)}</figure>')
 
 
-BAR_ROW_HEIGHT = 0.42
-BAR_THICKNESS = 0.56  # of a row
+BAR_ROW_HEIGHT = 0.5
+BAR_THICKNESS = 0.48  # of a row
 BAR_AXES_LEFT = 1.35  # holds the model names
 BAR_AXES_RIGHT = 1.15
 BAR_AXES_BOTTOM = 0.32
@@ -2593,14 +2593,13 @@ def draw_bars(axes: Axes, metric: ReportedMetric) -> None:
     axes.figure.canvas.draw()
     for row, model in enumerate(rows):
         score, effort = metric.scores[model]
-        effort_label = textwrap.fill(f"{effort} · {cost_label(metric.prices[model])}" if model in metric.prices else effort,
-                                     width=20, break_long_words=False, break_on_hyphens=False)
+        effort_label = f"{effort} · {cost_label(metric.prices[model])}" if model in metric.prices else effort
         parts = annotate_parts(axes, (score, row), [(f"{score:.{metric.decimals}f}", POINT_LABEL_STYLE), (effort_label, DIM_LABEL_STYLE)],
                                RIGHT, at_level(element_id("end", model), effort))
-        renderer = axes.figure.canvas.get_renderer()
-        shift = min(0, axes.figure.bbox.x1 - 4 - max(text_box(part, renderer).x1 for part in parts)) * 72 / axes.figure.dpi
+        parts[1].xy = (0, row - BAR_THICKNESS / 2)
+        parts[1].set_position((0, -3))
+        parts[1].set_verticalalignment("top")
         for part in parts:
-            part.set_position((part.xyann[0] + shift, part.xyann[1]))
             part.set_annotation_clip(False)
 
 
