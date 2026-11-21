@@ -182,10 +182,8 @@ tr.first > * { border-top: 1px solid var(--grid); }
 .zoom-head p { margin: 2px 0 0; color: var(--ink-3); }
 .zoom-head button { font: 28px/1 system-ui, sans-serif; color: var(--ink-2); background: none; border: 0; cursor: pointer;
   width: 44px; height: 44px; padding: 0; }
-.zoom-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 12px 0 4px; font-weight: 500; }
-.zoom-legend span { display: inline-flex; align-items: center; gap: 8px; }
-.zoom-legend span::before { content: ""; width: 18px; height: 3px; border-radius: 2px; background: var(--series); }
-.zoom-plot { flex: 1; min-height: 0; position: relative; }
+.zoom-plot { flex: 1; min-height: 0; display: grid; place-items: center; }
+.zoom-chart { position: relative; }
 .zoom-plot svg { display: block; width: 100%; height: 100%; overflow: visible; }
 body:not(.zoomable) .panel[data-chart="terminal-bench-4-0"] { display: none; }
 body:not(.zoomable) .panel[data-chart="terminal-bench-4-0-vals"] { display: none; }
@@ -652373,7 +652371,6 @@ z
 <dialog id="zoom" aria-label="Zoomed chart" tabindex="-1">
 <div class="zoom-head"><div><h3></h3><p class="zoom-unit"></p><p class="zoom-range"></p></div>
 <form method="dialog"><button aria-label="Close">×</button></form></div>
-<div class="zoom-legend"></div>
 <div class="zoom-plot"></div>
 </dialog>
 <dialog id="benchmark-versions" aria-labelledby="version-heading">
@@ -652425,11 +652422,6 @@ z
   const MINIMUM_DRAG_PIXELS = 8;
   const LONG_PRESS_MILLISECONDS = 1000;
   const LONG_PRESS_TOLERANCE_PIXELS = 8;  // a finger that moves farther before the press completes is scrolling
-  const LABEL_GAP_PIXELS = 21;
-  const MARGIN = { left: 60, right: 170, top: 16, bottom: 44 };
-  // Below this plot width the zoom drops the model names beside the points (its legend names the colors) to give the plot room.
-  const COMPACT_WIDTH = 520;
-  const COMPACT_MARGIN = { left: 40, right: 44, top: 12, bottom: 36 };
   let drag = null;
   let press = null;
   let shown = null;
@@ -652532,7 +652524,13 @@ z
     const mode = finished.plot.dataset.mode;
     const points = selectedPoints(metric, mode, topLeft, bottomRight);
     if (!points.length) return;
-    shown = { metric, points, mode };
+    const selectedWidth = Math.min(Math.max(finished.startX, finished.endX), axes.x + axes.width)
+      - Math.max(Math.min(finished.startX, finished.endX), axes.x);
+    const selectedHeight = Math.min(Math.max(finished.startY, finished.endY), axes.y + axes.height)
+      - Math.max(Math.min(finished.startY, finished.endY), axes.y);
+    const sourceRatio = axes.width / axes.height;
+    shown = { metric, points, mode, plot: finished.plot,
+      aspectRatio: clamp(selectedWidth / selectedHeight, sourceRatio / 2, sourceRatio * 2) };
     dialog.showModal();
     dialog.focus();  // the close button would otherwise take focus and show its ring
     render();
@@ -652548,12 +652546,6 @@ z
         && (mode === "cost" ? point.cost : point.level) >= topLeft.x
         && (mode === "cost" ? point.cost : point.level) <= bottomRight.x
         && point.score <= topLeft.score && point.score >= bottomRight.score));
-  }
-
-  // Round tick values that cover the scores with a little headroom, about five steps.
-  function niceTicks(low, high, minimumPadding = 0.5) {
-    const padding = Math.max((high - low) * 0.12, Math.abs(high) * 0.01, minimumPadding);
-    return scaleTicks(low - padding, high + padding);
   }
 
   function scaleTicks(low, high, minimumStep = 0, maximumStep = Infinity, bounds = [-Infinity, Infinity]) {
@@ -652590,8 +652582,23 @@ z
     const costs = points.map(point => point.cost);
     const low = Math.max(bounds[0], candidates.findLast(value => value < Math.min(...costs)));
     const high = Math.min(bounds[1], candidates.find(value => value > Math.max(...costs)));
-    if (low === bounds[0] && high === bounds[1]) return null;
     return { low, high, values: candidates.filter(value => value >= low && value <= high) };
+  }
+
+  function fittedAxes(metric, allPoints, points, costMode, limits, bounds) {
+    const scoreTicks = points.length ? fittedScoreTicks(metric, points) : null;
+    const costTicks = costMode && points.length ? fittedCostTicks(allPoints, points, limits) : null;
+    const levels = points.map(point => point.level);
+    const first = Math.min(...levels);
+    const last = Math.max(...levels);
+    const effortTicks = !costMode && points.length ? { low: first - 0.85, high: last + 0.9,
+      values: Array.from({ length: last - first + 1 }, (_, index) => first + index) } : null;
+    const [xLow, xHigh] = costTicks ? [costTicks.low, costTicks.high] : effortTicks ? [effortTicks.low, effortTicks.high] : limits;
+    const [yLow, yHigh] = scoreTicks ? [scoreTicks.low, scoreTicks.high] : metric.yRange;
+    const x = value => bounds.left + (costMode ? Math.log10(value / xLow) / Math.log10(xHigh / xLow)
+      : (value - xLow) / (xHigh - xLow)) * bounds.width;
+    const y = score => bounds.top + (yHigh - score) / (yHigh - yLow) * bounds.height;
+    return { scoreTicks, costTicks, effortTicks, x, y };
   }
 
   // Spread sorted positions so neighbors sit at least minimumGap apart, each crowded group centered on its mean.
@@ -652623,41 +652630,46 @@ z
   }
 
   function render() {
-    const { metric, points, mode } = shown;
+    const { metric, points, mode, plot, aspectRatio } = shown;
     const costMode = mode === "cost";
     const levels = points.map(point => point.level);
     const firstLevel = Math.min(...levels);
     const lastLevel = Math.max(...levels);
     const scores = points.map(point => point.score);
-    const ticks = niceTicks(Math.min(...scores), Math.max(...scores));
     const models = data.models.filter(model => points.some(point => point.model === model));
     const format = score => score.toFixed(metric.decimals);
     const costs = points.map(point => point.cost);
-    const costTicks = costMode ? niceTicks(Math.log10(Math.min(...costs)), Math.log10(Math.max(...costs)), 0.02) : null;
 
     dialog.querySelector("h3").textContent = metric.name;
     dialog.querySelector(".zoom-unit").textContent = metric.unit;
     const range = costMode ? `${formatCost(Math.min(...costs))} to ${formatCost(Math.max(...costs))} · ${metric.costUnit}`
       : `${data.levels[firstLevel]} to ${data.levels[lastLevel]}`;
     dialog.querySelector(".zoom-range").textContent = `${range} · scores ${format(Math.min(...scores))} to ${format(Math.max(...scores))}`;
-    dialog.querySelector(".zoom-legend").replaceChildren(...models.map(model => {
-      const key = document.createElement("span");
-      key.style.setProperty("--series", `var(--${model.color})`);
-      key.textContent = model.name;
-      return key;
-    }));
-
     plotHost.replaceChildren();
-    const width = plotHost.clientWidth;
-    const height = plotHost.clientHeight;
-    const svg = element(plotHost, "svg", { viewBox: `0 0 ${width} ${height}` });
-    const compact = width < COMPACT_WIDTH;
-    const margin = compact ? COMPACT_MARGIN : MARGIN;
-    const x = value => margin.left + (costMode ? (Math.log10(value) - costTicks.low) / (costTicks.high - costTicks.low)
-      : (value - firstLevel + 0.5) / (lastLevel - firstLevel + 1)) * (width - margin.left - margin.right);
+    const narrow = plotHost.clientWidth < 520;
+    const labelScale = narrow ? 1 : 1.5;
+    const margin = { left: narrow ? 34 : 60, right: costMode ? 16 : narrow ? 112 : 200, top: 16, bottom: 44 };
+    const axesWidth = Math.min(plotHost.clientWidth - margin.left - margin.right,
+      (plotHost.clientHeight - margin.top - margin.bottom) * aspectRatio);
+    const bounds = { left: margin.left, top: margin.top, width: axesWidth, height: axesWidth / aspectRatio };
+    const width = bounds.width + margin.left + margin.right;
+    const height = bounds.height + margin.top + margin.bottom;
+    const chart = document.createElement("div");
+    chart.className = "zoom-chart";
+    chart.dataset.mode = mode;
+    Object.assign(chart.style, { width: `${width}px`, height: `${height}px` });
+    plotHost.append(chart);
+    const svg = element(chart, "svg", { viewBox: `0 0 ${width} ${height}` });
+    const limits = plot.dataset.fullXLimits.split(",").map(Number);
+    const allPoints = plotPoints(plot, metric);
+    const axes = fittedAxes(metric, allPoints, points, costMode, limits, bounds);
+    const { x, y } = axes;
+    const ticks = axes.scoreTicks ?? scaleTicks(...metric.yRange, metric.tickStep, metric.tickStep, metric.yRange);
+    const costTicks = axes.costTicks;
     const pointX = point => x(costMode ? point.cost : point.level);
-    const y = score => margin.top + (ticks.high - score) / (ticks.high - ticks.low) * (height - margin.top - margin.bottom);
-    const text = { fontFamily: "inherit", fontSize: compact ? "13px" : "15px" };
+    const text = { fontFamily: "inherit", fontSize: narrow ? "13px" : "15px" };
+    element(element(svg, "defs", {}), "clipPath", { id: "zoom-bounds" });
+    element(svg.querySelector("clipPath"), "rect", { x: bounds.left, y: bounds.top, width: bounds.width, height: bounds.height });
 
     for (const value of ticks.values) {
       element(svg, "line", { x1: margin.left, x2: width - margin.right, y1: y(value), y2: y(value) },
@@ -652668,10 +652680,12 @@ z
     element(svg, "line", { x1: costMode ? margin.left : x(firstLevel - 0.35),
       x2: costMode ? width - margin.right : x(lastLevel + 0.35), y1: y(ticks.low), y2: y(ticks.low) },
       { stroke: "var(--baseline)", strokeWidth: "1" });
-    const horizontalTicks = costMode ? costTicks.values : Array.from({ length: lastLevel - firstLevel + 1 }, (_, index) => firstLevel + index);
+    const horizontalTicks = costMode ? costTicks.values : axes.effortTicks.values;
     for (const value of horizontalTicks) {
-      element(svg, "text", { x: x(costMode ? 10 ** value : value), y: height - margin.bottom + (compact ? 22 : 28), "text-anchor": "middle" },
-        { ...text, fill: "var(--ink-3)" }).textContent = costMode ? formatCost(10 ** value) : data.levels[value];
+      const tickY = costMode ? height - margin.bottom + 28
+        : effortTickY(plot.querySelector(".effort-axis"), value, height - margin.bottom + 20, narrow ? 13 / 9 : 1);
+      element(svg, "text", { x: x(value), y: tickY, "text-anchor": "middle" },
+        { ...text, fill: "var(--ink-3)" }).textContent = costMode ? formatCost(value) : data.levels[value];
     }
 
     for (const model of models) {
@@ -652682,7 +652696,7 @@ z
           { stroke: `var(--${model.color})`, strokeWidth: "3", strokeLinecap: "round", opacity: costMode ? ".35" : "1" });
       }
     }
-    const costMarkers = [];
+    const markers = [];
     for (const point of points) {
       const estimated = metric.estimated.some(([slug, level]) => slug === point.model.slug && level === point.level);
       const position = { x: pointX(point), y: y(point.score) };
@@ -652693,41 +652707,33 @@ z
         stroke: estimated ? `var(--${point.model.color})` : "var(--surface)",
         strokeWidth: "2",
       });
-      if (!costMode) continue;
-      element(marker, "title", {}).textContent = `${describeCostPoint(point, metric)} · ${metric.costUnit}`;
-      costMarkers.push({ ...point, ...position, estimated, marker, symbol: marker, radius });
+      element(marker, "title", {}).textContent = costMode ? `${describeCostPoint(point, metric)} · ${metric.costUnit}`
+        : `${point.model.name} ${data.levels[point.level]}: ${format(point.score)}`;
+      const original = allPoints.find(original => original.model === point.model && original.level === point.level);
+      const source = costMode ? original.target : original.ring.parentElement;
+      const tip = source.querySelector(".tip").cloneNode(true);
+      tip.querySelector(".beaten")?.remove();
+      for (const row of tip.querySelectorAll(".row")) {
+        if (!costMode && !row.classList.contains(`m-${point.model.slug}`)) row.remove();
+      }
+      const target = document.createElement("span");
+      target.className = `cost-point m-${point.model.slug}`;
+      target.dataset.level = data.levels[point.level];
+      Object.assign(target.style, { left: `${100 * position.x / width}%`, top: `${100 * position.y / height}%` });
+      target.append(tip);
+      chart.append(target);
+      markers.push({ ...point, ...position, estimated, marker, symbol: marker, radius, target });
     }
-    if (costMode) drawDominance(svg, metric, costMarkers, "dominance-zoom");
-
-    // Each level's labels sit right of their points, spread apart vertically; outside compact mode each model's last
-    // point also names it.
-    for (let level = firstLevel; level <= lastLevel; level += 1) {
-      const column = points.filter(point => point.level === level).sort((a, b) => y(a.score) - y(b.score));
-      const labelYs = spread(column.map(point => y(point.score)), LABEL_GAP_PIXELS);
-      column.forEach((point, index) => {
-        const labelX = pointX(point);
-        const pointY = y(point.score);
-        const labelY = labelYs[index];
-        if (Math.abs(labelY - pointY) > 0.5) {
-          element(svg, "line", { x1: labelX + 6, y1: pointY, x2: labelX + 14, y2: labelY },
-            { stroke: "var(--baseline)", strokeWidth: "1" });
-        }
-        const label = element(svg, "text", { x: labelX + 16, y: labelY, "dominant-baseline": "middle" }, {
-          ...text, fontWeight: "600", fill: "var(--ink-1)",
-          stroke: "var(--surface)", strokeWidth: "4px", paintOrder: "stroke", strokeLinejoin: "round",
-        });
-        label.textContent = format(point.score);
-        if (costMode) element(label, "tspan", { dx: "4" }, { ...text, fontSize: "12px", fontWeight: "400", fill: "var(--ink-3)" })
-          .textContent = data.levels[point.level];
-        const isLast = !points.some(other => other.model === point.model && other.level > point.level);
-        if (isLast && !compact) {
-          const name = element(label, "tspan", { dx: "8" }, {
-            fontFamily: "Menlo, monospace", fontSize: "12.5px", fontWeight: "400", fill: "var(--ink-3)",
-          });
-          name.textContent = point.model.name;
-        }
-      });
-    }
+    if (costMode) drawDominance(svg, metric, markers, "dominance-zoom");
+    else markers.forEach(registerPointTooltip);
+    const templates = element(svg, "g", {}, { visibility: "hidden" });
+    const scoreTemplate = element(element(templates, "g", { class: "end" }), "text", { x: x(lastLevel + 0.32) },
+      { fontSize: `${9.5 * labelScale}px`, fontWeight: "500", fill: "var(--ink-1)" });
+    scoreTemplate.textContent = format(Math.max(...scores));
+    element(element(templates, "g", { class: "name" }), "text", { x: x(lastLevel + 0.32) + 5 + scoreTemplate.getBBox().width },
+      { fontFamily: "Menlo, monospace", fontSize: `${9 * labelScale}px`, fill: "var(--ink-3)" });
+    filteredLabels(chart, metric, markers, labelScale);
+    templates.remove();
   }
 
   function levelIsShown(level) {
@@ -652749,6 +652755,13 @@ z
     }));
     pointCache.set(plot, points);
     return points;
+  }
+
+  function effortTickY(axis, level, baseline, scale = 1) {
+    const labels = [...axis.querySelectorAll("text")];
+    const top = Math.min(...labels.map(label => Number(label.getAttribute("y"))));
+    const label = labels.find(label => label.textContent === data.levels[level]);
+    return (baseline ?? top) + (Number(label.getAttribute("y")) - top) * scale;
   }
 
   function renderAxisTicks(plot, svg, axis, ticks, position, start, end) {
@@ -652780,8 +652793,8 @@ z
       if (axis !== "effort") element(fittedAxis, "line", horizontal ? { x1: offset, x2: offset, y1: start, y2: end }
         : { x1: start, x2: end, y1: offset, y2: offset },
         { stroke: "var(--grid)", strokeWidth: ".7", strokeLinecap: "square" });
-      const tickTemplate = axis === "effort" ? [...originalAxis.querySelectorAll("text")].find(node => node.textContent === data.levels[value]) : template;
-      element(fittedAxis, "text", horizontal ? { x: offset, y: tickTemplate.getAttribute("y"), style: textStyle }
+      const tickY = axis === "effort" ? effortTickY(originalAxis, value) : template.getAttribute("y");
+      element(fittedAxis, "text", horizontal ? { x: offset, y: tickY, style: textStyle }
         : { x: start - 5, y: offset, "dominant-baseline": "central", style: textStyle })
         .textContent = axis === "effort" ? data.levels[value] : horizontal ? (!costLabels || costLabels.has(value) ? formatCost(value) : "")
           : value.toFixed(ticks.decimals).replace("-", "−");
@@ -652796,24 +652809,19 @@ z
     const top = y.baseVal.value;
     const axesWidth = width.baseVal.value;
     const axesHeight = height.baseVal.value;
-    const narrowed = points.length && points.length < allPoints.length;
-    const scoreTicks = points.length ? fittedScoreTicks(metric, points) : null;
-    const scorePosition = score => top + (scoreTicks.high - score) / (scoreTicks.high - scoreTicks.low) * axesHeight;
-    renderAxisTicks(plot, svg, "score", scoreTicks, scorePosition, left, left + axesWidth);
     const costMode = plot.dataset.mode === "cost";
     plot.dataset.fullXLimits ??= plot.dataset.xLimits;
-    const costTicks = costMode && narrowed ? fittedCostTicks(allPoints, points, plot.dataset.fullXLimits.split(",").map(Number)) : null;
-    const costPosition = cost => left + Math.log10(cost / costTicks.low) / Math.log10(costTicks.high / costTicks.low) * axesWidth;
+    const limits = plot.dataset.fullXLimits.split(",").map(Number);
+    const axes = fittedAxes(metric, allPoints, points, costMode, limits,
+      { left, top, width: axesWidth, height: axesHeight });
+    const { scoreTicks, effortTicks, x: effortPosition, y: scorePosition } = axes;
+    renderAxisTicks(plot, svg, "score", scoreTicks, scorePosition, left, left + axesWidth);
+    const costTicks = axes.costTicks && (axes.costTicks.low !== limits[0] || axes.costTicks.high !== limits[1]) ? axes.costTicks : null;
+    const costPosition = axes.x;
     if (costMode) renderAxisTicks(plot, svg, "cost", costTicks, costPosition, top, top + axesHeight);
-    const levels = points.map(point => point.level);
-    const first = Math.min(...levels);
-    const last = Math.max(...levels);
-    const effortTicks = !costMode && points.length ? { low: first - 0.85, high: last + 0.9,
-      values: Array.from({ length: last - first + 1 }, (_, index) => first + index) } : null;
-    const effortPosition = level => left + (level - effortTicks.low) / (effortTicks.high - effortTicks.low) * axesWidth;
     if (effortTicks) {
       renderAxisTicks(plot, svg, "effort", effortTicks, effortPosition, top, top + axesHeight);
-      svg.querySelector(".effort-baseline path").setAttribute("d", `M${effortPosition(first - 0.35)},${top + axesHeight} H${effortPosition(last + 0.35)}`);
+      svg.querySelector(".effort-baseline path").setAttribute("d", `M${effortPosition(effortTicks.values[0] - 0.35)},${top + axesHeight} H${effortPosition(effortTicks.values.at(-1) + 0.35)}`);
       for (const column of plot.querySelectorAll(".column")) {
         const level = data.levels.indexOf(column.dataset.level);
         Object.assign(column.style, { left: `${100 * effortPosition(level - 0.5) / svg.viewBox.baseVal.width}%`,
@@ -652836,18 +652844,18 @@ z
     return Boolean(scoreTicks || costTicks || (effortTicks && `${effortTicks.low},${effortTicks.high}` !== plot.dataset.fullXLimits));
   }
 
-  function filteredLabels(plot, metric, points) {
+  function filteredLabels(plot, metric, points, labelScale = 1) {
     const svg = plot.querySelector("svg");
     const group = element(svg, "g", { class: "filtered-labels" });
     const costMode = plot.dataset.mode === "cost";
     const ends = data.models.map(model => points.filter(point => point.model === model)
       .sort((first, second) => costMode ? first.cost - second.cost : first.level - second.level).at(-1)).filter(Boolean);
-    if (costMode) return filteredCostLabels(svg, group, metric, ends);
+    if (costMode) return filteredCostLabels(svg, group, metric, ends, labelScale);
     const scoreTemplate = svg.querySelector(".end text");
     const nameTemplate = svg.querySelector(".name text");
     const labelX = Number(scoreTemplate.getAttribute("x"));
     ends.sort((first, second) => first.y - second.y);
-    const heights = spread(ends.map(point => point.y), data.endLabelGap);
+    const heights = spread(ends.map(point => point.y), data.endLabelGap * labelScale);
     const bounds = svg.querySelector("clipPath rect");
     const top = Number(bounds.getAttribute("y")) + 6;
     const bottom = Number(bounds.getAttribute("y")) + Number(bounds.getAttribute("height")) - 6;
@@ -652868,22 +652876,22 @@ z
     filteredMeeting(group, metric, points, ends);
   }
 
-  function filteredCostLabels(svg, group, metric, ends) {
+  function filteredCostLabels(svg, group, metric, ends, labelScale) {
     const bounds = svg.querySelector("clipPath rect");
     const left = Number(bounds.getAttribute("x")) + 4;
     const right = left + Number(bounds.getAttribute("width")) - 8;
     ends.sort((first, second) => first.y - second.y);
-    const heights = spread(ends.map(point => point.y - 8), data.endLabelGap);
+    const heights = spread(ends.map(point => point.y - 8 * labelScale), data.endLabelGap * labelScale);
     const top = Number(bounds.getAttribute("y")) + 8;
     const bottom = top + Number(bounds.getAttribute("height")) - 16;
     const offset = Math.max(top - heights[0], Math.min(0, bottom - heights.at(-1)));
     ends.forEach((point, index) => {
       const label = element(group, "text", { x: point.x + 7, y: heights[index] + offset, "dominant-baseline": "middle",
         "data-level": data.levels[point.level] },
-        { fontSize: "9.5px", fontWeight: "500", fill: "var(--ink-1)", stroke: "var(--surface)",
+        { fontSize: `${9.5 * labelScale}px`, fontWeight: "500", fill: "var(--ink-1)", stroke: "var(--surface)",
           strokeWidth: "3px", paintOrder: "stroke", strokeLinejoin: "round" });
       label.textContent = point.score.toFixed(metric.decimals);
-      element(label, "tspan", { dx: "5" }, { fontFamily: "Menlo, monospace", fontSize: "9px", fontWeight: "400",
+      element(label, "tspan", { dx: "5" }, { fontFamily: "Menlo, monospace", fontSize: `${9 * labelScale}px`, fontWeight: "400",
         fill: "var(--ink-3)" }).textContent = point.model.name;
       const box = label.getBBox();
       const x = clamp(point.x + 7, left, right - box.width);
@@ -652939,6 +652947,15 @@ z
     tip.style.top = `${clamp(top, 12, innerHeight - height - 12)}px`;
   }
 
+  function registerPointTooltip(point) {
+    const highlight = (active, event, anchors = [point.marker]) => {
+      point.target.classList.toggle("dominance-hover", active);
+      if (active) positionCostTip(point.target, event, anchors);
+    };
+    dominanceInteractions.set(point.marker, highlight);
+    dominanceInteractions.set(point.target, highlight);
+  }
+
   document.addEventListener("pointerover", event => {
     const target = event.target.closest(".cost-point");
     if (target) positionCostTip(target, event);
@@ -652960,7 +652977,7 @@ z
   }
 
   function dominanceAt(target) {
-    return dominanceInteractions.get(target.closest(".cost-point, .dominance-hit, .cost-marker"));
+    return dominanceInteractions.get(target.closest(".cost-point, .dominance-hit, .cost-marker, circle[data-model]"));
   }
 
   document.addEventListener("pointerover", event => {
@@ -653004,7 +653021,7 @@ z
     const unbeaten = points.filter(point => !points.some(other => beats(other, point)));
     const beaten = points.filter(point => !unbeaten.includes(point));
     for (const point of points) {
-      dominanceInteractions.delete(point.target ?? point.marker);
+      registerPointTooltip(point);
       const dominated = beaten.includes(point);
       const color = `var(--${point.model.color})`;
       point.marker.classList.add("cost-marker");
@@ -653051,14 +653068,14 @@ z
       } else {
         element(hit, "title", {}).textContent = description;
       }
+      const tooltip = dominanceInteractions.get(loser.marker);
       const highlight = (active, event) => {
         for (const node of [line, loser.marker, winner.marker]) node.classList.toggle("highlighted", active);
-        if (!loser.target) return;
-        loser.target.classList.toggle("dominance-hover", active);
-        if (active) positionCostTip(loser.target, event, [loser.marker, winner.marker]);
+        tooltip(active, event, [loser.marker, winner.marker]);
       };
       dominanceInteractions.set(hit, highlight);
-      dominanceInteractions.set(loser.target ?? loser.marker, highlight);
+      dominanceInteractions.set(loser.marker, highlight);
+      if (loser.target) dominanceInteractions.set(loser.target, highlight);
     }
   }
 

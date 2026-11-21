@@ -2895,10 +2895,8 @@ tr.first > * { border-top: 1px solid var(--grid); }
 .zoom-head p { margin: 2px 0 0; color: var(--ink-3); }
 .zoom-head button { font: 28px/1 system-ui, sans-serif; color: var(--ink-2); background: none; border: 0; cursor: pointer;
   width: 44px; height: 44px; padding: 0; }
-.zoom-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 12px 0 4px; font-weight: 500; }
-.zoom-legend span { display: inline-flex; align-items: center; gap: 8px; }
-.zoom-legend span::before { content: ""; width: 18px; height: 3px; border-radius: 2px; background: var(--series); }
-.zoom-plot { flex: 1; min-height: 0; position: relative; }
+.zoom-plot { flex: 1; min-height: 0; display: grid; place-items: center; }
+.zoom-chart { position: relative; }
 .zoom-plot svg { display: block; width: 100%; height: 100%; overflow: visible; }
 $toggles
 </style>
@@ -2915,7 +2913,6 @@ $sections
 <dialog id="zoom" aria-label="Zoomed chart" tabindex="-1">
 <div class="zoom-head"><div><h3></h3><p class="zoom-unit"></p><p class="zoom-range"></p></div>
 <form method="dialog"><button aria-label="Close">×</button></form></div>
-<div class="zoom-legend"></div>
 <div class="zoom-plot"></div>
 </dialog>
 <dialog id="benchmark-versions" aria-labelledby="version-heading">
